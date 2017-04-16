@@ -1,0 +1,48 @@
+{
+  "name": "beer4africa",
+  "version": "1.0.0",
+  "description": "A website promoting Craft Africa",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "production": "NODE_ENV=production gulp",
+    "development": "NODE_ENV=development gulp",
+    "build_prod": "NODE_ENV=production gulp build",
+    "build_dev": "NODE_ENV=development gulp build"
+  },
+  "keywords": [
+    "beer",
+    "4",
+    "for",
+    "africa",
+    "factories",
+    "craft",
+    "africa"
+  ],
+  "author": "julius celik <jcelik@kth.se>",
+  "license": "ISC",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^6.4.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2015-native-modules": "^6.9.4",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.3",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-clean-css": "^3.0.4",
+    "gulp-environments": "^0.1.2",
+    "gulp-file-cache": "0.0.1",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^2.1.2",
+    "gulp-util": "^3.0.8",
+    "webpack-stream": "^3.2.0"
+  }
+}

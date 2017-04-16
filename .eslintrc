@@ -1,0 +1,19 @@
+{
+	"env": {
+		"es6": true,
+		"browser": true
+	},
+	"extends": "airbnb",
+	"rules": {
+		"semi": [2, "never"],
+		"no-tabs": "off",
+		"indent": ["error", "tab"],
+		"comma-dangle": ["error", "never"],
+		"keyword-spacing": ["error", { "overrides": {
+			"if" : { "before": true, "after": false },
+			"for" : { "before": true, "after": false },
+			"while" : { "before": true, "after": false },
+			"else" : { "before": true, "after": true },
+		}}]
+	},
+}
