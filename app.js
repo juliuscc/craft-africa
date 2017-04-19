@@ -5,7 +5,9 @@ const bodyParser = require('body-parser')
 // const morgan = require('morgan')
 
 // Routes
-// const index = require('./routes/index')
+const index = require('./routes/index')
+const about = require('./routes/about')
+const contact = require('./routes/contact')
 
 // Init App
 const app = express()
@@ -23,7 +25,9 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 // Router
-// app.use('/', index)
+app.use('/', index)
+app.use('/about', about)
+app.use('/contact', contact)
 app.use((req, res) => {
 	res.render('404')
 })
