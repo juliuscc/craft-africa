@@ -22,7 +22,7 @@ app.use(cookieParser())
 // Set Static Folder
 app.use(express.static(path.join(__dirname, 'public')))
 
-// Route
+// Router
 // app.use('/', index)
 app.use((req, res) => {
 	res.render('404')
