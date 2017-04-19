@@ -19,18 +19,18 @@ const development = environments.development
 const production = environments.production
 
 /* ~ ~ ~ Style ~ ~ ~ */
-const sass = require('gulp-sass')
+const scss = require('gulp-sass')
 const autoprefixer = require('gulp-autoprefixer')
 const cleanCSS = require('gulp-clean-css')
 
 gulp.task('style', () => {
-	const src = `${paths.src}/stylesheets/main.sass`
+	const src = `${paths.src}/stylesheets/main.scss`
 	const dest = `${paths.dest}/stylesheets`
 
 	return gulp.src(src)
 		.pipe(plumber(errorHandler))
 		.pipe(cache.filter())
-		.pipe(sass())
+		.pipe(scss())
 		.pipe(autoprefixer())
 		.pipe(production(cleanCSS()))
 		.pipe(cache.cache())
@@ -72,7 +72,7 @@ gulp.task('watch', () => {
 	gulp.start('style', 'js')
 
 	// Style
-	gulp.watch(`${paths.src}/stylesheets/**/*.sass`, ['style'])
+	gulp.watch(`${paths.src}/stylesheets/**/*.scss`, ['style'])
 
 	// JS / JSX
 	gulp.watch(`${paths.src}/js/**/*.js`, ['js'])
