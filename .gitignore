@@ -32,3 +32,5 @@ node_modules
 public/
 
 \.gulp-cache
+
+config/credentials*
