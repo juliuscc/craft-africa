@@ -6,17 +6,31 @@ const gutil = require('gulp-util')
 const path = require('path')
 const plumber = require('gulp-plumber')
 const Cache = require('gulp-file-cache')
-const cache = new Cache()
 const nodemon = require('gulp-nodemon')
 
+const cache = new Cache()
+
 // Paths and environment
+const environments = require('gulp-environments')
+
 const paths = {
 	src: path.resolve(__dirname, 'src'),
-	dest: path.resolve(__dirname, 'public'),
+	dest: path.resolve(__dirname, 'public')
 }
-const environments = require('gulp-environments')
-const development = environments.development
+// const development = environments.development
 const production = environments.production
+
+/* ~ ~ ~ Error Handler ~ ~ ~ */
+function errorHandler(err) {
+	const message = err.message.replace(/\n/g, '\n      ')
+
+	gutil.log(`|- ${gutil.colors.bgRed.bold(`Build Error in ${err.plugin}`)}`)
+	gutil.log(`|- ${gutil.colors.bgRed('>>>')}`)
+	gutil.log(`|\n    ${message}\n           |`)
+	gutil.log(`|- ${gutil.colors.bgRed('<<<')}`)
+
+	this.emit('end')
+}
 
 /* ~ ~ ~ Style ~ ~ ~ */
 const scss = require('gulp-sass')
@@ -55,18 +69,6 @@ gulp.task('js', () => {
 		.pipe(gulp.dest(dest))
 })
 
-/* ~ ~ ~ Error Handler ~ ~ ~ */
-function errorHandler(err) {
-	const message = err.message.replace(/\n/g, '\n      ')
-
-	gutil.log('|- ' + gutil.colors.bgRed.bold('Build Error in ' + err.plugin))
-	gutil.log('|- ' + gutil.colors.bgRed('>>>'))
-	gutil.log('|\n    ' + message + '\n           |')
-	gutil.log('|- ' + gutil.colors.bgRed('<<<'))
-
-	this.emit('end')
-}
-
 /* ~ ~ ~ Stream and task handling ~ ~ ~ */
 gulp.task('watch', () => {
 	gulp.start('style', 'js')
@@ -89,7 +91,7 @@ gulp.task('nodemon', () => {
 		})
 		.on('crash', () => {
 			gutil.log('Application has crashed!\n')
-			stream.emit('restart', 10)  // restart the server in 10 seconds 
+			stream.emit('restart', 10)  // restart the server in 10 seconds
 		})
 
 	return stream
