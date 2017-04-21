@@ -8,6 +8,7 @@ const bodyParser = require('body-parser')
 const index = require('./routes/index')
 const about = require('./routes/about')
 const contact = require('./routes/contact')
+const calculationForm = require('./routes/calculationform')
 
 // Init App
 const app = express()
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', index)
 app.use('/about', about)
 app.use('/contact', contact)
+app.use('/calculationform', calculationForm)
 app.use((req, res) => {
 	res.render('404')
 })
