@@ -30,9 +30,11 @@ app.use('/', index)
 app.use('/about', about)
 app.use('/contact', contact)
 app.use('/calculationform', calculationForm)
+
 app.use((req, res) => {
 	res.render('404')
 })
+
 
 // Set Port
 app.set('port', (process.env.PORT || 5000))

@@ -8,6 +8,19 @@ block header
 
 block content
 	p This is a calculation form
+	form(action="/calculationform",method="post")
+		input(name="input1", placeholder="input1",value= input1)
+		input(name="input2", placeholder="input2",value= input2)
+		input(name="input3", placeholder="input3",value= input3)
+		input(name="input4", placeholder="input4",value= input4)
+		input(name="input5", placeholder="input5",value= input5)
+		input(name="input6", placeholder="input6",value= input6)
+		input(type="submit", value = "Submit")
+	if input1
+		h1 output
+		p= input1
+		p= input2
+
 
 block footer
 	p Example footer
