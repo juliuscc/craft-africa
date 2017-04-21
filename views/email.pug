@@ -1,0 +1,12 @@
+extends layout.pug
+
+block title
+	title Craft Africa - Email
+
+block content
+	form(method="post" action="/email/send")
+		input(type="email" name="emailadress" id="emailadress" placeholder="email")
+		input(type="submit" id="submit")
+
+	if message
+		p= message
