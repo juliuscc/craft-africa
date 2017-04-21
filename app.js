@@ -3,6 +3,7 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 // const morgan = require('morgan')
+const mongoose = require('mongoose')
 
 // Routes
 const index = require('./routes/index')
