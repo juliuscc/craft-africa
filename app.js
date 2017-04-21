@@ -10,6 +10,7 @@ const about = require('./routes/about')
 const contact = require('./routes/contact')
 const calculationForm = require('./routes/calculationform')
 const email = require('./routes/email')
+const handleTemplates = require('./routes/handletemplates')
 
 // Init App
 const app = express()
@@ -32,6 +33,8 @@ app.use('/about', about)
 app.use('/contact', contact)
 app.use('/calculationform', calculationForm)
 app.use('/email', email)
+app.use('/handletemplates', handleTemplates)
+
 app.use((req, res) => {
 	res.render('404')
 })
