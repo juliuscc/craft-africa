@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const gmail = require('gmail-send')
-const emailcredentials = require('../config/credentials').email
+const credentials = require('../config/credentials').email
 const gmailConfig = require('../config/email')
 
 router.get('/', (req, res) => {
@@ -17,9 +17,9 @@ router.post('/send', (req, res) => {
 
 	// Email stuff
 	const emailData = {
-		user: emailcredentials.user,
-		pass: emailcredentials.pass,
-		to: gmailConfig.testAdmin,
+		user: gmailConfig.user,
+		pass: credentials.pass,
+		to: gmailConfig.to,
 		subject: 'test sub',
 		text:
 		`
@@ -28,18 +28,17 @@ router.post('/send', (req, res) => {
 	}
 
 	const send = gmail()
-	send(emailData)
-		.then(() => {
-			res.render('email', {
-				message: `Your email adress ${emailadress} was sent to a salesperson.`
-			})
-		})
-		.catch((err) => {
+	send(emailData, (err) => {
+		if(err) {
 			res.render('email', {
 				message: 'The message could not be sent'
 			})
 			throw err
+		}
+		res.render('email', {
+			message: `Your email adress ${emailadress} was sent to a salesperson.`
 		})
+	})
 })
 
 module.exports = router
