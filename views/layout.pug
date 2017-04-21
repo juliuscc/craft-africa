@@ -15,10 +15,15 @@ html
 		link(rel="stylesheet", href="/stylesheets/normalize.css")
 		link(rel="stylesheet", href="/stylesheets/main.css")
 
-
 	body
 		block header
 
 		block content
 
 		block footer
+
+		script(src="https://cdn.polyfill.io/v2/polyfill.min.js")
+		script(src="/js/bundle.js")
+		
+		block scripts
+		
