@@ -84,7 +84,7 @@ gulp.task('watch', () => {
 gulp.task('nodemon', () => {
 	const stream = nodemon({
 		script: 'app.js',
-		watch: ['routes', 'app.js']
+		watch: ['routes', 'app.js', 'config', 'models']
 	})
 		.on('restart', () => {
 			gutil.log('restarted!')
