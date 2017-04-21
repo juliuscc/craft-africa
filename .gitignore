@@ -34,3 +34,7 @@ public/
 \.gulp-cache
 
 config/credentials*
+
+src/\.DS_Store
+
+\.DS_Store
