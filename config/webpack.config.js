@@ -17,8 +17,7 @@ const babelLoader = {
 
 module.exports = {
 	entry: {
-		entry: path.resolve(__dirname, '../src/js/entry.js'),
-		entry2: path.resolve(__dirname, '../src/js/entry2.js')
+		entry: path.resolve(__dirname, '../src/js/entry.js')
 	},
 	output: {
 		path: path.resolve(__dirname, '../public/js'),
