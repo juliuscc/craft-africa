@@ -28,17 +28,18 @@ router.post('/send', (req, res) => {
 	}
 
 	const send = gmail()
-	send(emailData, (err) => {
-		if(err) {
+	send(emailData)
+		.then(() => {
+			res.render('email', {
+				message: `Your email adress ${emailadress} was sent to a salesperson.`
+			})
+		})
+		.catch((err) => {
 			res.render('email', {
 				message: 'The message could not be sent'
 			})
 			throw err
-		}
-		res.render('email', {
-			message: `Your email adress ${emailadress} was sent to a salesperson.`
 		})
-	})
 })
 
 module.exports = router
