@@ -5,6 +5,7 @@ block title
 
 block content
 	form(method="post" action="/email/send")
+		input(type="text", name="message_template" value="standard_template" hidden)
 		input(type="email" name="emailadress" id="emailadress" placeholder="email")
 		input(type="submit" id="submit")
 

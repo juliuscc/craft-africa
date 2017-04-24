@@ -3,7 +3,10 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 // const morgan = require('morgan')
+
+// Connect the database
 const mongoose = require('mongoose')
+mongoose.connect('mongodb://localhost/craft-africa')
 
 // Routes
 const index = require('./routes/index')

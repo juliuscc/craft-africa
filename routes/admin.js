@@ -1,39 +1,42 @@
 const router = require('express').Router()
 const mailTemplate = require('../models/mailTemplates')
 
+// Get all email templates.
 router.get('/email', (req, res) => {
-	console.log('email')
-
-	res.render('handletemplates')
-
-	mailTemplate.getTemplateByName('seller', (err, template) => {
-		if (err){
-			console.log(err)
-			console.log('hgska')
-		}
-		else{
-			console.log(template)
-			console.log('hgsgdfsagrdgsjdjika')
-			res.render('handletemplates', {
-				name: template.name,
-				recipient: template.recipient,
-				subject: template.subject,
-				message: template.message
-			})
-		}
+	mailTemplate.getTemplates((err, templates) => {
+		res.render('emailtemplate', {
+			templateList: templates
+		})
 	})
-
 })
 
+// Get email template by id.
+router.get('/email/:emailId', (req, res) => {
+	mailTemplate.getTemplateByName(req.params.emailId, (err, template) => {
+		let data = template
 
-router.post('/email', (req, res) => {
-
-	const inputName = req.body.name
-
-	mailTemplate.update({name: inputName}, req.body, {upsert: true}, (err) => {
-		if(err){
-			console.log(err)
+		// Add error messages if the exists.
+		if(err) {
+			data = { result: 'Something went wrong', name: req.params.emailId, recipient: '', admin_subject: '', user_subject: '', admin_message: '', user_message: '' }
+		} else if(!template) {
+			data = { result: 'New Template', name: req.params.emailId, recipient: '', admin_subject: '', user_subject: '', admin_message: '', user_message: '' }
 		}
+
+		res.render('emailtemplate', data)
+	})
+})
+
+// Update specified email template by name.
+router.post('/email', (req, res) => {
+	const data = req.body
+
+	mailTemplate.update({ name: data.name }, req.body, { upsert: true }, (err) => {
+		if(err) {
+			data.result = 'Could not update template: ' + err
+		} else {
+			data.result = 'Successfully updated'
+		}
+		res.render('emailtemplate', data)
 	})
 })
 
