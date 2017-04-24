@@ -1,0 +1,29 @@
+{
+  "name": "beer4africa",
+  "description": "A website promoting Craft Africa",
+  "main": "app.js",
+  "authors": [
+    "Julius Celik <jcelik@kth.se>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "beer",
+    "4",
+    "for",
+    "africa",
+    "factories",
+    "craft",
+    "africa"
+  ],
+  "homepage": "craft-africa.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize-css": "^6.0.0"
+  }
+}
