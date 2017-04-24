@@ -26,14 +26,19 @@ module.exports.createTemplate = (newTemplate, callback) => {
 	newTemplate.save(callback)
 }
 
-module.exports.getTemplateById = (id, callback) => {
-	const query = { id }
+module.exports.getTemplateById = (fieldId, callback) => {
+	const query = { id: fieldId }
 	Template.findOne(query, callback)
 }
 
-module.exports.getTemplateByName = (name, callback) => {
-	const query = { name }
+module.exports.getTemplateByName = (fieldName, callback) => {
+	const query = { name: fieldName }
 	Template.findOne(query, callback)
+}
+
+module.exports.editByName = (fieldName, object, callback) => {
+	const query = { name: fieldName }
+	Template.update(query, object, callback)
 }
 
 module.exports.getAllTemplates = (callback) => {
