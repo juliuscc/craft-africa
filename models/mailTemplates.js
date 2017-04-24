@@ -1,13 +1,14 @@
 const mongoose = require('mongoose')
 
 const templateSchema = mongoose.Schema({
-	name: String
+	name: String,
 	recipient: String,
 	subject: String,
-	message: String,
+	message: String
 })
 
-const Template = module.exports = mongoose.model('Template', templateSchema)
+const Template = mongoose.model('Template', templateSchema)
+module.exports = Template
 
 module.exports.createTemplate = function(newTemplate, callback) {
 	newTemplate.save(callback)
