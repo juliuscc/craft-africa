@@ -5,6 +5,17 @@ html
         h1
           span.fa.fa-sign-in
           |  Signup
+      form(action='/signup', method='post')
+        .form-group
+          label Email
+          |  
+          input.form-control(type='text', name='email')
+        .form-group
+          label Password
+          |  
+          input.form-control(type='password', name='password')
+        div
+          input.form-control(type='submit', value='Submit')
       hr
       |  
       span.fa.fa-sign-in
