@@ -38,3 +38,5 @@ config/credentials*
 src/\.DS_Store
 
 \.DS_Store
+
+bower_components/
