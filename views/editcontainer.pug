@@ -8,12 +8,13 @@ block header
 
 block content
 	form(method="post" action="/admin/calculationform/container" id="foo")
-		each container in containers
+		each container, index in containers
 			div
-				input(type="text" name="name" value = container.name)
-				input(type="text" name="type" value = container.type)
-				input(type="text" name="price" value = container.price)
-				input(type="text" name="size" value = container.size)
+				input(type="text" name="name" value=container.name)
+				input(type="text" name="type" value=container.type)
+				input(type="text" name="price" value=container.price)
+				input(type="text" name="size" value=container.size)
+				input(type="submit" class="remove" value = "-")
 		input(type="button" id="add" value = "+")
 		br
 		input(type="submit" id="submit")

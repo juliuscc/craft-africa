@@ -8,6 +8,7 @@ function addRow() {
 	const typeInput = document.createElement('input')
 	const priceInput = document.createElement('input')
 	const sizeInput = document.createElement('input')
+	const removeBtn = document.createElement('input')
 
 	nameInput.setAttribute('type', 'text')
 	nameInput.setAttribute('name', 'name')
@@ -21,14 +22,24 @@ function addRow() {
 	sizeInput.setAttribute('type', 'text')
 	sizeInput.setAttribute('name', 'size')
 
+	removeBtn.setAttribute('type', 'submit')
+	removeBtn.setAttribute('class', 'remove')
+	removeBtn.setAttribute('value', '-')
+
 	div.appendChild(nameInput)
 	div.appendChild(typeInput)
 	div.appendChild(priceInput)
 	div.appendChild(sizeInput)
-
+	div.appendChild(removeBtn)
 	// Insert div
 	form.insertBefore(div, this)
+}
+function removeRow() {
+	console.log('hi')
 }
 
 const addBtn = document.querySelector('#add')
 addBtn.addEventListener('click', addRow)
+
+const foo = document.querySelector('.remove')
+foo.addEventListener('click', removeRow)
