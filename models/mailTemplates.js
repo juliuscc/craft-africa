@@ -9,11 +9,19 @@ const templateSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
-	subject: {
+	admin_subject: {
 		type: String,
 		required: true
 	},
-	message: {
+	user_subject: {
+		type: String,
+		required: true
+	},
+	admin_message: {
+		type: String,
+		required: true
+	},
+	user_message: {
 		type: String,
 		required: true
 	}
@@ -24,6 +32,10 @@ module.exports = Template
 
 module.exports.createTemplate = (newTemplate, callback) => {
 	newTemplate.save(callback)
+}
+
+module.exports.getTemplates = (callback) => {
+	Template.find({}, callback)
 }
 
 module.exports.getTemplateById = (fieldId, callback) => {

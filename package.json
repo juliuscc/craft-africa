@@ -8,8 +8,7 @@
     "production": "NODE_ENV=production gulp",
     "development": "NODE_ENV=development gulp",
     "build_prod": "NODE_ENV=production gulp build",
-    "build_dev": "NODE_ENV=development gulp build",
-    "setup": "npm install && bower install"
+    "build_dev": "NODE_ENV=development gulp build"
   },
   "keywords": [
     "beer",
@@ -20,8 +19,7 @@
     "craft",
     "africa"
   ],
-  "homepage": "craft-africa.com",
-  "author": "Julius Celik <jcelik@kth.se>",
+  "author": "julius celik <jcelik@kth.se>",
   "license": "ISC",
   "devDependencies": {
     "babel": "^6.23.0",
@@ -52,6 +50,7 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.15.2",
     "gmail-send": "^1.2.8",
+    "handlebars": "^4.0.6",
     "mongoose": "^4.9.5",
     "morgan": "^1.8.1",
     "path": "^0.12.7",
