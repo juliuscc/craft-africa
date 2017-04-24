@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const gmail = require('gmail-send')
-const credentials = require('../config/credentials').email
+const emailcredentials = require('../config/credentials').email
 const gmailConfig = require('../config/email')
 
 router.get('/', (req, res) => {
@@ -17,9 +17,9 @@ router.post('/send', (req, res) => {
 
 	// Email stuff
 	const emailData = {
-		user: gmailConfig.user,
-		pass: credentials.pass,
-		to: gmailConfig.to,
+		user: emailcredentials.user,
+		pass: emailcredentials.pass,
+		to: gmailConfig.testAdmin,
 		subject: 'test sub',
 		text:
 		`
