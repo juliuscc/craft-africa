@@ -48,10 +48,3 @@ app.set('port', (process.env.PORT || 5000))
 app.listen(app.get('port'), () => {
 	console.log(`Server started on port ${app.get('port')}`)
 })
-
-const express = require('express')
-const path = require('path')
-const cookieParser = require('cookie-parser')
-const bodyParser = require('body-parser')
-// const morgan = require('morgan')
-const mongoose = require('mongoose')
