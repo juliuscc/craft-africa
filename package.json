@@ -49,7 +49,6 @@
     "body-parser": "^1.17.1",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.2",
-    "mongodb": "^2.2.26",
     "gmail-send": "^1.2.8",
     "mongoose": "^4.9.5",
     "morgan": "^1.8.1",
