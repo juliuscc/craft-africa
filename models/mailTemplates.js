@@ -10,21 +10,21 @@ const templateSchema = mongoose.Schema({
 const Template = mongoose.model('Template', templateSchema)
 module.exports = Template
 
-module.exports.createTemplate = function(newTemplate, callback) {
+module.exports.createTemplate = (newTemplate, callback) => {
 	newTemplate.save(callback)
 }
 
-module.exports.getTemplateById = function(id, callback) {
-	const query = { id: id }
+module.exports.getTemplateById = (id, callback) => {
+	const query = { id }
 	Template.findOne(query, callback)
 }
 
-module.exports.getTemplateByName = function(name, callback) {
-	const query = { name: name }
+module.exports.getTemplateByName = (name, callback) => {
+	const query = { name }
 	Template.findOne(query, callback)
 }
 
-module.exports.getAllTemplates = function(callback){
+module.exports.getAllTemplates = (callback) => {
 	const query = {}
 	Template.find(query, callback)
 }
