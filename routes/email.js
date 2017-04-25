@@ -32,7 +32,7 @@ router.post('/send', (req, res) => {
 
 	// Querying database for info
 	mailTemplate.getTemplateByName(message_template, (databaseErr, template) => {
-		if(databaseErr) {
+		if(databaseErr || !template) {
 			res.render('email', {
 				message: 'This link is currently not active. Please try another'
 			})
