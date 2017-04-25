@@ -1,7 +1,6 @@
 const router = require('express').Router()
 const gmail = require('gmail-send')
 const emailcredentials = require('../config/credentials').email
-const gmailConfig = require('../config/email')
 const mailTemplate = require('../models/mailTemplates')
 const Handlebars = require('handlebars')
 
@@ -60,8 +59,7 @@ router.post('/send', (req, res) => {
 			send(adminEmailData, (errAdmin) => {
 				// User email
 				send(userEmailData, (errUser) => {
-
-					if (errAdmin || errUser){
+					if(errAdmin || errUser) {
 						res.render('email', {
 							message: 'Something went wrong while trying to send email.'
 						})
