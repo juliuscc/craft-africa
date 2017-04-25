@@ -1,11 +1,28 @@
 function removeRow(e) {
 	e.preventDefault()
 
+	// console.log(this)
+
+	const row = this.parentNode
+	const status = row.querySelector('[name="status"]')
+	if(status.getAttribute('value') === 'new') {
+		row.parentNode.removeChild(row)
+	} else {
+		row.classList.add('removed')
+		status.setAttribute('value', 'removed')
+	}
+}
+
+function rowEdited(e) {
+	e.preventDefault()
+
 	const row = this.parentNode
 	const status = row.querySelector('[name="status"]')
 
-	row.classList.add('removed')
-	status.setAttribute('value', 'removed')
+	if(!(status.getAttribute('value') === 'new')) {
+		row.classList.add('edited')
+		status.setAttribute('value', 'edited')
+	}
 }
 
 function addRow() {
@@ -34,7 +51,7 @@ function addRow() {
 	sizeInput.setAttribute('type', 'text')
 	sizeInput.setAttribute('name', 'size')
 
-	removeBtn.setAttribute('type', 'submit')
+	removeBtn.setAttribute('type', 'button')
 	removeBtn.setAttribute('class', 'remove')
 	removeBtn.setAttribute('value', '-')
 	removeBtn.addEventListener('click', removeRow)
@@ -64,3 +81,6 @@ addBtn.addEventListener('click', addRow)
 
 const removeBtns = document.querySelectorAll('.remove')
 removeBtns.forEach(btn => btn.addEventListener('click', removeRow))
+
+const editedRow = document.querySelectorAll('.textbox')
+editedRow.forEach(btn => btn.addEventListener('change', rowEdited))

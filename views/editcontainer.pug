@@ -10,10 +10,10 @@ block content
 	form(method="post" action="/admin/calculationform/container" id="foo")
 		each container in containers
 			.row
-				input(type="text" name="name" value=container.name)
-				input(type="text" name="type" value=container.type)
-				input(type="text" name="price" value=container.price)
-				input(type="text" name="size" value=container.size)
+				input(type="text" class="textbox" name="name" value=container.name)
+				input(type="text" class="textbox" name="type" value=container.type)
+				input(type="text" class="textbox" name="price" value=container.price)
+				input(type="text" class="textbox" name="size" value=container.size)
 				input(type="button" class="remove" value = "-")
 				input(type="hidden" name="id" value=container.id)
 				input(type="hidden" name="status" value="unchanged")
