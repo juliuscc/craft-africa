@@ -39,4 +39,5 @@ config/credentials*
 
 bower_components/
 
+# Mac computers litter directories with this
 *.DS_Store
