@@ -14,7 +14,10 @@ block content
 				input(type="text" name="type" value=container.type)
 				input(type="text" name="price" value=container.price)
 				input(type="text" name="size" value=container.size)
-				input(type="submit" class="remove" value = "-")
+				input(type="button" class="remove" value = "-")
+				input(type="hidden" name="id" value=container.id)
+				input(type="hidden" name="status" value="unchanged")
+		input(type="button" class="remove" value = "-")
 		input(type="button" id="add" value = "+")
 		br
 		input(type="submit" id="submit")

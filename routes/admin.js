@@ -16,18 +16,21 @@ router.get('/handletemplates/edit', (req, res) => {
 router.get('/calculationform/container', (req, res) => {
 	res.render('editcontainer', { containers: [
 		{
+			id: 13123,
 			name: 'name',
 			type: 'type',
 			price: 'price',
 			size: 'size'
 		},
 		{
+			id: 12341,
 			name: 'name',
 			type: 'type',
 			price: 'price',
 			size: 'size'
 		},
 		{
+			id: 123423,
 			name: 'test',
 			type: 'test',
 			price: 'test',
@@ -37,15 +40,16 @@ router.get('/calculationform/container', (req, res) => {
 })
 
 router.post('/calculationform/container', (req, res) => {
-
-	const { name, type, price, size } = req.body
+	const { id, name, type, price, size, status } = req.body
 	// Kinda like a for each loop
 	const containers = name.map((_, index) => {
 		return {
+			id: id[index],
 			name: name[index],
 			type: type[index],
 			price: price[index],
-			size: size[index]
+			size: size[index],
+			status: status[index]
 		}
 	})
 	console.log(containers)
