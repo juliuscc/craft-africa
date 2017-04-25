@@ -1,17 +1,20 @@
 html
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js')
   body
-    .col-sm-8.col-sm-offset-2
-      .text-center
-        h1.fa.fa-user  Profile
-        br
-        |  
-        span
-          user= user.id
-          mail= mail          
-          | :
-        br
-        |  
-        span.fa.fa-sign-out
-          a(href='/') Sign out
-        hr
-        .jumbotron  
+    .container
+      center
+        img(src="https://craft-africa.com/images/craft-africa-logo2.jpg" style="max-width:20%")
+      center
+          h1.fa.fa-user  Profile
+          br
+          |  
+          span
+            user= user.id
+            mail= user.mail          
+            | :
+          br
+          |  
+          span
+            a(href='/login') Sign out
+          hr
