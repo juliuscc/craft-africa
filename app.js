@@ -5,14 +5,18 @@ const bodyParser = require('body-parser')
 // const morgan = require('morgan')
 
 
+var configDB = require('./config/database.js');  
+var mongoose = require('mongoose')
+mongoose.connect(configDB.url);
+
+
 var passport = require('passport');  
 var LocalStrategy = require('passport-local').Strategy;  
 
-var mongoose = require('mongoose');   
+;   
 var session = require('express-session');
+var flash = require('connect-flash');
 
-var configDB = require('./config/database.js');  
-mongoose.connect(configDB.url);
 
 
 // Init App
@@ -42,11 +46,24 @@ app.use(cookieParser())
 // Set Static Folder
 app.use(express.static(path.join(__dirname, 'public')))
 
+
+
+
+app.use(session({ secret: 'shhsecret', resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+
 // User logins
 app.use(passport.initialize());  
 app.use(passport.session()); 
 
+
+
+
 require('./config/passport')(passport);  
+
 
 // Router
 app.use('/', index)
@@ -75,3 +92,4 @@ app.listen(app.get('port'), () => {
 	console.log(`Server started on port ${app.get('port')}`)
 })
 /* eslint-enable no-console */
+

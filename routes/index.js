@@ -13,11 +13,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {  
-  res.render('login', {  });
+  res.render('Admin/login', {  });
 });
 
 router.get('/signup', function(req, res) {  
-  res.render('signup', {  });
+  res.render('Admin/signup', {  });
 });
 
 router.get('/admin', isLoggedIn, function(req, res) {  
@@ -29,15 +29,19 @@ router.get('/logout', function(req, res) {
   res.redirect('/');
 });
 
+router.get('/profile', function(req, res) {
+  res.render('Admin/profile', { user: req.user });
+});
+
 router.post('/signup', passport.authenticate('local-signup', {  
-  successRedirect: '/profile',
-  failureRedirect: '/signup',
+  successRedirect: 'profile',
+  failureRedirect: 'signup',
   failureFlash: true,
 }));
 
 router.post('/login', passport.authenticate('local-login', {  
-  successRedirect: '/profile',
-  failureRedirect: '/login',
+  successRedirect: 'profile',
+  failureRedirect: 'login',
   failureFlash: true,
 }));
 
