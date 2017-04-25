@@ -1,19 +1,19 @@
-//Main
-$color-primary: #000000;
-$color-secondary: #000000;
-$color-accent-dark: #000000;
-$color-accent-light: #000000;
+// Main
+$color-primary: #6fa57d;
+$color-primary-darker: #3c5b47;
+$color-secondary: #a5a089;
+$color-accent: #618ea5;
+$color-info: #f8df1f;
+$color-warning: #a54232;
 
-//Background
-$color-background-light: #000000;
-$color-background-dark: #000000;
+// Background
+$color-background-light: #eee;
+$color-background-dark: $color-primary-darker;
 
-//text
-$color-text-light: #000000;
-$color-text-dark: #000000;
+// Text
+$color-text-light: #eee;
+$color-text-dark: #222;
+$color-link: $color-accent;
 
-//misc
-$color-link: #000000;
-$color-overlay: #000000;
-$color-selection: #000000;
-
+// Misc
+$color-selection: $color-primary;

@@ -1,0 +1,74 @@
+/* Liberation-Mono */
+@font-face {
+  font-family: 'Liberation-Mono';
+  src: url('Liberation/LiberationMono-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Liberation-Mono';
+  src: url('Liberation/LiberationMono-Bold.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Liberation-Mono';
+  src: url('Liberation/LiberationMono-Italic.ttf');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Liberation-Mono';
+  src: url('Liberation/LiberationMono-BoldItalic.ttf');
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* Liberation-Sans */
+@font-face {
+  font-family: 'Liberation-Sans';
+  src: url('Liberation/LiberationSans-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Liberation-Sans';
+  src: url('Liberation/LiberationSans-Bold.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Liberation-Sans';
+  src: url('Liberation/LiberationSans-Italic.ttf');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Liberation-Sans';
+  src: url('Liberation/LiberationSans-BoldItalic.ttf');
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* Liberation-Serif */
+@font-face {
+  font-family: 'Liberation-Serif';
+  src: url('Liberation/LiberationSerif-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Liberation-Serif';
+  src: url('Liberation/LiberationSerif-Bold.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Liberation-Serif';
+  src: url('Liberation/LiberationSerif-Italic.ttf');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Liberation-Serif';
+  src: url('Liberation/LiberationSerif-BoldItalic.ttf');
+  font-weight: bold;
+  font-style: italic;
+}

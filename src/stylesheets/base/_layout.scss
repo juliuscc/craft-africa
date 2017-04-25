@@ -1,8 +1,13 @@
 @import "../variables/widths";
+@import "../variables/colors";
 
 body {
 	margin: 0;
 	padding: 0;
+}
+
+::selection {
+	background: $color-selection;
 }
 
 .container {
