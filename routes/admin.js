@@ -52,7 +52,9 @@ router.post('/calculationform/container', (req, res) => {
 			status: status[index]
 		}
 	})
-	console.log(containers)
+
+	const editedContainers = containers.filter(container => container.status === 'edited')
+
 	res.redirect('/admin/calculationform/container')
 })
 
