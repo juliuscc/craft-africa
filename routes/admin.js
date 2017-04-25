@@ -32,7 +32,7 @@ router.post('/email', (req, res) => {
 
 	mailTemplate.update({ name: data.name }, req.body, { upsert: true }, (err) => {
 		if(err) {
-			data.result = 'Could not update template: ' + err
+			data.result = `Could not update template: ${err}`
 		} else {
 			data.result = 'Successfully updated'
 		}
