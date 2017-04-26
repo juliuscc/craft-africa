@@ -16,8 +16,13 @@ router.get('/send', (req, res) => {
 
 // Send an email to admin and user.
 router.post('/send', (req, res) => {
-	// Get form data
-	const { emailadress, message_template } = req.body
+	// Check for errors
+	if(!req.body.message_template) {
+		res.render('email', {
+			message: 'Something is wrong with the form'
+		})
+		return
+	}
 
 	// Email credentials
 	const adminEmailData = {
@@ -31,15 +36,15 @@ router.post('/send', (req, res) => {
 	}
 
 	// Querying database for info
-	mailTemplate.getTemplateByName(message_template, (databaseErr, template) => {
-		if(databaseErr || !template) {
+	mailTemplate.getTemplateByName(req.body.message_template, (databaseErr, template) => {
+		if(databaseErr) {
 			res.render('email', {
 				message: 'This link is currently not active. Please try another'
 			})
 		} else {
 			// recipients
 			adminEmailData.to = template.recipient
-			userEmailData.to = emailadress
+			userEmailData.to = req.body.emailadress
 
 			// Subjects
 			adminEmailData.subject = template.admin_subject
@@ -49,8 +54,8 @@ router.post('/send', (req, res) => {
 			const adminMessageCompiled = Handlebars.compile(template.admin_message)
 			const userMessageCompiled = Handlebars.compile(template.user_message)
 
-			adminEmailData.html = adminMessageCompiled({ emailadress })
-			userEmailData.html = userMessageCompiled({ emailadress })
+			adminEmailData.html = adminMessageCompiled(req.body)
+			userEmailData.html = userMessageCompiled(req.body)
 
 			// Sending emails
 			const send = gmail()
@@ -66,7 +71,7 @@ router.post('/send', (req, res) => {
 					}
 
 					res.render('email', {
-						message: `Your email adress ${emailadress} was sent to a salesperson. We will be in touch shortly.`
+						message: `Your email adress ${req.body.emailadress} was sent to a salesperson. We will be in touch shortly.`
 					})
 				})
 			})
