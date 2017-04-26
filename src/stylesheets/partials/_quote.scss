@@ -2,9 +2,17 @@
 
 .quote-container {
 	width: 80%;
-	margin: 100px auto;
+	margin: 20vh auto;
 	text-align: center;
-	font-size: 3em;
+	font-size: 1.5em;
+
+	@media (min-width: $width-mobile-min) {
+		font-size: 2em;
+	}
+
+	@media (min-width: $width-tablet-min) {
+		font-size: 2.6em;
+	}
 
 	.quote {
 		&:before {
