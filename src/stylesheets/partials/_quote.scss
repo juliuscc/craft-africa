@@ -1,0 +1,25 @@
+@import "../variables/colors";
+
+.quote-container {
+	width: 80%;
+	margin: 100px auto;
+	text-align: center;
+	font-size: 3em;
+
+	.quote {
+		&:before {
+			content: "\""
+		}
+
+		&:after {
+			content: "\"";
+		}
+
+		font-style: italic;
+	}
+	.source {
+		&:before { 
+			content: " - ";
+		}
+	}
+}

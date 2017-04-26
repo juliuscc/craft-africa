@@ -1,7 +1,7 @@
 @import "../variables/colors";
 
 .overlap-images {
-	margin-top: -100px;
+	margin-top: -50px;
 	width: 100%;
 
 	.container {
@@ -11,11 +11,28 @@
 	
 		.img-container {
 			width: 30%;
-			background-color: $color-secondary;
 
 			img {
 				width: 100%;
 			}
+		}
+
+		.placeholder {
+			display: block;
+			width: 30%;
+			height: 350px;
+		}
+
+		.block1 {
+			background-color: $color-primary-darker;
+		}
+
+		.block2 {
+			background-color: $color-primary-darker;
+		}
+
+		.block3 {
+			background-color: $color-primary-darker;
 		}
 	}
 }

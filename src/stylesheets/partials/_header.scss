@@ -5,26 +5,22 @@ header.header {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	height: 600px;
-	background-image: url("/images/hops-ipa-beer-ingredient.jpg");
-	background-position: right top;
-	background-repeat: no-repeat;
-	background-size:100%;
-	// background-attachment: fixed;
+	height: 80vh;
+	background-color: $color-primary;
 
 	.logo {
 		display: inline-block;
 		background-color: $color-background-light;
-		width: 30%;
+		width: 20%;
 		margin: 0 auto;
 		margin-top: 20px;
 
 		@media(min-width: $width-mobile-min) {
-			width: 40%;
+			width: 30%;
 		}
 		
 		@media (min-width: $width-tablet-min) {
-			width: 300px;
+			width: 200px;
 		}
 	}
 }
