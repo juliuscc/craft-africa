@@ -42,19 +42,24 @@ router.get('/calculationform/container', (req, res) => {
 router.post('/calculationform/container', (req, res) => {
 	const { id, name, type, price, size, status } = req.body
 	// Kinda like a for each loop
-	const containers = name.map((_, index) => {
-		return {
-			id: id[index],
-			name: name[index],
-			type: type[index],
-			price: price[index],
-			size: size[index],
-			status: status[index]
-		}
-	})
+	const containers = name.map((_, index) => ({
+		id: id[index],
+		name: name[index],
+		type: type[index],
+		price: price[index],
+		size: size[index],
+		status: status[index]
+	}))
 
 	const editedContainers = containers.filter(container => container.status === 'edited')
+	const newContainers = containers.filter(container => container.status === 'new')
+	const removedContainers = containers.filter(container => container.status === 'removed')
 
+
+
+	console.log(editedContainers)
+	console.log(newContainers)
+	console.log(removedContainers)
 	res.redirect('/admin/calculationform/container')
 })
 
