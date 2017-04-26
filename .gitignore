@@ -36,3 +36,5 @@ public/
 config/credentials*
 
 bower_components/
+
+*.DS_Store
