@@ -1,10 +1,15 @@
 extends layout.pug
 
 block header
-	h1 Welcome to CraftAfrica
+	header.header
+		img.logo(src="/images/craft_africa_logo.png" alt="Craft Africa logo")
 
 block content
-	p blah blah
-
-block footer
-	p example footer
+	.overlap-images
+		.container
+			.img-container
+				img(src="/images/beerbottle.png" alt="")
+			.img-container
+				img(src="/images/beerbottle.png" alt="")
+			.img-container
+				img(src="/images/beerbottle.png" alt="")

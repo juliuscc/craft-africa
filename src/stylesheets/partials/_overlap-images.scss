@@ -1,0 +1,21 @@
+@import "../variables/colors";
+
+.overlap-images {
+	margin-top: -100px;
+	width: 100%;
+
+	.container {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	
+		.img-container {
+			width: 30%;
+			background-color: $color-secondary;
+
+			img {
+				width: 100%;
+			}
+		}
+	}
+}
