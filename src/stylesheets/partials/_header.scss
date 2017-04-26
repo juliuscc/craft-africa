@@ -7,6 +7,7 @@ header.header {
 	flex-direction: column;
 	height: 100vh;
 	background-color: $color-primary;
+	background-image: url("/images/guy.png");
 
 	.logo {
 		display: inline-block;
