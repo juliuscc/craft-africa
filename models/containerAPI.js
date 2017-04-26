@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 
+mongoose.connect('mongodb://localhost/beer4africa')
+
 const containerSchema = mongoose.Schema({
 	name: {
 		type: String,
@@ -10,7 +12,7 @@ const containerSchema = mongoose.Schema({
 		required: true
 	},
 	size: {
-		type: String,
+		type: Number,
 		required: true
 	},
 	price: {
@@ -19,34 +21,35 @@ const containerSchema = mongoose.Schema({
 	}
 })
 
-const container = mongoose.model('Container', containerSchema)
-module.exports = container
+const Container = mongoose.model('Container', containerSchema)
+module.exports = Container
 
 module.exports.createContainer = (newContainer, callback) => {
-	newContainer.save(callback)
+	const foo = new Container(newContainer)
+	foo.save(callback)
 }
 
 module.exports.removeContainer = (fieldName, callback) => {
 	const query = { name: fieldName }
-	container.remove(query, callback)
+	Container.remove(query, callback)
 }
 
 module.exports.updateContainerByName = (fieldName, updatedProperties, callback) => {
-	container.updated({ name: fieldName }, { $set: updatedProperties }, callback, { upsert: true })
+	Container.updated({ name: fieldName }, { $set: updatedProperties }, callback, { upsert: true })
 }
 
 module.exports.getAllContainers = (callback) => {
-	const query = {}
-	container.find(query, callback)
+	const query = []
+	Container.find(query, callback)
 }
 
 module.exports.getContainerByName = (fieldName, callback) => {
 	const query = { name: fieldName }
-	container.findOne(query, callback)
+	Container.findOne(query, callback)
 }
 
 module.exports.getContainerByType = (fieldType, callback) => {
 	const query = { type: fieldType }
-	container.find(query, callback)
+	Container.find(query, callback)
 }
 
