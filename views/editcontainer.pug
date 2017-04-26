@@ -7,7 +7,7 @@ block header
 	h1 Edit Containers
 
 block content
-	form(method="post" action="/admin/calculationform/container" id="foo")
+	form(method="post" action="/admin/calculationform/container")
 		each container in containers
 			.row
 				input(type="text" class="textbox" name="name" value=container.name)
@@ -15,7 +15,7 @@ block content
 				input(type="text" class="textbox" name="price" value=container.price)
 				input(type="text" class="textbox" name="size" value=container.size)
 				input(type="button" class="remove" value = "-")
-				input(type="hidden" name="id" value=container.id)
+				input(type="hidden" name="id" value=container._id)
 				input(type="hidden" name="status" value="unchanged")
 		input(type="button" id="add" value = "+")
 		br

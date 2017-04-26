@@ -15,37 +15,61 @@ router.get('/handletemplates/edit', (req, res) => {
 })
 
 router.get('/calculationform/container', (req, res) => {
-	/* containersModule.createContainer({
-		name: 'A1',
-		type: 'A',
-		size: 5000,
-		price: 3000
-	}, (err) => {
-		console.log(err)
-	})*/
 	containersModule.getAllContainers((err, containers) => {
 		res.render('editcontainer', { containers })
 	})
 })
 router.post('/calculationform/container', (req, res) => {
+
+	// Makes values to arrays
+	if(req.body.name.constructor !== Array) {
+		req.body.id = [req.body.id]
+		req.body.name = [req.body.name]
+		req.body.type = [req.body.type]
+		req.body.price = [req.body.price]
+		req.body.size = [req.body.size]
+		req.body.status = [req.body.status]
+	}
+
 	const { id, name, type, price, size, status } = req.body
-	// Kinda like a for each loop
+
 	const containers = name.map((_, index) => ({
-		id: id[index],
+		_id: id[index],
 		name: name[index],
 		type: type[index],
 		price: price[index],
 		size: size[index],
 		status: status[index]
 	}))
-
 	const editedContainers = containers.filter(container => container.status === 'edited')
 	const newContainers = containers.filter(container => container.status === 'new')
 	const removedContainers = containers.filter(container => container.status === 'removed')
 
-	console.log(editedContainers)
-	console.log(newContainers)
-	console.log(removedContainers)
+	// Edited
+	editedContainers.forEach((element) => {
+		containersModule.updateContainerById(element._id, { name: element.name, type: element.type, 
+			price: element.price, size: element.size }, (err, res) => {
+			console.log(err)
+		})
+	})
+
+
+	// new
+	newContainers.forEach((element) => {
+		containersModule.createContainer({ name: element.name, type: element.type, 
+			price: element.price, size: element.size }, (err, res) => {
+			console.log(err)
+		})
+	})
+
+	// removed
+	removedContainers.forEach((element) => {
+		containersModule.removeContainer(element._id, (err, res) => {
+			console.log(err)
+		})
+	})
+
+
 	res.redirect('/admin/calculationform/container')
 })
 

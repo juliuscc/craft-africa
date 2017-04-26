@@ -29,13 +29,13 @@ module.exports.createContainer = (newContainer, callback) => {
 	foo.save(callback)
 }
 
-module.exports.removeContainer = (fieldName, callback) => {
-	const query = { name: fieldName }
+module.exports.removeContainer = (id, callback) => {
+	const query = { _id: id }
 	Container.remove(query, callback)
 }
 
-module.exports.updateContainerByName = (fieldName, updatedProperties, callback) => {
-	Container.updated({ name: fieldName }, { $set: updatedProperties }, callback, { upsert: true })
+module.exports.updateContainerById = (id, updatedProperties, callback) => {
+	Container.update({ _id: id }, { $set: updatedProperties }, callback, { upsert: true })
 }
 
 module.exports.getAllContainers = (callback) => {
