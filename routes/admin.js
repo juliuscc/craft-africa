@@ -1,6 +1,13 @@
 
 const router = require('express').Router()
 const containersModule = require('../models/containerAPI')
+const passport = require('passport');
+
+function isLoggedIn(req, res, next) {  
+  if (req.isAuthenticated())
+      return next();
+  res.redirect('/');
+}
 
 router.get('/handletemplates/', (req, res) => {
 	res.render('handletemplates', {
@@ -78,10 +85,6 @@ router.get('/calculationform/beertype', (req, res) => {
 	res.render('editbeertype')
 })
 
-module.exports = router
-
-const router = require('express').Router()
-var passport = require('passport');
 
 router.get('/', (req, res) => {
 	res.render('Admin/index')
@@ -117,20 +120,14 @@ router.get('/profile', function(req, res) {
 router.post('/signup', passport.authenticate('local-signup', {  
   successRedirect: 'profile',
   failureRedirect: 'signup',
-  failureFlash: true,
+  failureFlash: true
 }));
 
 router.post('/login', passport.authenticate('local-login', {  
   successRedirect: 'profile',
   failureRedirect: 'login',
-  failureFlash: true,
+  failureFlash: true
 }));
 
 
 module.exports = router;
-
-function isLoggedIn(req, res, next) {  
-  if (req.isAuthenticated())
-      return next();
-  res.redirect('/');
-}
