@@ -1,0 +1,24 @@
+extends adminlayout.pug
+
+block head
+	style(type="text/css").
+		main {
+			padding-left:150px
+		}
+block content
+	main
+		.container
+			p testtest
+			center
+					h1.fa.fa-user  Profile
+					br
+					|  
+					span
+						user= user.id
+						mail= user.mail
+						| :
+					br
+					|  
+					span
+						a(href='admin/login') Sign out
+					hr
