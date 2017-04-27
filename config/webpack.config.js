@@ -17,6 +17,7 @@ const babelLoader = {
 
 module.exports = {
 	entry: {
+		calculationForm: path.resolve(__dirname, '../src/js/calculationForm.js'),
 		entry: path.resolve(__dirname, '../src/js/entry.js')
 	},
 	output: {
