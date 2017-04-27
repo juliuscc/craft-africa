@@ -5,15 +5,15 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {  
-  res.render('login.ejs', { message: req.flash('loginMessage') });
+  res.render('login', { message: req.flash('loginMessage') });
 });
 
 router.get('/signup', function(req, res) {  
-  res.render('signup.ejs', { message: req.flash('signupMessage') });
+  res.render('signup', { message: req.flash('signupMessage') });
 });
 
 router.get('/profile', isLoggedIn, function(req, res) {  
-  res.render('profile.ejs', { user: req.user });
+  res.render('profile', { user: req.user });
 });
 
 router.get('/logout', function(req, res) {  

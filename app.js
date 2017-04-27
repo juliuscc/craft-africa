@@ -5,18 +5,17 @@ const bodyParser = require('body-parser')
 // const morgan = require('morgan')
 
 
-var configDB = require('./config/database.js');  
+var configDB = require('./config/database.js');
 var mongoose = require('mongoose')
 mongoose.connect(configDB.url);
 
 
-var passport = require('passport');  
+var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;  
 
 ;   
 var session = require('express-session');
 var flash = require('connect-flash');
-
 
 
 // Init App
@@ -27,11 +26,7 @@ const app = express()
 const index = require('./routes/index')
 const about = require('./routes/about')
 const contact = require('./routes/contact')
-
-
- 
-
-
+const admin = require('./routes/admin')
 
 // View Engine
 app.set('views', path.join(__dirname, 'views'))
@@ -69,6 +64,7 @@ require('./config/passport')(passport);
 app.use('/', index)
 app.use('/about', about)
 app.use('/contact', contact)
+app.use('/admin', admin)
 
 app.use((req, res) => {
 	res.render('404')

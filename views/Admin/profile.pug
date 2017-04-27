@@ -1,38 +1,24 @@
-html
-	head
-		link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.css')
-		
-		script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js')
-
-	style
-		|main {
-		|	padding-left: 300px;
-		|}
-
-	body
-		header
-			ul.side-nav.fixed
-				li.logo
-					img(src="https://craft-africa.com/images/craft-africa-logo2.jpg" style="max-width:80%")
-				li
-					a(href='#') Add/change container
-				li
-					a(href='#') Add admin users
-				li
-					a(href='#') Manage email stuff
-		main
-			.container
-				
-				center
-						h1.fa.fa-user  Profile
-						br
-						|  
-						span
-							//user= user.id
-							//mail= user.mail
-							| :
-						br
-						|  
-						span
-							a(href='/login') Sign out
-						hr
+extends adminlayout.pug
+
+block head
+	style(type="text/css").
+		main {
+			padding-left:150px
+		}
+block content
+	main
+		.container
+			p testtest
+			center
+					h1.fa.fa-user  Profile
+					br
+					|  
+					span
+						user= user.id
+						mail= user.mail
+						| :
+					br
+					|  
+					span
+						a(href='admin/login') Sign out
+					hr

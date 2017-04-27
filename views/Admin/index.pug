@@ -4,11 +4,12 @@ html
 			.jumbotron.text-center
 				h1 Express Authentication
 				p.lead A simple authentication app built with express, node &amp; passport.
-				a.btn.btn-default(href='/login')
-					span.fa.fa-sign-in Login
-				a.btn.btn-default(href='/signup')
-					span.fa.fa-user Signup
-			p
-				| Demo by Daniel Gynn. Check out 
-				a(href='http://www.danielgynn.com', target='_blank') danielgynn.com
-				|  for more.
+				li
+					a.btn.btn-default(href='/admin/login')
+						span.fa.fa-sign-in Login
+				li
+					a.btn.btn-default(href='/admin/signup')
+						span.fa.fa-user Signup
+				li
+					a.btn.btn-default(href='/admin/profile')
+						span.fa.fa-user Profile
