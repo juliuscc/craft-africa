@@ -25,8 +25,8 @@ const Container = mongoose.model('Container', containerSchema)
 module.exports = Container
 
 module.exports.createContainer = (newContainer, callback) => {
-	const foo = new Container(newContainer)
-	foo.save(callback)
+	const containerObject = new Container(newContainer)
+	containerObject.save(callback)
 }
 
 module.exports.removeContainer = (id, callback) => {

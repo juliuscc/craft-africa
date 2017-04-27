@@ -25,10 +25,10 @@ function isNumber(e) {
 	console.log(e)
 
 	if(isNaN(e.target.value)) {
-		e.srcElement.style.border = '1px solid red'
+		this.classList.add('incorrectInput')
 		disableSubmit(true)
 	} else {
-		e.srcElement.style.border = ''
+		this.classList.remove('incorrectInput')
 		disableSubmit(false)
 	}
 }
@@ -38,10 +38,10 @@ function isRequired(e){
 	console.log(e)
 
 	if(e.target.value === '') {
-		e.srcElement.style.border = '1px solid navy'
+		this.style.border = '1px solid navy'
 		disableSubmit(true)
 	} else {
-		e.srcElement.style.border = ''
+		this.style.border = ''
 		disableSubmit(false)
 	}
 }
@@ -65,46 +65,13 @@ function addRow() {
 
 	// Create div with inputs
 	const div = document.createElement('div')
-	const nameInput = document.createElement('input')
-	const typeInput = document.createElement('input')
-	const priceInput = document.createElement('input')
-	const sizeInput = document.createElement('input')
-	const removeBtn = document.createElement('input')
-	const idInput = document.createElement('input')
-	const statusInput = document.createElement('input')
+	div.innerHTML =
+	`
+	<input type="text" required class="textbox" name="name"/><input type="text" required class="textbox" name="type"/><input type="text" required class="textbox number" name="price"/><input type="text" required class="textbox number" name="size"/><input type="button" class="remove" value = "-"/><input type="hidden" name="id" value="undefined"/><input type="hidden" class="status" value = "new"/>
+	`
 
-	nameInput.setAttribute('type', 'text')
-	nameInput.setAttribute('name', 'name')
-
-	typeInput.setAttribute('type', 'text')
-	typeInput.setAttribute('name', 'type')
-
-	priceInput.setAttribute('type', 'text')
-	priceInput.setAttribute('name', 'price')
-
-	sizeInput.setAttribute('type', 'text')
-	sizeInput.setAttribute('name', 'size')
-
-	removeBtn.setAttribute('type', 'button')
-	removeBtn.setAttribute('class', 'remove')
-	removeBtn.setAttribute('value', '-')
+	const removeBtn = div.querySelector('.remove')
 	removeBtn.addEventListener('click', removeRow)
-
-	idInput.setAttribute('type', 'hidden')
-	idInput.setAttribute('name', 'id')
-	idInput.setAttribute('value', undefined)
-
-	statusInput.setAttribute('type', 'hidden')
-	statusInput.setAttribute('name', 'status')
-	statusInput.setAttribute('value', 'new')
-
-	div.appendChild(nameInput)
-	div.appendChild(typeInput)
-	div.appendChild(priceInput)
-	div.appendChild(sizeInput)
-	div.appendChild(removeBtn)
-	div.appendChild(idInput)
-	div.appendChild(statusInput)
 
 	// Insert div
 	form.insertBefore(div, this)
@@ -118,9 +85,6 @@ removeBtns.forEach(btn => btn.addEventListener('click', removeRow))
 
 const editedRow = document.querySelectorAll('.textbox')
 editedRow.forEach(textbox => textbox.addEventListener('change', rowEdited))
-
-const checkIfRequired = document.querySelectorAll('.required')
-checkIfRequired.forEach(textbox => textbox.addEventListener('change', isRequired))
 
 const checkIfNumber = document.querySelectorAll('.number')
 checkIfNumber.forEach(textbox => textbox.addEventListener('change', isNumber))
