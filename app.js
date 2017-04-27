@@ -39,9 +39,16 @@ app.use('/calculationform', calculationForm)
 app.use('/email', email)
 app.use('/admin', admin)
 
-app.use((req, res) => {
-	res.render('404')
-})
+// Error handling 
+app.use((req, res) => { 
+  res.status(404) 
+  res.render('404') 
+}) 
+ 
+app.use((err, req, res, next) => { 
+  res.status(500) 
+  res.render('500') 
+}) 
 
 // Set Port
 app.set('port', (process.env.PORT || 5000))
