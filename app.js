@@ -4,13 +4,13 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 // const morgan = require('morgan')
 const mongoose = require('mongoose')
-const configDB = require('./config/database.js');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;  
-var session = require('express-session');
-var flash = require('connect-flash');
+const configDB = require('./config/database.js')
+const passport = require('passport')
+const LocalStrategy = require('passport-local').Strategy
+const session = require('express-session')
+const flash = require('connect-flash')
 
-mongoose.createConnection(configDB.url);
+mongoose.createConnection(configDB.url)
 
 // Init App
 const app = express()
@@ -22,8 +22,6 @@ const contact = require('./routes/contact')
 const calculationForm = require('./routes/calculationform')
 const email = require('./routes/email')
 const admin = require('./routes/admin')
-
-
 
 // View Engine
 app.set('views', path.join(__dirname, 'views'))
@@ -37,16 +35,16 @@ app.use(cookieParser())
 // Set Static Folder
 app.use(express.static(path.join(__dirname, 'public')))
 
-app.use(session({ secret: 'shhsecret', resave: true, saveUninitialized: true }));
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
+app.use(session({ secret: 'shhsecret', resave: true, saveUninitialized: true }))
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(flash())
 
 
 // User logins
-app.use(passport.initialize());  
-app.use(passport.session()); 
-require('./config/passport')(passport);  
+app.use(passport.initialize())
+app.use(passport.session())
+require('./config/passport')(passport)
 
 
 // Router
