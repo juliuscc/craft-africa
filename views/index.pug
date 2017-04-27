@@ -13,12 +13,15 @@ block content
 
 	.container
 		.quote-container
-			span.quote Get rich or die trying
+			span.quote Get famous or die trying
 			span.source former poor man now rich
 
-	.explosion-view
-		.container
-			.placeholder
+	.explosion-view-container
+		.explosion-view.skrollable(data-anchor-target=".explosion-view-container" data-top="transform: translate(-50%, -50%)" data-bottom-bottom="")
+			.placeholder(data-anchor-target=".explosion-view-container" data-top="width:100%;" data-top-bottom="width:20%;")
 
 	.calculation-form-small
-		.placeholder-text You wanna make money?
+		.placeholder-text You wanna make your own brand?
+
+block scripts
+	script(src="/js/explosionView.js")

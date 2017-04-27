@@ -2,14 +2,6 @@ const express = require('express')
 const path = require('path')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
-// const morgan = require('morgan')
-
-// Routes
-const index = require('./routes/index')
-const about = require('./routes/about')
-const contact = require('./routes/contact')
-const calculationForm = require('./routes/calculationform')
-const email = require('./routes/email')
 
 // Init App
 const app = express()
@@ -26,6 +18,13 @@ app.use(cookieParser())
 // Set Static Folder
 app.use(express.static(path.join(__dirname, 'public')))
 
+// Routes
+const index = require('./routes/index')
+const about = require('./routes/about')
+const contact = require('./routes/contact')
+const calculationForm = require('./routes/calculationform')
+const email = require('./routes/email')
+
 // Router
 app.use('/', index)
 app.use('/about', about)
@@ -35,7 +34,6 @@ app.use('/email', email)
 app.use((req, res) => {
 	res.render('404')
 })
-
 
 // Set Port
 app.set('port', (process.env.PORT || 5000))

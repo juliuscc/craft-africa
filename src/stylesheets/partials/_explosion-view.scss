@@ -1,11 +1,41 @@
 @import "../variables/colors";
 @import "../variables/widths";
 
-.explosion-view {
-	.placeholder {
+.explosion-view-container {
+	height: 4000px;
+	width: 100%;
+	position: relative;
+
+	.explosion-view {
 		width: 100%;
-		height: 80vh;
-		margin: 10vh 0;
-		background-color: $color-accent;
+		height: 100vh;
+		position: fixed;
+		top: 0;
+		left: 0;
+
+		&.skrollable.skrollable-before {
+
+		}
+
+		&.skrollable.skrollable-between {
+			// top: 50%;
+			// left: 50%;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		&.skrollable.skrollable-after {
+
+		}
+
+
+		.placeholder {
+			width: 100%;
+			height: 100vh;
+			margin: 0vh 0;
+			background-color: red;
+		}
 	}
+
 }

@@ -1,4 +1,4 @@
-@import "../variables/colors";
+@import "../variables/all";
 
 .quote-container {
 	width: 80%;
@@ -15,6 +15,8 @@
 	}
 
 	.quote {
+		font-style: italic;
+
 		&:before {
 			content: "\""
 		}
@@ -22,9 +24,8 @@
 		&:after {
 			content: "\"";
 		}
-
-		font-style: italic;
 	}
+
 	.source {
 		&:before { 
 			content: " - ";
