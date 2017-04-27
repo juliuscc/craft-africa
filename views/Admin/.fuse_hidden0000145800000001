@@ -1,0 +1,17 @@
+html
+  body
+    .col-sm-8.col-sm-offset-2
+      .text-center
+        h1.fa.fa-user  Profile
+        br
+        |  
+        span
+          user= user.id
+          mail= mail          
+          | :
+        br
+        |  
+        span.fa.fa-sign-out
+          a(href='/') Sign out
+        hr
+        .jumbotron  

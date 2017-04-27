@@ -1,0 +1,1005 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Admin",
+				"Admin"
+			],
+			[
+				"ev",
+				"event"
+			],
+			[
+				"isEvent",
+				"isEventFull"
+			],
+			[
+				"Event",
+				"EventList  (obj) [E]"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"section",
+				"sectionAdmin"
+			],
+			[
+				"cal",
+				"call"
+			],
+			[
+				"app",
+				"appBody"
+			],
+			[
+				"Sess",
+				"Session.get\tMeteor: Session.get(key)"
+			],
+			[
+				"eve",
+				"events\tMeteor: Template.myTemplate.events(eventMap)"
+			],
+			[
+				"all",
+				"allSections"
+			],
+			[
+				"margi",
+				"margin-top"
+			],
+			[
+				"hea",
+				"header\tTag"
+			],
+			[
+				"Even",
+				"EventList  (obj) [E]"
+			],
+			[
+				"regis",
+				"registerHelper"
+			],
+			[
+				"find",
+				"findOne (fn) [E]"
+			],
+			[
+				"R",
+				"RegisterLimit"
+			],
+			[
+				"T",
+				"Type"
+			],
+			[
+				"re",
+				"registerHelper"
+			],
+			[
+				"author",
+				"authorize-button"
+			],
+			[
+				"S",
+				"Succes"
+			],
+			[
+				"fin",
+				"findOne (fn) [C]"
+			],
+			[
+				"on",
+				"onRendered  (obj) [C]"
+			],
+			[
+				"han",
+				"handleAuthResult"
+			],
+			[
+				"handl",
+				"handleAuthClick"
+			],
+			[
+				"aut",
+				"authorize"
+			],
+			[
+				"users",
+				"users_list      (obj)  [C]"
+			],
+			[
+				"set",
+				"setChecked"
+			],
+			[
+				"Se",
+				"Session      (obj) [E]"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"in",
+				"input"
+			],
+			[
+				"va",
+				"value"
+			],
+			[
+				"f",
+				"font-size"
+			],
+			[
+				"local",
+				"localhost"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "app.js",
+			"settings":
+			{
+				"buffer_size": 1691,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 35 files for \"flash\"\n\n/run/media/ted/Data/WEB/beer4africa/app.js:\n   16  ;   \n   17  var session = require('express-session');\n   18: var flash = require('connect-flash');\n   19  \n   20  \n\n/run/media/ted/Data/WEB/beer4africa/package.json:\n   49      \"bcrypt-nodejs\": \"0.0.3\",\n   50      \"body-parser\": \"^1.17.1\",\n   51:     \"connect-flash\": \"^0.1.1\",\n   52      \"cookie-parser\": \"^1.4.3\",\n   53      \"express\": \"^4.15.2\",\n\n/run/media/ted/Data/WEB/beer4africa/config/passport.js:\n   23              return done(err);\n   24          if (user) {\n   25:           return done(null, false, req.flash('signupMessage', 'That email is already in use.'));\n   26          } else {\n   27            var newUser = new User();\n   ..\n   64        //     return done(err);\n   65        // if (!user)\n   66:       //     return done(null, false, req.flash('loginMessage', 'No user found.'));\n   67        // if (!user.validPassword(password))\n   68:       //     return done(null, false, req.flash('loginMessage', 'Wrong password.'));\n   69        return done(null, user);\n   70      });\n\n/run/media/ted/Data/WEB/beer4africa/routes/auth.js:\n    6  \n    7  router.get('/login', function(req, res, next) {  \n    8:   res.render('login.ejs', { message: req.flash('loginMessage') });\n    9  });\n   10  \n   11  router.get('/signup', function(req, res) {  \n   12:   res.render('signup.ejs', { message: req.flash('signupMessage') });\n   13  });\n   14  \n\n/run/media/ted/Data/WEB/beer4africa/routes/index.js:\n   37    successRedirect: 'profile',\n   38    failureRedirect: 'signup',\n   39:   // failureFlash: true,\n   40  }));\n   41  \n   ..\n   43    successRedirect: 'profile',\n   44    failureRedirect: 'login',\n   45:   // failureFlash: true,\n   46  }));\n   47  \n\n10 matches across 5 files\n\n\nSearching 35 files for \"flash\"\n\n/run/media/ted/Data/WEB/beer4africa/app.js:\n   16  ;   \n   17  var session = require('express-session');\n   18: var flash = require('connect-flash');\n   19  \n   20  \n\n/run/media/ted/Data/WEB/beer4africa/package.json:\n   49      \"bcrypt-nodejs\": \"0.0.3\",\n   50      \"body-parser\": \"^1.17.1\",\n   51:     \"connect-flash\": \"^0.1.1\",\n   52      \"cookie-parser\": \"^1.4.3\",\n   53      \"express\": \"^4.15.2\",\n\n/run/media/ted/Data/WEB/beer4africa/config/passport.js:\n   23              return done(err);\n   24          if (user) {\n   25:           return done(null, false, req.flash('signupMessage', 'That email is already in use.'));\n   26          } else {\n   27            var newUser = new User();\n   ..\n   64        //     return done(err);\n   65        // if (!user)\n   66:       //     return done(null, false, req.flash('loginMessage', 'No user found.'));\n   67        // if (!user.validPassword(password))\n   68:       //     return done(null, false, req.flash('loginMessage', 'Wrong password.'));\n   69        return done(null, user);\n   70      });\n\n/run/media/ted/Data/WEB/beer4africa/routes/auth.js:\n    6  \n    7  router.get('/login', function(req, res, next) {  \n    8:   res.render('login.ejs', { message: req.flash('loginMessage') });\n    9  });\n   10  \n   11  router.get('/signup', function(req, res) {  \n   12:   res.render('signup.ejs', { message: req.flash('signupMessage') });\n   13  });\n   14  \n\n/run/media/ted/Data/WEB/beer4africa/routes/index.js:\n   37    successRedirect: 'profile',\n   38    failureRedirect: 'signup',\n   39:   failureFlash: true,\n   40  }));\n   41  \n   ..\n   43    successRedirect: 'profile',\n   44    failureRedirect: 'login',\n   45:   failureFlash: true,\n   46  }));\n   47  \n\n10 matches across 5 files\n",
+			"settings":
+			{
+				"buffer_size": 3548,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "package.json",
+			"settings":
+			{
+				"buffer_size": 1681,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "config/passport.js",
+			"settings":
+			{
+				"buffer_size": 2211,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "routes/index.js",
+			"settings":
+			{
+				"buffer_size": 1143,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/Admin/profile.pug",
+			"settings":
+			{
+				"buffer_size": 310,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "views/Admin/signup.pug",
+			"settings":
+			{
+				"buffer_size": 653,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "config/webpack.config.js",
+			"settings":
+			{
+				"buffer_size": 553,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/index.pug",
+			"settings":
+			{
+				"buffer_size": 113,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/contact.pug",
+			"settings":
+			{
+				"buffer_size": 103,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 400.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"pug",
+				"Set Syntax: Pug"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"time",
+				"CodeTimeTracker: Open Dashboard"
+			],
+			[
+				"projec",
+				"Project: Save As"
+			],
+			[
+				"Package In",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Install",
+				"Package Control: Install Package"
+			],
+			[
+				"Java",
+				"Javatar: Builds..."
+			],
+			[
+				"Install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 493.0
+	},
+	"console":
+	{
+		"height": 132.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/run/media/ted/Data/WEB/beer4africa",
+		"/run/media/ted/Data/WEB/beer4africa/config",
+		"/run/media/ted/Data/WEB/beer4africa/models",
+		"/run/media/ted/Data/WEB/beer4africa/public",
+		"/run/media/ted/Data/WEB/beer4africa/routes",
+		"/run/media/ted/Data/WEB/beer4africa/src",
+		"/run/media/ted/Data/WEB/beer4africa/src/js",
+		"/run/media/ted/Data/WEB/beer4africa/src/stylesheets",
+		"/run/media/ted/Data/WEB/beer4africa/views",
+		"/run/media/ted/Data/WEB/beer4africa/views/Admin"
+	],
+	"file_history":
+	[
+		"/run/media/ted/Data/WEB/beer4africa/views/Admin/login.pug",
+		"/run/media/ted/Data/WEB/beer4africa/config/database.js",
+		"/run/media/ted/Data/WEB/beer4africa/views/layout.pug",
+		"/run/media/ted/Data/WEB/beer4africa/views/login.pug",
+		"/run/media/ted/Data/WEB/beer4africa/config/passport.js",
+		"/run/media/ted/Data/WEB/beer4africa/routes/auth.js",
+		"/run/media/ted/Data/WEB/beer4africa/views/index.pug",
+		"/run/media/ted/Data/WEB/beer4africa/config/webpack.config.js",
+		"/run/media/ted/Data/WEB/beer4africa/models/user.js",
+		"/run/media/ted/Data/WEB/livehacks-hackathon-master/videochatroom.js",
+		"/run/media/ted/Data/WEB/livehacks-hackathon-master/index.html",
+		"/run/media/ted/Data/WEB/ths_signup/client/templates/admin.js",
+		"/home/ted/Pair.java",
+		"/home/ted/Sites/meteor/ths_signup/.meteor/packages",
+		"/home/ted/Sites/meteor/ths_signup/client/templates/kurwa.html",
+		"/home/ted/Sites/meteor/ths_signup/client/templates/home.html",
+		"/home/ted/Sites/meteor/ths_signup/ths_signup.sublime-project",
+		"/home/ted/Sites/meteor/ths_signup/client/templates/users_list.js",
+		"/home/ted/Sites/meteor/ths_signup/client/templates/users_list.html",
+		"/home/ted/Sites/meteor/ths_signup/client/templates/events_list.js",
+		"/home/ted/Sites/meteor/ths_signup/client/templates/events_list.html",
+		"/home/ted/Sites/meteor/ths_signup/methods.js",
+		"/home/ted/Sites/meteor/ths_signup/client/templates/home.js",
+		"/home/ted/Sites/meteor/ths_signup/lib/collections.js",
+		"/home/ted/Sites/meteor/ths_signup/lib/scripts.js",
+		"/home/ted/Sites/meteor/ths_signup/server/bootstrap.js",
+		"/home/ted/Sites/gcal/index.html",
+		"/home/ted/Sites/meteor/ths_signup/server/lib/accounts.js",
+		"/home/ted/Sites/meteor/ths_signup/server/publish.js",
+		"/home/ted/Sites/meteor/simple-todos/simple-todos.css",
+		"/home/ted/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/ted/.config/sublime-text-3/Packages/auto-save/README.md",
+		"/home/ted/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/ted/Sites/m20/public_html/wp-content/themes/KutasGigant/includes/builder/main-modules.php",
+		"/home/ted/Sites/m20/public_html/wp-content/themes/KutasGigant/style.css",
+		"/home/ted/Sites/m20/public_html/wp-content/themes/KutasGigant/page.php",
+		"/home/ted/Sites/m20/public_html/wp-content/themes/KutasGigant/functions.php",
+		"/home/ted/Sites/m20/public_html/wp-content/themes/KutasGigant/includes/builder/functions.php",
+		"/home/ted/Sites/m20/public_html/wp-content/themes/KutasGigant/single.php",
+		"/home/ted/Sites/m20/public_html/wp-content/themes/KutasGigant/includes/builder/scripts/salvattore.min.js",
+		"/home/ted/Sites/m20/public_html/wp-content/themes/KutasGigant/index.php",
+		"/home/ted/Sites/m20/public_html/wp-content/themes/Divi/index.php",
+		"/home/ted/Sites/m20/public_html/wp-config.php",
+		"/home/ted/Sites/m20/public_html/wp-content/themes/KutasGigant/wpml-config.xml",
+		"/home/ted/.config/sublime-text-3/Packages/Javatar/Developers/Proto.javatar-packages",
+		"/home/ted/.config/sublime-text-3/Packages/User/Distraction Free.sublime-settings",
+		"/usr/share/python-apt/templates/Ubuntu.info",
+		"/home/ted/Dev/KTH/Java1/Programming1/OU5/Polyline1.java",
+		"/usr/share/python-apt/templates/elementary OS.info",
+		"/etc/apt/sources.list.d/elementary.list",
+		"/etc/apt/sources.list",
+		"/etc/apt/sources.list.d/distroshare-trusty.list",
+		"/etc/apt/sources.list.d/hugegreenbug-cmt2-trusty.list"
+	],
+	"find":
+	{
+		"height": 42.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"-node_modules/",
+			"-.meteor/",
+			"",
+			"/home/ted/Sites/m20/public_html/wp-content/themes/M20_masonry",
+			"/home/ted/Sites/m20/public_html/wp-content/themes/KutasGigant",
+			"KutasGigant",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"flash",
+			"isAuth",
+			"entry2",
+			"db",
+			"model",
+			"route",
+			"button",
+			"admin",
+			"isEventFull",
+			"chosen",
+			"active",
+			"isEventFull",
+			"'s'",
+			"s",
+			"s: function()",
+			"allEvents",
+			"user_eve",
+			"admin",
+			"registerLimit",
+			"sectionAdmin",
+			"admin",
+			"paidE",
+			"pay",
+			"paid",
+			"user-m",
+			"mail",
+			"LOOL",
+			"mail",
+			"initUsersLists",
+			"init",
+			"user_eve",
+			"adminEven",
+			"oneE",
+			"user_event",
+			"adminEvent",
+			"chosen",
+			"form",
+			"REmove",
+			"registered",
+			"=== undefined",
+			"count++;\n          // Session.set(Type, count);\n\n          // list.push(event);\n          // Session.set('list',list);",
+			"Session",
+			"admin",
+			"user",
+			"summary",
+			"title",
+			"events_new",
+			"\"];\n",
+			"width",
+			"SUPER_GRID",
+			"new-post",
+			"SUPER",
+			"article",
+			"salvattore",
+			".size-1of3",
+			"new",
+			"column",
+			"new-column",
+			"column",
+			"salv",
+			"data-columns",
+			"et_pb_blog_",
+			"et_pb_blog",
+			"et_pb_blog_0",
+			"et_section_regular",
+			"<article id=",
+			"et_pb_posts",
+			"et_pb_blog_0",
+			"et_pb_bg_layout_light",
+			"et_pb_posts",
+			"et_pb_post",
+			"et_section_regular",
+			"truncate_post(",
+			"the_content",
+			"data-columns",
+			"data-column",
+			"data-",
+			"the_content(",
+			"the_conte"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 5,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1691,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1136,
+								1136
+							]
+						],
+						"settings":
+						{
+							"git_gutter_enabled": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 726.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3548,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										148,
+										153
+									],
+									[
+										173,
+										178
+									],
+									[
+										343,
+										348
+									],
+									[
+										599,
+										604
+									],
+									[
+										844,
+										849
+									],
+									[
+										986,
+										991
+									],
+									[
+										1248,
+										1253
+									],
+									[
+										1394,
+										1399
+									],
+									[
+										1586,
+										1591
+									],
+									[
+										1716,
+										1721
+									],
+									[
+										1926,
+										1931
+									],
+									[
+										1951,
+										1956
+									],
+									[
+										2121,
+										2126
+									],
+									[
+										2377,
+										2382
+									],
+									[
+										2622,
+										2627
+									],
+									[
+										2764,
+										2769
+									],
+									[
+										3026,
+										3031
+									],
+									[
+										3172,
+										3177
+									],
+									[
+										3361,
+										3366
+									],
+									[
+										3488,
+										3493
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								2122,
+								2122
+							]
+						],
+						"settings":
+						{
+							"default_dir": "/run/media/ted/Data/WEB/beer4africa",
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 2,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1364.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "package.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1681,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1394,
+								1394
+							]
+						],
+						"settings":
+						{
+							"git_gutter_enabled": true,
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 606.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "config/passport.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2211,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								710,
+								710
+							]
+						],
+						"settings":
+						{
+							"git_gutter_enabled": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "routes/index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1143,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								687,
+								687
+							]
+						],
+						"settings":
+						{
+							"git_gutter_enabled": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 362.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "views/Admin/profile.pug",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 310,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								151,
+								151
+							]
+						],
+						"settings":
+						{
+							"git_gutter_enabled": true,
+							"syntax": "Packages/Pug/Syntaxes/Pug.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 6,
+					"file": "views/Admin/signup.pug",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 653,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								144,
+								144
+							]
+						],
+						"settings":
+						{
+							"git_gutter_enabled": true,
+							"syntax": "Packages/Pug/Syntaxes/Pug.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "config/webpack.config.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 553,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"git_gutter_enabled": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "views/index.pug",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 113,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								111,
+								111
+							]
+						],
+						"settings":
+						{
+							"git_gutter_enabled": true,
+							"syntax": "Packages/Pug/Syntaxes/Pug.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "views/contact.pug",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 103,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								103,
+								103
+							]
+						],
+						"settings":
+						{
+							"git_gutter_enabled": true,
+							"syntax": "Packages/Pug/Syntaxes/Pug.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 30.0
+	},
+	"input":
+	{
+		"height": 32.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "beer4africa.sublime-project",
+	"replace":
+	{
+		"height": 56.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"sty",
+				"~/Sites/m20/public_html/wp-content/themes/M20_masonry/style.css"
+			],
+			[
+				"st",
+				"simple-todos.css"
+			],
+			[
+				"fin",
+				"Find Results"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"/run/media/ted/Data/WEB/rowbook/rowbook.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 192.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
