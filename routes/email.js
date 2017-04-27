@@ -36,8 +36,8 @@ router.post('/send', (req, res) => {
 	}
 
 	// Querying database for info
-	mailTemplate.getTemplateByName(req.body.message_template, (databaseErr, template) => {
-		if(databaseErr) {
+	mailTemplate.getTemplateByName(message_template, (databaseErr, template) => {
+		if(databaseErr || !template) {
 			res.render('email', {
 				message: 'This link is currently not active. Please try another'
 			})
