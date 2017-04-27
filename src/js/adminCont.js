@@ -11,7 +11,7 @@ function removeRow(e) {
 	}
 }
 
-function disableSubmit(isDisabled){
+function disableSubmit(isDisabled) {
 	const submitButton = document.querySelector('[name="submit"]')
 	if(isDisabled) {
 		submitButton.setAttribute('disabled', isDisabled)
@@ -33,20 +33,6 @@ function isNumber(e) {
 	}
 }
 
-function isRequired(e){
-	e.preventDefault()
-	console.log(e)
-
-	if(e.target.value === '') {
-		this.style.border = '1px solid navy'
-		disableSubmit(true)
-	} else {
-		this.style.border = ''
-		disableSubmit(false)
-	}
-}
-
-
 function rowEdited(e) {
 	e.preventDefault()
 
@@ -67,7 +53,7 @@ function addRow() {
 	const div = document.createElement('div')
 	div.innerHTML =
 	`
-	<input type="text" required class="textbox" name="name"/><input type="text" required class="textbox" name="type"/><input type="text" required class="textbox number" name="price"/><input type="text" required class="textbox number" name="size"/><input type="button" class="remove" value = "-"/><input type="hidden" name="id" value="undefined"/><input type="hidden" class="status" value = "new"/>
+	<input type="text" required class="textbox" name="name"/><input type="text" required class="textbox" name="type"/><input type="text" required class="textbox number" name="price"/><input type="text" required class="textbox number" name="size"/><input type="button" class="remove" value = "-"/><input type="hidden" name="id" value="undefined"/><input type="hidden" name="status" value="new"/>
 	`
 
 	const removeBtn = div.querySelector('.remove')

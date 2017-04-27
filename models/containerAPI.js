@@ -1,8 +1,5 @@
 const mongoose = require('mongoose')
 
-
-mongoose.createConnection('mongodb://localhost/beer4africa')
-
 const containerSchema = mongoose.Schema({
 	name: {
 		type: String,
