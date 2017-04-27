@@ -1,52 +1,24 @@
-html
-	head
-		link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css')
-		
-		script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js')
+extends adminlayout.pug
 
-	style
-		|main {
-		|	padding-left: 300px;
-		|}
-
-	body
-		header
-			ul.side-nav.fixed
-				li.logo
-					img(src="https://craft-africa.com/images/craft-africa-logo2.jpg" style="max-width:80%")
-				li
-					a(href='#!') Add/change container
-				li
-					a(href='#!') Add admin users
-				li
-					a(href='#!') Manage email stuff
-		main
-			nav
-				.container
-					.nav.top-nav
-						.nav-wrapper
-							a.brand-logo(href='#') Admin
-							ul#nav-mobile.right.hide-on-med-and-down
-								li
-									a(href='sass.html') Sass
-								li
-									a(href='badges.html') Components
-								li
-									a(href='collapsible.html') JavaScript
-
-
-			.container
-				
-				center
-						h1.fa.fa-user  Profile
-						br
-						|  
-						span
-							user= user.id
-							mail= user.mail
-							| :
-						br
-						|  
-						span
-							a(href='/login') Sign out
-						hr
+block head
+	style(type="text/css").
+		main {
+			padding-left:150px
+		}
+block content
+	main
+		.container
+			p testtest
+			center
+					h1.fa.fa-user  Profile
+					br
+					|  
+					span
+						user= user.id
+						mail= user.mail
+						| :
+					br
+					|  
+					span
+						a(href='admin/login') Sign out
+					hr

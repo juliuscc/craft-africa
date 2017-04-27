@@ -4,11 +4,45 @@ html
 		block title
 			title Admin
 		meta(charset="utf-8")
+
+		link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css')
 		
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js')
+		
+		block head	
+	style
+		block style
 
 	body
-		block header
 
-		block content
+		header
+			ul.side-nav.fixed
+				block header
+					li.logo
+						img(src="https://craft-africa.com/images/craft-africa-logo2.jpg" style="max-width:80%")
+					li
+						a(href='#!') Add/change container
+					li
+						a(href='#!') Add admin users
+					li
+						a(href='#!') Manage email stuff
+				
+		main
+			nav
+				.container
+					.nav.top-nav
+						.nav-wrapper
+							a.brand-logo(href='#') Admin
+							ul#nav-mobile.right.hide-on-med-and-down
+								li
+									a(href='/admin/') Index
+								li
+									a(href='/admin/login') Login
+								li
+									a(href='/admin/signup') Signup
+								li 	
+									a(href='/admin/profile') Profile
 
-		block footer
+			block content
+
+			block footer
