@@ -1,0 +1,32 @@
+html
+	link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css')
+	script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js')
+	
+	body
+		.container
+			center
+				img(src="https://craft-africa.com/images/craft-africa-logo2.jpg" style="max-width:30%")
+			center
+				.z-depth-1.grey.lighten-4.row(style='padding: 3% 6% 0px 6%; border: 1px solid #EEE; margin: 1em 12em;')
+
+						span
+						|  Signup
+						form.col.s12(action='/admin/signup', method='post')
+							.form-group.row
+								label.col.s12 Email
+								|  
+								input.form-control(type='text', name='email')
+							.form-group
+								label Password
+								|  
+								input.form-control(type='password', name='password')
+							div
+								input.btn.form-control(type='submit', value='Submit')
+				
+				span.fa.fa-sign-in
+					| Already have an account? 
+					a(href='/admin/login') Login
+				p
+					| Or go 
+					a(href='/admin/') home
+					| .

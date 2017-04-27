@@ -1,8 +1,26 @@
-extends layout.pug
-
-block title
-	title Craft Africa - Login
-
-block content
-	form(method="post" action="/login/insert")
-		input(type="submit" id="submit")
+html
+	body
+		.col-sm-8.col-sm-offset-2
+			.jumbotron.text-center
+				h1
+					span.fa.fa-sign-in Login
+				form(action='/login', method='post')
+					.form-group
+						label Email
+						|  
+						input.form-control(type='text', name='email')
+					.form-group
+						label Password
+						|  
+						input.form-control(type='password', name='password')
+					div
+						input.form-control(type='submit', value='Submit')
+			hr
+			|  
+			span.fa.fa-sign-in
+				| Don&apos;t have an account? 
+				a(href='/admin/signup') Signup
+			p
+				| Or go 
+				a(href='/') home
+				| .
