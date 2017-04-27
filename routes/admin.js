@@ -23,12 +23,13 @@ router.get('/handletemplates/edit', (req, res) => {
 })
 
 router.get('/calculationform/container', (req, res) => {
+	res.render('editcontainer', { containers: [] })
 	containersModule.getAllContainers((err, containers) => {
 		res.render('editcontainer', { containers })
 	})
 })
-router.post('/calculationform/container', (req, res) => {
 
+router.post('/calculationform/container', (req, res) => {
 	// Makes values to arrays
 	if(req.body.name.constructor !== Array) {
 		req.body.id = [req.body.id]
@@ -76,8 +77,6 @@ router.post('/calculationform/container', (req, res) => {
 			console.log(err)
 		})
 	})
-
-
 	res.redirect('/admin/calculationform/container')
 })
 
