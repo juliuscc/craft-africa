@@ -10,16 +10,16 @@ block content
 	form(method="post" action="/admin/calculationform/container")
 		each container in containers
 			.row
-				input(type="text" class="textbox" name="name" value=container.name)
-				input(type="text" class="textbox" name="type" value=container.type)
-				input(type="text" class="textbox" name="price" value=container.price)
-				input(type="text" class="textbox" name="size" value=container.size)
+				input(type="text" required class="textbox" name="name" value=container.name)
+				input(type="text" required class="textbox" name="type" value=container.type)
+				input(type="text" required class="textbox number" name="price" value=container.price)
+				input(type="text" required class="textbox number" name="size" value=container.size)
 				input(type="button" class="remove" value = "-")
 				input(type="hidden" name="id" value=container._id)
 				input(type="hidden" name="status" value="unchanged")
 		input(type="button" id="add" value = "+")
 		br
-		input(type="submit" id="submit")
+		input(type="submit" disabled=false name="submit")
 	
 block scripts
 	script(src="/js/adminCont.js")

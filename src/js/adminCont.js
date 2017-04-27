@@ -1,8 +1,6 @@
 function removeRow(e) {
 	e.preventDefault()
 
-	// console.log(this)
-
 	const row = this.parentNode
 	const status = row.querySelector('[name="status"]')
 	if(status.getAttribute('value') === 'new') {
@@ -12,6 +10,42 @@ function removeRow(e) {
 		status.setAttribute('value', 'removed')
 	}
 }
+
+function disableSubmit(isDisabled){
+	const submitButton = document.querySelector('[name="submit"]')
+	if(isDisabled) {
+		submitButton.setAttribute('disabled', isDisabled)
+	} else {
+		submitButton.removeAttribute('disabled')
+	}
+}
+
+function isNumber(e) {
+	e.preventDefault()
+	console.log(e)
+
+	if(isNaN(e.target.value)) {
+		e.srcElement.style.border = '1px solid red'
+		disableSubmit(true)
+	} else {
+		e.srcElement.style.border = ''
+		disableSubmit(false)
+	}
+}
+
+function isRequired(e){
+	e.preventDefault()
+	console.log(e)
+
+	if(e.target.value === '') {
+		e.srcElement.style.border = '1px solid navy'
+		disableSubmit(true)
+	} else {
+		e.srcElement.style.border = ''
+		disableSubmit(false)
+	}
+}
+
 
 function rowEdited(e) {
 	e.preventDefault()
@@ -83,4 +117,10 @@ const removeBtns = document.querySelectorAll('.remove')
 removeBtns.forEach(btn => btn.addEventListener('click', removeRow))
 
 const editedRow = document.querySelectorAll('.textbox')
-editedRow.forEach(btn => btn.addEventListener('change', rowEdited))
+editedRow.forEach(textbox => textbox.addEventListener('change', rowEdited))
+
+const checkIfRequired = document.querySelectorAll('.required')
+checkIfRequired.forEach(textbox => textbox.addEventListener('change', isRequired))
+
+const checkIfNumber = document.querySelectorAll('.number')
+checkIfNumber.forEach(textbox => textbox.addEventListener('change', isNumber))

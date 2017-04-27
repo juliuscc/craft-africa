@@ -21,6 +21,9 @@ router.get('/calculationform/container', (req, res) => {
 })
 router.post('/calculationform/container', (req, res) => {
 
+	if(!req.body.name) {
+		res.redirect('/admin/calculationform/container')
+	}
 	// Makes values to arrays
 	if(req.body.name.constructor !== Array) {
 		req.body.id = [req.body.id]
@@ -58,8 +61,10 @@ router.post('/calculationform/container', (req, res) => {
 	newContainers.forEach((element) => {
 		containersModule.createContainer({ name: element.name, type: element.type, 
 			price: element.price, size: element.size }, (err, res) => {
-			console.log(err)
+				
+				console.log(err)
 		})
+		
 	})
 
 	// removed
