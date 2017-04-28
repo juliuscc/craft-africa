@@ -8,6 +8,14 @@ function isLoggedIn(req, res, next) {
 	res.redirect('/')
 }
 
+function requiresAuth(req,res,target,options){
+ if (req.user) {
+	res.render('Admin/'+target, options)
+	} else {
+		res.render('Admin/login', {user: req.user})
+	}
+}
+
 router.get('/handletemplates/', (req, res) => {
 	requiresAuth(req, res, 'handletemplates', {
 		template: 'hello',
