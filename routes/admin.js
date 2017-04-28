@@ -3,17 +3,16 @@ const containersModule = require('../models/containerAPI')
 
 const passport = require('passport')
 
-function requiresAuth(req,res,target,options){
-	if(req.user){
-    	res.render('Admin/'+target, options)
-  	}
-  	else{
-   		res.render('Admin/login', {user: req.user})
-  	}
+function requiresAuth(req, res, target, options) {
+	if(req.user) {
+		res.render(`Admin/${target}`, options)
+	} else {
+		res.render('Admin/login', { user: req.user })
+	}
 }
 
 router.get('/handletemplates/', (req, res) => {
-	requiresAuth(req,res,'handletemplates',{
+	requiresAuth(req, res, 'handletemplates', {
 		template: 'hello',
 		recipient: 'mail@foo.bar',
 		subject: 'a subject',
@@ -22,13 +21,13 @@ router.get('/handletemplates/', (req, res) => {
 })
 
 router.get('/handletemplates/edit', (req, res) => {
-	requiresAuth(req,res,'handletemplates')
+	requiresAuth(req,res, 'handletemplates')
 })
 
 
 router.get('/calculationform/container', (req, res) => {
 	containersModule.getAllContainers((err, containers) => {
-		requiresAuth(req,res,'editcontainer',{containers})
+		requiresAuth(req, res, 'editcontainer', {containers})
 	})
 })
 
@@ -38,6 +37,7 @@ router.post('/calculationform/container', (req, res) => {
 	if(!req.body.name) {
 		res.redirect('/Admin/calculationform/container')
 	}
+<<<<<<< HEAD
 	else{
 	    // Makes values to arrays
 		if(req.body.name.constructor !== Array) {
@@ -75,6 +75,43 @@ router.post('/calculationform/container', (req, res) => {
 					throw err
 				}
 			})
+=======
+		// Makes values to arrays
+	if(req.body.name.constructor !== Array) {
+		req.body.id = [req.body.id]
+		req.body.name = [req.body.name]
+		req.body.type = [req.body.type]
+		req.body.price = [req.body.price]
+		req.body.size = [req.body.size]
+		req.body.status = [req.body.status]
+	}
+
+	const { id, name, type, price, size, status } = req.body
+	const containers = name.map((_, index) => ({
+		id: id[index],
+		name: name[index],
+		type: type[index],
+		price: price[index],
+		size: size[index],
+		status: status[index]
+	}))
+	// console.log("heyy: ", containers)
+	const editedContainers = containers.filter(container => container.status === 'edited')
+	const newContainers = containers.filter(container => container.status === 'new')
+	const removedContainers = containers.filter(container => container.status === 'removed')
+
+	// Edited
+	editedContainers.forEach((element) => {
+		containersModule.updateContainerById(element.id, {
+			name: element.name,
+			type: element.type,
+			price: element.price,
+			size: element.size
+		}, (err) => {
+			if(err) {
+				throw err
+			}
+>>>>>>> #18-calculationFormDev
 		})
 		// new
 		newContainers.forEach((element) => {
@@ -110,33 +147,33 @@ router.get('/', (req, res) => {
 })
 
 router.get('/login', function(req, res, next) {  
-  requiresAuth(req,res,'profile',{ user: req.user })
+	requiresAuth(req,res,'profile',{ user: req.user })
 })
 
 router.get('/signup', function(req, res) { 
-  res.render('Admin/signup', {  })
+	res.render('Admin/signup', {  })
 })
 
 router.get('Admin/logout', function(req, res) { 
-  req.logout()
-  res.redirect('/')
+	req.logout()
+	res.redirect('/')
 })
 
 router.get('/profile', function(req, res) {
-  requiresAuth(req,res,'profile',{ user: req.user })
+	requiresAuth(req,res,'profile',{ user: req.user })
 })
 
 router.post('/signup', passport.authenticate('local-signup', {
-  successRedirect: 'profile',
-  failureRedirect: 'signup',
-  failureFlash: true
+	successRedirect: 'profile',
+	failureRedirect: 'signup',
+	failureFlash: true
 
 }))
 
 router.post('/login', passport.authenticate('local-login', {
-  successRedirect: 'profile',
-  failureRedirect: 'login',
-  failureFlash: true
+	successRedirect: 'profile',
+	failureRedirect: 'login',
+	failureFlash: true
 
 }))
 

@@ -10,7 +10,7 @@ const LocalStrategy = require('passport-local').Strategy
 const session = require('express-session')
 const flash = require('connect-flash')
 
-mongoose.connect(configDB.url);
+mongoose.connect(configDB.url)
 
 // Init App
 const app = express()
