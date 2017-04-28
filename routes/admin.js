@@ -10,11 +10,11 @@ function isLoggedIn(req, res, next) {
 	res.redirect('/')
 }
 
-function requiresAuth(req,res,target,options){
- if (req.user) {
-	res.render('Admin/'+target, options)
+function requiresAuth(req, res, target, options) {
+	if(req.user) {
+		res.render('Admin/' + target, options)
 	} else {
-		res.render('Admin/login', {user: req.user})
+		res.render('Admin/login', { user: req.user })
 	}
 }
 
@@ -51,10 +51,8 @@ router.post('/calculationform/container', (req, res) => {
 
 	if(!req.body.name) {
 		res.redirect('/Admin/calculationform/container')
-	}
-<<<<<<< HEAD
-	else{
-	    // Makes values to arrays
+	} else {
+		// Makes values to arrays
 		if(req.body.name.constructor !== Array) {
 			req.body.id = [req.body.id]
 			req.body.name = [req.body.name]
@@ -156,6 +154,3 @@ router.post('/login', passport.authenticate('local-login', {
 }))
 
 module.exports = router
-
-	} else {
-		// Makes values to arrays
