@@ -1,4 +1,4 @@
-	const path = require('path')
+const path = require('path')
 
 const lintingLoader = {
 	test: /\.js?$/,
@@ -27,5 +27,10 @@ module.exports = {
 	module: {
 		preLoaders: [lintingLoader],
 		loaders: [babelLoader]
+	},
+	resolve: {
+		alias: {
+			vue$: 'vue/dist/vue.esm.js' // 'vue/dist/vue.common.js' for webpack 1
+		}
 	}
 }
