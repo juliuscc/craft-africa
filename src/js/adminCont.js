@@ -52,9 +52,10 @@ function addRow() {
 	// Create div with inputs
 	const div = document.createElement('div')
 	div.innerHTML =
-	`
-	<input type="text" required class="textbox" name="name"/><input type="text" required class="textbox" name="type"/><input type="text" required class="textbox number" name="price"/><input type="text" required class="textbox number" name="size"/><input type="button" class="remove" value = "-"/><input type="hidden" name="id" value="undefined"/><input type="hidden" name="status" value="new"/>
-	`
+`
+<div class="input-field col s3"><input class="validate" id="name" type="text" name="name" required> <label for="name">Name</label></div><div class="input-field col s3"><input class="validate" id="type" type="text" name="type" required> <label for="type">Type</label></div><div class="input-field col s3"><input class="validate" id="price" type="number" name="price" required> <label for="price">Price</label></div><div class="input-field col s3"><input class="validate" id="size" type="number" name="size" required> <label for="size">Size</label></div></div><input class="remove" type="button" value="-"><input type="hidden" name="id" value="undefined"><input type="hidden" name="status" value="new">
+`
+
 
 	const removeBtn = div.querySelector('.remove')
 	removeBtn.addEventListener('click', removeRow)
