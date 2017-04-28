@@ -33,6 +33,7 @@ router.get('/calculationform/container', (req, res) => {
 })
 
 router.post('/calculationform/container', (req, res) => {
+	console.log(req.body)
 
 	if(!req.body.name) {
 		res.redirect('/Admin/calculationform/container')
