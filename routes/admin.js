@@ -2,17 +2,18 @@ const router = require('express').Router()
 const containersModule = require('../models/containerAPI')
 
 const passport = require('passport')
-function isLoggedIn(req, res, next) {
 
-	if (req.isAuthenticated())
-		return next()
-	res.redirect('/')
+function requiresAuth(req,res,target,options){
+	if(req.user){
+    	res.render('Admin/'+target, options)
+  	}
+  	else{
+   		res.render('Admin/login', {user: req.user})
+  	}
 }
 
-
 router.get('/handletemplates/', (req, res) => {
-
-	res.render('handletemplates', {
+	requiresAuth(req,res,'handletemplates',{
 		template: 'hello',
 		recipient: 'mail@foo.bar',
 		subject: 'a subject',
@@ -21,19 +22,19 @@ router.get('/handletemplates/', (req, res) => {
 })
 
 router.get('/handletemplates/edit', (req, res) => {
-	res.render('handletemplates')
+	requiresAuth(req,res,'handletemplates')
 })
 
 
 router.get('/calculationform/container', (req, res) => {
 	containersModule.getAllContainers((err, containers) => {
-		res.render('editcontainer', { containers })
+		requiresAuth(req,res,'editcontainer',{containers})
 	})
 })
 
 router.post('/calculationform/container', (req, res) => {
 	if(!req.body.name) {
-		res.redirect('/admin/calculationform/container')
+		res.redirect('/Admin/calculationform/container')
 	}
     // Makes values to arrays
 	if(req.body.name.constructor !== Array) {
@@ -93,27 +94,23 @@ router.post('/calculationform/container', (req, res) => {
 		})
 	})
 
-	res.redirect('/admin/calculationform/container')
+	res.redirect('/Admin/calculationform/container')
 })
 
 router.get('/calculationform/beertype', (req, res) => {
-	res.render('editbeertype')
+	requiresAuth(req,res,'editbeertype',{ user: req.user })
 })
 
 router.get('/', (req, res) => {
-	res.render('Admin/index')
+	requiresAuth(req,res,'index')
 })
 
 router.get('/login', function(req, res, next) {  
-  res.render('Admin/login', {  })
+  requiresAuth(req,res,'profile',{ user: req.user })
 })
 
 router.get('/signup', function(req, res) { 
   res.render('Admin/signup', {  })
-})
-
-router.get('Admin/admin', isLoggedIn, function(req, res) {
-  res.render('Admin/admin', { user: req.user })
 })
 
 router.get('Admin/logout', function(req, res) { 
@@ -122,12 +119,7 @@ router.get('Admin/logout', function(req, res) {
 })
 
 router.get('/profile', function(req, res) {
-  if(req.user){
-    res.render('Admin/profile', { user: req.user })
-  }
-  else{
-    res.render('Admin/login', {user: req.user})
-  }
+  requiresAuth(req,res,'profile',{ user: req.user })
 })
 
 router.post('/signup', passport.authenticate('local-signup', {

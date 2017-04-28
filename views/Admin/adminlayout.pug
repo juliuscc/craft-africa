@@ -9,7 +9,12 @@ html
 		
 		script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js')
 		
+		style(type="text/css").
+			main {
+				padding-left:320px
+			}
 		block head	
+
 	style
 		block style
 
@@ -17,31 +22,23 @@ html
 
 		header
 			ul.side-nav.fixed
-				block header
-					li.logo
-						img(src="https://craft-africa.com/images/craft-africa-logo2.jpg" style="max-width:80%")
-					li
-						a(href='#!') Add/change container
-					li
-						a(href='#!') Add admin users
-					li
-						a(href='#!') Manage email stuff
+				li.logo
+					img(src="https://craft-africa.com/images/craft-africa-logo2.jpg" style="max-width:80%")
+				li
+					a(href='/admin/calculationform/container') Add/change container
+				li
+					a(href='/admin/calculationform/beertype') Add/change beer types
+				li
+					a(href='/admin/handletemplates') Add/change templates
+				li
+					a(href='/admin/signup') Add admin users
+				li
+					a(href='#!') Manage email stuff
 				
 		main
-			nav
-				.container
-					.nav.top-nav
-						.nav-wrapper
-							a.brand-logo(href='#') Admin
-							ul#nav-mobile.right.hide-on-med-and-down
-								li
-									a(href='/admin/') Index
-								li
-									a(href='/admin/login') Login
-								li
-									a(href='/admin/signup') Signup
-								li 	
-									a(href='/admin/profile') Profile
+			block header
+
+			block scripts
 
 			block content
 
