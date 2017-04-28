@@ -17,7 +17,6 @@ const babelLoader = {
 
 module.exports = {
 	entry: {
-		entry: path.resolve(__dirname, '../src/js/entry.js'),
 		explosionView: path.resolve(__dirname, '../src/js/explosionView.js')
 	},
 	output: {
