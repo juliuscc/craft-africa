@@ -55,6 +55,7 @@
     "morgan": "^1.8.1",
     "path": "^0.12.7",
     "pug": "^2.0.0-beta.12",
-    "skrollr": "^0.6.26"
+    "scrollmagic": "^2.0.5",
+    "velocity-animate": "^1.5.0"
   }
 }

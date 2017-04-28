@@ -1,3 +1,4 @@
-const skrollr = require('skrollr').init()
+const scrollmagic = require('scrollmagic')
+const velocity = require('velocity-animate')
 
-console.log(skrollr.isMobile())
+console.log(scrollmagic, velocity)
