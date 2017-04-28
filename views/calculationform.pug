@@ -1,29 +1,37 @@
 extends layout.pug
 
 block title
-	|  - Calculation form
+	title
+		Calculation form
 
 block header
 	h1 Calculation form 
 
 block content
 	p This is a calculation form
-	form(action="/calculationform",method="post")
-		input(name="input1", placeholder="input1",value= input1)
-		input(name="input2", placeholder="input2",value= input2)
-		input(name="input3", placeholder="input3",value= input3)
-		input(name="input4", placeholder="input4",value= input4)
-		input(name="input5", placeholder="input5",value= input5)
-		input(name="input6", placeholder="input6",value= input6)
+	form(action="/calculationform", method="post", class="calculation-form")
+		p Liters of Beer
+		input(type="range", name="litersOfBeer", value= litersOfBeer, min= minLitersOfBeer, max= maxLitersOfBeer)
+		p Liters of Water
+		input(type="range", name="litersOfWater", value= litersOfWater)
+		p Finetune distribution
+		input(type="range", name="tap", value= tap)
+		input(type="range", name="keg", value= keg)
+		input(type="range", name="bottle", value= bottle)
+		p Profit
+		span.profit 12345$
+		p Distribution
+		span.output economics output here...
+		p Containers
+		span.containers container output here...
+		p Income statement
+		span.income-statement Income statement here...
+		p Done
+		input(type="button", value="Calculate", class="calculate-button")
 		input(type="submit", value = "Submit")
-	if input1
-		h1 output
-		p= input1
-		p= input2
 
 block scripts
 	script(src="/js/calculationForm.js")
-
 
 block footer
 	p Example footer
