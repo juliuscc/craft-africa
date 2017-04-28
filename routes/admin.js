@@ -2,9 +2,11 @@ const router = require('express').Router()
 const containersModule = require('../models/containerAPI')
 
 const passport = require('passport')
+
 function isLoggedIn(req, res, next) {
-	if (req.isAuthenticated())
+	if(req.isAuthenticated()) {
 		return next()
+	}
 	res.redirect('/')
 }
 
@@ -26,7 +28,7 @@ router.get('/handletemplates/', (req, res) => {
 })
 
 router.get('/handletemplates/edit', (req, res) => {
-	requiresAuth(req,res, 'handletemplates')
+	requiresAuth(req, res, 'handletemplates')
 })
 
 router.get('/calculationform/beer', (req, res) => {
@@ -40,7 +42,7 @@ router.post('/calculationform/beer', (req, res) => {
 
 router.get('/calculationform/container', (req, res) => {
 	containersModule.getAllContainers((err, containers) => {
-		requiresAuth(req, res, 'editcontainer', {containers})
+		requiresAuth(req, res, 'editcontainer', { containers })
 	})
 })
 
@@ -49,7 +51,9 @@ router.post('/calculationform/container', (req, res) => {
 
 	if(!req.body.name) {
 		res.redirect('/Admin/calculationform/container')
-	} else {
+	}
+<<<<<<< HEAD
+	else{
 	    // Makes values to arrays
 		if(req.body.name.constructor !== Array) {
 			req.body.id = [req.body.id]
@@ -89,7 +93,8 @@ router.post('/calculationform/container', (req, res) => {
 		})
 		// new
 		newContainers.forEach((element) => {
-			containersModule.createContainer({ name: element.name,
+			containersModule.createContainer({
+				name: element.name,
 				type: element.type,
 				price: element.price,
 				size: element.size
@@ -107,34 +112,33 @@ router.post('/calculationform/container', (req, res) => {
 				}
 			})
 		})
-
 		res.redirect('/Admin/calculationform/container')
 	}
 })
 
 router.get('/calculationform/beertype', (req, res) => {
-	requiresAuth(req,res,'editbeertype',{ user: req.user })
+	requiresAuth(req, res, 'editbeertype', { user: req.user })
 })
 
 router.get('/', (req, res) => {
-	requiresAuth(req,res,'index')
+	requiresAuth(req, res, 'index')
 })
 
-router.get('/login', function(req, res, next) {  
-	requiresAuth(req,res,'profile',{ user: req.user })
+router.get('/login', (req, res, next) => {
+	requiresAuth(req, res, 'profile', { user: req.user })
 })
 
-router.get('/signup', function(req, res) { 
-	res.render('Admin/signup', {  })
+router.get('/signup', (req, res) => {
+	res.render('Admin/signup', { })
 })
 
-router.get('Admin/logout', function(req, res) { 
+router.get('Admin/logout', (req, res) => {
 	req.logout()
 	res.redirect('/')
 })
 
-router.get('/profile', function(req, res) {
-	requiresAuth(req,res,'profile',{ user: req.user })
+router.get('/profile', (req, res) => {
+	requiresAuth(req, res, 'profile', { user: req.user })
 })
 
 router.post('/signup', passport.authenticate('local-signup', {
@@ -152,3 +156,6 @@ router.post('/login', passport.authenticate('local-login', {
 }))
 
 module.exports = router
+
+	} else {
+		// Makes values to arrays
