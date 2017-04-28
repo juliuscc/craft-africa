@@ -1,0 +1,47 @@
+extends layout.pug
+
+block title
+	title Craft Africa - Edit Beers
+
+block header
+	h1 Edit Beers
+
+block content
+	form(method="post" action="/admin/calculationform/container")
+
+		h2 Ingredient cost
+		.defaultCostIngredients
+			input(type="text" required class="textbox number" name="hops"  placeholder='hops ($)' value='')
+			input(type="text" required class="textbox number" name="barley" placeholder='barley ($)' value='')
+			input(type="text" required class="textbox number" name="co2" placeholder='co2 ($)' value='')
+			input(type="text" required class="textbox number" name="water" placeholder='water ($)' value='')
+			input(type="hidden" name="id" value='beer._id')
+			input(type="hidden" name="status" value="unchanged")
+
+		h2 Default Distribution (%)
+		.defaultDistributionValues
+			input(type="text" required class="textbox number" name="tap" placeholder='tap (%)' value='')
+			input(type="text" required class="textbox number" name="bottle" placeholder='bottle (%)' value='')
+			input(type="text" required class="textbox number" name="keg" placeholder='keg (%)' value='')
+			input(type="hidden" name="id" value='beer._id')
+			input(type="hidden" name="status" value="unchanged")
+
+		h2 Default Cost (per unit)
+		.defaultCostValues
+			input(type="text" required class="textbox number" name="tap"  placeholder='tap ($)' value='')
+			input(type="text" required class="textbox number" name="bottle"  placeholder='bottle ($)' value='')
+			input(type="text" required class="textbox number" name="keg" placeholder='keg ($)' value='')
+			input(type="hidden" name="id" value='beer._id')
+			input(type="hidden" name="status" value="unchanged")
+
+		h2 Start Value for Production
+		.defaultCostValues
+			input(type="text" required class="textbox number" name="tap"  placeholder='$' value='')
+			input(type="hidden" name="id" value='beer._id')
+			input(type="hidden" name="status" value="unchanged")
+
+		br
+		input(type="submit" disabled=false name="submit")
+	
+block scripts
+	script(src="/js/adminCont.js")

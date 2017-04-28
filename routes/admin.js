@@ -2,13 +2,10 @@ const router = require('express').Router()
 const containersModule = require('../models/containerAPI')
 
 const passport = require('passport')
-
-function requiresAuth(req, res, target, options) {
-	if(req.user) {
-		res.render(`Admin/${target}`, options)
-	} else {
-		res.render('Admin/login', { user: req.user })
-	}
+function isLoggedIn(req, res, next) {
+	if (req.isAuthenticated())
+		return next()
+	res.redirect('/')
 }
 
 router.get('/handletemplates/', (req, res) => {
@@ -22,6 +19,14 @@ router.get('/handletemplates/', (req, res) => {
 
 router.get('/handletemplates/edit', (req, res) => {
 	requiresAuth(req,res, 'handletemplates')
+})
+
+router.get('/calculationform/beer', (req, res) => {
+	res.render('editbeertype')
+})
+
+router.post('/calculationform/beer', (req, res) => {
+	res.redirect('editbeertype')
 })
 
 
