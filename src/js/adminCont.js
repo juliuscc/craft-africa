@@ -64,6 +64,7 @@ function addRow() {
 }
 
 const addBtn = document.querySelector('#add')
+console.log(addBtn)
 addBtn.addEventListener('click', addRow)
 
 const removeBtns = document.querySelectorAll('.remove')
