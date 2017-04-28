@@ -42,7 +42,7 @@ router.post('/calculationform/beer', (req, res) => {
 
 router.get('/calculationform/container', (req, res) => {
 	containersModule.getAllContainers((err, containers) => {
-		requiresAuth(req, res, 'editcontainer', { containers })
+		requiresAuth(req, res, 'container', { containers })
 	})
 })
 
