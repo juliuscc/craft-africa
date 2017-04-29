@@ -2,25 +2,13 @@
 @import "../variables/widths";
 
 .explosion-view-container {
-	height: 4000px;
+	height: 100vh;
 	width: 100%;
 	position: relative;
 
 	.explosion-view {
 		width: 100%;
 		height: 100vh;
-
-		&.skrollable.skrollable-before {
-
-		}
-
-		&.skrollable.skrollable-between {
-		
-		}
-
-		&.skrollable.skrollable-after {
-
-		}
 
 		.img-container {
 			border: 1px red;
@@ -33,8 +21,63 @@
 				top: 50%;
 				left: 50%;
 				transform: translate(-50%, -50%);
+
+				transition: all 0.5s;
+				transition-timing-function: ease-in;
+			}
+		}
+
+		&.walls-of {
+			
+			img.roof {
+				top: 0%;
+				transform: translate(-50%, 0%);
+				opacity: 0;
+			}
+
+			img.left-wall {
+				left: 0%;
+				transform: translate(0%, -50%);
+				opacity: 0;
+			}
+
+			img.front-wall {
+				top: 50%;
+				left: 50%;
+				transform: translate(0%, 0%);
+				opacity: 0;
+			}
+		}
+
+		&.exploded {
+			
+			img.base {
+			}
+
+			img.water-filtration {
+				top: 30%;
+				left: 60%;
+			}
+
+			img.brewery {
+				top: 75%;
+				left: 50%;
+			}
+
+			img.battery {
+				left: 55%;
+				top: 65%;
+			}
+
+			img.bar {
+				left: 35%;
+				top: 55%;
+			}
+
+			img.solar-panels {
+				top: 40%;
+				left: 35%;
 			}
 		}
 	}
-
 }
