@@ -24,14 +24,15 @@ module.exports = BeerCollection
 
 module.exports.createBeerCollection = (newBeerCollection, callback) => {
 	const beerObject = new BeerCollection(newBeerCollection)
+	// console.log(newBeerCollection.ingredientCost)
 	beerObject.save(callback)
 }
 
-module.exports.updateBeerCollectionById = (id, updatedProperties, callback) => {
-	BeerCollection.update({ _id: id }, { $set: updatedProperties }, callback, { upsert: true })
+module.exports.updateBeerCollection = (updatedProperties, callback) => {
+	BeerCollection.update({}, { $set: updatedProperties }, callback, { upsert: true })
 }
 
 module.exports.getAllBeerCollections = (callback) => {
-	const query = []
+	const query = {}
 	BeerCollection.find(query, callback)
 }
