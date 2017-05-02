@@ -1,7 +1,7 @@
 function removeRow(e) {
 	e.preventDefault()
 
-	const row = this.parentNode
+	const row = this.parentNode.parentNode
 	const status = row.querySelector('[name="status"]')
 	if(status.getAttribute('value') === 'new') {
 		row.parentNode.removeChild(row)
@@ -36,7 +36,7 @@ function isNumber(e) {
 function rowEdited(e) {
 	e.preventDefault()
 
-	const row = this.parentNode
+	const row = this.parentNode.parentNode
 	const status = row.querySelector('[name="status"]')
 
 	if(!(status.getAttribute('value') === 'new')) {

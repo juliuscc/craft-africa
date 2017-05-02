@@ -4,6 +4,32 @@ const beerModule = require('../../models/beerAPI')
 
 router.get('/', (req, res) => {
 	beerModule.getAllBeerCollections((err, values) => {
+		// requiresAuth(req, res, 'beertype')
+		if(!values.ingredientCost) {
+			values = {
+				ingredientCost: {
+					hops: '',
+					barley: '',
+					co2: '',
+					water: ''
+				},
+				defaultDistribution: {
+					tapDist: '',
+					bottleDist: '',
+					kegDist: ''
+				},
+				defaultThreshold: {
+					bottleThresh: '',
+					kegThresh: ''
+				},
+				defaultCost: {
+					tapCost: '',
+					bottleCost: '',
+					kegCost: ''
+				},
+				startValueForProduction: ''
+			}
+		}
 		requiresAuth(req, res, 'beertype', { values })
 	})
 	// res.render('editbeertype')

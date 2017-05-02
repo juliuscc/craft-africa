@@ -9,8 +9,6 @@ block header
 block content
 	form(method="post" action="/admin/beer")
 		h2 Ingredient cost
-		p= values.ingredientCost.hops
-		p swag
 		.defaultCostIngredients
 			input(type="text" required class="textbox number" name="hops"  placeholder='Hops ($)' value=values.ingredientCost.hops)
 			input(type="text" required class="textbox number" name="barley" placeholder='Barley ($)' value=values.ingredientCost.barley)
