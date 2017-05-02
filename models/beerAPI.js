@@ -65,7 +65,7 @@ module.exports.getAllBeerCollections = (callback) => {
 			startValueForProduction: values.startValueForProduction
 		}
 
-		console.log(updatedValues)
+		// console.log(updatedValues)
 
 
 		callback(err, updatedValues)

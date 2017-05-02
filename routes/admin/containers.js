@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
 	if(!req.body.name) {
-		res.redirect('/admin/container')
+		res.redirect('/admin/containers')
 	} else {
 		// Makes values to arrays
 		if(req.body.name.constructor !== Array) {
@@ -70,7 +70,7 @@ router.post('/', (req, res) => {
 				}
 			})
 		})
-		res.redirect('/admin/container')
+		res.redirect('/admin/containers')
 	}
 })
 
