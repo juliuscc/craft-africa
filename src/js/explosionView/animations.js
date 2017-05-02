@@ -15,11 +15,13 @@ view.addEventListener('transitionend', handleTransition)
 function explode() {
 	view.classList.add('walls-of')
 	view.classList.add('exploding')
+	view.classList.remove('imploding')
 }
 
 function implode() {
 	view.classList.remove('exploded')
 	view.classList.add('imploding')
+	view.classList.remove('exploding')
 }
 
 module.exports = { explode, implode }
