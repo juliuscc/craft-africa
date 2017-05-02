@@ -2,40 +2,55 @@ const WATER_PER_LITER_BEER = 3.4
 
 console.log('container calculator 2 loaded')
 
-// Checks if we have enough water production.
-// Returns a list of modules that fulfill the requirement
-function getBeerProductionModules(litersOfBeer, keg, bottles) {
-	let beer = litersOfBeer
+function IllegalArgumentException(Msg) {
+	this.message = Msg
+}
+
+
+// Add percentage calculation
+// Liters of keg/bottles
+function getBeerProductionModules(calculationStats) {
+	let tap = calculationStats.containerLiterDistribution.tap
+	const keg = calculationStats.containerLiterDistribution.keg
+	const bottles = calculationStats.containerLiterDistribution.bottle
+	if(tap < 0 || keg < 0 || tap < 0) throw new IllegalArgumentException('illegal argument, liters can not be negative or more than 4000 except tap')
+	console.log(tap)
 	const X = 1000// Change this as needed
 	let out = []
-	let modules = [['A1', 1], ['B1', 2], ['B2', 2], ['B3', 2]]
-	if(keg) modules = [['C1', 4]].concat(modules)
-	if(bottles) modules = [['C2', 4]].concat(modules)
+	const modules = [['A1', 1], ['B1', 2], ['B2', 2], ['B3', 2]]
 
 	let index = -1
-	while(beer > 0 && index < modules.length) {
+	while(tap > 0) {
 		const mod = modules[index += 1]
+		if(mod === undefined) throw new IllegalArgumentException('tap liters to high')
 
 		if(mod[0] === 'B1') {
 			out.pop()
-			beer += X
+			tap += X
 		}
 
-		beer -= mod[1] * X
+		tap -= mod[1] * X
 		out = out.concat(mod[0])
 	}
-	console.log( 'Your modules are '+ out.join())
+	if(keg > 0) out = out.concat(['C1'])
+	if(bottles > 0) out = out.concat(['C2'])
+
+	console.log('Your modules are ' + out.join())
 	return out
 }
 
+function getPercentage(calculationStats){
 
-function checkExtraWaterProduction(modules, waterConsumption) {
-	return waterConsumption
 }
 
-function getCleanWaterProduction(modules, waterConsumption) {
-	return waterConsumption
+function getTotalCost(calculationStats){
+
 }
+
+function getElectricityConsumption(calculationStats){
+
+}
+
 
 function inputCalculating(data) {
 	// const data = {
