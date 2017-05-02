@@ -1,123 +1,13 @@
 const router = require('express').Router()
-const containersModule = require('../models/containerAPI')
-const beerModule = require('../models/beerAPI')
 const passport = require('passport')
-const templates = require('./admin/templates')
-
 const requiresAuth = require('./admin/helper')
+const templates = require('./admin/templates')
+const containers = require('./admin/containers')
+const beer = require('./admin/beer')
 
 router.use('/emailtemplates', templates)
-
-router.get('/calculationform/beer', (req, res) => {
-	beerModule.getAllBeerCollections((err, res1) => {
-		console.log(res1)
-	})
-
-	res.render('editbeertype')
-})
-
-router.post('/calculationform/beer', (req, res) => {
-	if(!req.body.hops) {
-		resPost.redirect('/admin/calculationform/beer')
-	}
-	const { hops, barley, co2, water, tap1, bottle1, keg1, tap2,
-		bottle2, keg2, startValueForProduction } = req.body
-
-	const ingredientCost = JSON.stringify({ hops, barley, co2, water })
-	const defaultDistribution = JSON.stringify({ tap1, bottle1, keg1 })
-	const defaultCost = JSON.stringify({ tap2, bottle2, keg2 })
-
-	beerModule.updateBeerCollection({
-		ingredientCost,
-		defaultDistribution,
-		defaultCost,
-		startValueForProduction
-	}, (err) => {
-		if(err) {
-			throw err
-		}
-	})
-
-	resPost.redirect('/admin/calculationform/beer')
-})
-
-
-router.get('/calculationform/container', (req, res) => {
-	containersModule.getAllContainers((err, containers) => {
-		requiresAuth(req, res, 'container', { containers })
-	})
-})
-
-router.post('/calculationform/container', (req, res) => {
-	if(!req.body.name) {
-		res.redirect('/Admin/calculationform/container')
-	} else {
-		// Makes values to arrays
-		if(req.body.name.constructor !== Array) {
-			req.body.id = [req.body.id]
-			req.body.name = [req.body.name]
-			req.body.type = [req.body.type]
-			req.body.price = [req.body.price]
-			req.body.size = [req.body.size]
-			req.body.status = [req.body.status]
-		}
-
-		const { id, name, type, price, size, status } = req.body
-		const containers = name.map((_, index) => ({
-			id: id[index],
-			name: name[index],
-			type: type[index],
-			price: price[index],
-			size: size[index],
-			status: status[index]
-		}))
-
-		const editedContainers = containers.filter(container => container.status === 'edited')
-		const newContainers = containers.filter(container => container.status === 'new')
-		const removedContainers = containers.filter(container => container.status === 'removed')
-
-		// Edited
-		editedContainers.forEach((element) => {
-			containersModule.updateContainerById(element.id, {
-				name: element.name,
-				type: element.type,
-				price: element.price,
-				size: element.size
-			}, (err, res1) => {
-				if(err) {
-					throw err
-				}
-				console.log('Swag // Josef : ', res1)
-			})
-		})
-		// new
-		newContainers.forEach((element) => {
-			containersModule.createContainer({
-				name: element.name,
-				type: element.type,
-				price: element.price,
-				size: element.size
-			}, (err) => {
-				if(err) {
-					throw err
-				}
-			})
-		})
-		// removed
-		removedContainers.forEach((element) => {
-			containersModule.removeContainer(element.id, (err) => {
-				if(err) {
-					throw err
-				}
-			})
-		})
-		res.redirect('/Admin/calculationform/container')
-	}
-})
-
-router.get('/calculationform/beertype', (req, res) => {
-	requiresAuth(req, res, 'editbeertype', { user: req.user })
-})
+router.use('/containers', containers)
+router.use('/beer', beer)
 
 router.get('/', (req, res) => {
 	requiresAuth(req, res, 'index')
@@ -131,7 +21,7 @@ router.get('/signup', (req, res) => {
 	res.render('Admin/signup', { })
 })
 
-router.get('Admin/logout', (req, res) => {
+router.get('/logout', (req, res) => {
 	req.logout()
 	res.redirect('/')
 })
