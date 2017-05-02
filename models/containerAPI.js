@@ -37,7 +37,7 @@ module.exports.updateContainerById = (id, updatedProperties, callback) => {
 }
 
 module.exports.getAllContainers = (callback) => {
-	const query = []
+	const query = {}
 	Container.find(query, callback)
 }
 
