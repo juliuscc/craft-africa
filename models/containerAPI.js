@@ -50,4 +50,3 @@ module.exports.getContainerByType = (fieldType, callback) => {
 	const query = { type: fieldType }
 	Container.find(query, callback)
 }
-

@@ -55,5 +55,19 @@ module.exports.getStartValueForProductionCollection = (callback) => {
 
 module.exports.getAllBeerCollections = (callback) => {
 	const query = {}
-	BeerCollection.findOne(query, callback)
+	BeerCollection.findOne(query, (err, values) => {
+
+		const updatedValues = {
+			ingredientCost: JSON.parse(values.ingredientCost),
+			defaultDistribution: JSON.parse(values.defaultDistribution),
+			defaultThreshold: JSON.parse(values.defaultThreshold),
+			defaultCost: JSON.parse(values.defaultCost),
+			startValueForProduction: values.startValueForProduction
+		}
+
+		console.log(updatedValues)
+
+
+		callback(err, updatedValues)
+	})
 }

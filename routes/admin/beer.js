@@ -4,8 +4,7 @@ const beerModule = require('../../models/beerAPI')
 
 router.get('/', (req, res) => {
 	beerModule.getAllBeerCollections((err, values) => {
-		requiresAuth(req, res, 'beertype', { user: req.user })
-
+		requiresAuth(req, res, 'beertype', { values })
 	})
 	// res.render('editbeertype')
 })
