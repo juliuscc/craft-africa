@@ -22,7 +22,6 @@ function disableSubmit(isDisabled) {
 
 function isNumber(e) {
 	e.preventDefault()
-	console.log(e)
 
 	if(isNaN(e.target.value)) {
 		this.classList.add('incorrectInput')
@@ -83,7 +82,6 @@ function addRow() {
 }
 
 const addBtn = document.querySelector('#add')
-console.log(addBtn)
 addBtn.addEventListener('click', addRow)
 
 const removeBtns = document.querySelectorAll('.remove')
