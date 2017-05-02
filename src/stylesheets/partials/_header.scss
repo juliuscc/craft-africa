@@ -1,0 +1,23 @@
+@import "../variables/colors";
+@import "../variables/widths";
+
+header.header {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	background-color: $color-primary;
+	background-image: url("/images/guy.png");
+
+	.logo {
+		display: inline-block;
+		background-color: $color-background-light;
+		width: 50%;
+		margin: 0 auto;
+		margin-top: 20px;
+		
+		@media (min-width: $width-tablet-min) {
+			width: 400px;
+		}
+	}
+}
