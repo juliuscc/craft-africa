@@ -2,19 +2,11 @@ const router = require('express').Router()
 const containersModule = require('../models/containerAPI')
 const beerModule = require('../models/beerAPI')
 
-
 const passport = require('passport')
-
-function isLoggedIn(req, res, next) {
-	if(req.isAuthenticated()) {
-		return next()
-	}
-	res.redirect('/')
-}
 
 function requiresAuth(req, res, target, options) {
 	if(req.user) {
-		res.render('Admin/' + target, options)
+		res.render(`Admin/'${target}`, options)
 	} else {
 		res.render('Admin/login', { user: req.user })
 	}
@@ -42,8 +34,6 @@ router.get('/calculationform/beer', (req, res) => {
 })
 
 router.post('/calculationform/beer', (req, res) => {
-	//console.log(req.body)
-
 	if(!req.body.hops) {
 		res.redirect('/admin/calculationform/beer')
 	}
@@ -59,10 +49,7 @@ router.post('/calculationform/beer', (req, res) => {
 		defaultDistribution,
 		defaultCost,
 		startValueForProduction
-	}, (err, res) => {
-		console.log(err)
-		console.log(res)
-
+	}, (err) => {
 		if(err) {
 			throw err
 		}
@@ -78,8 +65,6 @@ router.get('/calculationform/container', (req, res) => {
 })
 
 router.post('/calculationform/container', (req, res) => {
-	console.log(req.body)
-
 	if(!req.body.name) {
 		res.redirect('/Admin/calculationform/container')
 	} else {
@@ -153,7 +138,7 @@ router.get('/', (req, res) => {
 	requiresAuth(req, res, 'index')
 })
 
-router.get('/login', (req, res, next) => {
+router.get('/login', (req, res) => {
 	requiresAuth(req, res, 'profile', { user: req.user })
 })
 
