@@ -1,36 +1,10 @@
 extends layout.pug
 
 block header
-	header.header
-		img.logo(src="/images/craft_africa_logo.png" alt="Craft Africa logo")
+	h1 Welcome to CraftAfrica
 
 block content
-	.overlap-images
-		.container
-			.placeholder.block1
-			.placeholder.block2
-			.placeholder.block3
+	p blah blah
 
-	.container
-		.quote-container
-			span.quote Get famous or die trying
-			span.source former poor man now rich
-
-	.explosion-view-container
-		.explosion-view
-			.img-container
-				object.base(data="/images/factory/background.svg")
-				//- object.water-filtration(data="/images/factory/water-filtration.svg")
-				object.brewery(data="/images/factory/brewery.svg")
-				object.battery(data="/images/factory/battery.svg")
-				object.bar(data="/images/factory/bar.svg")
-				object.roof(data="/images/factory/roof.svg")
-				object.front-wall(data="/images/factory/right-wall.svg")
-				object.left-wall(data="/images/factory/left-wall.svg")
-				object.solar-panels(data="/images/factory/solar-panel.svg")
-
-	.calculation-form-small
-		.placeholder-text You wanna make your own brand?
-
-block scripts
-	script(src="/js/explosionView.js")
+block footer
+	p example footer

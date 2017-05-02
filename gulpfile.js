@@ -74,10 +74,10 @@ gulp.task('watch', () => {
 	gulp.start('style', 'js')
 
 	// Style
-	gulp.watch(`${paths.src}/stylesheets/**`, ['style'])
+	gulp.watch(`${paths.src}/stylesheets/**/*.scss`, ['style'])
 
 	// JS / JSX
-	gulp.watch(`${paths.src}/js/**`, ['js'])
+	gulp.watch(`${paths.src}/js/**/*.js`, ['js'])
 })
 
 // Handling server
