@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
 	beerModule.getAllBeerCollections((err, values) => {
 		// requiresAuth(req, res, 'beertype')
 		if(!values.ingredientCost) {
-			values = {
+			const empty = {
 				ingredientCost: {
 					hops: '',
 					barley: '',
@@ -29,8 +29,11 @@ router.get('/', (req, res) => {
 				},
 				startValueForProduction: ''
 			}
+
+			requiresAuth(req, res, 'beertype', { empty })
+		} else {
+			requiresAuth(req, res, 'beertype', { values })
 		}
-		requiresAuth(req, res, 'beertype', { values })
 	})
 	// res.render('editbeertype')
 })
