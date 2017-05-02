@@ -9,6 +9,9 @@ const beerSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
+	defaultThreshold: {
+		type: String
+	},
 	defaultCost: {
 		type: String,
 		required: true
@@ -32,7 +35,25 @@ module.exports.updateBeerCollection = (updatedProperties, callback) => {
 	BeerCollection.update({}, { $set: updatedProperties }, { upsert: true }, callback)
 }
 
+module.exports.getIngredientsCollection = (callback) => {
+	const query = {}
+	BeerCollection.findOne(query, callback)
+}
+module.exports.getDistributionCollection = (callback) => {
+	const query = {}
+	BeerCollection.findOne(query, callback)
+}
+module.exports.getCostCollection = (callback) => {
+	const query = {}
+	BeerCollection.findOne(query, callback)
+}
+module.exports.getStartValueForProductionCollection = (callback) => {
+	const query = {}
+	BeerCollection.findOne(query, callback)
+}
+
+
 module.exports.getAllBeerCollections = (callback) => {
 	const query = {}
-	BeerCollection.find(query, callback)
+	BeerCollection.findOne(query, callback)
 }

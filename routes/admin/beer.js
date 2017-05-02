@@ -3,24 +3,29 @@ const requiresAuth = require('./helper')
 const beerModule = require('../../models/beerAPI')
 
 router.get('/', (req, res) => {
-	console.log('tva')
-	requiresAuth(req, res, 'beertype', { user: req.user })
+	beerModule.getAllBeerCollections((err, values) => {
+		requiresAuth(req, res, 'beertype', { user: req.user })
+
+	})
+	// res.render('editbeertype')
 })
 
 router.post('/', (req, res) => {
 	if(!req.body.hops) {
 		res.redirect('/admin/beer')
 	}
-	const { hops, barley, co2, water, tap1, bottle1, keg1, tap2,
-		bottle2, keg2, startValueForProduction } = req.body
+	const { hops, barley, co2, water, tapDist, bottleDist, kegDist, bottleThresh, kegThresh, tapCost,
+		bottleCost, kegCost, startValueForProduction } = req.body
 
 	const ingredientCost = JSON.stringify({ hops, barley, co2, water })
-	const defaultDistribution = JSON.stringify({ tap1, bottle1, keg1 })
-	const defaultCost = JSON.stringify({ tap2, bottle2, keg2 })
+	const defaultDistribution = JSON.stringify({ tapDist, bottleDist, kegDist })
+	const defaultThreshold = JSON.stringify({ bottleThresh, kegThresh })
+	const defaultCost = JSON.stringify({ tapCost, bottleCost, kegCost })
 
 	beerModule.updateBeerCollection({
 		ingredientCost,
 		defaultDistribution,
+		defaultThreshold,
 		defaultCost,
 		startValueForProduction
 	}, (err) => {
