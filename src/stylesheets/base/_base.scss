@@ -1,0 +1,9 @@
+@import "../variables/colors";
+
+::selection {
+	background: $color-selection;
+}
+
+body {
+	background-color: $color-background-light;
+}
