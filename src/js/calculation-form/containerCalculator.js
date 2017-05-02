@@ -1,16 +1,33 @@
 const WATER_PER_LITER_BEER = 3.4
 
+console.log('container calculator 2 loaded')
+
 // Checks if we have enough water production.
 // Returns a list of modules that fulfill the requirement
-function getBeerProductionModules(litersOfBeer) {
-		// if (data.litersOfBeer < 3500)
-		// return (container A)
-		// else is (data.litersOfBeer < 5000)
-		// 	return (container B)
-		// else(data.litersOfBeer < 8000)
-		// 	return(container C)
-	return litersOfBeer
+function getBeerProductionModules(litersOfBeer, keg, bottles) {
+	let beer = litersOfBeer
+	const X = 1000// Change this as needed
+	let out = []
+	let modules = [['A1', 1], ['B1', 2], ['B2', 2], ['B3', 2]]
+	if(keg) modules = [['C1', 4]].concat(modules)
+	if(bottles) modules = [['C2', 4]].concat(modules)
+
+	let index = -1
+	while(beer > 0 && index < modules.length) {
+		const mod = modules[index += 1]
+
+		if(mod[0] === 'B1') {
+			out.pop()
+			beer += X
+		}
+
+		beer -= mod[1] * X
+		out = out.concat(mod[0])
+	}
+	console.log( 'Your modules are '+ out.join())
+	return out
 }
+
 
 function checkExtraWaterProduction(modules, waterConsumption) {
 	return waterConsumption
@@ -54,5 +71,6 @@ function getModuleConfiguration(data) {
 
 module.exports = {
 	inputCalculating,
-	getModuleConfiguration
+	getModuleConfiguration,
+	getBeerProductionModules
 }
