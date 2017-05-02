@@ -10,38 +10,38 @@ block content
 	form(method="post" action="/admin/beer")
 		h2 Ingredient cost
 		.defaultCostIngredients
-			input(type="text" required class="textbox number" name="hops"  placeholder='Hops ($)' value=values.ingredientCost.hops)
-			input(type="text" required class="textbox number" name="barley" placeholder='Barley ($)' value=values.ingredientCost.barley)
-			input(type="text" required class="textbox number" name="co2" placeholder='CO2 ($)' value=values.ingredientCost.co2)
-			input(type="text" required class="textbox number" name="water" placeholder='Water ($)' value=values.ingredientCost.water)
+			input(type="text" required class="textbox number" name="hops"  placeholder='Hops ($)' value=ingredientCost.hops)
+			input(type="text" required class="textbox number" name="barley" placeholder='Barley ($)' value=ingredientCost.barley)
+			input(type="text" required class="textbox number" name="co2" placeholder='CO2 ($)' value=ingredientCost.co2)
+			input(type="text" required class="textbox number" name="water" placeholder='Water ($)' value=ingredientCost.water)
 			input(type="hidden" name="id" value='beer._id')
 			input(type="hidden" name="status" value="unchanged")
 
 		h2 Default Distribution (%)
 		.defaultDistributionValues
-			input(type="text" required class="textbox number" name="tapDist" placeholder='Tap (%)' value=values.defaultDistribution.tapDist)
-			input(type="text" required class="textbox number" name="bottleDist" placeholder='Bottle (%)' value=values.defaultDistribution.bottleDist)
-			input(type="text" required class="textbox number" name="kegDist" placeholder='Keg (%)' value=values.defaultDistribution.kegDist)
+			input(type="text" required class="textbox number" name="tapDist" placeholder='Tap (%)' value=defaultDistribution.tapDist)
+			input(type="text" required class="textbox number" name="bottleDist" placeholder='Bottle (%)' value=defaultDistribution.bottleDist)
+			input(type="text" required class="textbox number" name="kegDist" placeholder='Keg (%)' value=defaultDistribution.kegDist)
 			input(type="hidden" name="id" value='beer._id')
 			input(type="hidden" name="status" value="unchanged")
 
 		h2 Default Threshhold for Activating Bottle/Keg Containers
 			.defaultThreshhold
-				input(type="text" required class="textbox number" name="bottleThresh"  placeholder='Bottle' value=values.defaultThreshold.bottleThresh)
-				input(type="text" required class="textbox number" name="kegThresh"  placeholder='Keg' value=values.defaultThreshold.kegThresh)
+				input(type="text" required class="textbox number" name="bottleThresh"  placeholder='Bottle' value=defaultThreshold.bottleThresh)
+				input(type="text" required class="textbox number" name="kegThresh"  placeholder='Keg' value=defaultThreshold.kegThresh)
 
 		h2 Default Cost (per unit)
 		.defaultCostValues
-			input(type="text" required class="textbox number" name="tapCost"  placeholder='Tap ($)' value=values.defaultCost.tapCost)
-			input(type="text" required class="textbox number" name="bottleCost"  placeholder='Bottle ($)' value=values.defaultCost.bottleCost)
-			input(type="text" required class="textbox number" name="kegCost" placeholder='Keg ($)' value=values.defaultCost.kegCost)
+			input(type="text" required class="textbox number" name="tapCost"  placeholder='Tap ($)' value=defaultCost.tapCost)
+			input(type="text" required class="textbox number" name="bottleCost"  placeholder='Bottle ($)' value=defaultCost.bottleCost)
+			input(type="text" required class="textbox number" name="kegCost" placeholder='Keg ($)' value=defaultCost.kegCost)
 			input(type="hidden" name="id" value='beer._id')
 			input(type="hidden" name="status" value="unchanged")
 
 
 		h2 Start Value for Production
 		.defaultStartValueForProduction
-			input(type="text" required class="textbox number" name="startValueForProduction"  placeholder='$' value=values.startValueForProduction)
+			input(type="text" required class="textbox number" name="startValueForProduction"  placeholder='$' value=startValueForProduction)
 			input(type="hidden" name="id" value='beer._id')
 			input(type="hidden" name="status" value="unchanged")
 

@@ -30,9 +30,9 @@ router.get('/', (req, res) => {
 				startValueForProduction: ''
 			}
 
-			requiresAuth(req, res, 'beertype', { empty })
+			requiresAuth(req, res, 'beertype', empty)
 		} else {
-			requiresAuth(req, res, 'beertype', { values })
+			requiresAuth(req, res, 'beertype', values)
 		}
 	})
 	// res.render('editbeertype')
