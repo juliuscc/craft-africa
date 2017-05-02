@@ -35,7 +35,7 @@ router.get('/calculationform/beer', (req, res) => {
 
 router.post('/calculationform/beer', (req, res) => {
 	if(!req.body.hops) {
-		res.redirect('/admin/calculationform/beer')
+		resPost.redirect('/admin/calculationform/beer')
 	}
 	const { hops, barley, co2, water, tap1, bottle1, keg1, tap2,
 		bottle2, keg2, startValueForProduction } = req.body
@@ -54,7 +54,8 @@ router.post('/calculationform/beer', (req, res) => {
 			throw err
 		}
 	})
-	res.redirect('/admin/calculationform/beer')
+
+	resPost.redirect('/admin/calculationform/beer')
 })
 
 
@@ -99,10 +100,11 @@ router.post('/calculationform/container', (req, res) => {
 				type: element.type,
 				price: element.price,
 				size: element.size
-			}, (err) => {
+			}, (err, res1) => {
 				if(err) {
 					throw err
 				}
+				console.log('Swag // Josef : ', res1)
 			})
 		})
 		// new
