@@ -1,4 +1,4 @@
-const WATER_PER_LITER_BEER = 3.4
+const WATER_PER_LITER_BEER = 9
 
 console.log('container calculator 2 loaded')
 
@@ -39,16 +39,19 @@ function getBeerProductionModules(calculationStats) {
 	return out
 }
 
-function getPercentage(calculationStats){
+function getPercentage(calculationStats) {
 
 }
 
-function getTotalCost(calculationStats){
-
+function getTotalCost(calculationStats) {
+	const modules = calculationStats.modules
+	return modules.reduce((acc, container) => acc + container[1], 0)
 }
 
-function getElectricityConsumption(calculationStats){
-
+function getElectricityConsumption(calculationStats) {
+	const { tap, keg, bottle } = calculationStats.containerLiterDistribution
+	const totalLiters = tap + keg + bottles
+	return totalLiters * 0.3
 }
 
 

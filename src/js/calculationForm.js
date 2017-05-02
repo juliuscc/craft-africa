@@ -6,6 +6,7 @@ const ajax = require('./ajax')
 const data = {
 	litersOfBeer: 3000,
 	numberOfKegs: 30, // 900L ändra till %
+	modules: ['A1','B1'],
 	containerLiterAmount: {
 		tap: 5000,
 		bottle: 3000,
