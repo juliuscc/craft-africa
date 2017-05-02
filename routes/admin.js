@@ -1,29 +1,12 @@
 const router = require('express').Router()
 const containersModule = require('../models/containerAPI')
 const beerModule = require('../models/beerAPI')
-
 const passport = require('passport')
+const templates = require('./admin/templates')
 
-function requiresAuth(req, res, target, options) {
-	if(req.user) {
-		res.render(`Admin/'${target}`, options)
-	} else {
-		res.render('Admin/login', { user: req.user })
-	}
-}
+const requiresAuth = require('./admin/helper')
 
-router.get('/handletemplates/', (req, res) => {
-	requiresAuth(req, res, 'handletemplates', {
-		template: 'hello',
-		recipient: 'mail@foo.bar',
-		subject: 'a subject',
-		message: 'lorem ipsum dolore.......'
-	})
-})
-
-router.get('/handletemplates/edit', (req, res) => {
-	requiresAuth(req, res, 'handletemplates')
-})
+router.use('/emailtemplates', templates)
 
 router.get('/calculationform/beer', (req, res) => {
 	beerModule.getAllBeerCollections((err, res1) => {
