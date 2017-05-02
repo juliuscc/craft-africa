@@ -4,16 +4,17 @@ const ajax = require('./ajax')
 // const Vue = require('vue')
 
 const data = {
+	modules: ['B1', 'B2'],
 	litersOfBeer: 3000,
 	numberOfKegs: 30, // 900L ändra till %
 	containerLiterAmount: {
-		tap: 5000,
-		bottle: 3000,
-		keg: 3000,
+		tap: 3023,
+		bottle: 0,
+		keg: 0
 	},
 	waterDistribution: {
-		numberOfTap: 0.4, // 1770L ändra till %
-		numberOfBottles: 0.2, // 330L ändra till %
+		numberOfTap: 0.4,
+		numberOfBottles: 0.2,
 		litersOfWater: 0.2 // container capacity 5000L
 	}
 }
@@ -44,8 +45,9 @@ jsonCache.hej = ''
 // console.log(vob)
 console.log('Loaded calculation Form')
 
-containerCalculator2.getBeerProductionModules(data)
-
+// containerCalculator2.getBeerProductionModules(data)
+containerCalculator2.getPercentage(data)
+// containerCalculator2.getModuleVal('B1')
 document.querySelector('.calculation-form .calculate-button')
 		.addEventListener('click', () => {
 			console.log('clicked')
