@@ -9,7 +9,7 @@ function init() {
 
 	new ScrollMagic.Scene({
 		triggerElement: '.explosion-view-container',
-		offset: halveWindow
+		offset: halveWindow / 2
 	})
 	.on('enter', animationHandler.explode)
 	.on('leave', animationHandler.implode)
