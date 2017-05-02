@@ -2,15 +2,12 @@ const router = require('express').Router()
 const requiresAuth = require('./helper')
 const beerModule = require('../../models/beerAPI')
 
-router.get('/beer', (req, res) => {
-	beerModule.getAllBeerCollections((err, res1) => {
-		console.log(res1)
-	})
-
-	res.render('editbeertype')
+router.get('/', (req, res) => {
+	console.log('tva')
+	requiresAuth(req, res, 'beertype', { user: req.user })
 })
 
-router.post('/beer', (req, res) => {
+router.post('/', (req, res) => {
 	if(!req.body.hops) {
 		res.redirect('/admin/beer')
 	}
@@ -35,8 +32,5 @@ router.post('/beer', (req, res) => {
 	res.redirect('/admin/beer')
 })
 
-router.get('/beertype', (req, res) => {
-	requiresAuth(req, res, 'editbeertype', { user: req.user })
-})
 
 module.exports = router
