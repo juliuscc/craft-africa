@@ -33,7 +33,7 @@ module.exports.removeContainer = (id, callback) => {
 }
 
 module.exports.updateContainerById = (id, updatedProperties, callback) => {
-	Container.update({ _id: id }, { $set: updatedProperties }, callback, { upsert: true })
+	Container.update({ _id: id }, { $set: updatedProperties }, { upsert: true }, callback)
 }
 
 module.exports.getAllContainers = (callback) => {

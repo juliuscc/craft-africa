@@ -29,7 +29,7 @@ module.exports.createBeerCollection = (newBeerCollection, callback) => {
 }
 
 module.exports.updateBeerCollection = (updatedProperties, callback) => {
-	BeerCollection.update({}, { $set: updatedProperties }, callback, { upsert: true })
+	BeerCollection.update({}, { $set: updatedProperties }, { upsert: true }, callback)
 }
 
 module.exports.getAllBeerCollections = (callback) => {
