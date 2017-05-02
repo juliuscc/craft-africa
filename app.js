@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
 // Connect the database
-mongoose.connect('mongodb://localhost/craft-africa')
+mongoose.connect('mongodb://127.0.0.1/craft-africa')
 
 // Init App
 const app = express()
