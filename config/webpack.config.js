@@ -19,8 +19,8 @@ module.exports = {
 	entry: {
 		adminCont: path.resolve(__dirname, '../src/js/adminCont.js'),
 		adminBeer: path.resolve(__dirname, '../src/js/adminBeer.js'),
-		explosionView: path.resolve(__dirname, '../src/js/explosionView.js')
-		calculationForm: path.resolve(__dirname, '../src/js/calculationForm.js'),
+		explosionView: path.resolve(__dirname, '../src/js/explosionView.js'),
+		calculationForm: path.resolve(__dirname, '../src/js/calculationForm.js')
 	},
 	output: {
 		path: path.resolve(__dirname, '../public/js'),

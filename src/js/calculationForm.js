@@ -16,7 +16,7 @@ const data = {
 	modules: ['B1', 'B2'],
 	litersOfBeer: 3000,
 	numberOfKegs: 30, // 900L ändra till %
-	modules: ['A1','B1'],
+	// modules: ['A1', 'B1'],
 	containerLiterAmount: {
 		tap: 3023,
 		bottle: 0,
@@ -89,5 +89,3 @@ document.querySelectorAll('.calculation-form .container-distribution')
 
 // containerCalculator2.getBeerProductionModules(data)
 containerCalculator2.getPercentage(data)
-
-
