@@ -113,7 +113,7 @@ function getCalculationStats(inputData, defaultData) {
 	stats.ingredientsCosts = getIngredientsCosts(stats)
 
 	// Aquirering modules
-	containerCalculator.getModuleConfiguration(stats)
+	containerCalculator.getBeerProductionModules(stats)
 
 	return stats
 }

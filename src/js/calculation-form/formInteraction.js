@@ -81,7 +81,42 @@ function extractFormData() {
 	return dataObject
 }
 
+function updateDistributionSliders(calculationStatsInput, event) {
+	const calculationStats = calculationStatsInput
+
+	// Loading values from form
+	document.querySelectorAll('.calculation-form .container-distribution')
+	.forEach((el) => {
+		calculationStats.containerDistribution[el.name] = parseFloat(el.value)
+	})
+
+	// Change tracking status
+	if(event) {
+		if(event.name !== calculationStats.distributionLock[0]) {
+			calculationStats.distributionLock[1] = calculationStats.distributionLock[0]
+		}
+		// Add current
+		calculationStats.distributionLock[0] = event.name
+	} else {
+		calculationStats.distributionLock = ['tap', 'bottle']
+	}
+
+	// Calculate
+	calculationStats.containerDistribution =
+			getNewDistribution(calculationStats)
+
+	// Assigning values to form
+	document.querySelectorAll('.calculation-form .container-distribution')
+	.forEach((el) => {
+		/* eslint-disable no-param-reassign */
+		el.value = calculationStats.containerDistribution[el.name]
+		/* eslint-enable no-param-reassign */
+	})
+}
+
+
 module.exports = {
 	getNewDistribution,
+	updateDistributionSliders,
 	extractFormData
 }

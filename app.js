@@ -41,6 +41,7 @@ const contact = require('./routes/contact')
 const calculationForm = require('./routes/calculationform')
 const email = require('./routes/email')
 const admin = require('./routes/admin')
+const data = require('./routes/data')
 
 // Router
 app.use('/', index)
@@ -49,6 +50,7 @@ app.use('/contact', contact)
 app.use('/calculationform', calculationForm)
 app.use('/email', email)
 app.use('/admin', admin)
+app.use('/data', data)
 
 // Error handling
 app.use((req, res) => {

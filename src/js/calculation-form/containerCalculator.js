@@ -41,7 +41,6 @@ function getModuleVal(container, containers = [['A1', 1], ['B1', 2], ['B2', 2], 
 	}
 
 	containerList.shift()
-	console.log(containerList)
 	return getModuleVal(container, containerList)
 }
 
