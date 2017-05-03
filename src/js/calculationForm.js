@@ -1,7 +1,24 @@
 const containerCalculator = require('./calculation-form/mainCalculator')
+const containerCalculator2 = require('./calculation-form/containerCalculator')
 const formInteraction = require('./calculation-form/interaction')
 const ajax = require('./ajax')
 
+const data = {
+	modules: ['B1', 'B2'],
+	litersOfBeer: 3000,
+	numberOfKegs: 30, // 900L ändra till %
+	modules: ['A1','B1'],
+	containerLiterAmount: {
+		tap: 3023,
+		bottle: 0,
+		keg: 0
+	},
+	waterDistribution: {
+		numberOfTap: 0.4,
+		numberOfBottles: 0.2,
+		litersOfWater: 0.2 // container capacity 5000L
+	}
+}
 // const Vue = require('vue')
 // This produces errors...
 // const vob = new Vue({
@@ -62,6 +79,8 @@ document.querySelector('.calculation-form .calculate-button')
 			const formdata = formInteraction.extractFormData()
 			calcObj = containerCalculator.getCompleteCalculation(formdata, jsonCache)
 		})
+		
+containerCalculator2.getPercentage(data)
 
 // more test
 document.querySelectorAll('.calculation-form .container-distribution')

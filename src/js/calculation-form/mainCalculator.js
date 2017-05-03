@@ -73,8 +73,6 @@ function getFixedCosts(calculationStats) {
 			rent: containerCalculator.getTotalCost(calculationStats.modules)
 		}
 
-		costs.total = costs.total
-
 		return costs
 	}
 	return {}
