@@ -7,6 +7,7 @@ function removeRow(e) {
 		row.parentNode.removeChild(row)
 	} else {
 		row.classList.add('removed')
+		row.classList.add('hide')
 		status.setAttribute('value', 'removed')
 	}
 }
@@ -50,30 +51,29 @@ function addRow() {
 
 	// Create div with inputs
 	const div = document.createElement('div')
+	div.classList.add('card-panel')
 	div.innerHTML =
 `
-<div class="card-panel">
-	<div class="row">
-	<div class="input-field col s3">
-		<input id="name" type="text" name="name" required="" class="validate">
-		<label for="name">Name</label>
-	<div class="input-field col s3">
-	</div>
-		<input id="type" type="text" name="type" required="" class="validate">
-		<label for="type">Type</label>
-	</div>
-	<div class="input-field col s3">
-		<input id="price" type="number" name="price" required="" class="validate">
-		<label for="price">Price</label>
-	</div>
-	<div class="input-field col s3">
-		<input id="size" type="number" name="size" required="" class="validate">
-		<label for="size">Size</label>
-	</div>
-	<input type="button" value="remove" class="remove btn">
-	<input type="hidden" name="id" value="undefined">
-	<input type="hidden" name="status" value="new">
-	</div>
+<div class="row">
+<div class="input-field col s3">
+	<input id="name" type="text" name="name" required="" class="validate">
+	<label for="name">Name</label>
+</div>
+<div class="input-field col s3">
+	<input id="type" type="text" name="type" required="" class="validate">
+	<label for="type">Type</label>
+</div>
+<div class="input-field col s3">
+	<input id="price" type="number" name="price" required="" class="validate">
+	<label for="price">Price</label>
+</div>
+<div class="input-field col s3">
+	<input id="size" type="number" name="size" required="" class="validate">
+	<label for="size">Size</label>
+</div>
+<input type="button" value="remove" class="remove btn">
+<input type="hidden" name="id" value="undefined">
+<input type="hidden" name="status" value="new">
 </div>
 `
 
