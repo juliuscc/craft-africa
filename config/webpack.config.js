@@ -1,4 +1,4 @@
-	const path = require('path')
+const path = require('path')
 
 const lintingLoader = {
 	test: /\.js?$/,
@@ -18,7 +18,7 @@ const babelLoader = {
 module.exports = {
 	entry: {
 		adminCont: path.resolve(__dirname, '../src/js/adminCont.js'),
-		adminBeer: path.resolve(__dirname, '../src/js/adminBeer.js')
+		adminBeer: path.resolve(__dirname, '../src/js/adminBeer.js'),
 		explosionView: path.resolve(__dirname, '../src/js/explosionView.js')
 	},
 	output: {

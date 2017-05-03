@@ -1,19 +1,9 @@
 const router = require('express').Router()
-
-router.get('/', (req, res) => {
-	res.render('handletemplates', {
-		template: 'hello',
-		recipient: 'mail@foo.bar',
-		subject: 'a subject',
-		message: 'lorem ipsum dolore.......'
-	})
-})
-
-router.get('/edit', (req, res) => {
-	res.render('handletemplates')
-})
-
-module.exports = router
+const passport = require('passport')
+const requiresAuth = require('./admin/helper')
+const templates = require('./admin/templates')
+const containers = require('./admin/containers')
+const beer = require('./admin/beer')
 
 router.use('/emailtemplates', templates)
 router.use('/containers', containers)
@@ -55,10 +45,3 @@ router.post('/login', passport.authenticate('local-login', {
 }))
 
 module.exports = router
-
-const router = require('express').Router()
-const passport = require('passport')
-const requiresAuth = require('./admin/helper')
-const templates = require('./admin/templates')
-const containers = require('./admin/containers')
-const beer = require('./admin/beer')
