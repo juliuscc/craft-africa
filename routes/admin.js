@@ -18,12 +18,12 @@ router.get('/login', (req, res) => {
 })
 
 router.get('/signup', (req, res) => {
-	res.render('Admin/signup', { })
+	res.render('admin/signup', { })
 })
 
 router.get('/logout', (req, res) => {
 	req.logout()
-	res.redirect('/')
+	res.redirect('/admin/login')
 })
 
 router.get('/profile', (req, res) => {
