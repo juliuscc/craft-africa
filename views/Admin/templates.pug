@@ -1,7 +1,7 @@
 extends layout.pug
 
 block content
-	if (templateList && templateList.length > 0)
+	if templateList
 		ul
 			each template in templateList
 				li
@@ -15,7 +15,7 @@ block content
 					span.result-message= result
 			
 			p Template name
-			input(type="text" name="name" value=name id="name" )
+			input(type="text" name="name" id="name" value=name)
 			p Admin Recipient
 			input(type="email" name="recipient" id="recipient" value=recipient)
 			p Admin Subject
