@@ -2,16 +2,16 @@ const router = require('express').Router()
 const mailTemplate = require('../../models/mailTemplates')
 
 // Get all email templates.
-router.get('/email', (req, res) => {
+router.get('/', (req, res) => {
 	mailTemplate.getTemplates((err, templates) => {
-		res.render('emailtemplate', {
+		res.render('admin/templates', {
 			templateList: templates
 		})
 	})
 })
 
 // Get email template by id.
-router.get('/email/:emailId', (req, res) => {
+router.get('/:emailId', (req, res) => {
 	mailTemplate.getTemplateByName(req.params.emailId, (err, template) => {
 		let data = template
 
@@ -22,12 +22,12 @@ router.get('/email/:emailId', (req, res) => {
 			data = { result: 'New Template', name: req.params.emailId, recipient: '', admin_subject: '', user_subject: '', admin_message: '', user_message: '' }
 		}
 
-		res.render('emailtemplate', data)
+		res.render('admin/templates', data)
 	})
 })
 
 // Update specified email template by name.
-router.post('/email', (req, res) => {
+router.post('/', (req, res) => {
 	const data = req.body
 
 	mailTemplate.update({ name: data.name }, req.body, { upsert: true }, (err) => {
@@ -36,7 +36,7 @@ router.post('/email', (req, res) => {
 		} else {
 			data.result = 'Successfully updated'
 		}
-		res.render('emailtemplate', data)
+		res.render('admin/templates', data)
 	})
 })
 

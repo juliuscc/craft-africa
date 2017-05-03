@@ -1,16 +1,31 @@
 extends layout.pug
 
-block title
-	title Template Handler
-
 block content
-	form(method="post" action="/admin/emailtamplates" id="foo")
-		input(type="text" name="templateName" value=template id="templateName" )
-		br
-		input(type="email" name="email" id="recipient" value=recipient)
-		br
-		input(type="text" name="subject" id="subject" value=subject)
-		br
-		textarea(name="message" form="foo" style="width:300px; height:150px;")= message
-		br
-		input(type="submit" id="submit")
+	if (templateList && templateList.length > 0)
+		ul
+			each template in templateList
+				li
+					a(href="/admin/email/" + template.name)= template.name
+
+	else
+		a(href="/admin/email/") Go back!
+		form(method="post" action="/admin/email" id="template-form")
+			if result
+				div.result-container
+					span.result-message= result
+			
+			p Template name
+			input(type="text" name="name" value=name id="name" )
+			p Admin Recipient
+			input(type="email" name="recipient" id="recipient" value=recipient)
+			p Admin Subject
+			input(type="text" name="admin_subject" id="admin_subject" value=admin_subject)
+			p Admin Message
+			textarea(name="admin_message" form="template-form" style="width:300px; height:150px;")= admin_message
+			p User Subject
+			input(type="text" name="user_subject" id="user_subject" value=user_subject)
+			p User Message
+			textarea(name="user_message" form="template-form" style="width:300px; height:150px;")= user_message
+			br
+			br
+			input(type="submit" id="submit")
