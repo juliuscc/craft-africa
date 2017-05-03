@@ -1,8 +1,8 @@
 function requiresAuth(req, res, target, options) {
 	if(req.user) {
-		res.render(`Admin/${target}`, options)
+		res.render(`admin/${target}`, options)
 	} else {
-		res.render('Admin/login', { user: req.user })
+		res.render('admin/login', { user: req.user })
 	}
 }
 
