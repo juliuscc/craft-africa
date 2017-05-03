@@ -1,0 +1,21 @@
+extends layout.pug
+
+block content
+
+	main
+		.container
+			
+			p testtest
+			center
+					h1.fa.fa-user  Profile
+					br
+					|  
+					span
+						user= user.id
+						mail= user.mail
+						| :
+					br
+					|  
+					span
+						a(href='/admin/logout') Sign out
+					hr

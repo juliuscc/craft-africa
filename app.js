@@ -3,9 +3,12 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
-
-// Connect the database
-mongoose.connect('mongodb://127.0.0.1/craft-africa')
+const configDB = require('./config/database.js')
+const passport = require('passport')
+const LocalStrategy = require('passport-local').Strategy
+const session = require('express-session')
+const flash = require('connect-flash')
+mongoose.connect(configDB.url)
 
 // Init App
 const app = express()
@@ -21,6 +24,17 @@ app.use(cookieParser())
 
 // Set Static Folder
 app.use(express.static(path.join(__dirname, 'public')))
+
+// Passport
+app.use(session({ secret: 'shhsecret', resave: true, saveUninitialized: true }))
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(flash())
+
+// User logins
+app.use(passport.initialize())
+app.use(passport.session())
+require('./config/passport')(passport)
 
 // Routes
 const index = require('./routes/index')

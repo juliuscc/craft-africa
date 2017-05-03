@@ -1,0 +1,38 @@
+extends layout.pug
+
+block title
+	title Craft Africa - Edit Containers
+
+block header
+	h1 Edit Containers
+
+block content
+	form.col(method="post" action="/admin/containers")
+		each container in containers
+			.card-panel
+				.row
+					.input-field.col.s3
+						input#name.validate(type='text', name="name",required,value=container.name)
+						label(for='name') Name
+					.input-field.col.s3
+						input#type.validate(type='text',name="type",required,value=container.type)
+						label(for='type') Type
+					.input-field.col.s3
+						input#price.validate(type='number',name="price",required,value=container.price)
+						label(for='price') Price
+					.input-field.col.s3
+						input#size.validate(type='number',name="size",required,value=container.size)
+						label(for='size') Size
+					input.btn.remove(type="button" value = "remove")
+					input(type="hidden" name="id" value=container._id)
+					input(type="hidden" name="status" value="unchanged")
+		input.btn(type="button" id="add" value = "add container")
+		br
+		input.btn(type="submit"  name="submit")
+		
+	
+
+				
+	
+block scripts
+	script(src="/js/adminCont.js")

@@ -1,0 +1,45 @@
+doctype html
+html
+	head
+		link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css')
+		script(src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js")
+			let $ = jQuery
+
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js')
+		
+		block title
+			title Admin
+
+		style(type="text/css").
+			@media(min-width: 992px) {
+				main {
+					padding-left:320px
+				}
+			}
+
+	body
+		block nav
+			header
+				ul.side-nav.fixed
+					li.logo
+						img(src="https://craft-africa.com/images/craft-africa-logo2.jpg" style="max-width:80%")
+					li
+						a(href='/admin/containers') Add/change container
+					li
+						a(href='/admin/beer') Add/change beer types
+					li
+						a(href='/admin/emailtemplates') Add/change templates
+					li
+						a(href='/admin/signup') Add admin users
+					li
+						a(href='#!') Manage email stuff
+
+		main
+
+			block header
+
+			block content
+
+			block scripts
+
+			block footer

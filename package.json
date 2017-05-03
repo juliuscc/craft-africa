@@ -46,16 +46,22 @@
     "webpack-stream": "^3.2.0"
   },
   "dependencies": {
+    "babel-loader": "^6.4.1",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.1",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.2",
+    "express-session": "^1.15.2",
     "gmail-send": "^1.2.8",
+    "gulp-environments": "^0.1.2",
     "handlebars": "^4.0.6",
     "mongoose": "^4.9.5",
     "morgan": "^1.8.1",
-    "path": "^0.12.7",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
     "pug": "^2.0.0-beta.12",
     "scrollmagic": "^2.0.5",
-    "velocity-animate": "^1.5.0"
+    "validator": "^7.0.0"
   }
 }
