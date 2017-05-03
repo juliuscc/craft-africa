@@ -52,6 +52,7 @@ document.querySelector('.calculation-form .calculate-button')
 		.addEventListener('click', () => {
 			const formdata = formInteraction.extractFormData()
 			calcObj = containerCalculator.getCompleteCalculation(formdata, jsonCache)
+			console.log('calc: ', calcObj)
 		})
 
 // more test
