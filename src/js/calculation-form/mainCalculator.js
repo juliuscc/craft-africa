@@ -11,8 +11,8 @@ function getContainerLiterAmount(calculationStats) {
 	if(litersOfBeer && containerDistribution) {
 		return {
 			tap: litersOfBeer * containerDistribution.tap,
-			keg: litersOfBeer * containerDistribution.tap,
-			bottle: litersOfBeer * containerDistribution.tap
+			keg: litersOfBeer * containerDistribution.keg,
+			bottle: litersOfBeer * containerDistribution.bottle
 		}
 	}
 	return {}

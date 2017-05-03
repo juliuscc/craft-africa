@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 	res.render('calculationform', variables)
 })
 
-router.post('/', (req, res, next) => {
+router.post('/', (req, res) => {
 	console.log(req.body.input1)
 	console.log(req.body)
 
