@@ -32,8 +32,6 @@ app.use(passport.session())
 app.use(flash())
 
 // User logins
-app.use(passport.initialize())
-app.use(passport.session())
 require('./config/passport')(passport)
 
 // Routes
