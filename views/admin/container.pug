@@ -4,31 +4,37 @@ block title
 	title Craft Africa - Edit Containers
 
 block header
-	h1 Edit Containers
+	h3 Edit Containers
+	br
 
 block content
-	form.col(method="post" action="/admin/containers")
+	form.container(method="post" action="/admin/containers")
 		each container in containers
-			.card-panel
-				.row
-					.input-field.col.s3
-						input#name.validate(type='text', name="name",required,value=container.name)
-						label(for='name') Name
-					.input-field.col.s3
-						input#type.validate(type='text',name="type",required,value=container.type)
-						label(for='type') Type
-					.input-field.col.s3
-						input#price.validate(type='number',name="price",required,value=container.price)
-						label(for='price') Price
-					.input-field.col.s3
-						input#size.validate(type='number',name="size",required,value=container.size)
-						label(for='size') Size
-					input.btn.remove(type="button" value = "remove")
-					input(type="hidden" name="id" value=container._id)
-					input(type="hidden" name="status" value="unchanged")
-		input.btn(type="button" id="add" value = "add container")
+			.card
+				.card-title
+					h4(style="padding: 10px 15px")= container.name
+				.card-content
+					.row
+						.input-field.col.s3
+							input#name.validate(type='text', name="name",required,value=container.name)
+							label(for='name') Name
+						.input-field.col.s3
+							input#type.validate(type='text',name="type",required,value=container.type)
+							label(for='type') Type
+						.input-field.col.s3
+							input#price.validate(type='number',name="price",required,value=container.price)
+							label(for='price') Price
+						.input-field.col.s3
+							input#size.validate(type='number',name="size",required,value=container.size)
+							label(for='size') Size
+						input.btn.remove.red.right(type="button" value = "remove", style="margin-right: 10px")
+						input.btn.save.blue.right(type="button" value = "save", style="margin-right:10px")
+						input(type="hidden" name="id" value=container._id)
+						input(type="hidden" name="status" value="unchanged")
+		input.btn.right(type="button" id="add" value = "add new container")
 		br
-		input.btn(type="submit"  name="submit")
+		br
+		input.btn-large.right(type="submit"  name="submit" value="submit")
 		
 	
 
