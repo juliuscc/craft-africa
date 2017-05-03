@@ -49,7 +49,7 @@ function inputCalculating(data) {
 }
 
 function getModuleConfiguration(data) {
-	return { modules: 'modules', water: 130, data }
+	return { modules: ['module1', 'module2', 'module3'], water: 130, data }
 }
 
 module.exports = {
