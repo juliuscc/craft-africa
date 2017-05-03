@@ -1,14 +1,20 @@
 const router = require('express').Router()
 const passport = require('passport')
 const requiresAuth = require('./admin/helper')
-const templates = require('./admin/templates')
-const containers = require('./admin/containers')
-const beer = require('./admin/beer')
 
-router.use('/emailtemplates', templates)
-router.use('/containers', containers)
-router.use('/beer', beer)
+// Get Routes
+const templatesRoute = require('./admin/templates')
+const containersRoute = require('./admin/containers')
+const beerRoute = require('./admin/beer')
+const emailRoute = require('./admin/email')
 
+// Set Routes
+router.use('/emailtemplates', templatesRoute)
+router.use('/containers', containersRoute)
+router.use('/beer', beerRoute)
+router.use('/email', emailRoute)
+
+// Login stuff
 router.get('/', (req, res) => {
 	requiresAuth(req, res, 'index')
 })
