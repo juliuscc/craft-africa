@@ -1,15 +1,9 @@
 function removeRow(e) {
-	e.preventDefault()
-
 	const row = this.parentNode.parentNode
 	const status = row.querySelector('[name="status"]')
-	if(status.getAttribute('value') === 'new') {
-		row.parentNode.removeChild(row)
-	} else {
-		row.classList.add('removed')
-		row.classList.add('hide')
-		status.setAttribute('value', 'removed')
-	}
+
+	row.classList.add('removed')
+	status.setAttribute('value', 'removed')
 }
 
 function disableSubmit(isDisabled) {
@@ -47,8 +41,7 @@ function rowEdited(e) {
 
 function addRow() {
 	// Get form
-	const form = document.querySelector('form')
-
+	const form = document.querySelector('.addRow')
 	// Create div with inputs
 	const div = document.createElement('div')
 	div.classList.add('card-panel')
