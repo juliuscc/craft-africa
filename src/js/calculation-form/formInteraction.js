@@ -7,11 +7,10 @@ function getNewDistribution(calculationStats) {
 	let locked = -1
 
 	// Create a copy and remove the current slider
-	// const tempData = Object.assign({}, stats.containerDistribution)
 	const tempData = []
 	const tempNames = []
-	Object.keys(calculationStats.containerDistribution).forEach((el, index) => {
-		tempData.push(calculationStats.containerDistribution[el])
+	Object.keys(calculationStats.distribution).forEach((el, index) => {
+		tempData.push(calculationStats.distribution[el])
 		tempNames.push(el)
 
 		// Extracting key status
@@ -52,19 +51,19 @@ function extractFormData() {
 	// Extract form data and insert it into a object
 	const formdata = new FormData(document.querySelector('form.calculation-form'))
 	const entries = formdata.entries()
-	const dataObject = { containerDistribution: {} }
+	const dataObject = { distribution: {} }
 
 	/* eslint-disable no-restricted-syntax */
 	for(const entry of entries) {
 		switch (entry[0]) {
 		case 'keg':
-			dataObject.containerDistribution[entry[0]] = parseFloat(entry[1])
+			dataObject.distribution[entry[0]] = parseFloat(entry[1])
 			break
 		case 'bottle':
-			dataObject.containerDistribution[entry[0]] = parseFloat(entry[1])
+			dataObject.distribution[entry[0]] = parseFloat(entry[1])
 			break
 		case 'tap':
-			dataObject.containerDistribution[entry[0]] = parseFloat(entry[1])
+			dataObject.distribution[entry[0]] = parseFloat(entry[1])
 			break
 
 		default:
@@ -87,7 +86,7 @@ function loadFormInputs(calculationStats) {
 	// Loading values from form
 	document.querySelectorAll('.calculation-form .container-distribution')
 	.forEach((el) => {
-		stats.containerDistribution[el.name] = parseFloat(el.value)
+		stats.distribution[el.name] = parseFloat(el.value)
 	})
 }
 
@@ -96,7 +95,7 @@ function saveFormInputs(calculationStats) {
 	document.querySelectorAll('.calculation-form .container-distribution')
 	.forEach((el) => {
 		/* eslint-disable no-param-reassign */
-		el.value = calculationStats.containerDistribution[el.name]
+		el.value = calculationStats.distribution[el.name]
 		/* eslint-enable no-param-reassign */
 	})
 }
@@ -118,7 +117,7 @@ function updateDistributionSliders(calculationStats, event) {
 	}
 
 	// Calculate
-	stats.containerDistribution =
+	stats.distribution =
 			getNewDistribution(stats)
 
 	saveFormInputs(stats)
@@ -126,6 +125,8 @@ function updateDistributionSliders(calculationStats, event) {
 
 
 module.exports = {
+	loadFormInputs,
+	saveFormInputs,
 	getNewDistribution,
 	updateDistributionSliders,
 	extractFormData

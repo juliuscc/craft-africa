@@ -11,8 +11,8 @@ block content
 	p This is a calculation form
 	div#calculation-form
 	form(action="/calculationform", method="post", class="calculation-form" enctype="application/json")
-		p Liters of Beer {{litersOfBeer}}
-		input(type="range", name="litersOfBeer", value= litersOfBeer, min= minLitersOfBeer, max= maxLitersOfBeer)
+		p Liters of Beer
+		input(type="range", name="totalVolume", value= totalVolume, min= minTotalVolume, max= maxTotalVolume)
 		p Liters of Water
 		input(type="range", name="litersOfWater", value= litersOfWater)
 		p Finetune distribution (tap, keg, bottle)
