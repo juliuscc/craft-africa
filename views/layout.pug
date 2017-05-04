@@ -32,6 +32,8 @@ html
 		link(rel="stylesheet" href="/stylesheets/main.css")
 
 	body
+		include partials/navbar
+
 		block header
 
 		block content
@@ -40,6 +42,7 @@ html
 			include partials/footer
 
 		script(src="https://cdn.polyfill.io/v2/polyfill.min.js")
+		script(src="/js/navbar.js")
 		
 		block scripts
 		
