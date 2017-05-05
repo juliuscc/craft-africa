@@ -5,9 +5,9 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const configDB = require('./config/database.js')
 const passport = require('passport')
-const LocalStrategy = require('passport-local').Strategy
 const session = require('express-session')
 const flash = require('connect-flash')
+
 mongoose.connect(configDB.url)
 
 // Init App
@@ -60,8 +60,6 @@ app.use((req, res) => {
 
 /* eslint-disable no-unused-vars */
 app.use((err, req, res, next) => {
-	res.status(500)
-	res.render('500')
 	throw err
 })
 /* eslint-enable no-unused-vars */
