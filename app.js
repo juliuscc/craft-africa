@@ -58,11 +58,13 @@ app.use((req, res) => {
 	res.render('404')
 })
 
+/* eslint-disable no-unused-vars */
 app.use((err, req, res, next) => {
 	res.status(500)
 	res.render('500')
-	next()
+	throw err
 })
+/* eslint-enable no-unused-vars */
 
 // Set Port
 app.set('port', (process.env.PORT || 5000))
