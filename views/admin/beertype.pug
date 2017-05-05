@@ -1,10 +1,10 @@
 extends layout.pug
 
 block title
-	title Craft Africa - Edit Beers
+	title Modify beer types
 
-block header
-	h3 Edit Beers
+block vars
+	- var title = "Modify beer types"
 
 block content
 	form(method="post" action="/admin/beer" style="padding: 10px 40px 20px 10px")

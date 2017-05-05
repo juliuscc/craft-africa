@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/login', (req, res) => {
-	requiresAuth(req, res, 'profile', { user: req.user })
+	requiresAuth(req, res, 'containers', { user: req.user })
 })
 
 router.get('/signup', (req, res) => {
@@ -33,18 +33,18 @@ router.get('/logout', (req, res) => {
 })
 
 router.get('/profile', (req, res) => {
-	requiresAuth(req, res, 'profile', { user: req.user })
+	requiresAuth(req, res, 'containers', { user: req.user })
 })
 
 router.post('/signup', passport.authenticate('local-signup', {
-	successRedirect: 'profile',
+	successRedirect: 'containers',
 	failureRedirect: 'signup',
 	failureFlash: true
 
 }))
 
 router.post('/login', passport.authenticate('local-login', {
-	successRedirect: 'profile',
+	successRedirect: 'containers',
 	failureRedirect: 'login',
 	failureFlash: true
 
