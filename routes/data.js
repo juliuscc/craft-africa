@@ -1,25 +1,19 @@
 const router = require('express').Router()
+const containerAPI = require('./../models/containerAPI.js')
+
+const Container = containerAPI.Container
 
 // Getting all the calculation stats from the database
+Container.getAllContainers()
 router.get('/stats', (req, res) => {
 	res.json({
-		modules: ['B1', 'B2'],
-		volume: {
-			total: 3000
-		},
-		// numberOfKegs: 30, // 900L ändra till %
-		// modules: ['A1', 'B1'],
-		containerLiterAmount: {
-			tap: 3023,
-			bottle: 0,
-			keg: 0
-		},
-		distribution: {
-			tap: 0.4,
-			bottle: 0.2,
-			keg: 0.2 // container capacity 5000L
+		containers: {
+			production: Container,
+			storage: 1,
+			addons: 1
 		}
 	})
 })
 
 module.exports = router
+

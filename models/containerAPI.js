@@ -9,16 +9,23 @@ const containerSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
-	size: {
-		type: Number,
-		required: true
-	},
 	price: {
 		type: Number,
-		required: true
+		required: true  
+	},
+	fermentingCapacity: {
+		type: Number
+	},
+	storageCapacity: {
+		type: Number
+	},
+	waterProduction: {
+		type: Number
+	},
+	beerProduction: {
+		type: Number
 	}
 })
-
 const Container = mongoose.model('Container', containerSchema)
 module.exports = Container
 
