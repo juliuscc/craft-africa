@@ -60,8 +60,6 @@ app.use((req, res) => {
 
 /* eslint-disable no-unused-vars */
 app.use((err, req, res, next) => {
-	res.status(500)
-	res.render('500')
 	throw err
 })
 /* eslint-enable no-unused-vars */
