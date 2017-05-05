@@ -6,12 +6,14 @@ const requiresAuth = require('./admin/helper')
 const templatesRoute = require('./admin/templates')
 const containersRoute = require('./admin/containers')
 const beerRoute = require('./admin/beer')
+const beerTypeRoute = require('./admin/beertype')
 const emailRoute = require('./admin/email')
 
 // Set Routes
 router.use('/emailtemplates', templatesRoute)
 router.use('/containers', containersRoute)
 router.use('/beer', beerRoute)
+router.use('/beer', beerTypeRoute)
 router.use('/email', emailRoute)
 
 // Login stuff

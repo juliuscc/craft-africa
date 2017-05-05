@@ -1,65 +1,45 @@
 extends layout.pug
 
 block title
-	title Craft Africa - Edit Beers
+	title Craft Africa - Edit Containers
 
 block header
-	h3 Edit Beers
+	h3 Beer Types
+	br
 
 block content
-	form(method="post" action="/admin/beer" style="padding: 10px 40px 20px 10px")
+	each container, index in containers
+		form.container(method="post" action="/admin/containers")
 			.card
+				.card-title
+					h4(style="padding: 10px 15px")= container.name
 				.card-content
-					span.card-title Ingredient cost
-					.defaultCostIngredients
-						input(type="text" required class="textbox number" name="hops"  placeholder='Hops ($)' value=ingredientCost.hops)
-						input(type="text" required class="textbox number" name="barley" placeholder='Barley ($)' value=ingredientCost.barley)
-						input(type="text" required class="textbox number" name="co2" placeholder='CO2 ($)' value=ingredientCost.co2)
-						input(type="text" required class="textbox number" name="water" placeholder='Water ($)' value=ingredientCost.water)
-						input(type="hidden" name="id" value='beer._id')
+					.row
+						.input-field.col.s3
+							input#name.validate(type='text', name="name",required,value=container.name)
+							label(for='name') Name
+						.input-field.col.s3
+							input#type.validate(type='text',name="type",required,value=container.type)
+							label(for='type') Type
+						.input-field.col.s3
+							input#price.validate(type='number',name="price",required,value=container.price)
+							label(for='price') Price
+						.input-field.col.s3
+							input#size.validate(type='number',name="size",required,value=container.size)
+							label(for='size') Size
+						input.btn.remove.red.right(type="submit" value = "remove", style="margin-right: 10px")
+						input.btn.save.blue.right(type="submit" value = "save", style="margin-right:10px")
+						input(type="hidden" name="id" value=container._id)
 						input(type="hidden" name="status" value="unchanged")
+	form(method="post" class="addRow" action="/admin/containers/new")
+		input.btn.left(type="button" id="add" value = "add new container")
+		br
+		br
+		input.btn-large.left(type="submit"  name="submit" value="submit")
+		
+	
 
-			.card
-				.card-content
-					span.card-title Default Distribution (%)
-					.defaultDistributionValues
-					input(type="text" required class="textbox number" name="tapDist" placeholder='Tap (%)' value=defaultDistribution.tapDist)
-					input(type="text" required class="textbox number" name="bottleDist" placeholder='Bottle (%)' value=defaultDistribution.bottleDist)
-					input(type="text" required class="textbox number" name="kegDist" placeholder='Keg (%)' value=defaultDistribution.kegDist)
-					input(type="hidden" name="id" value='beer._id')
-					input(type="hidden" name="status" value="unchanged")
-
-			.card
-				.card-content
-					span.card-title Default Threshhold for Activating Bottle/Keg Containers
-					.defaultThreshhold
-					input(type="text" required class="textbox number" name="bottleThresh"  placeholder='Bottle' value=defaultThreshold.bottleThresh)
-					input(type="text" required class="textbox number" name="kegThresh"  placeholder='Keg' value=defaultThreshold.kegThresh)
-
-			.card
-				.card-content
-					span.card-title Default Cost (per unit)
-					.defaultCostValues
-						input(type="text" required class="textbox number" name="tapCost"  placeholder='Tap ($)' value=defaultCost.tapCost)
-						input(type="text" required class="textbox number" name="bottleCost"  placeholder='Bottle ($)' value=defaultCost.bottleCost)
-						input(type="text" required class="textbox number" name="kegCost" placeholder='Keg ($)' value=defaultCost.kegCost)
-						input(type="hidden" name="id" value='beer._id')
-						input(type="hidden" name="status" value="unchanged")
-
-
-			.card
-				.card-content
-					span.card-title Start Value for Production
-					.defaultStartValueForProduction
-						input(type="text" required class="textbox number" name="startValueForProduction"  placeholder='$' value=startValueForProduction)
-						input(type="hidden" name="id" value='beer._id')
-						input(type="hidden" name="status" value="unchanged")
-
-			br
-			input.btn.right.blue(type="submit" disabled=false name="submit" value="Submit")
-			br
-			br
-			br
+				
 	
 block scripts
-	script(src="/js/adminBeer.js")
+	script(src="/js/adminCont.js")
