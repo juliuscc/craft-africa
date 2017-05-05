@@ -44,23 +44,49 @@ function isNumbers(values) {
 	// values.forEach(v => console.log(v))
 }
 
-function isempty() {
-	let isCorrect = false
-	if(true) {
-		isCorrect = true
+function isEmpty(values) {
+	let empty = false
+	if(values) {
+		const temp = values
+		Object.keys(temp).forEach((key) => {
+			if(!Number.isInteger(temp[key])) {
+				if(validator.isEmpty(temp[key])) {
+					empty = true
+				}
+			}
+		})
+	} else {
+		empty = true
 	}
-	return isCorrect
+	return empty
 }
 
 function isInputCorrect(updatedProperties) {
-	const price = JSON.parse(updatedProperties.price)
+	// ingredientCost
+	const ic = JSON.parse(updatedProperties.ingredientCost)
 
-	const size = JSON.parse(updatedProperties.size)
+	// defaultDistribution
+	const dd = JSON.parse(updatedProperties.defaultDistribution)
 
-	const validated = false
-	if(isNumbers(price) &&
-		isNumbers(size)) {
-		return true
+	// defaultThreshold
+	const dt = JSON.parse(updatedProperties.defaultThreshold)
+
+	// defaultCost
+	const dc = JSON.parse(updatedProperties.defaultCost)
+
+	// startValueForProduction
+	const svfp = updatedProperties.startValueForProduction
+
+	console.log(svfp)
+
+	let validated = false
+	if(!isEmpty(ic) && isNumbers(ic) &&
+		!isEmpty(dd) && isNumbers(dd) &&
+		!isEmpty(dt) && isNumbers(dt) &&
+		!isEmpty(dc) && isNumbers(dc) &&
+		!isEmpty({ svfp }) && isNumbers({ svfp })
+		) {
+		validated = true
 	}
 	return validated
 }

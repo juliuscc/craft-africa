@@ -23,10 +23,24 @@ const beerSchema = mongoose.Schema({
 	}
 })
 
+function isEmpty(values) {
+	let empty = false
+	if(values) {
+		const temp = values
+		Object.keys(temp).forEach((key) => {
+			if(!Number.isInteger(temp[key])) {
+				if(validator.isEmpty(temp[key])) {
+					empty = true
+				}
+			}
+		})
+	} else {
+		empty = true
+	}
+	return empty
+}
+
 function isNumbers(values) {
-	// console.log('may')
-	// console.log(values)
-	// const temp = '14'
 	let areIntegers = true
 	if(values) {
 		const temp = values
@@ -38,9 +52,6 @@ function isNumbers(values) {
 					areIntegers = false
 				}
 			}
-			// console.log(key, values[key])
-		// if(validator.isInt(defaultDistribution.tapDist)){
-		// }
 		})
 	}
 	return areIntegers
@@ -63,13 +74,16 @@ function isInputCorrect(updatedProperties) {
 	// startValueForProduction
 	const svfp = updatedProperties.startValueForProduction
 
-	const validated = false
-	if(isNumbers(ic) &&
-		isNumbers(dd) &&
-		isNumbers(dt) &&
-		isNumbers(dc) &&
-		isNumbers({ svfp })) {
-		return true
+	console.log(svfp)
+
+	let validated = false
+	if(!isEmpty(ic) && isNumbers(ic) &&
+		!isEmpty(dd) && isNumbers(dd) &&
+		!isEmpty(dt) && isNumbers(dt) &&
+		!isEmpty(dc) && isNumbers(dc) &&
+		!isEmpty({ svfp }) && isNumbers({ svfp })
+		) {
+		validated = true
 	}
 	return validated
 }
@@ -86,6 +100,7 @@ module.exports.createBeerCollection = (newBeerCollection, callback) => {
 
 module.exports.updateBeerCollection = (updatedProperties, callback) => {
 	if(isInputCorrect(updatedProperties)) {
+		console.log('validated')
 		BeerCollection.update({}, { $set: updatedProperties }, { upsert: true }, callback)
 	} else {
 		// TODO
