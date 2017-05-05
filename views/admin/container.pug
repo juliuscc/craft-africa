@@ -16,19 +16,19 @@ block content
 				.card-content
 					.row
 						.input-field.col.s3
-							input#name.validate(type='text', name="name",required,value=container.name)
+							input#name.validate(type='text' name="name" value=container.name)
 							label(for='name') Name
 						.input-field.col.s3
-							input#type.validate(type='text',name="type",required,value=container.type)
+							input#type.validate(type='text' name="type" required,value=container.type)
 							label(for='type') Type
 						.input-field.col.s3
-							input#price.validate(type='number',name="price",required,value=container.price)
+							input#price.validate(type='number' name="price" required,value=container.price)
 							label(for='price') Price
 						.input-field.col.s3
-							input#size.validate(type='number',name="size",required,value=container.size)
+							input#size.validate(type='number' name="size" required value=container.size)
 							label(for='size') Size
-						input.btn.remove.red.right(type="submit" value = "remove", style="margin-right: 10px")
-						input.btn.save.blue.right(type="submit" value = "save", style="margin-right:10px")
+						input.btn.remove.red.right(type="submit" value = "remove" style="margin-right: 10px")
+						input.btn.save.blue.right(type="submit" value = "save" style="margin-right:10px")
 						input(type="hidden" name="id" value=container._id)
 						input(type="hidden" name="status" value="unchanged")
 	form(method="post" class="addRow" action="/admin/containers/new")
@@ -36,9 +36,6 @@ block content
 		br
 		br
 		input.btn-large.left(type="submit"  name="submit" value="submit")
-		
-	
-
 				
 	
 block scripts

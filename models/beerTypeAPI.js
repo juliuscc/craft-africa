@@ -1,21 +1,17 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
 
-const containerSchema = mongoose.Schema({
+const beerSchema = mongoose.Schema({
 	name: {
 		type: String,
 		required: true
 	},
-	type: {
+	fermenting: {
+		type: Number,
+		required: true
+	},
+	ingredient: {
 		type: String,
-		required: true
-	},
-	size: {
-		type: Number,
-		required: true
-	},
-	price: {
-		type: Number,
 		required: true
 	}
 })
@@ -57,59 +53,57 @@ function isEmpty(values) {
 function isInputCorrect(updatedProperties) {
 	const name = updatedProperties.name
 
-	const type = updatedProperties.type
+	const fermenting = updatedProperties.fermenting
 
-	const price = updatedProperties.price
-
-	const size = updatedProperties.size
+	const ingredient = updatedProperties.ingredient
 
 	let validated = false
 	if(
-		!isEmpty({ type }) &&
-		!isEmpty({ price }) && isNumbers({ price }) &&
-		!isEmpty({ size }) && isNumbers({ size })
+		!isEmpty({ name }) &&
+		!isEmpty({ fermenting }) && isNumbers({ fermenting }) &&
+		!isEmpty(ingredient) && isNumbers(ingredient)
 		) {
 		validated = true
 	}
 	return validated
 }
 
-const Container = mongoose.model('Container', containerSchema)
-module.exports = Container
+const BeerType = mongoose.model('BeerType', beerSchema)
+module.exports = BeerType
 
-module.exports.createContainer = (newContainer, callback) => {
-	if(isInputCorrect(newContainer)) {
-		const containerObject = new Container(newContainer)
+module.exports.createBeer = (newBeer, callback) => {
+	if(isInputCorrect(newBeer)) {
+		const containerObject = new BeerType(newBeer)
 		containerObject.save(callback)
 	} else {
 		callback()
 	}
 }
 
-module.exports.removeContainer = (id, callback) => {
+module.exports.removeBeer = (id, callback) => {
 	const query = { _id: id }
-	Container.remove(query, callback)
+	BeerType.remove(query, callback)
 }
 
-module.exports.updateContainerById = (id, updatedProperties, callback) => {
+module.exports.updateBeerById = (id, updatedProperties, callback) => {
 	if(isInputCorrect(updatedProperties)) {
-		Container.update({ _id: id }, { $set: updatedProperties }, { upsert: true }, callback)
+		BeerType.update({ _id: id }, { $set: updatedProperties }, { upsert: true }, callback)
 	} else {
 		callback()
 	}
 }
 
-module.exports.getAllContainers = (callback) => {
+module.exports.getAllBeers = (callback) => {
 	const query = {}
-	Container.find(query, callback)
+	BeerType.find(query, callback)
 }
 
-module.exports.getContainerByName = (fieldName, callback) => {
+module.exports.getBeersByName = (fieldName, callback) => {
 	const query = { name: fieldName }
-	Container.findOne(query, callback)
+	BeerType.findOne(query, callback)
 }
 
-module.exports.getContainerByType = (fieldType, callback) => {
+module.exports.getBeerByType = (fieldType, callback) => {
 	const query = { type: fieldType }
-	Container.find(query, callback)
+	BeerType.find(query, callback)
 }

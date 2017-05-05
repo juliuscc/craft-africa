@@ -55,10 +55,10 @@ function isNumbers(values) {
 		})
 	}
 	return areIntegers
-	// values.forEach(v => console.log(v))
 }
 
 function isInputCorrect(updatedProperties) {
+	console.log(updatedProperties)
 	// ingredientCost
 	const ic = JSON.parse(updatedProperties.ingredientCost)
 
@@ -73,8 +73,6 @@ function isInputCorrect(updatedProperties) {
 
 	// startValueForProduction
 	const svfp = updatedProperties.startValueForProduction
-
-	console.log(svfp)
 
 	let validated = false
 	if(!isEmpty(ic) && isNumbers(ic) &&
