@@ -39,20 +39,19 @@ function getFermentingModules(stats) {
 
 // Sort out the appropriate modules
 	const identifyingTypeChar = chosenProductionModule.name.charAt(0)
-	const filteredFermentationModules = fermentingModules.filter((element) => {
-		return element.name.charAt(0) === identifyingTypeChar
-	})
+	const filteredFermentationModules = fermentingModules.filter(
+		element => element.name.charAt(0) === identifyingTypeChar)
 
-	let choosenFermentationModules = []
+	let requiredFermentationModules = []
 // Subtract fermenting capacity for each available module
 	filteredFermentationModules.forEach((container) => {
 		if(neededCapacity > 0) {
 			neededCapacity -= container.fermenting
-			choosenFermentationModules.push(container)
+			requiredFermentationModules.push(container)
 		}
 	})
 
-	return choosenFermentationModules
+	return requiredFermentationModules
 }
 
 // Get the addon modules
