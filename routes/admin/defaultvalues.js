@@ -3,7 +3,7 @@ const requiresAuth = require('./helper')
 const beerModule = require('../../models/defaultValuesAPI')
 
 router.get('/', (req, res) => {
-	beerModule.getAllBeerCollections((err, values) => {
+	beerModule.getAllDefaultValuesCollections((err, values) => {
 		// requiresAuth(req, res, 'beertype')
 		if(!values.ingredientCost) {
 			const empty = {
@@ -50,7 +50,7 @@ router.post('/', (req, res) => {
 	const defaultThreshold = JSON.stringify({ bottleThresh, kegThresh })
 	const defaultCost = JSON.stringify({ tapCost, bottleCost, kegCost })
 
-	beerModule.updateBeerCollection({
+	beerModule.updateDefaultValuesCollection({
 		ingredientCost,
 		defaultDistribution,
 		defaultThreshold,

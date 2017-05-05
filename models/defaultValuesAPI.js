@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
 
-const beerSchema = mongoose.Schema({
+const defaultValuesSchema = mongoose.Schema({
 	ingredientCost: {
 		type: String,
 		required: true
@@ -58,7 +58,6 @@ function isNumbers(values) {
 }
 
 function isInputCorrect(updatedProperties) {
-	console.log(updatedProperties)
 	// ingredientCost
 	const ic = JSON.parse(updatedProperties.ingredientCost)
 
@@ -87,19 +86,19 @@ function isInputCorrect(updatedProperties) {
 }
 
 
-const BeerCollection = mongoose.model('beerCollection', beerSchema)
-module.exports = BeerCollection
+const DefaultValuesCollection = mongoose.model('defaultValuesCollection', defaultValuesSchema)
+module.exports = DefaultValuesCollection
 
-module.exports.createBeerCollection = (newBeerCollection, callback) => {
-	const beerObject = new BeerCollection(newBeerCollection)
+module.exports.createDefaultValuesCollection = (newDefaultValuesCollection, callback) => {
+	const beerObject = new DefaultValuesCollection(newDefaultValuesCollection)
 	// console.log(newBeerCollection.ingredientCost)
 	beerObject.save(callback)
 }
 
-module.exports.updateBeerCollection = (updatedProperties, callback) => {
+module.exports.updateDefaultValuesCollection = (updatedProperties, callback) => {
 	if(isInputCorrect(updatedProperties)) {
 		console.log('validated')
-		BeerCollection.update({}, { $set: updatedProperties }, { upsert: true }, callback)
+		DefaultValuesCollection.update({}, { $set: updatedProperties }, { upsert: true }, callback)
 	} else {
 		// TODO
 		// Send message to page somehow
@@ -112,25 +111,25 @@ module.exports.updateBeerCollection = (updatedProperties, callback) => {
 
 module.exports.getIngredientsCollection = (callback) => {
 	const query = {}
-	BeerCollection.findOne(query, callback)
+	DefaultValuesCollection.findOne(query, callback)
 }
 module.exports.getDistributionCollection = (callback) => {
 	const query = {}
-	BeerCollection.findOne(query, callback)
+	DefaultValuesCollection.findOne(query, callback)
 }
 module.exports.getCostCollection = (callback) => {
 	const query = {}
-	BeerCollection.findOne(query, callback)
+	DefaultValuesCollection.findOne(query, callback)
 }
 module.exports.getStartValueForProductionCollection = (callback) => {
 	const query = {}
-	BeerCollection.findOne(query, callback)
+	DefaultValuesCollection.findOne(query, callback)
 }
 
 
-module.exports.getAllBeerCollections = (callback) => {
+module.exports.getAllDefaultValuesCollections = (callback) => {
 	const query = {}
-	BeerCollection.findOne(query, (err, values) => {
+	DefaultValuesCollection.findOne(query, (err, values) => {
 		if(!values) {
 			callback(err, {})
 		} else {
