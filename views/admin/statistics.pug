@@ -1,0 +1,10 @@
+extends layout.pug
+
+block content
+	H1 Statistics
+	canvas(id="myChart",width="200",height="200")
+	canvas(id="myChart2",width="200",height="200")
+	canvas(id="myChart3",width="200",height="200")
+
+block scripts
+	script(src="/js/admin/statistics.js")
