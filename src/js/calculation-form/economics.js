@@ -7,55 +7,74 @@ ________________________________________________________________________________
 function getVariableCosts(stats) {
 	// volume and ingredientscosts needs to be calculated. The rest is from form or db
 	const {
-		containerProductionCosts,
+		productionCosts,
 		volume,
-		ingredientsCosts
+		beerType
 	} = stats
 
-	if(volume && ingredientsCosts && volume.total && containerProductionCosts) {
-		const costs = {
-			kegPrice: containerProductionCosts.keg * volume.keg,
-			tapPrice: containerProductionCosts.tap * volume.tap,
-			bottlePrice: containerProductionCosts.bottle * volume.bottle,
-			ingredients: ingredientsCosts.total * volume.total
+	const costs = {}
+
+	if(volume && beerType.current.cost && volume.total && productionCosts) {
+		if(beerType.current.cost && volume.total) {
+			costs.ingredients = beerType.current.cost * volume.total
+		} else {
+			costs.ingredients = NaN
+		}
+
+		if(productionCosts && volume.tap && volume.bottle && volume.keg) {
+			costs.kegPrice = productionCosts.keg * volume.keg
+			costs.tapPrice = productionCosts.tap * volume.tap
+			costs.bottlePrice = productionCosts.bottle * volume.bottle
+		} else {
+			costs.kegPrice = NaN
+			costs.tapPrice = NaN
+			costs.bottlePrice = NaN
 		}
 
 		costs.total = costs.kegPrice + costs.tapPrice + costs.bottlePrice + costs.ingredients
 
 		return costs
 	}
-	return {}
+	return {
+		ingredients: NaN,
+		kegPrice: NaN,
+		tapPrice: NaN,
+		bottlePrice: NaN,
+		total: NaN
+	}
 }
 
 // Get the fixed costs for producing the current setup.
 function getFixedCosts(stats) {
 	// Modules needs to be gathered before
-	if(stats.modules) {
+	if(stats.modules.current) {
 		const costs = {
 			rent: container.getCost(stats)
 		}
 
+		costs.total = costs.rent
+
 		return costs
 	}
-	return {}
+	return {
+		rent: NaN,
+		total: NaN
+	}
 }
 
 // Calculate the total income from distribution and prices
 function getIncome(stats) {
 	// volume needs to be calculated before
-	const { containerLiterPrice, volume } = stats
+	const { sellingCosts, volume } = stats
 
-	const incomes = {}
+	if(sellingCosts && volume) {
+		const kegPrice 		= sellingCosts.keg * volume.keg
+		const tapPrice 		= sellingCosts.tap * volume.tap
+		const bottlePrice 	= sellingCosts.bottle * volume.bottle
 
-	if(containerLiterPrice && volume) {
-		const kegPrice 		= containerLiterPrice.keg * volume.keg
-		const tapPrice 		= containerLiterPrice.tap * volume.tap
-		const bottlePrice 	= containerLiterPrice.bottle * volume.bottle
-
-		incomes.total = kegPrice + tapPrice + bottlePrice
-		return incomes
+		return kegPrice + tapPrice + bottlePrice
 	}
-	return {}
+	return NaN
 }
 
 

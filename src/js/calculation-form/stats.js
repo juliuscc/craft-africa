@@ -8,15 +8,17 @@ ________________________________________________________________________________
 function getDistributionVolume(stats) {
 	// Both values are selected by the form
 	const { volume, distribution } = stats
+	const volumeData = {}
 
-	if(volume.total && distribution) {
-		return {
-			tap: volume.total * distribution.tap,
-			keg: volume.total * distribution.keg,
-			bottle: volume.total * distribution.bottle
-		}
+	Object.assign(volumeData, volume)
+
+	if(volumeData.total && distribution) {
+		volumeData.tap = volume.total * distribution.tap
+		volumeData.keg = volume.total * distribution.keg
+		volumeData.bottle = volume.total * distribution.bottle
 	}
-	return {}
+
+	return volumeData
 }
 
 /* Public interface
@@ -33,11 +35,17 @@ function getCalculationStats(inputData, defaultData) {
 	stats.volume = getDistributionVolume(stats)
 
 	// Aquirering modules
-	stats.containers = container.getConfiguration(stats)
+	stats.containers.current = container.getConfiguration(stats)
+
+	// Calculate how much energy and water the modules produce
+	stats.electricityProduction = container.getEnergyProduction(stats)
+	stats.waterProduction = container.getWaterCleaningCapacity(stats)
 
 	// Add the beer unit costs
-	stats.beertype.current = stats.beertype.options[0] // Todo change this?
-	stats.beertype.current.costs = beerTypes.getProductionCost()
+	if(!stats.beertype.current) {
+		stats.beertype = beerTypes.getDefaultBeerType(stats)
+	}
+	stats.beertype.current.costs = beerTypes.getProductionCost(stats)
 
 	return stats
 }

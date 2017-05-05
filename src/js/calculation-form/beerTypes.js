@@ -29,8 +29,19 @@ function getProductionCost(stats) {
 	return {}
 }
 
+// Return the beerType object with the default beer type selected.
+function getDefaultBeerType(stats) {
+	const beerType = {}
+
+	Object.assign(beerType, stats.beerType)
+
+	beerType.current = stats.beertype.options[0]
+
+	return beerType
+}
 
 module.exports = {
 	getRelativeProductionVolume,
-	getProductionCost
+	getProductionCost,
+	getDefaultBeerType
 }
