@@ -1,7 +1,7 @@
 @import "../variables/colors";
 @import "../variables/widths";
 
-footer.footer {
+footer.footer-top {
 	width: 100%;
 	padding: 60px 0px;
 
@@ -25,16 +25,23 @@ footer.footer {
 		//border: 10px solid goldenrod;
 		font-size: 0.95em;
 
-		.placeholder-text1 {
-			padding: 0px 5%;
+		.contact {
+			padding: 0px 4%;
 		}
 		
-		.placeholder-text2 {
-			padding: 0px 5%;
+		.navigation-links {
+			padding: 0px 4%;
 		}
 		
-		.placeholder-text3 {
-			padding: 0px 5%;
+		.contact-container {
+			padding: 0px 4%;
+
+
+
+			.social-media {
+				display: flex;
+
+			}
 		}
 		
 				
