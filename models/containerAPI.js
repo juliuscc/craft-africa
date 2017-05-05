@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const validator = require('validator')
 
 const containerSchema = mongoose.Schema({
 	name: {
@@ -18,6 +19,51 @@ const containerSchema = mongoose.Schema({
 		required: true
 	}
 })
+
+function isNumbers(values) {
+	// console.log('may')
+	// console.log(values)
+	// const temp = '14'
+	let areIntegers = true
+	if(values) {
+		const temp = values
+		Object.keys(temp).forEach((key) => {
+			if(!Number.isInteger(temp[key])) {
+				if(validator.isInt(temp[key])) {
+					temp[key] = parseInt(temp[key], 10)
+				} else {
+					areIntegers = false
+				}
+			}
+			// console.log(key, values[key])
+		// if(validator.isInt(defaultDistribution.tapDist)){
+		// }
+		})
+	}
+	return areIntegers
+	// values.forEach(v => console.log(v))
+}
+
+function isempty() {
+	let isCorrect = false
+	if(true) {
+		isCorrect = true
+	}
+	return isCorrect
+}
+
+function isInputCorrect(updatedProperties) {
+	const price = JSON.parse(updatedProperties.price)
+
+	const size = JSON.parse(updatedProperties.size)
+
+	const validated = false
+	if(isNumbers(price) &&
+		isNumbers(size)) {
+		return true
+	}
+	return validated
+}
 
 const Container = mongoose.model('Container', containerSchema)
 module.exports = Container
