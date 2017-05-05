@@ -72,12 +72,12 @@ const BeerType = mongoose.model('BeerType', beerSchema)
 module.exports = BeerType
 
 module.exports.createBeer = (newBeer, callback) => {
-	if(isInputCorrect(newBeer)) {
-		const containerObject = new BeerType(newBeer)
-		containerObject.save(callback)
-	} else {
-		callback()
-	}
+	// if(isInputCorrect(newBeer)) {
+	const containerObject = new BeerType(newBeer)
+	containerObject.save(callback)
+	// } else {
+	//	callback()
+	// }
 }
 
 module.exports.removeBeer = (id, callback) => {
@@ -95,6 +95,7 @@ module.exports.updateBeerById = (id, updatedProperties, callback) => {
 
 module.exports.getAllBeers = (callback) => {
 	const query = {}
+	console.log('HI')
 	BeerType.find(query, callback)
 }
 

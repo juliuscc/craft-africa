@@ -13,7 +13,7 @@ const emailRoute = require('./admin/email')
 router.use('/emailtemplates', templatesRoute)
 router.use('/containers', containersRoute)
 router.use('/beer', beerRoute)
-router.use('/beer', beerTypeRoute)
+router.use('/beertype', beerTypeRoute)
 router.use('/email', emailRoute)
 
 // Login stuff
