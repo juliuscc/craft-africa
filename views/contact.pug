@@ -3,11 +3,25 @@ extends layout.pug
 block title 
 	|  - Contact
 
-block header
-	h1 Contact us
-
 block content
-	p Habla habla habla
+	.contact-form
+		h1 Contact us
+		p something nice that we will tell you here (So you sends us a nicer message)
+
+		form
+			.input-row
+				label(for="name") Name
+				input(type="text" name="name" id="name")
+
+				label(for="email") Email
+				input(type="email" name="email" id="email" required)
+
+			.message
+				label(for="message") Your message
+				textarea(name="message" id="message" rows="10")
+
+			.btn-row
+				input(type="submit" value="Submit")	
 
 block footer
 	p example footer
