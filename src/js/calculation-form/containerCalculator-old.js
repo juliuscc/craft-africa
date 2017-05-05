@@ -1,3 +1,9 @@
+/*
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	!! This file is not used !!
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!
+*/
+
 function IllegalArgumentException(Msg) {
 	this.message = Msg
 }

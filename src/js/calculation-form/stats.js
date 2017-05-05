@@ -1,12 +1,13 @@
 const container = require('./container')
+const beerTypes = require('./beerTypes')
 
 /* Private
 __________________________________________________________________________________*/
 
 // Get the number of liters of each container type.
-function getvolume(calculationStats) {
+function getDistributionVolume(stats) {
 	// Both values are selected by the form
-	const { volume, distribution } = calculationStats
+	const { volume, distribution } = stats
 
 	if(volume.total && distribution) {
 		return {
@@ -14,25 +15,6 @@ function getvolume(calculationStats) {
 			keg: volume.total * distribution.keg,
 			bottle: volume.total * distribution.bottle
 		}
-	}
-	return {}
-}
-
-// Get the costs for resources per liter beer
-function getIngredientsCosts(calculationStats) {
-	// Variables from db or changed by user
-	const { ingredientsCosts, resourceUsage } = calculationStats
-
-	if(ingredientsCosts && resourceUsage) {
-		const costs = {
-			hops: ingredientsCosts.hops * resourceUsage.hops,
-			malt: ingredientsCosts.malt * resourceUsage.malt,
-			co2: ingredientsCosts.co2	* resourceUsage.co2
-		}
-
-		costs.total = costs.hops + costs.malt + costs.co2
-
-		return costs
 	}
 	return {}
 }
@@ -48,13 +30,14 @@ function getCalculationStats(inputData, defaultData) {
 	Object.assign(stats, inputData)
 
 	// Calculating the amount of each type (in liters)
-	stats.volume = getvolume(stats)
-
-	// Ingredientscosts
-	stats.ingredientsCosts = getIngredientsCosts(stats)
+	stats.volume = getDistributionVolume(stats)
 
 	// Aquirering modules
 	stats.containers = container.getConfiguration(stats)
+
+	// Add the beer unit costs
+	stats.beertype.current = stats.beertype.options[0] // Todo change this?
+	stats.beertype.current.costs = beerTypes.getProductionCost()
 
 	return stats
 }
