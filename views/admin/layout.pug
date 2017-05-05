@@ -25,20 +25,6 @@ html
 
 	body
 		block nav
-			header
-				ul.side-nav.fixed
-					li.logo
-						img(src="https://craft-africa.com/images/craft-africa-logo2.jpg" style="max-width:80%")
-					li
-						a(href='/admin/containers') Manage Container
-					li
-						a(href='/admin/beer') Manage Beer
-					li
-						a(href='/admin/email') Manage templates
-					li
-						a(href='/admin/signup') Add admin users
-					li
-						a(href='#!') Manage email stuff
 			nav.wrapper(style="background-color:white")
 				.brand-logo(style="color:black; left: 50%;") #{title}
 				a(href="#" data-activates="slide-out").button-collapse
@@ -55,6 +41,10 @@ html
 						|  Containers
 				li
 					a(href='/admin/beer')
+						i.material-icons(style="color: black") album
+						| Default Values
+				li
+					a(href='/admin/beertype')
 						i.material-icons(style="color: black") album
 						| Beer types
 				li

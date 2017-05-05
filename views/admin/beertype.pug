@@ -3,15 +3,9 @@ extends layout.pug
 block title
 	title Craft Africa - Edit Containers
 
-block header
-	h3 Beer Types
-	br
-	title Modify beer types
-
 block vars
 	- var title = "Modify beer types"
-
-
+	
 block content
 	each beertype in beertypes
 		form.container(method="post" action="/admin/beertype")
