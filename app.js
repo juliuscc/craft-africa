@@ -62,7 +62,8 @@ app.use((req, res) => {
 app.use((err, req, res, next) => {
 	throw err
 })
-/* eslint-disable no-unused-vars */
+/* eslint-enable no-unused-vars */
+
 // Set Port
 app.set('port', (process.env.PORT || 5000))
 

@@ -1,18 +1,28 @@
+/*
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	!! This file is not used !!
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!
+*/
+
 function IllegalArgumentException(Msg) {
 	this.message = Msg
 }
 
-
 // Add percentage calculation
 // Liters of keg/bottles
-function getBeerProductionModules(calculationStats) {
-	let tap = calculationStats.containerLiterAmount.tap
-	const keg = calculationStats.containerLiterAmount.keg
-	const bottle = calculationStats.containerLiterAmount.bottle
-	if(tap < 0 || keg < 0 || keg > 4000 || bottle < 0 || bottle > 4000) throw new IllegalArgumentException('illegal argument, liters can not be negative or more than 4000 except tap')
-	const X = 1000// Change this as needed
+function getBeerProductionModules(stats) {
+	let tap = stats.volume.tap
+	const keg = stats.volume.keg
+	const bottle = stats.volume.bottle
+
+	// Remove hard coded values
+	if(keg > 4000 || bottle > 4000) {
+		throw new IllegalArgumentException('illegal argument, liters can not be negative or more than 4000 except tap')
+	}
+
+	const X = 1000 // Change this as needed
 	let out = []
-	const modules = [['A1', 1], ['B1', 2], ['B2', 2], ['B3', 2]]
+	const modules = [{ name: 'A1', production_volume: 3000, storage: 3000 }] // , ['A1', 1], ['B1', 2], ['B2', 2], ['B3', 2]]
 	let index = -1
 	while(tap > 0) {
 		const mod = modules[index += 1]
@@ -44,15 +54,15 @@ function getModuleVal(container, containers = [['A1', 1], ['B1', 2], ['B2', 2], 
 	return getModuleVal(container, containerList)
 }
 
-function getPercentage(calculationStats) {
-	let tap = calculationStats.containerLiterAmount.tap
-	const keg = calculationStats.containerLiterAmount.keg
-	const bottle = calculationStats.containerLiterAmount.bottle
-	const modules = calculationStats.modules
+function getPercentage(stats) {
+	let tap = stats.volume.tap
+	const keg = stats.volume.keg
+	const bottle = stats.volume.bottle
+	const modules = stats.modules
 	if(modules === undefined) throw new IllegalArgumentException('Modules not defined in data object')
 
 	let out = []
-	const X = 1000// Change this as needed
+	const X = 1000 // Change this as needed
 	let liters = 0
 	let index = 0
 	while(index < modules.length) {
@@ -66,13 +76,18 @@ function getPercentage(calculationStats) {
 	return out
 }
 
-function getTotalCost(calculationStats) {
-	const modules = calculationStats.modules
+function getTotalCost(stats) {
+	const modules = stats.modules
+
+	if(!modules) {
+		throw new IllegalArgumentException('No modules found')
+	}
+
 	return modules.reduce((acc, container) => acc + container[1], 0)
 }
 
-function getElectricityConsumption(calculationStats) {
-	const { tap, keg, bottle } = calculationStats.containerLiterDistribution
+function getElectricityConsumption(stats) {
+	const { tap, keg, bottle } = stats.volume
 	const totalLiters = tap + keg + bottle
 	return totalLiters * 0.3
 }
