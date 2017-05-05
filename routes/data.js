@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const containerAPI = require('./../models/containerAPI.js')
-const beerAPI = require('./../models/beerAPI.js')
+const beerAPI = require('./../models/defaultValuesAPI.js')
 // const beerTypeAPI = require('./../models/beerTypeAPI.js')
 // const statsAPI = require('./../models/statsAPI.js')
 

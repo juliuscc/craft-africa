@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const requiresAuth = require('./helper')
-const beerModule = require('../../models/beerAPI')
+const beerModule = require('../../models/defaultValuesAPI')
 
 router.get('/', (req, res) => {
 	beerModule.getAllBeerCollections((err, values) => {
@@ -40,7 +40,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
 	if(!req.body) {
-		res.redirect('/admin/beer')
+		res.redirect('/admin/defaultvalues')
 	}
 	const { hops, barley, co2, water, tapDist, bottleDist, kegDist, bottleThresh, kegThresh, tapCost,
 		bottleCost, kegCost, startValueForProduction } = req.body
@@ -62,7 +62,7 @@ router.post('/', (req, res) => {
 		}
 	})
 
-	res.redirect('/admin/beer')
+	res.redirect('/admin/defaultvalues')
 })
 
 
