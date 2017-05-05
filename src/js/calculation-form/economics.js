@@ -4,13 +4,13 @@ const container = require('./container')
 __________________________________________________________________________________*/
 
 // Get the costs for producing the current amounts.
-function getVariableCosts(calculationStats) {
+function getVariableCosts(stats) {
 	// volume and ingredientscosts needs to be calculated. The rest is from form or db
 	const {
 		containerProductionCosts,
 		volume,
 		ingredientsCosts
-	} = calculationStats
+	} = stats
 
 	if(volume && ingredientsCosts && volume.total && containerProductionCosts) {
 		const costs = {
@@ -28,11 +28,11 @@ function getVariableCosts(calculationStats) {
 }
 
 // Get the fixed costs for producing the current setup.
-function getFixedCosts(calculationStats) {
+function getFixedCosts(stats) {
 	// Modules needs to be gathered before
-	if(calculationStats.modules) {
+	if(stats.modules) {
 		const costs = {
-			rent: container.getCost(calculationStats)
+			rent: container.getCost(stats)
 		}
 
 		return costs
@@ -41,9 +41,9 @@ function getFixedCosts(calculationStats) {
 }
 
 // Calculate the total income from distribution and prices
-function getIncome(calculationStats) {
+function getIncome(stats) {
 	// volume needs to be calculated before
-	const { containerLiterPrice, volume } = calculationStats
+	const { containerLiterPrice, volume } = stats
 
 	const incomes = {}
 
@@ -64,11 +64,11 @@ ________________________________________________________________________________
 
 
 // Get the revenue distribution
-function getEconomics(calculationStats) {
+function getEconomics(stats) {
 	const economics = {
-		incomes: getIncome(calculationStats).total,
-		fixedCosts: getFixedCosts(calculationStats).total,
-		variableCosts: getVariableCosts(calculationStats).total
+		incomes: getIncome(stats).total,
+		fixedCosts: getFixedCosts(stats).total,
+		variableCosts: getVariableCosts(stats).total
 	}
 
 	economics.profit = economics.incomes - economics.fixedCosts - economics.variableCosts
