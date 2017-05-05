@@ -6,6 +6,32 @@ nav.nav {
 	position: fixed;
 	top: 0;
 	left: 0;
+	z-index: 2;
+	transition: all 0.5s;
+
+	* {
+		transition: all 0.5s;
+	}
+
+	&:hover {
+		background: $color-nav-background-transparent;
+		height: $nav-height-large;
+		
+		.nav-container {
+			width: 95%;
+			
+			.links a {
+				height: 100%;
+				line-height: $nav-height-large;
+				padding: 0 15px;
+			}
+
+			.logo img {
+				// margin-top: 30px;
+				// height: 130%;
+			}
+		}
+	}
 
 	.nav-container {
 		height: 100%;
@@ -33,8 +59,16 @@ nav.nav {
 			height: 100%;
 		}
 
-		img.logo {
+		.logo {
 			float: left;
+			height: 100%;
+
+			img {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				height: 80%;
+			}
 		}
 
 		.links {
@@ -59,4 +93,5 @@ nav.nav {
 
 .nav-filler {
 	height: $nav-height;
+	background-color: $color-nav-filler;
 }

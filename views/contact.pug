@@ -4,17 +4,18 @@ block title
 	|  - Contact
 
 block content
-	.contact-form
+	.contact-form.container
 		h1 Contact us
 		p something nice that we will tell you here (So you sends us a nicer message)
 
-		form
+		form.container
 			.input-row
-				label(for="name") Name
-				input(type="text" name="name" id="name")
-
-				label(for="email") Email
-				input(type="email" name="email" id="email" required)
+				.name
+					label(for="name") Name
+					input(type="text" name="name" id="name")
+				.email
+					label(for="email") Email
+					input(type="email" name="email" id="email" required)
 
 			.message
 				label(for="message") Your message
