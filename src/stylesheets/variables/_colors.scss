@@ -23,9 +23,11 @@ $color-logo-background: $color-white;
 $color-logo-border: $color-primary;
 
 // Navbar
-$color-nav-background: $color-primary;
-$color-nav-link: $color-black;
-$color-nav-link-hover: $color-white;
+$color-nav-filler: $color-black;
+$color-nav-background: rgba(0, 0, 0, 0.6);
+$color-nav-background-transparent: rgba(0, 0, 0, 0);
+$color-nav-link: $color-white;
+$color-nav-link-hover: $color-black;
 
 // Misc
 $color-selection: $color-primary;
