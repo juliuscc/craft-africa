@@ -6,40 +6,53 @@ function getProductionModules(stats) {
 	// const productionModules = stats.containers.production
 
 	const productionModules = [
-		{ name: 'A1', beerProduction: 300, cost: 8000, fermenting: 5000 },
-		{ name: 'A2', beerProduction: 300, cost: 4000, fermenting: 5000 },
-		{ name: 'A3', beerProduction: 300, cost: 4000, fermenting: 5000 },
-		{ name: 'B1', beerProduction: 600, cost: 12000, fermenting: 5000 },
-		{ name: 'B2', beerProduction: 900, cost: 6000, fermenting: 10000 },
-		{ name: 'B3', beerProduction: 12000, cost: 6000, fermenting: 15000 }
+		{ name: 'A1', brewingCapacity: 9000, cost: 8000, fermenting: 5000 },
+		{ name: 'B1', brewingCapacity: 18000, cost: 12000, fermenting: 5000 }
 	]
 	const totalVolume = stats.volume.total
 	let returnModule
 	productionModules.forEach((container) => {
-		if(totalVolume <= container.beerProduction) {
+		if(totalVolume <= container.brewingCapacity) {
 			if(!returnModule) {
 				returnModule = container
 			}
 		}
 	})
 
-	return [returnModule]
-	// Hannes fixing error handeling
+	// Shoud we return array instead?
+	return returnModule
+	// Hannes fix error handeling.
 }
 
 // Get the modules required for fermenting the beer
 function getFermentingModules(stats) {
-	// const fermentingModules = stats.containers.fermenting
-	const fermentingModules = getProductionModules.productionModules.fermenting
+	const fermentingModules = [{ name: 'A2', cost: 4000, fermenting: 5000 },
+		{ name: 'A3', cost: 4000, fermenting: 5000 },
+		{ name: 'B2', cost: 6000, fermenting: 10000 },
+		{ name: 'B3', cost: 6000, fermenting: 15000 }
+	]
+// Check needed capacity.
 	const chosenProductionModule = getProductionModules(stats)
-
 	const fermentingCapacityBrewery = chosenProductionModule.fermenting
-	const quote = (stats.container.fermentingTime * 7) / 30
+	const totalCapacity = stats.volume.relative
+	let neededCapacity = totalCapacity - fermentingCapacityBrewery
 
-	const totalCapacity = stats.volume.total * quote
-	const neededCapacity = totalCapacity - fermentingCapacityBrewery
+// Sort out the appropriate modules
+	const identifyingTypeChar = chosenProductionModule.name.charAt(0)
+	const filteredFermentationModules = fermentingModules.filter((element) => {
+		return element.name.charAt(0) === identifyingTypeChar
+	})
 
-	return neededCapacity
+	let choosenFermentationModules = []
+// Subtract fermenting capacity for each available module
+	filteredFermentationModules.forEach((container) => {
+		if(neededCapacity > 0) {
+			neededCapacity -= container.fermenting
+			choosenFermentationModules.push(container)
+		}
+	})
+
+	return choosenFermentationModules
 }
 
 // Get the addon modules
@@ -92,8 +105,7 @@ module.exports = {
 	getCost
 }
 
-function test() {
-	console.log(getFermentingModules({ volume: { total: 901 }, container: { fermentingTime: 20 } }))
+module.exports.test = function () {
+	return getFermentingModules({ volume: { total: 7000, relative: 18000 } })
 }
 
-test()
