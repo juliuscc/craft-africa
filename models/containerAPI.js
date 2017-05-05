@@ -9,6 +9,10 @@ const containerSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
+	series: {
+		type: String,
+		require: true
+	},
 	price: {
 		type: Number,
 		required: true
@@ -57,3 +61,4 @@ module.exports.getContainerByType = (fieldType, callback) => {
 	const query = { type: fieldType }
 	Container.find(query, callback)
 }
+

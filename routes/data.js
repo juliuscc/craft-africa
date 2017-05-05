@@ -13,11 +13,15 @@ const Beer = beerAPI.BeerCollection
 // Getting all the calculation stats from the database
 // Container.getAllContainers()
 router.get('/stats', (req, res) => {
+	const productionContainers = Container.getContainerByType('production')
+	const fermentingContainers = Container.getContainerByType('fermenting')
+	const addonsContainers = Container.getContainerByType('addon')
+
 	res.json({
 		containers: {
-			production: Container,
-			fermenting: 1,
-			addons: 1,
+			production: productionContainers,
+			fermenting: fermentingContainers,
+			addons: addonsContainers,
 			thresholds: Beer.defaultThreshold,
 			fermentingTime: 1
 		},
