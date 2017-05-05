@@ -13,17 +13,30 @@ nav.nav {
 		transition: all 0.5s;
 	}
 
-	&:hover {
+	&.large {
 		background: $color-nav-background-transparent;
 		height: $nav-height-large;
 		
 		.nav-container {
-			width: 95%;
+			width: 100%;
+
+			@media (min-width: $width-mobile-min) {
+				width: 95%;
+			}
 			
 			.links a {
 				height: 100%;
 				line-height: $nav-height-large;
 				padding: 0 15px;
+			}
+
+			.btn {
+				height: $nav-height * 0.8;
+				width: $nav-height;
+
+				span {
+					height: 5px;
+				}
 			}
 
 			.logo img {
@@ -73,6 +86,11 @@ nav.nav {
 
 		.links {
 			float: right;
+			display: none;
+
+			@media (min-width: $width-tablet-min) {
+				display: block;
+			}
 
 			a {
 				display: inline-block;
@@ -82,10 +100,89 @@ nav.nav {
 				line-height: $nav-height;
 				padding: 0 10px;
 				font-weight: normal;
+				transition: color 0.1s;
 
 				&:hover {
 					color: $color-nav-link-hover;
 				}
+			}
+		}
+
+		&.open .links {
+			display: block;
+			width: 100%;
+			position: absolute;
+			top: $nav-height;
+
+			a {
+				width: 100%;
+				background-color: $color-nav-background;
+			}
+		}
+
+		.btn {
+			position: relative;
+			float: right;
+			top: 50%;
+			transform: translateY(-50%);
+			height: $nav-height * 0.6;
+			width: $nav-height * 0.7;
+			cursor: pointer;
+			z-index: 3;
+
+			@media (min-width: $width-tablet-min) {
+				display: none;
+			}
+
+			span {
+				display: block;
+				position: absolute;
+				height: 4px;
+				width: 100%;
+				background: $color-nav-link;
+				opacity: 1;
+				left: 0;
+				transform: rotate(0deg);
+				transition: .25s ease-in-out;
+
+				&:nth-child(1) {
+					top: 0px;
+				}
+
+				&:nth-child(2),
+				&:nth-child(3) {
+					top: 50%;
+					transform: translateY(-50%);
+				}
+
+				&:nth-child(4) {
+					top: 100%;
+					transform: translateY(-100%);
+				}
+			}
+		}
+
+		&.open .btn {
+			span:nth-child(1) {
+				top: 50%;
+				transform: translateY(-50%);
+				width: 0%;
+				left: 50%;
+			}
+
+			span:nth-child(2) {
+				transform: rotate(45deg);
+			}
+
+			span:nth-child(3) {
+				transform: rotate(-45deg);
+			}
+
+			span:nth-child(4) {
+				top: 50%;
+				transform: translateY(-50%);
+				width: 0%;
+				left: 50%;
 			}
 		}
 	}

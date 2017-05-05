@@ -3,8 +3,9 @@ function toggleNav() {
 		this.classList.remove('open')
 	} else {
 		this.classList.add('open')
+		this.parentElement.classList.remove('large')
 	}
 }
 
-const navBtn = document.querySelector('.nav-btn')
-navBtn.addEventListener('click', toggleNav)
+const navContainer = document.querySelector('nav.nav .nav-container')
+navContainer.addEventListener('click', toggleNav)
