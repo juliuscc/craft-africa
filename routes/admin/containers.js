@@ -46,31 +46,30 @@ router.post('/new', (req, res) => {
 			req.body.price = [req.body.price]
 			req.body.size = [req.body.size]
 			req.body.status = [req.body.status]
-		} else {
-			const { id, name, type, price, size, status } = req.body
-			const containers = name.map((_, index) => ({
-				id: id[index],
-				name: name[index],
-				type: type[index],
-				price: price[index],
-				size: size[index],
-				status: status[index]
-			}))
-
-			containers.forEach((element) => {
-				containersModule.createContainer({
-					name: element.name,
-					type: element.type,
-					price: element.price,
-					size: element.size
-				}, (err) => {
-					if(err) {
-						throw err
-					}
-				})
-			})
-			res.redirect('/admin/containers')
 		}
+		const { id, name, type, price, size, status } = req.body
+		const containers = name.map((_, index) => ({
+			id: id[index],
+			name: name[index],
+			type: type[index],
+			price: price[index],
+			size: size[index],
+			status: status[index]
+		}))
+
+		containers.forEach((element) => {
+			containersModule.createContainer({
+				name: element.name,
+				type: element.type,
+				price: element.price,
+				size: element.size
+			}, (err) => {
+				if(err) {
+					throw err
+				}
+			})
+		})
+		res.redirect('/admin/containers')
 	}
 })
 
