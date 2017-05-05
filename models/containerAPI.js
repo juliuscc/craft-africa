@@ -24,10 +24,13 @@ const containerSchema = mongoose.Schema({
 	storageCapacity: {
 		type: Number
 	},
+	brewingCapacity: {
+		type: Number
+	},
 	waterProduction: {
 		type: Number
 	},
-	beerProduction: {
+	electricityProduction: {
 		type: Number
 	}
 })
@@ -68,16 +71,16 @@ function isEmpty(values) {
 
 function isInputCorrect(updatedProperties) {
 	const name = updatedProperties.name
-
 	const type = updatedProperties.type
-
+	const series = updatedProperties.series
 	const price = updatedProperties.price
-
 	const size = updatedProperties.size
 
 	let validated = false
 	if(
+		!isEmpty({ name }) &&
 		!isEmpty({ type }) &&
+		!isEmpty({ series }) &&
 		!isEmpty({ price }) && isNumbers({ price }) &&
 		!isEmpty({ size }) && isNumbers({ size })
 		) {
