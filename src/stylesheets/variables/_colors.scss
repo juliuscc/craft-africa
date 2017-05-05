@@ -5,15 +5,27 @@ $color-secondary: #a5a089;
 $color-accent: #618ea5;
 $color-info: #f8df1f;
 $color-warning: #a54232;
+$color-black: #000;
+$color-white: #fff;
+$color-dark-grey: #484540;
 
 // Background
 $color-background-light: #eee;
-$color-background-dark: $color-primary-darker;
+$color-background-dark: $color-dark-grey;
 
 // Text
 $color-text-light: #eee;
-$color-text-dark: #222;
+$color-text-dark: $color-dark-grey;
 $color-link: $color-accent;
+
+// Logo
+$color-logo-background: $color-white;
+$color-logo-border: $color-primary;
+
+// Navbar
+$color-nav-background: $color-primary;
+$color-nav-link: $color-black;
+$color-nav-link-hover: $color-white;
 
 // Misc
 $color-selection: $color-primary;

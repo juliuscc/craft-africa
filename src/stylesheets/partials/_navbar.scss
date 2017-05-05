@@ -1,0 +1,62 @@
+nav.nav {
+	display: block;
+	height: $nav-height;
+	width: 100%;
+	background-color: $color-nav-background;
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	.nav-container {
+		height: 100%;
+		width: 100%;
+		position: relative;
+		margin: 0 auto;
+		padding: 0 20px;
+		box-sizing: border-box;
+
+		@media (min-width: $width-mobile-min) {
+			& {
+				width: 90%;
+				padding: 0;
+			}
+		}
+
+		@media (min-width: $width-tablet-min) {
+			& {
+				width: 85%;
+			}
+		}
+
+		> * {
+			display: inline-block;
+			height: 100%;
+		}
+
+		img.logo {
+			float: left;
+		}
+
+		.links {
+			float: right;
+
+			a {
+				display: inline-block;
+				height: 100%;
+				text-decoration: none;
+				color: $color-nav-link;
+				line-height: $nav-height;
+				padding: 0 10px;
+				font-weight: normal;
+
+				&:hover {
+					color: $color-nav-link-hover;
+				}
+			}
+		}
+	}
+}
+
+.nav-filler {
+	height: $nav-height;
+}
