@@ -20,6 +20,6 @@ module.exports.log = (logType, logData, callback) => {
 }
 
 module.exports.getLogByType = (logType, callback) => {
-	const query = {type: logType}
+	const query = { type: logType }
 	Logger.find(query, callback)
 }
