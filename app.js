@@ -5,9 +5,9 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const configDB = require('./config/database.js')
 const passport = require('passport')
-const LocalStrategy = require('passport-local').Strategy
 const session = require('express-session')
 const flash = require('connect-flash')
+
 mongoose.connect(configDB.url)
 
 // Init App
