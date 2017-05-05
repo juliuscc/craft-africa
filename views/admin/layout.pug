@@ -1,12 +1,18 @@
 doctype html
+
+block vars
+
 html
 	head
 		link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css')
+		link(href="https://fonts.googleapis.com/icon?family=Material+Icons", rel="stylesheet")
+		link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet")
 		script(src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js")
 			let $ = jQuery
 
 		script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js')
-		
+
+
 		block title
 			title Admin
 
@@ -33,7 +39,34 @@ html
 						a(href='/admin/signup') Add admin users
 					li
 						a(href='#!') Manage email stuff
+			nav.wrapper(style="background-color:white")
+				.brand-logo(style="color:black; left: 50%;") #{title}
+				a(href="#" data-activates="slide-out").button-collapse
+					i.material-icons(style="color: black") menu
+			ul#slide-out.side-nav.fixed
+				li.logo
+					img(src="https://craft-africa.com/images/craft-africa-logo2.jpg" style="max-width:80%")
+				li
+					h5(style="padding: 0 32px;") Welcome Ulf!
 
+				li
+					a(href='/admin/containers')
+						i.material-icons(style="color: black") settings_input_composite
+						|  Containers
+				li
+					a(href='/admin/beer')
+						i.material-icons(style="color: black") album
+						| Beer types
+				li
+					a(href='/admin/email') 
+						i.material-icons(style="color: black") email
+						| Email system
+				li
+					a(href='/admin/containers')
+						i.material-icons(style="color: black") supervisor_account
+						|  Administrators
+				li
+					a(href='/admin/logout' style="margin: 5% 24%; height: 30px; line-height: 30px; padding: 0 0.5rem;").btn Logout
 		main
 
 			block header
@@ -43,3 +76,6 @@ html
 			block scripts
 
 			block footer
+	
+	script.
+		$(".button-collapse").sideNav();
