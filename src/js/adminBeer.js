@@ -1,11 +1,11 @@
-function disableSubmit(isDisabled) {
+/* function disableSubmit(isDisabled) {
 	const submitButton = document.querySelector('[name="submit"]')
 	if(isDisabled) {
 		submitButton.setAttribute('disabled', isDisabled)
 	} else {
 		submitButton.removeAttribute('disabled')
 	}
-}
+}*/
 
 function isNumber(e) {
 	e.preventDefault()
@@ -13,10 +13,10 @@ function isNumber(e) {
 
 	if(isNaN(e.target.value)) {
 		this.classList.add('incorrectInput')
-		disableSubmit(true)
+		// disableSubmit(true)
 	} else {
 		this.classList.remove('incorrectInput')
-		disableSubmit(false)
+		// disableSubmit(false)
 	}
 }
 

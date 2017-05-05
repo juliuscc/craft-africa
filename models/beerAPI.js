@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const validator = require('validator')
 
 const beerSchema = mongoose.Schema({
 	ingredientCost: {
@@ -22,6 +23,58 @@ const beerSchema = mongoose.Schema({
 	}
 })
 
+function isNumbers(values) {
+	// console.log('may')
+	// console.log(values)
+	// const temp = '14'
+	let areIntegers = true
+	if(values) {
+		const temp = values
+		Object.keys(temp).forEach((key) => {
+			if(!Number.isInteger(temp[key])) {
+				if(validator.isInt(temp[key])) {
+					temp[key] = parseInt(temp[key], 10)
+				} else {
+					areIntegers = false
+				}
+			}
+			// console.log(key, values[key])
+		// if(validator.isInt(defaultDistribution.tapDist)){
+		// }
+		})
+	}
+	return areIntegers
+	// values.forEach(v => console.log(v))
+}
+
+function isInputCorrect(updatedProperties) {
+	// ingredientCost
+	const ic = JSON.parse(updatedProperties.ingredientCost)
+
+	// defaultDistribution
+	const dd = JSON.parse(updatedProperties.defaultDistribution)
+
+	// defaultThreshold
+	const dt = JSON.parse(updatedProperties.defaultThreshold)
+
+	// defaultCost
+	const dc = JSON.parse(updatedProperties.defaultCost)
+
+	// startValueForProduction
+	const svfp = updatedProperties.startValueForProduction
+
+	const validated = false
+	if(isNumbers(ic) &&
+		isNumbers(dd) &&
+		isNumbers(dt) &&
+		isNumbers(dc) &&
+		isNumbers({ svfp })) {
+		return true
+	}
+	return validated
+}
+
+
 const BeerCollection = mongoose.model('beerCollection', beerSchema)
 module.exports = BeerCollection
 
@@ -32,7 +85,16 @@ module.exports.createBeerCollection = (newBeerCollection, callback) => {
 }
 
 module.exports.updateBeerCollection = (updatedProperties, callback) => {
-	BeerCollection.update({}, { $set: updatedProperties }, { upsert: true }, callback)
+	if(isInputCorrect(updatedProperties)) {
+		BeerCollection.update({}, { $set: updatedProperties }, { upsert: true }, callback)
+	} else {
+		// TODO
+		// Send message to page somehow
+		//
+		//
+		//
+		callback()
+	}
 }
 
 module.exports.getIngredientsCollection = (callback) => {
