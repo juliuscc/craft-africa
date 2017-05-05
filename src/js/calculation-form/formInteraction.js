@@ -7,11 +7,10 @@ function getNewDistribution(calculationStats) {
 	let locked = -1
 
 	// Create a copy and remove the current slider
-	// const tempData = Object.assign({}, calculationStats.containerDistribution)
 	const tempData = []
 	const tempNames = []
-	Object.keys(calculationStats.containerDistribution).forEach((el, index) => {
-		tempData.push(calculationStats.containerDistribution[el])
+	Object.keys(calculationStats.distribution).forEach((el, index) => {
+		tempData.push(calculationStats.distribution[el])
 		tempNames.push(el)
 
 		// Extracting key status
@@ -52,19 +51,19 @@ function extractFormData() {
 	// Extract form data and insert it into a object
 	const formdata = new FormData(document.querySelector('form.calculation-form'))
 	const entries = formdata.entries()
-	const dataObject = { containerDistribution: {} }
+	const dataObject = { distribution: {} }
 
 	/* eslint-disable no-restricted-syntax */
 	for(const entry of entries) {
 		switch (entry[0]) {
 		case 'keg':
-			dataObject.containerDistribution[entry[0]] = parseFloat(entry[1])
+			dataObject.distribution[entry[0]] = parseFloat(entry[1])
 			break
 		case 'bottle':
-			dataObject.containerDistribution[entry[0]] = parseFloat(entry[1])
+			dataObject.distribution[entry[0]] = parseFloat(entry[1])
 			break
 		case 'tap':
-			dataObject.containerDistribution[entry[0]] = parseFloat(entry[1])
+			dataObject.distribution[entry[0]] = parseFloat(entry[1])
 			break
 
 		default:
@@ -81,41 +80,53 @@ function extractFormData() {
 	return dataObject
 }
 
-function updateDistributionSliders(calculationStatsInput, event) {
-	const calculationStats = calculationStatsInput
+function loadFormInputs(calculationStats) {
+	const stats = calculationStats
 
 	// Loading values from form
 	document.querySelectorAll('.calculation-form .container-distribution')
 	.forEach((el) => {
-		calculationStats.containerDistribution[el.name] = parseFloat(el.value)
+		stats.distribution[el.name] = parseFloat(el.value)
 	})
+}
 
-	// Change tracking status
-	if(event) {
-		if(event.name !== calculationStats.distributionLock[0]) {
-			calculationStats.distributionLock[1] = calculationStats.distributionLock[0]
-		}
-		// Add current
-		calculationStats.distributionLock[0] = event.name
-	} else {
-		calculationStats.distributionLock = ['tap', 'bottle']
-	}
-
-	// Calculate
-	calculationStats.containerDistribution =
-			getNewDistribution(calculationStats)
-
+function saveFormInputs(calculationStats) {
 	// Assigning values to form
 	document.querySelectorAll('.calculation-form .container-distribution')
 	.forEach((el) => {
 		/* eslint-disable no-param-reassign */
-		el.value = calculationStats.containerDistribution[el.name]
+		el.value = calculationStats.distribution[el.name]
 		/* eslint-enable no-param-reassign */
 	})
 }
 
+function updateDistributionSliders(calculationStats, event) {
+	const stats = calculationStats
+
+	loadFormInputs(stats)
+
+	// Change tracking status
+	if(event) {
+		if(event.name !== stats.distributionLock[0]) {
+			stats.distributionLock[1] = stats.distributionLock[0]
+		}
+		// Add current
+		stats.distributionLock[0] = event.name
+	} else {
+		stats.distributionLock = ['tap', 'bottle']
+	}
+
+	// Calculate
+	stats.distribution =
+			getNewDistribution(stats)
+
+	saveFormInputs(stats)
+}
+
 
 module.exports = {
+	loadFormInputs,
+	saveFormInputs,
 	getNewDistribution,
 	updateDistributionSliders,
 	extractFormData

@@ -8,6 +8,7 @@ const containersRoute = require('./admin/containers')
 const beerRoute = require('./admin/beer')
 const beerTypeRoute = require('./admin/beertype')
 const emailRoute = require('./admin/email')
+//const statistics = require('./admin/statistics')
 
 // Set Routes
 router.use('/emailtemplates', templatesRoute)
@@ -15,6 +16,7 @@ router.use('/containers', containersRoute)
 router.use('/beer', beerRoute)
 router.use('/beertype', beerTypeRoute)
 router.use('/email', emailRoute)
+//router.use('/statistics', statistics)
 
 // Login stuff
 router.get('/', (req, res) => {
@@ -27,6 +29,10 @@ router.get('/login', (req, res) => {
 
 router.get('/signup', (req, res) => {
 	res.render('admin/signup', { })
+})
+
+router.get('/statistics', (req, res) => {
+	res.render('admin/statistics', { })
 })
 
 router.get('/logout', (req, res) => {
@@ -42,14 +48,12 @@ router.post('/signup', passport.authenticate('local-signup', {
 	successRedirect: 'containers',
 	failureRedirect: 'signup',
 	failureFlash: true
-
 }))
 
 router.post('/login', passport.authenticate('local-login', {
 	successRedirect: 'containers',
 	failureRedirect: 'login',
 	failureFlash: true
-
 }))
 
 module.exports = router
