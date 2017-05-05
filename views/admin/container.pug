@@ -9,7 +9,7 @@ block header
 
 block content
 	each container, index in containers
-		form.container(method="post" class=`container${index}` action="/admin/containers")
+		form.container(method="post" action="/admin/containers")
 			.card
 				.card-title
 					h4(style="padding: 10px 15px")= container.name
