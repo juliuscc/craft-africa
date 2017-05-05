@@ -11,7 +11,7 @@ const containerSchema = mongoose.Schema({
 	},
 	price: {
 		type: Number,
-		required: true  
+		required: true
 	},
 	fermentingCapacity: {
 		type: Number
