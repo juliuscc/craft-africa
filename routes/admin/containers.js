@@ -9,12 +9,17 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-	console.log(req.body)
 	if(!req.body.name) {
 		res.redirect('/admin/containers')
 	} else {
 		const { id, name, type, price, size, status } = req.body
-		if(status === 'edited') {
+		if(status === 'removed') {
+			containersModule.removeContainer(id, (err) => {
+				if(err) {
+					throw err
+				}
+			})
+		} else {
 			containersModule.updateContainerById(id, {
 				name,
 				type,
@@ -25,16 +30,6 @@ router.post('/', (req, res) => {
 					throw err
 				}
 			})
-		}
-		else if(status === 'removed') {
-			containersModule.removeContainer(id, (err) => {
-				if(err) {
-					throw err
-				}
-			})
-		}
-		else{
-			console.log('no change')
 		}
 		res.redirect('/admin/containers')
 	}
