@@ -32,8 +32,6 @@ document.querySelector('.calculation-form .calculate-button')
 			calcObj.stats = stats.getCalculationStats(formdata, jsonCache)
 			calcObj.economics = economics.getEconomics(calcObj)
 
-			// containerCalculator2.getBeerProductionModules(data)
-			// containerCalculator2.getPercentage(calcObj.calculationStats)
 			console.log('calc: ', calcObj)
 		})
 
