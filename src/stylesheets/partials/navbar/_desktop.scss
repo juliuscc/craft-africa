@@ -1,0 +1,24 @@
+nav.nav {
+	.links {
+		display: block;
+		float: right;
+	}
+
+	// Open state but not mobile
+	&.open {
+		.links a {
+			padding-left: 7.5%;
+		}
+	}
+
+	&.open,
+	&.small {
+		.logo {
+			margin-left: 7.5%;
+		}
+
+		.links {
+			margin-right: 7.5%;
+		}
+	}
+}

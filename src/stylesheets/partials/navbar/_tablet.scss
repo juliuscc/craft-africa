@@ -1,0 +1,20 @@
+nav.nav {
+	.logo {
+		margin-left: 2.5%;
+	}
+
+	.hamburger {
+		margin-right: 2.5%;
+	}
+
+	&.small,
+	&.open {
+		.logo {
+			margin-left: 5%;
+		}
+
+		.hamburger {
+			margin-right: 5%;
+		}
+	}
+}

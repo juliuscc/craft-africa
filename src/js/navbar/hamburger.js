@@ -8,7 +8,7 @@ function toggleNav() {
 }
 
 function init() {
-	const hamburger = document.querySelector('nav.nav .btn')
+	const hamburger = document.querySelector('nav.nav .hamburger')
 	hamburger.addEventListener('click', toggleNav)
 }
 
