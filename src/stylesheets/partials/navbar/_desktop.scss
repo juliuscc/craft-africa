@@ -1,13 +1,36 @@
 nav.nav {
+	height: $nav-height-large;
+
 	.links {
-		display: block;
+		display: flex;
+		height: 100%;
 		float: right;
+		display: flex;
+		align-items: center;
+
+		li {
+			height: 100%;
+			width: auto;
+		}
+	}
+
+	.hamburger {
+		height: $nav-height-large * 0.6;
+		width: $nav-height-large * 0.7;
 	}
 
 	// Open state but not mobile
 	&.open {
-		.links a {
-			padding-left: 7.5%;
+		.links {
+			display: block;
+			
+			li {
+				width: 100%;
+				
+				a {
+					padding-left: 7.5%;
+				}
+			}
 		}
 	}
 

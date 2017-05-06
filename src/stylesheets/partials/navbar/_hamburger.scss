@@ -29,6 +29,10 @@ nav.nav {
 				transform: translateY(-100%);
 			}
 		}
+
+		@media (min-width: $width-tablet-min) {
+			display: none;
+		}
 	}
 
 	&.open .hamburger {
@@ -53,9 +57,5 @@ nav.nav {
 			width: 0%;
 			left: 50%;
 		}
-	}
-
-	@media (min-width: $width-tablet-min) {
-		display: none;
 	}
 }
