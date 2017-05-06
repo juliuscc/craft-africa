@@ -74,15 +74,13 @@ function isInputCorrect(updatedProperties) {
 	const type = updatedProperties.type
 	const series = updatedProperties.series
 	const price = updatedProperties.price
-	const size = updatedProperties.size
 
 	let validated = false
 	if(
 		!isEmpty({ name }) &&
 		!isEmpty({ type }) &&
 		!isEmpty({ series }) &&
-		!isEmpty({ price }) && isNumbers({ price }) &&
-		!isEmpty({ size }) && isNumbers({ size })
+		!isEmpty({ price }) && isNumbers({ price })
 		) {
 		validated = true
 	}

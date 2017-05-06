@@ -62,12 +62,32 @@ function addRow() {
 		<label for="type">Type</label>
 	</div>
 	<div class="input-field col s3">
+		<input id="series" type="number" name="series" required="" class="validate">
+		<label for="series">Series</label>
+	</div>
+	<div class="input-field col s3">
 		<input id="price" type="number" name="price" required="" class="validate">
 		<label for="price">Price</label>
 	</div>
 	<div class="input-field col s3">
-		<input id="size" type="number" name="size" required="" class="validate">
-		<label for="size">Size</label>
+		<input id="fermentingCapacity" type="number" name="fermentingCapacity" required="" class="validate">
+		<label for="fermentingCapacity">Fermenting Capacity</label>
+	</div>
+	<div class="input-field col s3">
+		<input id="storageCapacity" type="number" name="storageCapacity" required="" class="validate">
+		<label for="storageCapacity">Storage Capacity</label>
+	</div>
+	<div class="input-field col s3">
+		<input id="brewingCapacity" type="number" name="brewingCapacity" required="" class="validate">
+		<label for="brewingCapacity">Brewing Capacity</label>
+	</div>
+	<div class="input-field col s3">
+		<input id="waterProduction" type="number" name="waterProduction" required="" class="validate">
+		<label for="waterProduction">Water Production</label>
+	</div>
+	<div class="input-field col s3">
+		<input id="electricityProduction" type="number" name="electricityProduction" required="" class="validate">
+		<label for="electricityProduction">Electricity Production</label>
 	</div>
 	<input type="button" value="remove" class="remove btn">
 	<input type="hidden" name="id" value="undefined">

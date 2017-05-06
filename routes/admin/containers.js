@@ -12,7 +12,9 @@ router.post('/', (req, res) => {
 	if(!req.body.name) {
 		res.redirect('/admin/containers')
 	} else {
-		const { id, name, type, price, size, status } = req.body
+		const { id, name, type, series, price,
+		fermentingCapacity, storageCapacity, brewingCapacity,
+		waterProduction, electricityProduction, status } = req.body
 		if(status === 'removed') {
 			containersModule.removeContainer(id, (err) => {
 				if(err) {
@@ -23,8 +25,13 @@ router.post('/', (req, res) => {
 			containersModule.updateContainerById(id, {
 				name,
 				type,
+				series,
 				price,
-				size
+				fermentingCapacity,
+				storageCapacity,
+				brewingCapacity,
+				waterProduction,
+				electricityProduction
 			}, (err) => {
 				if(err) {
 					throw err
@@ -43,17 +50,29 @@ router.post('/new', (req, res) => {
 			req.body.id = [req.body.id]
 			req.body.name = [req.body.name]
 			req.body.type = [req.body.type]
+			req.body.series = [req.body.series]
 			req.body.price = [req.body.price]
-			req.body.size = [req.body.size]
+			req.body.fermentingCapacity = [req.body.fermentingCapacity]
+			req.body.storageCapacity = [req.body.storageCapacity]
+			req.body.brewingCapacity = [req.body.brewingCapacity]
+			req.body.waterProduction = [req.body.waterProduction]
+			req.body.electricityProduction = [req.body.electricityProduction]
 			req.body.status = [req.body.status]
 		}
-		const { id, name, type, price, size, status } = req.body
+		const { id, name, type, series, price,
+		fermentingCapacity, storageCapacity, brewingCapacity,
+		waterProduction, electricityProduction, status } = req.body
 		const containers = name.map((_, index) => ({
 			id: id[index],
 			name: name[index],
 			type: type[index],
+			series: series[index],
 			price: price[index],
-			size: size[index],
+			fermentingCapacity: fermentingCapacity[index],
+			storageCapacity: storageCapacity[index],
+			brewingCapacity: brewingCapacity[index],
+			waterProduction: waterProduction[index],
+			electricityProduction: electricityProduction[index],
 			status: status[index]
 		}))
 
@@ -61,8 +80,13 @@ router.post('/new', (req, res) => {
 			containersModule.createContainer({
 				name: element.name,
 				type: element.type,
+				series: element.series,
 				price: element.price,
-				size: element.size
+				fermentingCapacity: element.fermentingCapacity,
+				storageCapacity: element.storageCapacity,
+				brewingCapacity: element.brewingCapacity,
+				waterProduction: element.waterProduction,
+				electricityProduction: element.electricityProduction
 			}, (err) => {
 				if(err) {
 					throw err
