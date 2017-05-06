@@ -1,0 +1,18 @@
+.info-box {
+	width: 100%;
+	padding: 20px;
+	padding-bottom: 50px;
+	box-sizing: border-box;
+
+	@media (min-width: $width-tablet-min) {
+		padding: 0 10% 10% 10%;
+	}
+
+	h1 {
+
+	}
+
+	p {
+		font-size: 1.4em;
+	}
+}

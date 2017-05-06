@@ -1,0 +1,32 @@
+.energy.footprint {
+	display: flex;
+	flex-direction: column;
+
+	.animation {
+		width: 100%;
+		height: 300px;
+		background-color: $color-secondary;
+		margin-bottom: 30px;
+		margin-right: 0;
+	}
+
+	.text {
+		width: 100%;
+	}
+
+	@media (min-width: $width-tablet-min) {
+		& {
+			flex-direction: row;
+		}
+
+		.animation {
+			width: 40%;
+			margin-right: 30px;
+			margin-bottom: 0;
+		}
+
+		.text {
+			flex: 1;
+		}
+	}
+}

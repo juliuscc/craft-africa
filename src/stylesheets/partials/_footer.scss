@@ -5,7 +5,7 @@ footer.footer-top {
 	width: 100%;
 	padding: 60px 0px;
 
-	background-color: $color-primary-darker;
+	background-color: lighten($color-primary-darker, 10);
 	color: $color-text-light;
 
 	// // Todo remove

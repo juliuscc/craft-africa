@@ -42,6 +42,7 @@ const calculationForm = require('./routes/calculationform')
 const email = require('./routes/email')
 const admin = require('./routes/admin')
 const data = require('./routes/data')
+const footprint = require('./routes/footprint')
 
 // Router
 app.use('/', index)
@@ -51,6 +52,7 @@ app.use('/calculationform', calculationForm)
 app.use('/email', email)
 app.use('/admin', admin)
 app.use('/data', data)
+app.use('/footprint', footprint)
 
 // Error handling
 app.use((req, res) => {
