@@ -27,6 +27,7 @@ nav.nav {
 				padding-left: 5%;
 			}
 
+			.links,
 			.btn {
 				margin-right: 5%;
 			}
@@ -38,9 +39,10 @@ nav.nav {
 			}
 
 			.links a {
-				padding-left: 7.5%;
+				padding-left: 0;
 			}
 
+			.links,
 			.btn {
 				margin-right: 7.5%;
 			}
@@ -53,7 +55,6 @@ nav.nav {
 		}
 
 		.btn {
-			display: block;
 			height: $nav-height * 0.6;
 			width: $nav-height * 0.7;
 
@@ -61,7 +62,18 @@ nav.nav {
 				height: 4px;
 			}
 		}
+	}
 
+	&.open {
+		@media (min-width: $width-tablet-min) {
+			.links a {
+				padding-left: 7.5%;
+			}
+		}
+
+		.btn {
+			display: block;
+		}
 	}
 
 	> * {
@@ -85,6 +97,7 @@ nav.nav {
 	.links {
 		float: right;
 		display: none;
+		margin-right: 10px;
 
 		@media (min-width: $width-tablet-min) {
 			display: block;
@@ -127,6 +140,7 @@ nav.nav {
 			padding-left: 0;
 		}
 
+		.links,
 		.btn {
 			margin-right: 2.5%;
 		}
