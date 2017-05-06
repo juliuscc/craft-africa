@@ -36,7 +36,7 @@ router.post('/', (req, res) => {
 })
 
 router.post('/new', (req, res) => {
-	if(!req.body) {
+	if(!req.body.name) {
 		res.redirect('/admin/containers')
 	} else {
 		if(req.body.name.constructor !== Array) {

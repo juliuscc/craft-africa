@@ -7,34 +7,34 @@ block vars
 	- var title = "Modify beer types"
 	
 block content
-	each beertype in beertypes
+	each value in values
 		form.container(method="post" action="/admin/beertype")
 			.card
 				.card-title
-					h4(style="padding: 10px 15px")= beertype.name
+					h4(style="padding: 10px 15px")= value.name
 				.card-content
 					.row
 						.input-field.col.s3
-							input#name.validate(type='text', name="name",required,value=beertype.name)
+							input.validate(type='text', name="name",required,value=value.name)
 							label(for='name') Name
 						.input-field.col.s3
-							input#type.validate(type='number',name="type",required,value=beertype.fermenting)
-							label(for='fermentingTime') Fermenting Time
+							input.validate(type='number',name="fermenting",required,value=value.fermenting)
+							label(for='fermenting') Fermenting Time
 						.input-field.col.s3
-							input#price.validate(type='number',name="hopsUse",required,value=beertype.ingrediensUsage.hops)
+							input.validate(type='number',name="hops",required,value=value.ingredient.hops)
 							label(for='hopsUse') Hops(%)
 						.input-field.col.s3
-							input#size.validate(type='number',name="maltUse",required,value=beertype.ingrediensUsage.malt)
+							input.validate(type='number',name="malt",required,value=value.ingredient.malt)
 							label(for='maltUse') Malt(%)
 						.input-field.col.s3
-							input#size.validate(type='number',name="co2Use",required,value=beertype.ingrediensUsage.co2)
+							input.validate(type='number',name="co2",required,value=value.ingredient.co2)
 							label(for='co2Use') co2(%)
 						input.btn.remove.red.right(type="submit" value = "remove", style="margin-right: 10px")
 						input.btn.save.blue.right(type="submit" value = "save", style="margin-right:10px")
-						input(type="hidden" name="id" value=beertype._id)
+						input(type="hidden" name="id" value=value._id)
 						input(type="hidden" name="status" value="unchanged")
 	form(method="post" class="addRow" action="/admin/beertype/new")
-		input.btn.left(type="button" id="add" value = "add new container")
+		input.btn.left(type="button" id="addBeer" value = "add new beertype")
 		br
 		br
 		input.btn-large.left(type="submit"  name="submit" value="submit")
@@ -42,6 +42,5 @@ block content
 	
 
 				
-	
 block scripts
-	script(src="/js/adminCont.js")
+	script(src="/js/adminBeertype.js")

@@ -30,7 +30,7 @@ function getProductionModules(stats) {
 // Get the modules required for fermenting the beer
 function getFermentingModules(stats) {
 	// const fermentingModules = stats.containers.fermenting
-	const fermentingModules = getProductionModules.productionModules.fermenting
+	//  fermentingModules = getProductionModules.productionModules.fermenting
 	const chosenProductionModule = getProductionModules(stats)
 
 	const fermentingCapacityBrewery = chosenProductionModule.fermenting

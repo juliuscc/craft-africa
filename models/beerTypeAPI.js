@@ -16,6 +16,9 @@ const beerSchema = mongoose.Schema({
 	}
 })
 
+const BeerType = mongoose.model('BeerType', beerSchema)
+module.exports = BeerType
+
 function isNumbers(values) {
 	let areIntegers = true
 	if(values) {
@@ -55,29 +58,27 @@ function isInputCorrect(updatedProperties) {
 
 	const fermenting = updatedProperties.fermenting
 
-	const ingredient = updatedProperties.ingredient
+	const ingredient = JSON.parse(updatedProperties.ingredient)
 
 	let validated = false
 	if(
 		!isEmpty({ name }) &&
 		!isEmpty({ fermenting }) && isNumbers({ fermenting }) &&
-		!isEmpty(ingredient) && isNumbers(ingredient)
+		!isEmpty(ingredient) && isNumbers(ingredient.hops) &&
+		isNumbers(ingredient.malt) && isNumbers(ingredient.co2)
 		) {
 		validated = true
 	}
 	return validated
 }
 
-const BeerType = mongoose.model('BeerType', beerSchema)
-module.exports = BeerType
-
 module.exports.createBeer = (newBeer, callback) => {
-	// if(isInputCorrect(newBeer)) {
-	const containerObject = new BeerType(newBeer)
-	containerObject.save(callback)
-	// } else {
-	//	callback()
-	// }
+	if(isInputCorrect(newBeer)) {
+		const containerObject = new BeerType(newBeer)
+		containerObject.save(callback)
+	} else {
+		callback()
+	}
 }
 
 module.exports.removeBeer = (id, callback) => {
@@ -95,8 +96,19 @@ module.exports.updateBeerById = (id, updatedProperties, callback) => {
 
 module.exports.getAllBeers = (callback) => {
 	const query = {}
-	console.log('HI')
-	BeerType.find(query, callback)
+	BeerType.find(query, (err, values) => {
+		if(!values) {
+			callback(err, {})
+		} else {
+			const updatedValues = values.map((_, index) => ({
+				_id: values[index]._id,
+				name: values[index].name,
+				fermenting: values[index].fermenting,
+				ingredient: JSON.parse(values[index].ingredient)
+			}))
+			callback(err, updatedValues)
+		}
+	})
 }
 
 module.exports.getBeersByName = (fieldName, callback) => {

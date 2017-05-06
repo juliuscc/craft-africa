@@ -9,7 +9,6 @@
 
 function isNumber(e) {
 	e.preventDefault()
-	console.log(e)
 
 	if(isNaN(e.target.value)) {
 		this.classList.add('incorrectInput')
