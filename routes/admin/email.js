@@ -1,12 +1,15 @@
 const router = require('express').Router()
+const requiresAuth = require('./helper')
 const mailTemplate = require('../../models/mailTemplates')
 
 // Get all email templates.
 router.get('/', (req, res) => {
-	mailTemplate.getTemplates((err, templates) => {
-		res.render('admin/templates', {
-			templateList: templates
-		})
+	mailTemplate.getTemplates((err, templateList) => {
+		if(templateList.length === 0) {
+			requiresAuth(req, res, 'templates', { })
+		} else {
+			requiresAuth(req, res, 'templates', { templateList })
+		}
 	})
 })
 
