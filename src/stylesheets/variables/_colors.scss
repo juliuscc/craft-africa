@@ -10,11 +10,11 @@ $color-white: #fff;
 $color-dark-grey: #484540;
 
 // Background
-$color-background-light: #eee;
+$color-background-light: $color-white;
 $color-background-dark: $color-dark-grey;
 
 // Text
-$color-text-light: #eee;
+$color-text-light: $color-white;
 $color-text-dark: $color-dark-grey;
 $color-link: $color-accent;
 
@@ -24,7 +24,7 @@ $color-logo-border: $color-primary;
 
 // Navbar
 $color-nav-filler: $color-black;
-$color-nav-background: rgba(0, 0, 0, 0.6);
+$color-nav-background: rgba($color-black, 0.6);
 $color-nav-background-transparent: rgba(0, 0, 0, 0);
 $color-nav-link: $color-white;
 $color-nav-link-hover: $color-info;

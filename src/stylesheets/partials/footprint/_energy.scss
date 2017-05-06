@@ -1,11 +1,11 @@
 .energy.footprint {
 	display: flex;
-	flex-direction: column;
+	background-color: darken($color-primary-darker, 0%);
+	color: $color-text-light;
 
 	.animation {
 		width: 100%;
-		height: 300px;
-		background-color: $color-secondary;
+		height: auto;
 		margin-bottom: 30px;
 		margin-right: 0;
 	}
@@ -21,12 +21,18 @@
 
 		.animation {
 			width: 40%;
-			margin-right: 30px;
+			height: auto;
+			margin-right: 5%;
 			margin-bottom: 0;
 		}
 
 		.text {
-			flex: 1;
+			width: 55%;
+		}
+
+		.animation,
+		.text {
+			display: inline-block;
 		}
 	}
 }

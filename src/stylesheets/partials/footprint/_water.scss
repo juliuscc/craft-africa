@@ -1,5 +1,7 @@
 .water.footprint {
 	text-align: center;
+	color: lighten($color-accent, 10%);
+	background-color: $color-background-light;
 
 	.info-box {
 		padding-bottom: 0;
@@ -21,6 +23,7 @@
 		width: 60%;
 		overflow: hidden;
 		box-sizing: border-box;
+		float: right;
 		height: 200px;
 		margin-bottom: 10%;
 		
@@ -51,7 +54,7 @@
 
 		img {
 			position: absolute;
-			right: 0;
+			left: 0;
 			height: 100%;
 		}
 
