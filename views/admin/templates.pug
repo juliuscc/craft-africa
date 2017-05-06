@@ -6,10 +6,10 @@ block content
 			each template in templateList
 				li
 					a(href="/admin/email/" + template.name)= template.name
-
+		a(href="/admin/email/new") Add new template
 	else
 		a(href="/admin/email/") Go back!
-		form(method="post" action="/admin/email" id="template-form")
+		form(method="post" action="/admin/email/" id="template-form")
 			if result
 				div.result-container
 					span.result-message= result

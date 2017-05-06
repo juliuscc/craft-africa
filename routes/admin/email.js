@@ -17,7 +17,9 @@ router.get('/', (req, res) => {
 router.get('/:emailId', (req, res) => {
 	mailTemplate.getTemplateByName(req.params.emailId, (err, template) => {
 		let data = template
-
+		if(req.params.emailId === 'new') {
+			req.params.emailId = ''
+		}
 		// Add error messages if the exists.
 		if(err) {
 			data = { result: 'Something went wrong', name: req.params.emailId, recipient: '', admin_subject: '', user_subject: '', admin_message: '', user_message: '' }
