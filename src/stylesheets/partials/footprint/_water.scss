@@ -2,6 +2,7 @@
 	text-align: center;
 	color: lighten($color-accent, 10%);
 	background-color: $color-background-light;
+	padding-bottom: 50px;
 
 	.info-box {
 		padding-bottom: 0;
@@ -13,8 +14,20 @@
 	}
 
 	@media (min-width: $width-tablet-min) {
+		padding-bottom: 5%;
+		
 		.text {
 			width: 80%;
+		}
+	}
+
+	.water-splash {
+		width: 100%;
+		padding: 0 15%;
+		box-sizing: border-box;
+
+		img {
+			width: 100%;
 		}
 	}
 

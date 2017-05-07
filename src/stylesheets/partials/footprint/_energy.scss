@@ -1,17 +1,32 @@
 .energy.footprint {
 	display: flex;
-	background-color: darken($color-primary-darker, 0%);
+	flex-direction: column;
+	justify-content: space-between;
+	background-color: lighten($color-primary-darker, 10);
 	color: $color-text-light;
 
+	> * {
+		box-sizing: border-box;
+		display: inline-block;
+	}
+
+	.text,
 	.animation {
 		width: 100%;
-		height: auto;
-		margin-bottom: 30px;
-		margin-right: 0;
 	}
 
 	.text {
-		width: 100%;
+		order: 1;
+	}
+
+	.animation {
+		height: auto;
+		order: 2;
+
+		img {
+			width: 100%;
+			height: auto;
+		}
 	}
 
 	@media (min-width: $width-tablet-min) {
@@ -20,13 +35,13 @@
 		}
 
 		.animation {
+			order: 1;
 			width: 40%;
 			height: auto;
-			margin-right: 5%;
-			margin-bottom: 0;
 		}
 
 		.text {
+			order: 2;
 			width: 55%;
 		}
 
