@@ -1,6 +1,16 @@
 
 
 .contact-form {
+
+	//*****Sticky Footer**********
+	
+	display: flex;
+	min-height: 100vh;
+  	flex-direction: column;
+
+  	// flex: 1;
+  	//****************************
+
 	h1 {
 		text-align: center;
 	}
