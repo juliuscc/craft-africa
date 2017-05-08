@@ -35,8 +35,10 @@ router.get('/', (req, res) => {
 					},
 					startValueForProduction: ''
 				}
+				empty.username = req.user.local.name
 				res.render('admin/defaultvalues', empty)
 			} else {
+				values.username = req.user.local.name
 				res.render('admin/defaultvalues', values)
 			}
 		})

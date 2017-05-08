@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 			if(err) {
 				throw err
 			}
-			res.render('admin/beertype', { values })
+			res.render('admin/beertype', { values, username: req.user.local.name })
 		})
 	})
 })
