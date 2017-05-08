@@ -28,6 +28,8 @@ module.exports = (passport) => {
 					let newUser = new User()
 					newUser.local.email = email
 					newUser.local.password = newUser.generateHash(password)
+					newUser.local.name = req.body.name
+					console.log(req.body.name)
 					newUser.save((err) => {
 						if(err) {
 							throw err
