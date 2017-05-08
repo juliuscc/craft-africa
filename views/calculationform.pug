@@ -12,7 +12,7 @@ block content
 	div#calculation-form
 	form(action="/calculationform", method="post", class="calculation-form" enctype="application/json")
 		p Liters of Beer
-		input(type="range", name="totalVolume", min= minTotalVolume, max= maxTotalVolume)
+		input(type="range", name="totalVolume", id="totalVolume", min= minTotalVolume, max= maxTotalVolume)
 		p Liters of Water
 		input(type="range", name="litersOfWater")
 		p Finetune distribution (tap, keg, bottle)

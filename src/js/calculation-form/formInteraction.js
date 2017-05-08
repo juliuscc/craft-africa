@@ -90,14 +90,23 @@ function loadFormInputs(calculationStats) {
 	})
 }
 
-function saveFormInputs(calculationStats) {
-	// Assigning values to form
+function saveFormInputs(stats, economics) {
+	// Assigning values to sliders
 	document.querySelectorAll('.calculation-form .container-distribution')
 	.forEach((el) => {
 		/* eslint-disable no-param-reassign */
-		el.value = calculationStats.distribution[el.name]
+		el.value = stats.distribution[el.name]
 		/* eslint-enable no-param-reassign */
 	})
+
+	// Assigning to main slider
+	document.querySelector('#totalVolume').value = stats.volume.total
+
+	document.querySelector('.profit').innerHTML = economics.profit
+	document.querySelector('.output').innerHTML =
+	`Fixed: ${economics.fixedCosts}
+	 Variable: ${economics.variableCosts}
+	`
 }
 
 function updateDistributionSliders(calculationStats, event) {

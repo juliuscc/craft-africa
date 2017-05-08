@@ -8,16 +8,20 @@ const ajax = require('./ajax')
 let jsonCache = {}
 const calcObj = {}
 
-ajax.loadJSON('/data/stats')
-.then((json) => {
-	jsonCache = json
-
+function updateForm() {
 	const formdata = formInteraction.extractFormData()
 
 	calcObj.stats = stats.getCalculationStats(formdata, jsonCache)
 	calcObj.economics = economics.getEconomics(calcObj)
 
 	formInteraction.updateDistributionSliders(calcObj.stats)
+}
+
+ajax.loadJSON('/data/stats')
+.then((json) => {
+	jsonCache = json
+	formInteraction.saveFormInputs(jsonCache, {})
+	updateForm()
 })
 .catch((msg) => {
 	console.log(`Error msg in calculationForm.js: ${msg}`)

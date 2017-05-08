@@ -22,19 +22,20 @@ function getProductionModules(stats) {
 function getFermentingModules(stats) {
 	const fermentingModules = stats.containers.fermenting
 
-// Check needed capacity.
+	// Check needed capacity.
 	const chosenProductionModule = getProductionModules(stats)
 	const fermentingCapacityBrewery = chosenProductionModule.fermenting
 	const totalCapacity = stats.volume.relative
 	let neededCapacity = totalCapacity - fermentingCapacityBrewery
 
-// Sort out the appropriate modules
+	// Sort out the appropriate modules
+// TODO: This already exists: container.series
 	const identifyingTypeChar = chosenProductionModule.name.charAt(0)
 	const filteredFermentationModules = fermentingModules.filter(
 		element => element.name.charAt(0) === identifyingTypeChar)
 
 	const requiredFermentationModules = []
-// Subtract fermenting capacity for each available module
+	// Subtract fermenting capacity for each available module
 	filteredFermentationModules.forEach((container) => {
 		if(neededCapacity > 0) {
 			neededCapacity -= container.fermenting
@@ -63,15 +64,11 @@ _____________________________________________________________________________*/
 
 // Calculates how much water the configuration cleans each month
 function getWaterCleaningCapacity(stats) {
-
-
 	return stats
 }
 
 // Caculate the enegey production from the solar panel
 function getEnergyProduction(stats) {
-
-
 	return stats
 }
 
@@ -91,6 +88,7 @@ function getConfiguration(stats) {
 
 // Get the cost of the current container configuration
 function getCost(stats) {
+// TODO: configuration should already be calculated here
 	const modules = getConfiguration(stats).all
 
 	let cost = 0

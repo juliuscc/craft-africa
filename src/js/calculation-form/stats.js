@@ -36,10 +36,10 @@ function getCalculationStats(inputData, defaultData) {
 	stats.volume = getDistributionVolume(stats)
 
 	// Aquirering modules
-	// stats.containers.current = container.getConfiguration(stats)
+	stats.containers.current = container.getConfiguration(stats)
 
 	// Calculate how much energy and water the modules produce
-	// stats.electricityProduction = container.getEnergyProduction(stats)
+	stats.electricityProduction = container.getEnergyProduction(stats)
 	stats.waterProduction = container.getWaterCleaningCapacity(stats)
 
 	// Add the beer unit costs
