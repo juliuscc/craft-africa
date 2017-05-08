@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const validator = require('validator')
+const moduleValidator = require('./moduleValidator')
 
 const containerSchema = mongoose.Schema({
 	name: {
@@ -80,10 +80,10 @@ function isInputCorrect(updatedProperties) {
 
 	let validated = false
 	if(
-		!isEmpty({ name }) &&
-		!isEmpty({ type }) &&
-		!isEmpty({ series }) &&
-		!isEmpty({ price }) && isNumbers({ price })
+		!moduleValidator.isEmpty({ name }) &&
+		!moduleValidator.isEmpty({ type }) &&
+		!moduleValidator.isEmpty({ series }) &&
+		!moduleValidator.isEmpty({ price }) && moduleValidator.isNumbers({ price })
 		) {
 		validated = true
 	}
