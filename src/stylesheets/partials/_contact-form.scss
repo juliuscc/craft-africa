@@ -1,64 +1,66 @@
 .contact-form {
+	
 	background-color: $color-primary;
-	margin-top: 80px;
-	h1 {
-		text-align: center;
-	}
-
-	p {
-		
-		text-align: center;
-	}
-
-	.input-row {
-		
+		padding-top: 40px;
 		width: 100%;
-		
-		> * {
-			
-			width: 50%;
-			box-sizing: border-box;
-			display: inline-block;
-			margin-bottom: 10px;
+		h1 {
+			text-align: center;
 		}
 
-		.name {
+		p {
+			
+			text-align: center;
+		}
 
-			padding-right: 10px;
-
+		.input-row {
+			
+			width: 100%;
+			
 			> * {
+				
+				width: 50%;
+				box-sizing: border-box;
+				display: inline-block;
+				margin-bottom: 10px;
+			}
+
+			.name {
+
+				padding-right: 10px;
+
+				> * {
+					box-sizing: border-box;
+					width: 100%;
+					border-radius: 5px;
+						
+
+				}
+			}
+
+			.email {
+				padding-left: 10px;
+
+				> * {
+					box-sizing: border-box;
+					width: 100%;
+					border-radius: 5px;	
+				}
+				
+			}
+		}
+
+		.message {
+			//border: 1px solid red;
+			textarea {
 				box-sizing: border-box;
 				width: 100%;
 				border-radius: 5px;
-  				
-
 			}
+
 		}
 
-		.email {
-			padding-left: 10px;
-
-			> * {
-				box-sizing: border-box;
-				width: 100%;
-				border-radius: 5px;	
-			}
-			
-		}
-	}
-
-	.message {
-		//border: 1px solid red;
-		textarea {
-			box-sizing: border-box;
-			width: 100%;
+		.btn-row {
+			margin-top: 8px;
 			border-radius: 5px;
 		}
-
-	}
-
-	.btn-row {
-		margin-top: 8px;
-		border-radius: 5px;
-	}
 }
