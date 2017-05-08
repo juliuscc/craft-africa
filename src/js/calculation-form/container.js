@@ -88,8 +88,7 @@ function getConfiguration(stats) {
 
 // Get the cost of the current container configuration
 function getCost(stats) {
-// TODO: configuration should already be calculated here
-	const modules = getConfiguration(stats).all
+	const modules = stats.containers.current.all
 
 	let cost = 0
 	modules.forEach((container) => {
