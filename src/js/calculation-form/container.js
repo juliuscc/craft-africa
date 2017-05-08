@@ -62,7 +62,7 @@ function getAddonsModules(stats) {
 _____________________________________________________________________________*/
 
 // Calculates how much water the configuration cleans each month
-/* function getWaterCleaningCapacity(stats) {
+function getWaterCleaningCapacity(stats) {
 
 
 	return stats
@@ -73,7 +73,7 @@ function getEnergyProduction(stats) {
 
 
 	return stats
-} */
+}
 
 // Get a new container configuration
 // Calculate the list of all modules required for this production capacity
@@ -103,8 +103,8 @@ function getCost(stats) {
 
 module.exports = {
 	getConfiguration,
-	// getWaterCleaningCapacity,
-	// getEnergyProduction,
+	getWaterCleaningCapacity,
+	getEnergyProduction,
 	getCost
 }
 

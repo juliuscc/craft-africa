@@ -17,8 +17,6 @@ ajax.loadJSON('/data/stats')
 	calcObj.stats = stats.getCalculationStats(formdata, jsonCache)
 	calcObj.economics = economics.getEconomics(calcObj)
 
-	calcObj.stats.distributionLock = ['tap', 'bottle']
-
 	formInteraction.updateDistributionSliders(calcObj.stats)
 })
 .catch((msg) => {
