@@ -32,11 +32,11 @@ function loadFromDB(callback) {
 router.get('/stats', (req, res) => {
 	loadFromDB((err, data) => {
 		if(err) {
-			res.json({ error: true })
+			res.json({ err })
 		} else {
 			// Create container object
 			const containerObject = {}
-			
+
 			data.containers.forEach((container) => {
 				if(!containerObject[container.type]) {
 					containerObject[container.type] = []
@@ -49,13 +49,24 @@ router.get('/stats', (req, res) => {
 			res.json({
 				containers: containerObject,
 				ingredientCost: data.defaultValues.ingredientCost,
-				sellingPrice: data.defaultValues.sellingPrice,
-				productionCost: data.defaultValues.productionCost,
-				distribution: data.defaultValues.defaultDistribution,
+				sellingPrice: {
+					keg: data.defaultValues.sellingPrice.kegSell,
+					tap: data.defaultValues.sellingPrice.tapSell,
+					bottle: data.defaultValues.sellingPrice.bottleSell
+				},
+				productionCost: {
+					keg: data.defaultValues.productionCost.kegCost,
+					bottle: data.defaultValues.productionCost.bottleCost,
+					tap: data.defaultValues.productionCost.tapCost
+				},
+				distribution: {
+					tap: data.defaultValues.defaultDistribution.tapDist,
+					bottle: data.defaultValues.defaultDistribution.bottleDist,
+					keg: data.defaultValues.defaultDistribution.kegDist
+				},
 				volume: {
 					total: data.defaultValues.startValueForProduction
 				},
-				productionCost: data.defaultValues.defaultCost,
 				beerType: {
 					options: data.beers
 				}

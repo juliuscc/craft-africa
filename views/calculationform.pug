@@ -12,13 +12,13 @@ block content
 	div#calculation-form
 	form(action="/calculationform", method="post", class="calculation-form" enctype="application/json")
 		p Liters of Beer
-		input(type="range", name="totalVolume", value= totalVolume, min= minTotalVolume, max= maxTotalVolume)
+		input(type="range", name="totalVolume", min= minTotalVolume, max= maxTotalVolume)
 		p Liters of Water
-		input(type="range", name="litersOfWater", value= litersOfWater)
+		input(type="range", name="litersOfWater")
 		p Finetune distribution (tap, keg, bottle)
-		input(type="range", name="tap", value= tap, min=0, max=1, step=0.01, class="container-distribution")
-		input(type="range", name="keg", value= keg, min=0, max=1, step=0.01, class="container-distribution")
-		input(type="range", name="bottle", value= bottle, min=0, max=1, step=0.01, class="container-distribution")
+		input(type="range", name="tap", min=0, max=1, step=0.01, class="container-distribution")
+		input(type="range", name="keg", min=0, max=1, step=0.01, class="container-distribution")
+		input(type="range", name="bottle", min=0, max=1, step=0.01, class="container-distribution")
 		p Profit
 		span.profit 12345$
 		p Distribution
