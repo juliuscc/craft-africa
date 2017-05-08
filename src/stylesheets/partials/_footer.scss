@@ -4,34 +4,44 @@
 footer.footer-top {
 	width: 100%;
 	padding: 60px 0px;
-
 	background-color: $color-background-dark;
 	color: $color-secondary;
+	box-shadow: inset rgba(0, 0, 0, 0.5) 0 3px 10px 0;
 
-	// // Todo remove
-	// display: flex;
-	// justify-content: center;
-	// align-items: center;
-	// text-align: center;
+	h1 {
+		color: lighten($color-secondary, 15%);
+	}
 
 	ul {
   		list-style-type: none;
 	}
 
-
 	.margin-box {
 		display: flex;
-		flex-flow: row nowrap;
+		flex-direction: row;
+		flex-wrap: wrap;
 		justify-content: center;
-		//border: 10px solid goldenrod;
 		font-size: 0.95em;
 
 		.contact {
-			padding: 0px 4%;
+			padding: 0 4%;
 		}
 		
 		.navigation-links {
-			padding: 0px 4%;
+			padding: 0 4%;
+		}
+
+		.contact,
+		.navigation-links {
+			h1 {
+				font-size: 1.7rem;
+				margin-bottom: 5px;
+			}
+
+			p,
+			ul {
+				margin: 0;
+			}
 		}
 		
 		ul {
@@ -41,11 +51,47 @@ footer.footer-top {
 		.contact-container {
 			padding: 0px 4%;
 
+			h1 {
+				font-size: 3.0rem;
+			}
+
+			h1,
+			p {
+				margin: 0;
+				margin-bottom: 3px;
+			}
+
 			.social-media {
+				margin-top: 5px;
 				display: flex;
 
-				.fa:not(:hover) {
+				.fa {
 					background-color: lighten($color-background-dark, 10%);
+					color: inherit;
+					text-align: center;
+					font-size: 20px;
+					width: 35px;
+					height: 35px;
+					line-height: 35px;
+					text-decoration: none;
+					margin-right: 5px;
+					border-radius: 10px;
+				}
+
+				.fa:hover {
+					color: $color-white;
+				}
+
+				.fa.fa-facebook:hover {
+					background-color: $color-facebook;
+				}
+
+				.fa.fa-twitter:hover {
+					background-color: $color-twitter;
+				}
+
+				.fa.fa-instagram:hover {
+					background-color: $color-instagram;
 				}
 			}
 		}
