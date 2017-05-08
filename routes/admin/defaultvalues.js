@@ -22,10 +22,15 @@ router.get('/', (req, res) => {
 					bottleThresh: '',
 					kegThresh: ''
 				},
-				defaultCost: {
+				productionCost: {
 					tapCost: '',
 					bottleCost: '',
 					kegCost: ''
+				},
+				sellingPrice: {
+					tapSell: '',
+					bottleSell: '',
+					kegSell: ''
 				},
 				startValueForProduction: ''
 			}
@@ -43,18 +48,20 @@ router.post('/', (req, res) => {
 		res.redirect('/admin/defaultvalues')
 	}
 	const { hops, barley, co2, water, tapDist, bottleDist, kegDist, bottleThresh, kegThresh, tapCost,
-		bottleCost, kegCost, startValueForProduction } = req.body
+		bottleCost, kegCost, tapSell, bottleSell, kegSell, startValueForProduction } = req.body
 
 	const ingredientCost = JSON.stringify({ hops, barley, co2, water })
 	const defaultDistribution = JSON.stringify({ tapDist, bottleDist, kegDist })
 	const defaultThreshold = JSON.stringify({ bottleThresh, kegThresh })
-	const defaultCost = JSON.stringify({ tapCost, bottleCost, kegCost })
+	const productionCost = JSON.stringify({ tapCost, bottleCost, kegCost })
+	const sellingPrice = JSON.stringify({ tapSell, bottleSell, kegSell })
 
 	beerModule.updateDefaultValuesCollection({
 		ingredientCost,
 		defaultDistribution,
 		defaultThreshold,
-		defaultCost,
+		productionCost,
+		sellingPrice,
 		startValueForProduction
 	}, (err) => {
 		if(err) {

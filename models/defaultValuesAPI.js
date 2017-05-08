@@ -14,7 +14,11 @@ const defaultValuesSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
-	defaultCost: {
+	productionCost: {
+		type: String,
+		required: true
+	},
+	sellingPrice: {
 		type: String,
 		required: true
 	},
@@ -43,8 +47,10 @@ function isInputCorrect(updatedProperties) {
 	const dd = JSON.parse(updatedProperties.defaultDistribution)
 	// defaultThreshold
 	const dt = JSON.parse(updatedProperties.defaultThreshold)
-	// defaultCost
-	const dc = JSON.parse(updatedProperties.defaultCost)
+	// productionCost
+	const dc = JSON.parse(updatedProperties.productionCost)
+	// sellingPrice
+	const sp = JSON.parse(updatedProperties.sellingPrice)
 	// startValueForProduction
 	const svfp = updatedProperties.startValueForProduction
 	let validated = false
@@ -52,6 +58,7 @@ function isInputCorrect(updatedProperties) {
 		!moduleValidator.isEmpty(dd) && moduleValidator.isNumbers(dd) &&
 		!moduleValidator.isEmpty(dt) && moduleValidator.isNumbers(dt) &&
 		!moduleValidator.isEmpty(dc) && moduleValidator.isNumbers(dc) &&
+		!moduleValidator.isEmpty(sp) && moduleValidator.isNumbers(sp) &&
 		!moduleValidator.isEmpty({ svfp }) && moduleValidator.isNumbers({ svfp })
 		) {
 		if(is100(dd)) {
@@ -71,6 +78,7 @@ module.exports.createDefaultValuesCollection = (newDefaultValuesCollection, call
 }
 
 module.exports.updateDefaultValuesCollection = (updatedProperties, callback) => {
+	console.log(updatedProperties)
 	if(isInputCorrect(updatedProperties)) {
 		DefaultValuesCollection.update({}, { $set: updatedProperties }, { upsert: true }, callback)
 	} else {
@@ -114,7 +122,8 @@ module.exports.getAllDefaultValuesCollections = (callback) => {
 				ingredientCost: JSON.parse(values.ingredientCost),
 				defaultDistribution: JSON.parse(values.defaultDistribution),
 				defaultThreshold: JSON.parse(values.defaultThreshold),
-				defaultCost: JSON.parse(values.defaultCost),
+				productionCost: JSON.parse(values.productionCost),
+				sellingPrice: JSON.parse(values.sellingPrice),
 				startValueForProduction: values.startValueForProduction
 			}
 			callback(err, updatedValues)

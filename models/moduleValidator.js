@@ -22,10 +22,14 @@ module.exports.isEmpty = (values) => {
 	if(values) {
 		const temp = values
 		Object.keys(temp).forEach((key) => {
-			if(!Number.isInteger(temp[key])) {
-				if(validator.isEmpty(temp[key])) {
-					empty = true
+			if(temp[key]) {
+				if(!Number.isInteger(temp[key])) {
+					if(validator.isEmpty(temp[key])) {
+						empty = true
+					}
 				}
+			} else {
+				empty = true
 			}
 		})
 	} else {
