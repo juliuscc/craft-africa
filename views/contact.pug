@@ -5,17 +5,18 @@ block title
 
 block content
 	.contact-form.container
-		h1 Contact us
-		p something nice that we will tell you here (So you sends us a nicer message)
+		h1 Say hello
+		p Lorem Ipsum
 
-		form.container
+		form(method="post" action="/email/send").container
+			input(type="text" name="message_template" value="standard-template" hidden)
 			.input-row
 				.name
 					label(for="name") Name
 					input(type="text" name="name" id="name")
 				.email
-					label(for="email") Email
-					input(type="email" name="email" id="email" required)
+					label(for="emailadress") Email
+					input(type="email" name="emailadress" id="email" required)
 
 			.message
 				label(for="message") Your message
