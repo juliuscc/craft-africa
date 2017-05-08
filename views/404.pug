@@ -1,13 +1,21 @@
 extends layout.pug
 
 block title 
-	|  - CraftAfrica 404
+	|  - Oops! Error code: 404
 
 block header
-	h1 404
+	header.header.footprint
+		.title-text
+			h1 Oops!
+			h4 We can't seem to find the page you're looking for.
+			p Error code: 404
+
+block nav
+	nav.nav.small
+		include partials/navbar
+	.nav-filler
 
 block content
-	p 404 file not found
 
-block footer
-	p example footer
+//- block footer
+//- 	p example footer
