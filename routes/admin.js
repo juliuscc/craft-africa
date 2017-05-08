@@ -8,6 +8,7 @@ const containersRoute = require('./admin/containers')
 const beerRoute = require('./admin/defaultvalues')
 const beerTypeRoute = require('./admin/beertype')
 const emailRoute = require('./admin/email')
+const userRoute = require('./admin/users')
 // const statistics = require('./admin/statistics')
 
 // Set Routes
@@ -16,6 +17,7 @@ router.use('/containers', containersRoute)
 router.use('/defaultvalues', beerRoute)
 router.use('/beertype', beerTypeRoute)
 router.use('/email', emailRoute)
+router.use('/users', userRoute)
 // router.use('/statistics', statistics)
 
 // Login stuff

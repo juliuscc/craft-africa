@@ -14,4 +14,12 @@ userSchema.methods.generateHash = function (password) {
 userSchema.methods.validPassword = function (password) {
 	return bcrypt.compareSync(password, this.local.password)
 }
-module.exports = mongoose.model('User', userSchema)
+
+const User = mongoose.model('User', userSchema)
+module.exports = User
+
+
+module.exports.getAllUsers = (callback) => {
+	const query = {}
+	User.find(query, callback)
+}
