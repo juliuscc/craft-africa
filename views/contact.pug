@@ -3,24 +3,32 @@ extends layout.pug
 block title 
 	|  - Contact
 
+block nav
+	nav.nav.small
+		include partials/navbar
+	.nav-filler
+
 block content
-	.contact-form.container
-		h1 Contact us
-		p something nice that we will tell you here (So you sends us a nicer message)
+	.contact-form
+		.container
+			h1 Say hello
+			p Lorem Ipsum
 
-		form.container
-			.input-row
-				.name
-					label(for="name") Name
-					input(type="text" name="name" id="name")
-				.email
-					label(for="email") Email
-					input(type="email" name="email" id="email" required)
+			form(method="post" action="/email/send").container
+				input(type="text" name="message_template" value="standard-template" hidden)
+				.input-row
+					.name
+						label(for="name") Name
+						input(type="text" name="name" id="name")
+					.email
+						label(for="emailadress") Email
+						input(type="email" name="emailadress" id="email" required)
 
-			.message
-				label(for="message") Your message
-				textarea(name="message" id="message" rows="10")
+				.message
+					label(for="message") Your message
+					textarea(name="message" id="message" rows="10")
 
-			.btn-row
-				input(type="submit" value="Submit")
+				.btn-row
+					input(type="submit" value="Submit")
 
+block navScript

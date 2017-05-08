@@ -1,60 +1,60 @@
-
-
 .contact-form {
-
-	flex: 1;
-
-	h1 {
-		text-align: center;
-	}
-
-	p {
-		
-		text-align: center;
-	}
-
-	.input-row {
-
+	
+	background-color: $color-primary;
+		padding-top: 40px;
 		width: 100%;
-		
-		> * {
-			width: 50%;
-			box-sizing: border-box;
-			display: inline-block;
-			margin-bottom: 10px;
+		h1 {
+			text-align: center;
 		}
 
-		.name {
-			padding-right: 10px;
-
-			> * {
-				box-sizing: border-box;
-				width: 100%;	
-			}
-		}
-
-		.email {
-			padding-left: 10px;
-
-			> * {
-				box-sizing: border-box;
-				width: 100%;	
-			}
+		p {
 			
+			text-align: center;
 		}
-	}
 
-	.message {
-		//border: 1px solid red;
-		textarea {
-			box-sizing: border-box;
+		.input-row {
+			
 			width: 100%;
+			
+			> * {
+				
+				width: 50%;
+				box-sizing: border-box;
+				display: inline-block;
+				margin-bottom: 10px;
+			}
+
+			.name {
+
+				padding-right: 10px;
+
+				> * {
+					box-sizing: border-box;
+					width: 100%;
+				}
+			}
+
+			.email {
+				padding-left: 10px;
+
+				> * {
+					box-sizing: border-box;
+					width: 100%;	
+				}
+				
+			}
 		}
 
-	}
+		.message {
+			//border: 1px solid red;
+			textarea {
+				box-sizing: border-box;
+				width: 100%;
+			}
 
-	.btn-row {
-		margin-top: 8px;
+		}
 
-	}
+		.btn-row {
+			margin-top: 8px;
+		}
 }

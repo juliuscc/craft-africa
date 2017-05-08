@@ -8,8 +8,12 @@ body {
 	//*****Sticky footer*******	
 	display: flex;
 	min-height: 100vh;
-  	flex-direction: column;
-  	//*************************
+	flex-direction: column;
+
+	> div:last-of-type {
+		flex: 1;
+	}
+	//*************************
 }
 
 .container {
