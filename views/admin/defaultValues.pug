@@ -12,58 +12,66 @@ block content
 				.card-content
 					span.card-title Ingredient cost
 					.defaultCostIngredients
+						label(for='name') Hops ($)
 						input.validate(type="number" required name="hops"  placeholder='Hops ($)' value=ingredientCost.hops)
+						label(for='name') Barley ($)
 						input.validate(type="number" required name="barley" placeholder='Barley ($)' value=ingredientCost.barley)
+						label(for='name') CO2 ($)
 						input.validate(type="number" required name="co2" placeholder='CO2 ($)' value=ingredientCost.co2)
+						label(for='name') Water ($)
 						input.validate(type="number" required name="water" placeholder='Water ($)' value=ingredientCost.water)
-						input.validate(type="hidden" name="id" value='beer._id')
-						input.validate(type="hidden" name="status" value="unchanged")
 
 			.card
 				.card-content
-					span.card-title Default Distribution (%)
+					span.card-title Default Distribution (%) (Must be 100 in total for it to save)
 					.defaultDistributionValues
-					input.validate(type="number" required name="tapDist" placeholder='Tap (%)' value=defaultDistribution.tapDist)
-					input.validate(type="number" required name="bottleDist" placeholder='Bottle (%)' value=defaultDistribution.bottleDist)
-					input.validate(type="number" required name="kegDist" placeholder='Keg (%)' value=defaultDistribution.kegDist)
-					input.validate(type="hidden" name="id" value='beer._id')
-					input.validate(type="hidden" name="status" value="unchanged")
+						label(for='name') Tap (%)
+						input.validate(type="number" required name="tapDist" placeholder='Tap (%)' value=defaultDistribution.tapDist)
+						label(for='name') Bottle (%)
+						input.validate(type="number" required name="bottleDist" placeholder='Bottle (%)' value=defaultDistribution.bottleDist)
+						label(for='name') Keg (%)
+						input.validate(type="number" required name="kegDist" placeholder='Keg (%)' value=defaultDistribution.kegDist)
 
 			.card
 				.card-content
 					span.card-title Default Threshhold for Activating Bottle/Keg Containers
 					.defaultThreshhold
-					input.validate(type="number" required name="bottleThresh"  placeholder='Bottle' value=defaultThreshold.bottleThresh)
-					input.validate(type="number" required name="kegThresh"  placeholder='Keg' value=defaultThreshold.kegThresh)
+						label(for='name') Bottle
+						input.validate(type="number" required name="bottleThresh"  placeholder='Bottle' value=defaultThreshold.bottleThresh)
+						label(for='name') Keg
+						input.validate(type="number" required name="kegThresh"  placeholder='Keg' value=defaultThreshold.kegThresh)
 
 			.card
 				.card-content
 					span.card-title Production Cost (per unit)
 					.defaultCostValues
+						label(for='name') Tap ($)
 						input.validate(type="number" required name="tapCost"  placeholder='Tap ($)' value=productionCost.tapCost)
+						label(for='name') Bottle ($)
 						input.validate(type="number" required name="bottleCost"  placeholder='Bottle ($)' value=productionCost.bottleCost)
+						label(for='name') Keg ($)
 						input.validate(type="number" required name="kegCost" placeholder='Keg ($)' value=productionCost.kegCost)
-						input.validate(type="hidden" name="id" value='beer._id')
-						input.validate(type="hidden" name="status" value="unchanged")
 
 			.card
 				.card-content
 					span.card-title Selling Price (per unit)
-					.defaultCostValues
+					.defaultSellingValues
+						label(for='name') Tap ($)
 						input.validate(type="number" required name="tapSell"  placeholder='Tap ($)' value=sellingPrice.tapSell)
+						label(for='name') Bottle ($)
 						input.validate(type="number" required name="bottleSell"  placeholder='Bottle ($)' value=sellingPrice.bottleSell)
+						label(for='name') Keg ($)
 						input.validate(type="number" required name="kegSell" placeholder='Keg ($)' value=sellingPrice.kegSell)
-						input.validate(type="hidden" name="id" value='beer._id')
-						input.validate(type="hidden" name="status" value="unchanged")
 
 
 			.card
 				.card-content
 					span.card-title Start Value for Production
 					.defaultStartValueForProduction
+						label(for='name') $
 						input.validate(type="number" required name="startValueForProduction"  placeholder='$' value=startValueForProduction)
-						input.validate(type="hidden" name="id" value='beer._id')
-						input.validate(type="hidden" name="status" value="unchanged")
+							
+			input.validate(type="hidden" name="status" value="unchanged")
 
 			br
 			input.btn.right.blue(type="submit" disabled=false name="submit" value="Submit")

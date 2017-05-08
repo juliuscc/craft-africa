@@ -22,6 +22,10 @@ const defaultValuesSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
+	fermentingTime: {
+		type: Number,
+		required: true
+	},
 	startValueForProduction: {
 		type: Number,
 		required: true
