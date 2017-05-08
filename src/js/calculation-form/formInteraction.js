@@ -102,11 +102,18 @@ function saveFormInputs(stats, economics) {
 	// Assigning to main slider
 	document.querySelector('#totalVolume').value = stats.volume.total
 
-	document.querySelector('.profit').innerHTML = economics.profit
-	document.querySelector('.output').innerHTML =
-	`Fixed: ${economics.fixedCosts}
-	 Variable: ${economics.variableCosts}
-	`
+	if(economics) {
+		if(economics.profit) {
+			document.querySelector('.profit').innerHTML = economics.profit
+		}
+
+		if(economics.fixedCosts && economics.variableCosts) {
+			document.querySelector('.output').innerHTML =
+			`Fixed: ${economics.fixedCosts}
+			 Variable: ${economics.variableCosts}
+			`
+		}
+	}
 }
 
 function updateDistributionSliders(calculationStats, event) {

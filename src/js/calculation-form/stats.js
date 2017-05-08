@@ -50,7 +50,6 @@ function getCalculationStats(inputData, defaultData) {
 
 	// Add distribution lock
 	stats.distributionLock = ['tap', 'bottle']
-
 	return stats
 }
 /* Exporting module

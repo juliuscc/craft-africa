@@ -11,8 +11,9 @@ function getVariableCosts(stats) {
 		volume,
 		beerType
 	} = stats
-
 	const costs = {}
+
+// TODO fix production cost and current beer cost
 
 	if(volume && beerType.current.cost && volume.total && productionCosts) {
 		if(beerType.current.cost && volume.total) {
@@ -46,8 +47,8 @@ function getVariableCosts(stats) {
 
 // Get the fixed costs for producing the current setup.
 function getFixedCosts(stats) {
-	// Modules needs to be gathered before
-	if(stats.modules.current) {
+	// Containers needs to be gathered before
+	if(stats.containers.current) {
 		const costs = {
 			rent: container.getCost(stats)
 		}
@@ -65,12 +66,11 @@ function getFixedCosts(stats) {
 // Calculate the total income from distribution and prices
 function getIncome(stats) {
 	// volume needs to be calculated before
-	const { sellingCosts, volume } = stats
-
-	if(sellingCosts && volume) {
-		const kegPrice 		= sellingCosts.keg * volume.keg
-		const tapPrice 		= sellingCosts.tap * volume.tap
-		const bottlePrice 	= sellingCosts.bottle * volume.bottle
+	const { sellingPrice, volume } = stats
+	if(sellingPrice && volume) {
+		const kegPrice 		= sellingPrice.keg * volume.keg
+		const tapPrice 		= sellingPrice.tap * volume.tap
+		const bottlePrice 	= sellingPrice.bottle * volume.bottle
 
 		return kegPrice + tapPrice + bottlePrice
 	}
@@ -89,7 +89,6 @@ function getEconomics(stats) {
 		fixedCosts: getFixedCosts(stats).total,
 		variableCosts: getVariableCosts(stats).total
 	}
-
 	economics.profit = economics.incomes - economics.fixedCosts - economics.variableCosts
 
 	return economics

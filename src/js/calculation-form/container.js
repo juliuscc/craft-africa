@@ -47,7 +47,7 @@ function getFermentingModules(stats) {
 
 // Get the addon modules C1 = keg storage and C2 is Bottle machine
 function getAddonsModules(stats) {
-	const addonModules = stats.containers.addons
+	const addonModules = stats.containers.addon
 
 	const requiredAddonsModules = []
 	addonModules.forEach((container) => {
