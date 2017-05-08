@@ -38,40 +38,6 @@ const containerSchema = mongoose.Schema({
 const Container = mongoose.model('Container', containerSchema)
 module.exports = Container
 
-function isNumbers(values) {
-	let areIntegers = true
-	if(values) {
-		const temp = values
-		Object.keys(temp).forEach((key) => {
-			if(!Number.isInteger(temp[key])) {
-				if(validator.isInt(temp[key])) {
-					temp[key] = parseInt(temp[key], 10)
-				} else {
-					areIntegers = false
-				}
-			}
-		})
-	}
-	return areIntegers
-}
-
-function isEmpty(values) {
-	let empty = false
-	if(values) {
-		const temp = values
-		Object.keys(temp).forEach((key) => {
-			if(!Number.isInteger(temp[key])) {
-				if(validator.isEmpty(temp[key])) {
-					empty = true
-				}
-			}
-		})
-	} else {
-		empty = true
-	}
-	return empty
-}
-
 function isInputCorrect(updatedProperties) {
 	const name = updatedProperties.name
 	const type = updatedProperties.type
