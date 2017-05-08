@@ -1,14 +1,14 @@
 const router = require('express').Router()
 const containerAPI = require('./../models/containerAPI')
-const beerAPI = require('./../models/defaultValuesAPI')
-const defaultThresholdAPI = require('./../models/defaultValuesAPI')
+const beerAPI = require('./../models/beerTypeAPI')
+const defaultValuesAPI = require('./../models/defaultValuesAPI')
 
 function loadFromDB(callback) {
 	containerAPI.getAllContainers((err, containers) => {
 		if(err) {
 			callback('could not load containers')
 		} else {
-			defaultThresholdAPI.getAllDefaultValuesCollections((err2, defaultValues) => {
+			defaultValuesAPI.getAllDefaultValuesCollections((err2, defaultValues) => {
 				if(err2) {
 					callback('could not load default values')
 				} else {
@@ -36,7 +36,13 @@ router.get('/stats', (req, res) => {
 		} else {
 			// Create container object
 			const containerObject = {}
+
+			console.log(data)
+
 			data.containers.forEach((container) => {
+				if(!containerObject[container.type]) {
+					containerObject[container.type] = []
+				}
 				containerObject[container.type].push(container)
 			})
 			containerObject.fermentingTime = data.defaultValues.fermentingTime
@@ -45,6 +51,8 @@ router.get('/stats', (req, res) => {
 			res.json({
 				containers: containerObject,
 				ingredientCost: data.defaultValues.ingredientCost,
+				sellingPrice: data.defaultValues.sellingPrice,
+				productionCost: data.defaultValues.productionCost,
 				distribution: data.defaultValues.defaultDistribution,
 				volume: {
 					total: data.defaultValues.startValueForProduction
