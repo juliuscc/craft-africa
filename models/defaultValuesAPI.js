@@ -14,6 +14,9 @@ const defaultValuesSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
+	fermentingTime: {
+		type: Number
+	},
 	defaultCost: {
 		type: String,
 		required: true
@@ -80,6 +83,9 @@ function isInputCorrect(updatedProperties) {
 	// defaultThreshold
 	const dt = JSON.parse(updatedProperties.defaultThreshold)
 
+	// Fermenting
+	const ft = JSON.parse(updatedProperties.fermentingTime)
+
 	// defaultCost
 	const dc = JSON.parse(updatedProperties.defaultCost)
 
@@ -91,6 +97,7 @@ function isInputCorrect(updatedProperties) {
 		!isEmpty(dd) && isNumbers(dd) &&
 		!isEmpty(dt) && isNumbers(dt) &&
 		!isEmpty(dc) && isNumbers(dc) &&
+		!isEmpty(ft) && isNumbers(ft) &&
 		!isEmpty({ svfp }) && isNumbers({ svfp })
 		) {
 		if(is100(dd)) {
@@ -156,6 +163,7 @@ module.exports.getAllDefaultValuesCollections = (callback) => {
 				ingredientCost: JSON.parse(values.ingredientCost),
 				defaultDistribution: JSON.parse(values.defaultDistribution),
 				defaultThreshold: JSON.parse(values.defaultThreshold),
+				fermentingTime: JSON.parse(values.fermentingTime),
 				defaultCost: JSON.parse(values.defaultCost),
 				startValueForProduction: values.startValueForProduction
 			}

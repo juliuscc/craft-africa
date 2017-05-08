@@ -35,6 +35,9 @@ const containerSchema = mongoose.Schema({
 	}
 })
 
+const Container = mongoose.model('Container', containerSchema)
+module.exports = Container
+
 function isNumbers(values) {
 	let areIntegers = true
 	if(values) {
@@ -86,9 +89,6 @@ function isInputCorrect(updatedProperties) {
 	}
 	return validated
 }
-
-const Container = mongoose.model('Container', containerSchema)
-module.exports = Container
 
 module.exports.createContainer = (newContainer, callback) => {
 	if(isInputCorrect(newContainer)) {
