@@ -3,8 +3,11 @@
 $(document).ready(() => {
 	$('select').material_select()
 })
+$(document).ready(() => {
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal()
+  })
 /* eslint-enable no-undef */
-
 function removeRow() {
 	const row = this.parentNode.parentNode
 	const status = row.querySelector('[name="status"]')
