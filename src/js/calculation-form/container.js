@@ -29,10 +29,9 @@ function getFermentingModules(stats) {
 	let neededCapacity = totalCapacity - fermentingCapacityBrewery
 
 	// Sort out the appropriate modules
-// TODO: This already exists: container.series
-	const identifyingTypeChar = chosenProductionModule.name.charAt(0)
+	const moduleSeries = chosenProductionModule.series
 	const filteredFermentationModules = fermentingModules.filter(
-		element => element.name.charAt(0) === identifyingTypeChar)
+		element => element.series === moduleSeries)
 
 	const requiredFermentationModules = []
 	// Subtract fermenting capacity for each available module
