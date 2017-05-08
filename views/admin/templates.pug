@@ -5,7 +5,11 @@ block content
 		ul
 			each template in templateList
 				li
-					a(href="/admin/email/" + template.name)= template.name
+					a(href="/admin/email/" + template.name)= template.name + "  "
+					form(method="post" action="/admin/email/delete")
+						input(type="hidden" name="id" value=template._id)
+						input(type="submit" value="Remove template")
+
 		a(href="/admin/email/new") Add new template
 	else
 		a(href="/admin/email/") Go back!
@@ -26,6 +30,8 @@ block content
 			input(type="text" name="user_subject" id="user_subject" value=user_subject)
 			p User Message
 			textarea(name="user_message" form="template-form" style="width:300px; height:150px;")= user_message
+			input(type="hidden" name="id" value=_id)
+			
 			br
 			br
 			input(type="submit" id="submit")

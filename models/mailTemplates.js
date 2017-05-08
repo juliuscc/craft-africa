@@ -33,13 +33,12 @@ module.exports = Template
 module.exports.createTemplate = (newTemplate, callback) => {
 	newTemplate.save(callback)
 }
-
 module.exports.getTemplates = (callback) => {
 	Template.find({}, callback)
 }
 
-module.exports.getTemplateById = (fieldId, callback) => {
-	const query = { id: fieldId }
+module.exports.getTemplateById = (id, callback) => {
+	const query = { _id: id }
 	Template.findOne(query, callback)
 }
 
@@ -48,12 +47,16 @@ module.exports.getTemplateByName = (fieldName, callback) => {
 	Template.findOne(query, callback)
 }
 
-module.exports.editByName = (fieldName, object, callback) => {
-	const query = { name: fieldName }
-	Template.update(query, object, callback)
+module.exports.updateTemplateById = (id, updatedProperties, callback) => {
+	Template.update({ _id: id }, { $set: updatedProperties }, { upsert: true }, callback)
 }
 
 module.exports.getAllTemplates = (callback) => {
 	const query = {}
 	Template.find(query, callback)
+}
+
+module.exports.removeTemplate = (id, callback) => {
+	const query = { _id: id }
+	Template.remove(query, callback)
 }

@@ -36,9 +36,7 @@ router.get('/stats', (req, res) => {
 		} else {
 			// Create container object
 			const containerObject = {}
-
-			console.log(data)
-
+			
 			data.containers.forEach((container) => {
 				if(!containerObject[container.type]) {
 					containerObject[container.type] = []
