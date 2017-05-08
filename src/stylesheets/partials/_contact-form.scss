@@ -1,4 +1,6 @@
 .contact-form {
+	background-color: $color-primary;
+	margin-top: 80px;
 	h1 {
 		text-align: center;
 	}
@@ -9,10 +11,11 @@
 	}
 
 	.input-row {
-
+		
 		width: 100%;
 		
 		> * {
+			
 			width: 50%;
 			box-sizing: border-box;
 			display: inline-block;
@@ -20,11 +23,15 @@
 		}
 
 		.name {
+
 			padding-right: 10px;
 
 			> * {
 				box-sizing: border-box;
-				width: 100%;	
+				width: 100%;
+				border-radius: 5px;
+  				
+
 			}
 		}
 
@@ -33,7 +40,8 @@
 
 			> * {
 				box-sizing: border-box;
-				width: 100%;	
+				width: 100%;
+				border-radius: 5px;	
 			}
 			
 		}
@@ -44,12 +52,13 @@
 		textarea {
 			box-sizing: border-box;
 			width: 100%;
+			border-radius: 5px;
 		}
 
 	}
 
 	.btn-row {
 		margin-top: 8px;
-
+		border-radius: 5px;
 	}
 }
