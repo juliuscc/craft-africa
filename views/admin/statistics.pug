@@ -2,22 +2,10 @@ extends layout.pug
 
 block content
 	H1 Statistics
-	div(width="200",style ="float:left")
-		canvas(id="myChart",width="200",height="200")
-		canvas(id="myChart2",width="200",height="200")
-		canvas(id="myChart3",width="200",height="200")
-	div(width="200",style ="float:left")
-		canvas(id="myChart4",width="200",height="200")
-		canvas(id="myChart5",width="200",height="200")
-		canvas(id="myChart6",width="200",height="200")
-	div(width="200",style ="float:left")
-		canvas(id="myChart7",width="200",height="200")
-		canvas(id="myChart8",width="200",height="200")
-		canvas(id="myChart9",width="200",height="200")
-	div(width="200",style ="float:left")
-		canvas(id="myChart10",width="200",height="200")
-		canvas(id="myChart11",width="200",height="200")
-		canvas(id="myChart12",width="200",height="200")
+	div(width="600",style ="float:left")
+		canvas(id="myChart",width="800",height="400")
+		canvas(id="myChart2",width="800",height="200")
+		canvas(id="myChart3",width="800",height="200")
 
 block scripts
 	script(src="/js/admin/statistics.js")
