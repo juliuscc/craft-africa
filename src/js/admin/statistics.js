@@ -1,5 +1,5 @@
-const Chart = require('chart.js')
-
+// const Chart = require('chart.js')
+/*
 const ctx = document.getElementById('myChart')
 const ctx2 = document.getElementById('myChart2')
 const ctx3 = document.getElementById('myChart3')
@@ -64,4 +64,4 @@ new Chart(ctx8, obj)
 new Chart(ctx9, obj)
 new Chart(ctx10, obj)
 new Chart(ctx11, obj)
-new Chart(ctx12, obj)
+new Chart(ctx12, obj) */

@@ -17,17 +17,32 @@ block content
 				.card-content
 					.row
 						.input-field.col.s3
-							input#name.validate(type='text' name="name" value=container.name)
+							input.validate(type='text' name="name" required value=container.name)
 							label(for='name') Name
 						.input-field.col.s3
-							input#type.validate(type='text' name="type" required,value=container.type)
+							input.validate(type='text' name="type" required value=container.type)
 							label(for='type') Type
 						.input-field.col.s3
-							input#price.validate(type='number' name="price" required,value=container.price)
+							input.validate(type='number' name="series" required value=container.series)
+							label(for='series') Series
+						.input-field.col.s3
+							input.validate(type='number' name="price" required value=container.price)
 							label(for='price') Price
 						.input-field.col.s3
-							input#size.validate(type='number' name="size" required value=container.size)
-							label(for='size') Size
+							input.validate(type='number' name="fermentingCapacity" required value=container.fermentingCapacity)
+							label(for='fermentingCapacity') Fermenting Capacity
+						.input-field.col.s3
+							input.validate(type='number' name="storageCapacity" required value=container.storageCapacity)
+							label(for='storageCapacity') Storage Capacity
+						.input-field.col.s3
+							input.validate(type='number' name="brewingCapacity" required value=container.brewingCapacity)
+							label(for='brewingCapacity') Brewing Capacity
+						.input-field.col.s3
+							input.validate(type='number' name="waterProduction" required value=container.waterProduction)
+							label(for='waterProduction') Water Production
+						.input-field.col.s3
+							input.validate(type='number' name="electricityProduction" required value=container.electricityProduction)
+							label(for='electricityProduction') Electricity Production
 						input.btn.remove.red.right(type="submit" value = "remove" style="margin-right: 10px")
 						input.btn.save.blue.right(type="submit" value = "save" style="margin-right:10px")
 						input(type="hidden" name="id" value=container._id)

@@ -1,59 +1,77 @@
 extends layout.pug
 
 block title
-	title Craft Africa - Edit Beers
+	title Craft Africa - Default Values
 
 block header
 	h3 Default Values
 
 block content
-	form(method="post" action="/admin/beer" style="padding: 10px 40px 20px 10px")
+	form(method="post" action="/admin/defaultvalues" style="padding: 10px 40px 20px 10px")
 			.card
 				.card-content
 					span.card-title Ingredient cost
 					.defaultCostIngredients
-						input(type="text" required class="textbox number" name="hops"  placeholder='Hops ($)' value=ingredientCost.hops)
-						input(type="text" required class="textbox number" name="barley" placeholder='Barley ($)' value=ingredientCost.barley)
-						input(type="text" required class="textbox number" name="co2" placeholder='CO2 ($)' value=ingredientCost.co2)
-						input(type="text" required class="textbox number" name="water" placeholder='Water ($)' value=ingredientCost.water)
-						input(type="hidden" name="id" value='beer._id')
-						input(type="hidden" name="status" value="unchanged")
+						label(for='name') Hops ($)
+						input.validate(type="number" required name="hops"  placeholder='Hops ($)' value=ingredientCost.hops)
+						label(for='name') Barley ($)
+						input.validate(type="number" required name="barley" placeholder='Barley ($)' value=ingredientCost.barley)
+						label(for='name') CO2 ($)
+						input.validate(type="number" required name="co2" placeholder='CO2 ($)' value=ingredientCost.co2)
+						label(for='name') Water ($)
+						input.validate(type="number" required name="water" placeholder='Water ($)' value=ingredientCost.water)
 
 			.card
 				.card-content
-					span.card-title Default Distribution (%)
+					span.card-title Default Distribution (%) (Must be 100 in total for it to save)
 					.defaultDistributionValues
-					input(type="text" required class="textbox number" name="tapDist" placeholder='Tap (%)' value=defaultDistribution.tapDist)
-					input(type="text" required class="textbox number" name="bottleDist" placeholder='Bottle (%)' value=defaultDistribution.bottleDist)
-					input(type="text" required class="textbox number" name="kegDist" placeholder='Keg (%)' value=defaultDistribution.kegDist)
-					input(type="hidden" name="id" value='beer._id')
-					input(type="hidden" name="status" value="unchanged")
+						label(for='name') Tap (%)
+						input.validate(type="number" required name="tapDist" placeholder='Tap (%)' value=defaultDistribution.tapDist)
+						label(for='name') Bottle (%)
+						input.validate(type="number" required name="bottleDist" placeholder='Bottle (%)' value=defaultDistribution.bottleDist)
+						label(for='name') Keg (%)
+						input.validate(type="number" required name="kegDist" placeholder='Keg (%)' value=defaultDistribution.kegDist)
 
 			.card
 				.card-content
 					span.card-title Default Threshhold for Activating Bottle/Keg Containers
 					.defaultThreshhold
-					input(type="text" required class="textbox number" name="bottleThresh"  placeholder='Bottle' value=defaultThreshold.bottleThresh)
-					input(type="text" required class="textbox number" name="kegThresh"  placeholder='Keg' value=defaultThreshold.kegThresh)
+						label(for='name') Bottle
+						input.validate(type="number" required name="bottleThresh"  placeholder='Bottle' value=defaultThreshold.bottleThresh)
+						label(for='name') Keg
+						input.validate(type="number" required name="kegThresh"  placeholder='Keg' value=defaultThreshold.kegThresh)
 
 			.card
 				.card-content
-					span.card-title Default Cost (per unit)
+					span.card-title Production Cost (per unit)
 					.defaultCostValues
-						input(type="text" required class="textbox number" name="tapCost"  placeholder='Tap ($)' value=defaultCost.tapCost)
-						input(type="text" required class="textbox number" name="bottleCost"  placeholder='Bottle ($)' value=defaultCost.bottleCost)
-						input(type="text" required class="textbox number" name="kegCost" placeholder='Keg ($)' value=defaultCost.kegCost)
-						input(type="hidden" name="id" value='beer._id')
-						input(type="hidden" name="status" value="unchanged")
+						label(for='name') Tap ($)
+						input.validate(type="number" required name="tapCost"  placeholder='Tap ($)' value=productionCost.tapCost)
+						label(for='name') Bottle ($)
+						input.validate(type="number" required name="bottleCost"  placeholder='Bottle ($)' value=productionCost.bottleCost)
+						label(for='name') Keg ($)
+						input.validate(type="number" required name="kegCost" placeholder='Keg ($)' value=productionCost.kegCost)
+
+			.card
+				.card-content
+					span.card-title Selling Price (per unit)
+					.defaultSellingValues
+						label(for='name') Tap ($)
+						input.validate(type="number" required name="tapSell"  placeholder='Tap ($)' value=sellingPrice.tapSell)
+						label(for='name') Bottle ($)
+						input.validate(type="number" required name="bottleSell"  placeholder='Bottle ($)' value=sellingPrice.bottleSell)
+						label(for='name') Keg ($)
+						input.validate(type="number" required name="kegSell" placeholder='Keg ($)' value=sellingPrice.kegSell)
 
 
 			.card
 				.card-content
 					span.card-title Start Value for Production
 					.defaultStartValueForProduction
-						input(type="text" required class="textbox number" name="startValueForProduction"  placeholder='$' value=startValueForProduction)
-						input(type="hidden" name="id" value='beer._id')
-						input(type="hidden" name="status" value="unchanged")
+						label(for='name') $
+						input.validate(type="number" required name="startValueForProduction"  placeholder='$' value=startValueForProduction)
+							
+			input.validate(type="hidden" name="status" value="unchanged")
 
 			br
 			input.btn.right.blue(type="submit" disabled=false name="submit" value="Submit")
@@ -62,4 +80,4 @@ block content
 			br
 	
 block scripts
-	script(src="/js/adminBeer.js")
+	script(src="/js/adminDefaultValues.js")

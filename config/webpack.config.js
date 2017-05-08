@@ -18,7 +18,8 @@ const babelLoader = {
 module.exports = {
 	entry: {
 		adminCont: path.resolve(__dirname, '../src/js/adminCont.js'),
-		adminBeer: path.resolve(__dirname, '../src/js/adminBeer.js'),
+		adminBeer: path.resolve(__dirname, '../src/js/adminDefaultValues.js'),
+		adminBeertype: path.resolve(__dirname, '../src/js/adminBeertype.js'),
 		explosionView: path.resolve(__dirname, '../src/js/explosionView.js'),
 		calculationForm: path.resolve(__dirname, '../src/js/calculationForm.js'),
 		'admin/statistics': path.resolve(__dirname, '../src/js/admin/statistics.js')

@@ -1,9 +1,10 @@
 const router = require('express').Router()
 const requiresAuth = require('./helper')
-const beerModule = require('../../models/beerAPI')
+const beerModule = require('../../models/defaultValuesAPI')
 
 router.get('/', (req, res) => {
-	beerModule.getAllBeerCollections((err, values) => {
+	beerModule.getAllDefaultValuesCollections((err, values) => {
+		// requiresAuth(req, res, 'beertype')
 		if(!values.ingredientCost) {
 			const empty = {
 				ingredientCost: {
@@ -21,10 +22,15 @@ router.get('/', (req, res) => {
 					bottleThresh: '',
 					kegThresh: ''
 				},
-				defaultCost: {
+				productionCost: {
 					tapCost: '',
 					bottleCost: '',
 					kegCost: ''
+				},
+				sellingPrice: {
+					tapSell: '',
+					bottleSell: '',
+					kegSell: ''
 				},
 				startValueForProduction: ''
 			}
@@ -34,25 +40,28 @@ router.get('/', (req, res) => {
 			requiresAuth(req, res, 'defaultValues', values)
 		}
 	})
+	// res.render('editbeertype')
 })
 
 router.post('/', (req, res) => {
-	if(!req.body.hops) {
-		res.redirect('/admin/beer')
+	if(!req.body) {
+		res.redirect('/admin/defaultvalues')
 	}
 	const { hops, barley, co2, water, tapDist, bottleDist, kegDist, bottleThresh, kegThresh, tapCost,
-		bottleCost, kegCost, startValueForProduction } = req.body
+		bottleCost, kegCost, tapSell, bottleSell, kegSell, startValueForProduction } = req.body
 
 	const ingredientCost = JSON.stringify({ hops, barley, co2, water })
 	const defaultDistribution = JSON.stringify({ tapDist, bottleDist, kegDist })
 	const defaultThreshold = JSON.stringify({ bottleThresh, kegThresh })
-	const defaultCost = JSON.stringify({ tapCost, bottleCost, kegCost })
+	const productionCost = JSON.stringify({ tapCost, bottleCost, kegCost })
+	const sellingPrice = JSON.stringify({ tapSell, bottleSell, kegSell })
 
-	beerModule.updateBeerCollection({
+	beerModule.updateDefaultValuesCollection({
 		ingredientCost,
 		defaultDistribution,
 		defaultThreshold,
-		defaultCost,
+		productionCost,
+		sellingPrice,
 		startValueForProduction
 	}, (err) => {
 		if(err) {
@@ -60,7 +69,7 @@ router.post('/', (req, res) => {
 		}
 	})
 
-	res.redirect('/admin/beer')
+	res.redirect('/admin/defaultvalues')
 })
 
 

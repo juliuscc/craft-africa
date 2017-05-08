@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const validator = require('validator')
+const moduleValidator = require('./moduleValidator')
 
 const beerSchema = mongoose.Schema({
 	name: {
@@ -16,68 +16,35 @@ const beerSchema = mongoose.Schema({
 	}
 })
 
-function isNumbers(values) {
-	let areIntegers = true
-	if(values) {
-		const temp = values
-		Object.keys(temp).forEach((key) => {
-			if(!Number.isInteger(temp[key])) {
-				if(validator.isInt(temp[key])) {
-					temp[key] = parseInt(temp[key], 10)
-				} else {
-					areIntegers = false
-				}
-			}
-		})
-	}
-	return areIntegers
-}
-
-function isEmpty(values) {
-	let empty = false
-	if(values) {
-		const temp = values
-		Object.keys(temp).forEach((key) => {
-			if(!Number.isInteger(temp[key])) {
-				if(validator.isEmpty(temp[key])) {
-					empty = true
-				}
-			}
-		})
-	} else {
-		empty = true
-	}
-	return empty
-}
+const BeerType = mongoose.model('BeerType', beerSchema)
+module.exports = BeerType
 
 function isInputCorrect(updatedProperties) {
 	const name = updatedProperties.name
 
 	const fermenting = updatedProperties.fermenting
 
-	const ingredient = updatedProperties.ingredient
+	const ingredient = JSON.parse(updatedProperties.ingredient)
 
 	let validated = false
 	if(
-		!isEmpty({ name }) &&
-		!isEmpty({ fermenting }) && isNumbers({ fermenting }) &&
-		!isEmpty(ingredient) && isNumbers(ingredient)
+		!moduleValidator.isEmpty({ name }) &&
+		!moduleValidator.isEmpty({ fermenting }) && moduleValidator.isNumbers({ fermenting }) &&
+		!moduleValidator.isEmpty(ingredient) && moduleValidator.isNumbers(ingredient.hops) &&
+		moduleValidator.isNumbers(ingredient.malt) && moduleValidator.isNumbers(ingredient.co2)
 		) {
 		validated = true
 	}
 	return validated
 }
 
-const BeerType = mongoose.model('BeerType', beerSchema)
-module.exports = BeerType
-
 module.exports.createBeer = (newBeer, callback) => {
-	// if(isInputCorrect(newBeer)) {
-	const containerObject = new BeerType(newBeer)
-	containerObject.save(callback)
-	// } else {
-	//	callback()
-	// }
+	if(isInputCorrect(newBeer)) {
+		const containerObject = new BeerType(newBeer)
+		containerObject.save(callback)
+	} else {
+		callback()
+	}
 }
 
 module.exports.removeBeer = (id, callback) => {
@@ -95,8 +62,19 @@ module.exports.updateBeerById = (id, updatedProperties, callback) => {
 
 module.exports.getAllBeers = (callback) => {
 	const query = {}
-	console.log('HI')
-	BeerType.find(query, callback)
+	BeerType.find(query, (err, values) => {
+		if(!values) {
+			callback(err, {})
+		} else {
+			const updatedValues = values.map((_, index) => ({
+				_id: values[index]._id,
+				name: values[index].name,
+				fermenting: values[index].fermenting,
+				ingredient: JSON.parse(values[index].ingredient)
+			}))
+			callback(err, updatedValues)
+		}
+	})
 }
 
 module.exports.getBeersByName = (fieldName, callback) => {

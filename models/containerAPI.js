@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const validator = require('validator')
+const moduleValidator = require('./moduleValidator')
 
 const containerSchema = mongoose.Schema({
 	name: {
@@ -24,13 +24,19 @@ const containerSchema = mongoose.Schema({
 	storageCapacity: {
 		type: Number
 	},
+	brewingCapacity: {
+		type: Number
+	},
 	waterProduction: {
 		type: Number
 	},
-	beerProduction: {
+	electricityProduction: {
 		type: Number
 	}
 })
+
+const Container = mongoose.model('Container', containerSchema)
+module.exports = Container
 
 function isNumbers(values) {
 	let areIntegers = true
@@ -68,26 +74,21 @@ function isEmpty(values) {
 
 function isInputCorrect(updatedProperties) {
 	const name = updatedProperties.name
-
 	const type = updatedProperties.type
-
+	const series = updatedProperties.series
 	const price = updatedProperties.price
-
-	const size = updatedProperties.size
 
 	let validated = false
 	if(
-		!isEmpty({ type }) &&
-		!isEmpty({ price }) && isNumbers({ price }) &&
-		!isEmpty({ size }) && isNumbers({ size })
+		!moduleValidator.isEmpty({ name }) &&
+		!moduleValidator.isEmpty({ type }) &&
+		!moduleValidator.isEmpty({ series }) &&
+		!moduleValidator.isEmpty({ price }) && moduleValidator.isNumbers({ price })
 		) {
 		validated = true
 	}
 	return validated
 }
-
-const Container = mongoose.model('Container', containerSchema)
-module.exports = Container
 
 module.exports.createContainer = (newContainer, callback) => {
 	if(isInputCorrect(newContainer)) {

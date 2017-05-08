@@ -44,7 +44,7 @@ function rowEdited(e) {
 	}
 }
 
-function addRow() {
+function addBeer() {
 	// Get form
 	const form = document.querySelector('.addRow')
 	// Create div with inputs
@@ -54,40 +54,24 @@ function addRow() {
 `
 <div class="row">
 	<div class="input-field col s3">
-		<input id="name" type="text" name="name" required="" class="validate">
+		<input type="text" name="name" required="" class="validate">
 		<label for="name">Name</label>
 	</div>
 	<div class="input-field col s3">
-		<input id="type" type="text" name="type" required="" class="validate">
-		<label for="type">Type</label>
+		<input type="number" name="fermenting" required="" class="validate">
+		<label for="fermenting">Fermenting time</label>
 	</div>
 	<div class="input-field col s3">
-		<input id="series" type="number" name="series" required="" class="validate">
-		<label for="series">Series</label>
+		<input type="number" name="hops" required="" class="validate">
+		<label for="hopsUse">Hops(%)</label>
 	</div>
 	<div class="input-field col s3">
-		<input id="price" type="number" name="price" required="" class="validate">
-		<label for="price">Price</label>
+		<input type="number" name="malt" required="" class="validate">
+		<label for="maltUse">Malt(%)</label>
 	</div>
 	<div class="input-field col s3">
-		<input id="fermentingCapacity" type="number" name="fermentingCapacity" required="" class="validate">
-		<label for="fermentingCapacity">Fermenting Capacity</label>
-	</div>
-	<div class="input-field col s3">
-		<input id="storageCapacity" type="number" name="storageCapacity" required="" class="validate">
-		<label for="storageCapacity">Storage Capacity</label>
-	</div>
-	<div class="input-field col s3">
-		<input id="brewingCapacity" type="number" name="brewingCapacity" required="" class="validate">
-		<label for="brewingCapacity">Brewing Capacity</label>
-	</div>
-	<div class="input-field col s3">
-		<input id="waterProduction" type="number" name="waterProduction" required="" class="validate">
-		<label for="waterProduction">Water Production</label>
-	</div>
-	<div class="input-field col s3">
-		<input id="electricityProduction" type="number" name="electricityProduction" required="" class="validate">
-		<label for="electricityProduction">Electricity Production</label>
+		<input type="number" name="co2" required="" class="validate">
+		<label for="co2Use">co2(%)</label>
 	</div>
 	<input type="button" value="remove" class="remove btn">
 	<input type="hidden" name="id" value="undefined">
@@ -103,13 +87,13 @@ function addRow() {
 	form.insertBefore(div, this)
 }
 
-const addBtn = document.querySelector('#add')
-addBtn.addEventListener('click', addRow)
+const addBtn2 = document.querySelector('#addBeer')
+addBtn2.addEventListener('click', addBeer)
 
 const removeBtns = document.querySelectorAll('.remove')
 removeBtns.forEach(btn => btn.addEventListener('click', removeRow))
 
-const editedRow = document.querySelectorAll('.validate')
+const editedRow = document.querySelectorAll('.textbox')
 editedRow.forEach(textbox => textbox.addEventListener('change', rowEdited))
 
 const checkIfNumber = document.querySelectorAll('.number')
