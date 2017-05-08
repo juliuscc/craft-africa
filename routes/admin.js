@@ -34,7 +34,7 @@ router.get('/signup', (req, res) => {
 })
 
 router.get('/statistics', (req, res) => {
-	res.render('admin/statistics', { })
+	res.render('admin/statistics', {user: req.user  })
 })
 
 router.get('/logout', (req, res) => {

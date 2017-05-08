@@ -74,3 +74,7 @@ app.listen(app.get('port'), () => {
 })
 /* eslint-enable no-console */
 
+app.use((req, res, next) => {
+    res.locals.user = req.user;
+    next();
+});
