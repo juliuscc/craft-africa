@@ -1,7 +1,7 @@
 const stats = require('./calculation-form/stats')
 const economics = require('./calculation-form/economics')
 const formInteraction = require('./calculation-form/formInteraction')
-// const container = require('./calculation-form/container')
+const container = require('./calculation-form/container')
 // const containerCalculator2 = require('./calculation-form/containerCalculator')
 const ajax = require('./ajax')
 

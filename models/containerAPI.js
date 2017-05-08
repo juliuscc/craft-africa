@@ -10,10 +10,6 @@ const containerSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
-	series: {
-		type: String,
-		require: true
-	},
 	price: {
 		type: Number,
 		required: true
@@ -91,12 +87,8 @@ function isInputCorrect(updatedProperties) {
 }
 
 module.exports.createContainer = (newContainer, callback) => {
-	if(isInputCorrect(newContainer)) {
-		const containerObject = new Container(newContainer)
-		containerObject.save(callback)
-	} else {
-		callback()
-	}
+	const containerObject = new Container(newContainer)
+	containerObject.save(callback)
 }
 
 module.exports.removeContainer = (id, callback) => {
@@ -105,11 +97,7 @@ module.exports.removeContainer = (id, callback) => {
 }
 
 module.exports.updateContainerById = (id, updatedProperties, callback) => {
-	if(isInputCorrect(updatedProperties)) {
-		Container.update({ _id: id }, { $set: updatedProperties }, { upsert: true }, callback)
-	} else {
-		callback()
-	}
+	Container.update({ _id: id }, { $set: updatedProperties }, { upsert: true }, callback)
 }
 
 module.exports.getAllContainers = (callback) => {
@@ -126,4 +114,3 @@ module.exports.getContainerByType = (fieldType, callback) => {
 	const query = { type: fieldType }
 	Container.find(query, callback)
 }
-
