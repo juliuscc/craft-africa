@@ -8,6 +8,10 @@ footer.footer-top {
 	color: $color-secondary;
 	box-shadow: inset rgba(0, 0, 0, 0.5) 0 3px 10px 0;
 
+	h1 {
+		color: lighten($color-secondary, 15%);
+	}
+
 	ul {
   		list-style-type: none;
 	}
@@ -31,9 +35,9 @@ footer.footer-top {
 		.navigation-links {
 			h1 {
 				font-size: 1.7rem;
+				margin-bottom: 5px;
 			}
 
-			h1,
 			p,
 			ul {
 				margin: 0;
