@@ -34,7 +34,7 @@ router.get('/signup', (req, res) => {
 })
 
 router.get('/statistics', (req, res) => {
-	res.render('admin/statistics', {user: req.user  })
+	res.render('admin/statistics', {username: req.user.username })
 })
 
 router.get('/logout', (req, res) => {
@@ -43,7 +43,7 @@ router.get('/logout', (req, res) => {
 })
 
 router.get('/profile', (req, res) => {
-	requiresAuth(req, res, 'containers', { user: req.user })
+	requiresAuth(req, res, 'containers')
 })
 
 router.post('/signup', passport.authenticate('local-signup', {

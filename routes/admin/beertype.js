@@ -7,7 +7,8 @@ router.get('/', (req, res) => {
 		if(err) {
 			throw err
 		}
-		requiresAuth(req, res, 'beertype', { values })
+		console.log(req.user)
+		requiresAuth(req, res, 'beertype', {values})
 	})
 })
 

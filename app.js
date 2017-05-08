@@ -73,8 +73,3 @@ app.listen(app.get('port'), () => {
 	console.log(`Server started on port ${app.get('port')}`)
 })
 /* eslint-enable no-console */
-
-app.use((req, res, next) => {
-    res.locals.user = req.user;
-    next();
-});

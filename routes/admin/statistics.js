@@ -4,7 +4,7 @@ const router = require('express').Router()
 
 router.get('/', (req, res) => {
 	console.log("statistics route")
-	res.render('admin/statistics', { })
+	res.render('admin/statistics')
 })
 
 
