@@ -21,7 +21,7 @@ router.post('/', (req, res) => {
 					throw err
 				}
 			})
-		} else {
+		} else if(status === 'edited') {
 			containersModule.updateContainerById(id, {
 				name,
 				type,

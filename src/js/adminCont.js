@@ -109,7 +109,7 @@ addBtn.addEventListener('click', addRow)
 const removeBtns = document.querySelectorAll('.remove')
 removeBtns.forEach(btn => btn.addEventListener('click', removeRow))
 
-const editedRow = document.querySelectorAll('.textbox')
+const editedRow = document.querySelectorAll('.validate')
 editedRow.forEach(textbox => textbox.addEventListener('change', rowEdited))
 
 const checkIfNumber = document.querySelectorAll('.number')
