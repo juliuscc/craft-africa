@@ -3,6 +3,11 @@ extends layout.pug
 block title 
 	|  - Contact
 
+block nav
+	nav.nav.small
+		include partials/navbar
+	.nav-filler
+
 block content
 	.contact-form.container
 		h1 Say hello
@@ -25,3 +30,4 @@ block content
 			.btn-row
 				input(type="submit" value="Submit")
 
+block navScript
