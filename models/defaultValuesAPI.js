@@ -11,7 +11,8 @@ const defaultValuesSchema = mongoose.Schema({
 		required: true
 	},
 	defaultThreshold: {
-		type: String
+		type: String,
+		required: true
 	},
 	defaultCost: {
 		type: String,
@@ -22,6 +23,18 @@ const defaultValuesSchema = mongoose.Schema({
 		required: true
 	}
 })
+
+function is100(values) {
+	let percent = 0
+	Object.keys(values).forEach((key) => {
+		percent += values[key]
+	})
+	let isCorrect = false
+	if(percent === 100) {
+		isCorrect = true
+	}
+	return isCorrect
+}
 
 function isEmpty(values) {
 	let empty = false
@@ -80,7 +93,9 @@ function isInputCorrect(updatedProperties) {
 		!isEmpty(dc) && isNumbers(dc) &&
 		!isEmpty({ svfp }) && isNumbers({ svfp })
 		) {
-		validated = true
+		if(is100(dd)) {
+			validated = true
+		}
 	}
 	return validated
 }
@@ -97,7 +112,6 @@ module.exports.createDefaultValuesCollection = (newDefaultValuesCollection, call
 
 module.exports.updateDefaultValuesCollection = (updatedProperties, callback) => {
 	if(isInputCorrect(updatedProperties)) {
-		console.log('validated')
 		DefaultValuesCollection.update({}, { $set: updatedProperties }, { upsert: true }, callback)
 	} else {
 		// TODO
@@ -114,6 +128,11 @@ module.exports.getIngredientsCollection = (callback) => {
 	DefaultValuesCollection.findOne(query, callback)
 }
 module.exports.getDistributionCollection = (callback) => {
+	const query = {}
+	DefaultValuesCollection.findOne(query, callback)
+}
+
+module.exports.getThresholdCollection = (callback) => {
 	const query = {}
 	DefaultValuesCollection.findOne(query, callback)
 }
