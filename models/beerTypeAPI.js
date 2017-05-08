@@ -6,7 +6,7 @@ const beerSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
-	fermenting: {
+	fermentingTime: {
 		type: Number,
 		required: true
 	},
@@ -22,14 +22,14 @@ module.exports = BeerType
 function isInputCorrect(updatedProperties) {
 	const name = updatedProperties.name
 
-	const fermenting = updatedProperties.fermenting
+	const fermentingTime = updatedProperties.fermentingTime
 
 	const ingredient = JSON.parse(updatedProperties.ingredient)
 
 	let validated = false
 	if(
 		!moduleValidator.isEmpty({ name }) &&
-		!moduleValidator.isEmpty({ fermenting }) && moduleValidator.isNumbers({ fermenting }) &&
+		!moduleValidator.isEmpty({ fermentingTime }) && moduleValidator.isNumbers({ fermentingTime }) &&
 		!moduleValidator.isEmpty(ingredient) && moduleValidator.isNumbers(ingredient.hops) &&
 		moduleValidator.isNumbers(ingredient.malt) && moduleValidator.isNumbers(ingredient.co2)
 		) {
@@ -69,7 +69,7 @@ module.exports.getAllBeers = (callback) => {
 			const updatedValues = values.map((_, index) => ({
 				_id: values[index]._id,
 				name: values[index].name,
-				fermenting: values[index].fermenting,
+				fermentingTime: values[index].fermentingTime,
 				ingredient: JSON.parse(values[index].ingredient)
 			}))
 			callback(err, updatedValues)

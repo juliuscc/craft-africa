@@ -5,22 +5,23 @@ const formInteraction = require('./calculation-form/formInteraction')
 const ajax = require('./ajax')
 
 let jsonCache = {}
-const calcObj = {}
+const calcObj = { stats: {}, economics: {} }
 
 function updateForm() {
-	const formdata = formInteraction.extractFormData()
+	calcObj.stats = formInteraction.extractFormData(calcObj.stats)
 
-	calcObj.stats = stats.getCalculationStats(formdata, jsonCache)
+	calcObj.stats = stats.getCalculationStats(calcObj.stats, jsonCache)
 	calcObj.economics = economics.getEconomics(calcObj.stats)
 
 	formInteraction.updateDistributionSliders(calcObj.stats)
+	formInteraction.saveFormInputs(calcObj.stats, calcObj.economics)
 }
 
 ajax.loadJSON('/data/stats')
 .then((json) => {
 	jsonCache = json
-	formInteraction.saveFormInputs(jsonCache, {})
-	updateForm()
+	// formInteraction.saveFormInputs(jsonCache, {})
+	formInteraction.initForm(jsonCache, calcObj.economics)
 })
 // .catch((msg) => {
 // 	console.log(`Error msg in calculationForm.js: ${msg}`)
@@ -31,7 +32,6 @@ ajax.loadJSON('/data/stats')
 document.querySelector('.calculation-form .calculate-button')
 		.addEventListener('click', () => {
 			updateForm()
-
 			console.log('calc: ', calcObj)
 		})
 
@@ -40,5 +40,13 @@ document.querySelectorAll('.calculation-form .container-distribution')
 .forEach((e) => {
 	e.addEventListener('input', () => {
 		formInteraction.updateDistributionSliders(calcObj.stats, e)
+		updateForm()
+	})
+})
+
+document.querySelectorAll('#totalVolume')
+.forEach((e) => {
+	e.addEventListener('input', () => {
+		updateForm()
 	})
 })

@@ -43,12 +43,18 @@ router.get('/stats', (req, res) => {
 				}
 				containerObject[container.type].push(container)
 			})
-			containerObject.fermentingTime = data.defaultValues.fermentingTime
+//	FIX!!!!	containerObject.fermentingTime = data.defaultValues.fermentingTime
+			containerObject.fermentingTime = 3
 			containerObject.threshold = data.defaultValues.threshold
 
 			res.json({
 				containers: containerObject,
-				ingredientCost: data.defaultValues.ingredientCost,
+				ingredientsCosts: {
+					hops: data.defaultValues.ingredientCost.hops,
+					malt: data.defaultValues.ingredientCost.barley,
+					co2: data.defaultValues.ingredientCost.co2,
+					water: data.defaultValues.ingredientCost.water
+				},
 				sellingPrice: {
 					keg: data.defaultValues.sellingPrice.kegSell,
 					tap: data.defaultValues.sellingPrice.tapSell,
@@ -60,9 +66,9 @@ router.get('/stats', (req, res) => {
 					tap: data.defaultValues.productionCost.tapCost
 				},
 				distribution: {
-					tap: data.defaultValues.defaultDistribution.tapDist,
-					bottle: data.defaultValues.defaultDistribution.bottleDist,
-					keg: data.defaultValues.defaultDistribution.kegDist
+					tap: data.defaultValues.defaultDistribution.tapDist / 100,
+					bottle: data.defaultValues.defaultDistribution.bottleDist / 100,
+					keg: data.defaultValues.defaultDistribution.kegDist / 100
 				},
 				volume: {
 					total: data.defaultValues.startValueForProduction

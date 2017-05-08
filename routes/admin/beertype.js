@@ -21,7 +21,7 @@ router.post('/', (req, res) => {
 			// Redirect if no data is submitted
 			res.redirect('/admin/beertype')
 		} else {
-			const { id, name, fermenting, hops, malt, co2, status } = req.body
+			const { id, name, fermentingTime, hops, malt, co2, status } = req.body
 			const ingredient = JSON.stringify({ hops, malt, co2 })
 			if(status === 'removed') {
 				beerType.removeBeer(id, (err) => {
@@ -32,7 +32,7 @@ router.post('/', (req, res) => {
 			} else {
 				beerType.updateBeerById(id, {
 					name,
-					fermenting,
+					fermentingTime,
 					ingredient
 				}, (err) => {
 					if(err) {
@@ -55,17 +55,17 @@ router.post('/new', (req, res) => {
 			if(req.body.name.constructor !== Array) {
 				req.body.id = [req.body.id]
 				req.body.name = [req.body.name]
-				req.body.fermenting = [req.body.fermenting]
+				req.body.fermentingTime = [req.body.fermentingTime]
 				req.body.hops = [req.body.hops]
 				req.body.malt = [req.body.malt]
 				req.body.co2 = [req.body.co2]
 				req.body.status = [req.body.status]
 			}
-			const { id, name, fermenting, hops, malt, co2, status } = req.body
+			const { id, name, fermentingTime, hops, malt, co2, status } = req.body
 			const beers = name.map((_, index) => ({
 				id: id[index],
 				name: name[index],
-				fermenting: fermenting[index],
+				fermentingTime: fermentingTime[index],
 				hops: hops[index],
 				malt: malt[index],
 				co2: co2[index],
@@ -80,7 +80,7 @@ router.post('/new', (req, res) => {
 				})
 				beerType.createBeer({
 					name: element.name,
-					fermenting: element.fermenting,
+					fermentingTime: element.fermentingTime,
 					ingredient
 				}, (err) => {
 					if(err) {

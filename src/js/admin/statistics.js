@@ -1,6 +1,8 @@
 const Chart = require('chart.js')
 const ajax = require('../ajax')
 
+/* eslint-disable no-new */
+
 const bgColors = [
 	'rgba(255, 99, 132, 0.2)',
 	'rgba(54, 162, 235, 0.2)',
@@ -73,8 +75,6 @@ ajaxFun()
 const ctx2 = document.getElementById('myChart2')
 const ctx3 = document.getElementById('myChart3')
 
-
-
 const obj = {
 	type: 'bar',
 	data: {
@@ -114,7 +114,7 @@ const obj = {
 		responsive: false
 	}
 }
-/* eslint-disable no-new */
+
 new Chart(ctx2, obj)
 new Chart(ctx3, obj)
 /* eslint-enable no-new */

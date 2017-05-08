@@ -5,7 +5,7 @@ const router = express.Router()
 router.get('/', (req, res) => {
 	const variables = {}
 	variables.minTotalVolume = 20
-	variables.maxTotalVolume = 10000
+	variables.maxTotalVolume = 45000
 	variables.totalVolume = 50
 	res.render('calculationform', variables)
 })
