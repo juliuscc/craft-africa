@@ -10,6 +10,9 @@ block content
 	each user in users
 		p= "Email: " + user.local.email
 		p= "password: " + user.local.password
+		form(method="post" action="/admin/users/delete")
+			input(type="hidden" name="id" value=user._id)
+			input(type="submit" value="Remove user")
 		hr
 				
 block scripts

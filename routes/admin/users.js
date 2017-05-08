@@ -8,4 +8,14 @@ router.get('/', (req, res) => {
 	})
 })
 
+router.post('/delete', (req, res) => {
+	const data = req.body
+	usersModule.removeUser(data.id, (err) => {
+		if(err) {
+			throw err
+		}
+		res.redirect('/../admin/users')
+	})
+})
+
 module.exports = router

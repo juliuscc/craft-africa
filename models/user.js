@@ -24,3 +24,7 @@ module.exports.getAllUsers = (callback) => {
 	const query = {}
 	User.find(query, callback)
 }
+module.exports.removeUser = (id, callback) => {
+	const query = { _id: id }
+	User.remove(query, callback)
+}
