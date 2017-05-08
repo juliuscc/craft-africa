@@ -20,7 +20,11 @@ block content
 							input.validate(type='text' name="name" required value=container.name)
 							label(for='name') Name
 						.input-field.col.s3
-							input.validate(type='text' name="type" required value=container.type)
+							select.validate(name="type", value=container.type, required)
+								option(value=container.type, disabled='', selected)= container.type
+								option(value='Addon') Addon
+								option(value='Fermenting') Fermenting
+								option(value='Production') Production
 							label(for='type') Type
 						.input-field.col.s3
 							input.validate(type='number' name="series" required value=container.series)

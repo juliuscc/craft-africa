@@ -1,3 +1,10 @@
+
+/* eslint-disable no-undef */
+$(document).ready(() => {
+	$('select').material_select()
+})
+/* eslint-enable no-undef */
+
 function removeRow() {
 	const row = this.parentNode.parentNode
 	const status = row.querySelector('[name="status"]')

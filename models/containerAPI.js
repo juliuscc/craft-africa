@@ -40,14 +40,12 @@ module.exports = Container
 
 function isInputCorrect(updatedProperties) {
 	const name = updatedProperties.name
-	const type = updatedProperties.type
 	const series = updatedProperties.series
 	const price = updatedProperties.price
 
 	let validated = false
 	if(
 		!moduleValidator.isEmpty({ name }) &&
-		!moduleValidator.isEmpty({ type }) &&
 		!moduleValidator.isEmpty({ series }) &&
 		!moduleValidator.isEmpty({ price }) && moduleValidator.isNumbers({ price })
 		) {
@@ -74,6 +72,7 @@ module.exports.updateContainerById = (id, updatedProperties, callback) => {
 	if(isInputCorrect(updatedProperties)) {
 		Container.update({ _id: id }, { $set: updatedProperties }, { upsert: true }, callback)
 	} else {
+		console.log("waaaat")
 		callback()
 	}
 }
