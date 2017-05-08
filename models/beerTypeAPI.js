@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const validator = require('validator')
+const moduleValidator = require('./moduleValidator')
 
 const beerSchema = mongoose.Schema({
 	name: {
@@ -19,40 +19,6 @@ const beerSchema = mongoose.Schema({
 const BeerType = mongoose.model('BeerType', beerSchema)
 module.exports = BeerType
 
-function isNumbers(values) {
-	let areIntegers = true
-	if(values) {
-		const temp = values
-		Object.keys(temp).forEach((key) => {
-			if(!Number.isInteger(temp[key])) {
-				if(validator.isInt(temp[key])) {
-					temp[key] = parseInt(temp[key], 10)
-				} else {
-					areIntegers = false
-				}
-			}
-		})
-	}
-	return areIntegers
-}
-
-function isEmpty(values) {
-	let empty = false
-	if(values) {
-		const temp = values
-		Object.keys(temp).forEach((key) => {
-			if(!Number.isInteger(temp[key])) {
-				if(validator.isEmpty(temp[key])) {
-					empty = true
-				}
-			}
-		})
-	} else {
-		empty = true
-	}
-	return empty
-}
-
 function isInputCorrect(updatedProperties) {
 	const name = updatedProperties.name
 
@@ -62,10 +28,10 @@ function isInputCorrect(updatedProperties) {
 
 	let validated = false
 	if(
-		!isEmpty({ name }) &&
-		!isEmpty({ fermenting }) && isNumbers({ fermenting }) &&
-		!isEmpty(ingredient) && isNumbers(ingredient.hops) &&
-		isNumbers(ingredient.malt) && isNumbers(ingredient.co2)
+		!moduleValidator.isEmpty({ name }) &&
+		!moduleValidator.isEmpty({ fermenting }) && moduleValidator.isNumbers({ fermenting }) &&
+		!moduleValidator.isEmpty(ingredient) && moduleValidator.isNumbers(ingredient.hops) &&
+		moduleValidator.isNumbers(ingredient.malt) && moduleValidator.isNumbers(ingredient.co2)
 		) {
 		validated = true
 	}

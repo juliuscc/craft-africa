@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const validator = require('validator')
+const moduleValidator = require('./moduleValidator')
 
 const containerSchema = mongoose.Schema({
 	name: {
@@ -35,40 +35,6 @@ const containerSchema = mongoose.Schema({
 	}
 })
 
-function isNumbers(values) {
-	let areIntegers = true
-	if(values) {
-		const temp = values
-		Object.keys(temp).forEach((key) => {
-			if(!Number.isInteger(temp[key])) {
-				if(validator.isInt(temp[key])) {
-					temp[key] = parseInt(temp[key], 10)
-				} else {
-					areIntegers = false
-				}
-			}
-		})
-	}
-	return areIntegers
-}
-
-function isEmpty(values) {
-	let empty = false
-	if(values) {
-		const temp = values
-		Object.keys(temp).forEach((key) => {
-			if(!Number.isInteger(temp[key])) {
-				if(validator.isEmpty(temp[key])) {
-					empty = true
-				}
-			}
-		})
-	} else {
-		empty = true
-	}
-	return empty
-}
-
 function isInputCorrect(updatedProperties) {
 	const name = updatedProperties.name
 	const type = updatedProperties.type
@@ -77,10 +43,10 @@ function isInputCorrect(updatedProperties) {
 
 	let validated = false
 	if(
-		!isEmpty({ name }) &&
-		!isEmpty({ type }) &&
-		!isEmpty({ series }) &&
-		!isEmpty({ price }) && isNumbers({ price })
+		!moduleValidator.isEmpty({ name }) &&
+		!moduleValidator.isEmpty({ type }) &&
+		!moduleValidator.isEmpty({ series }) &&
+		!moduleValidator.isEmpty({ price }) && moduleValidator.isNumbers({ price })
 		) {
 		validated = true
 	}
