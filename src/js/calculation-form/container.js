@@ -63,12 +63,26 @@ _____________________________________________________________________________*/
 
 // Calculates how much water the configuration cleans each month
 function getWaterCleaningCapacity(stats) {
-	return stats
+	const modulesWater = stats.containers.current.all
+
+	let totalWaterProduction = 0
+	modulesWater.forEach((container) => {
+		totalWaterProduction += container.waterProduction
+	})
+
+	return totalWaterProduction
 }
 
 // Caculate the enegey production from the solar panel
 function getEnergyProduction(stats) {
-	return stats
+	const modulesEnergy = stats.containers.current.all
+
+	let totalEnergyProduction = 0
+	modulesEnergy.forEach((container) => {
+		totalEnergyProduction += container.electricityProduction
+	})
+
+	return totalEnergyProduction
 }
 
 // Get a new container configuration
