@@ -21,6 +21,7 @@ router.post('/', (req, res) => {
 		if(!req.body.name) {
 			res.redirect('/admin/containers')
 		} else {
+			console.log(req.body)
 			if(req.body.name.constructor !== Array) {
 				req.body.id = [req.body.id]
 				req.body.name = [req.body.name]
@@ -120,7 +121,6 @@ router.post('/new', (req, res) => {
 				electricityProduction: electricityProduction[index],
 				status: status[index]
 			}))
-
 			containers.forEach((element) => {
 				containersModule.createContainer({
 					name: element.name,

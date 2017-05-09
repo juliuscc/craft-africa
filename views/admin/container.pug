@@ -21,7 +21,7 @@ block content
 							label(for='name') Name
 						.input-field.col.s3
 							select.validate(name="type", value=container.type, required)
-								option(value=container.type, disabled='', selected)= container.type
+								option(value=container.type, selected)= container.type
 								option(value='addon') addon
 								option(value='fermenting') fermenting
 								option(value='production') production

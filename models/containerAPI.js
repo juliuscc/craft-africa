@@ -10,6 +10,10 @@ const containerSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
+	series: {
+		type: String,
+		required: true
+	},
 	price: {
 		type: Number,
 		required: true
@@ -64,7 +68,6 @@ module.exports.updateContainerById = (id, updatedProperties, callback) => {
 	if(isInputCorrect(updatedProperties)) {
 		Container.update({ _id: id }, { $set: updatedProperties }, { upsert: true }, callback)
 	} else {
-		console.log("waaaat")
 		callback()
 	}
 }
