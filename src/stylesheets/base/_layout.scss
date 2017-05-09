@@ -32,7 +32,7 @@ body {
 	}
 }
 
-@media (min-width: $width-phablet-min) {
+@media (min-width: $width-tablet-min) {
 	.container {
 		width: 80%;
 	}
@@ -49,15 +49,23 @@ body {
 
 	.text,
 	.image {
-		width: 45%;
+		display: inline-block;
 	}
 
+	.text,
+	.image {
+		width: 100%;
+	}
+	
 	@media (min-width: $width-tablet-min) {
 		padding: 5% 10% 5% 10%;
 
-		.text,
+		.text {
+			width: 60%;
+		}
+
 		.image {
-			width: 100%;
+			width: 35%;
 		}
 	}
 
