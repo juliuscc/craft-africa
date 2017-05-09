@@ -1,7 +1,18 @@
 extends layout.pug
 
-block content
-	p Lorem Ipsum
+block header
+	header.header.about
+		.title-text
+			h1 Our mission
+			p This is a short sentence capturing our kick ass company values. How we want to eradicate plastic bottles, help entrepreneurs reach their true potential and save the planet while we are doing it!
+		a.down-btn.fa.fa-angle-double-down(href="#first")
 
-block footer
-	
+block content
+	.info-box.our-story.about#first
+		h1 Our story
+		p We totally have a story. And you will love it. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea modi veniam sunt voluptate omnis sequi enim atque quis, tempore, rerum laudantium rem temporibus illum ratione ex deserunt nostrum pariatur id.
+
+	.big-pic
+		img(src="/images/hops-ipa-beer-ingredient.jpg", alt="Good looking picture")
+
+	.big-info

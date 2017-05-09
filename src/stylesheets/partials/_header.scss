@@ -52,6 +52,10 @@ header.header {
 		color: inherit;
 	}
 
+	&.about {
+		@import "headers/about";
+	}
+
 	&.footprint {
 		@import "headers/footprint";
 	}

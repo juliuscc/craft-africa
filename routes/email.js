@@ -4,16 +4,6 @@ const emailcredentials = require('../config/credentials').email
 const mailTemplate = require('../models/mailTemplates')
 const Handlebars = require('handlebars')
 
-// Render email send form
-router.get('/', (req, res) => {
-	res.render('email')
-})
-
-// Render email send form
-router.get('/send', (req, res) => {
-	res.render('email')
-})
-
 // Send an email to admin and user.
 router.post('/send', (req, res) => {
 	// Check for errors
