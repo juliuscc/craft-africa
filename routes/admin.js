@@ -22,7 +22,7 @@ router.use('/statistics', statistics)
 
 // Login stuff
 router.get('/', (req, res) => {
-	requiresAuth(req, res, 'index')
+	requiresAuth(req, res, 'login')
 })
 
 router.get('/login', (req, res) => {

@@ -1,3 +1,13 @@
+
+/* eslint-disable no-undef */
+$(document).ready(() => {
+	$('select').material_select()
+})
+$(document).ready(() => {
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+	$('.modal').modal()
+})
+/* eslint-enable no-undef */
 function removeRow() {
 	const row = this.parentNode.parentNode
 	const status = row.querySelector('[name="status"]')
@@ -58,8 +68,13 @@ function addRow() {
 		<label for="name">Name</label>
 	</div>
 	<div class="input-field col s3">
-		<input id="type" type="text" name="type" required="" class="validate">
-		<label for="type">Type</label>
+		<select name="type" required>
+			<option value="" disabled selected>Choose container type</option>
+			<option value="Addon">Addon</option>
+			<option value="Fermenting">Fermenting</option>
+			<option value="Production">Production</option>
+		</select>
+		<label>Choose container type</label>
 	</div>
 	<div class="input-field col s3">
 		<input id="series" type="number" name="series" required="" class="validate">
@@ -70,23 +85,23 @@ function addRow() {
 		<label for="price">Price</label>
 	</div>
 	<div class="input-field col s3">
-		<input id="fermentingCapacity" type="number" name="fermentingCapacity" required="" class="validate">
+		<input id="fermentingCapacity" type="number" name="fermentingCapacity" class="validate">
 		<label for="fermentingCapacity">Fermenting Capacity</label>
 	</div>
 	<div class="input-field col s3">
-		<input id="storageCapacity" type="number" name="storageCapacity" required="" class="validate">
+		<input id="storageCapacity" type="number" name="storageCapacity" class="validate">
 		<label for="storageCapacity">Storage Capacity</label>
 	</div>
 	<div class="input-field col s3">
-		<input id="brewingCapacity" type="number" name="brewingCapacity" required="" class="validate">
+		<input id="brewingCapacity" type="number" name="brewingCapacity" class="validate">
 		<label for="brewingCapacity">Brewing Capacity</label>
 	</div>
 	<div class="input-field col s3">
-		<input id="waterProduction" type="number" name="waterProduction" required="" class="validate">
+		<input id="waterProduction" type="number" name="waterProduction" class="validate">
 		<label for="waterProduction">Water Production</label>
 	</div>
 	<div class="input-field col s3">
-		<input id="electricityProduction" type="number" name="electricityProduction" required="" class="validate">
+		<input id="electricityProduction" type="number" name="electricityProduction" class="validate">
 		<label for="electricityProduction">Electricity Production</label>
 	</div>
 	<input type="button" value="remove" class="remove btn">
@@ -95,12 +110,15 @@ function addRow() {
 </div>
 `
 
-
 	const removeBtn = div.querySelector('.remove')
 	removeBtn.addEventListener('click', removeRow)
 
 	// Insert div
 	form.insertBefore(div, this)
+
+	/* eslint-disable no-undef */
+	$('select').material_select()
+	/* eslint-enable no-undef */
 }
 
 const addBtn = document.querySelector('#add')

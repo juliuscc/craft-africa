@@ -7,9 +7,9 @@ router.get('/', (req, res) => {
 	auth.runIfAdmin(req, res, () => {
 		containersModule.getAllContainers((err, containers) => {
 			if(err) {
-				res.render('admin/errormessage', { message: err })
+				res.render('admin/errormessage', { message: err, username: req.user.local.name })
 			} else {
-				res.render('admin/container', { containers })
+				res.render('admin/container', { containers, username: req.user.local.name })
 			}
 		})
 	})
