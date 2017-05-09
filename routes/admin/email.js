@@ -41,22 +41,35 @@ router.post('/', (req, res) => {
 	// Require login
 	auth.runIfAdmin(req, res, () => {
 		const data = req.body
-		const tempData = {
-			name: data.name,
-			recipient: data.recipient,
-			admin_subject: data.admin_subject,
-			user_subject: data.user_subject,
-			admin_message: data.admin_message,
-			user_message: data.user_message
+		// const tempData = {
+		// 	name: data.name,
+		// 	recipient: data.recipient,
+		// 	admin_subject: data.admin_subject,
+		// 	user_subject: data.user_subject,
+		// 	admin_message: data.admin_message,
+		// 	user_message: data.user_message
+		// }
+
+		if(req.body.id) {
+			mailTemplate.updateTemplateById(data.id, data, (err) => {
+				if(err) {
+					res.render('admin/errormessage', { message: `Could not update template: ${err}`, username: req.user.local.name })
+				} else {
+					data.result = 'Successfully updated'
+					res.render('admin/templates', data)
+				}
+			})
+		// This is a new template: we need to create it instead
+		} else {
+			mailTemplate.createTemplate(data, (err) => {
+				if(err) {
+					res.render('admin/errormessage', { message: err, username: req.user.local.name })
+				} else {
+					data.result = `Successfully create new template: ${data.name}`
+					res.render('admin/templates', data)
+				}
+			})
 		}
-		mailTemplate.updateTemplateById(data.id, tempData, (err) => {
-			if(err) {
-				data.result = `Could not update template: ${err}`
-			} else {
-				data.result = 'Successfully updated'
-			}
-			res.render('admin/templates', data)
-		})
 	})
 })
 

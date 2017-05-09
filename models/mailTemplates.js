@@ -30,8 +30,21 @@ const templateSchema = mongoose.Schema({
 const Template = mongoose.model('Template', templateSchema)
 module.exports = Template
 
-module.exports.createTemplate = (newTemplate, callback) => {
-	newTemplate.save(callback)
+function isInputCorrect(input) {
+	const { name } = input
+	if(name) {
+		return true
+	}
+	return false
+}
+
+module.exports.createTemplate = (data, callback) => {
+	if(isInputCorrect(data)) {
+		const containerObject = new Template(data)
+		containerObject.save(callback)
+	} else {
+		callback('Input incorrect')
+	}
 }
 module.exports.getTemplates = (callback) => {
 	Template.find({}, callback)
