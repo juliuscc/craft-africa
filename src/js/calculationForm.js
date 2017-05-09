@@ -21,6 +21,12 @@ ajax.loadJSON('/data/stats')
 .then((json) => {
 	jsonCache = json
 	// formInteraction.saveFormInputs(jsonCache, {})
+	calcObj.stats = stats.getCalculationStats(calcObj.stats, jsonCache)
+	calcObj.economics = economics.getEconomics(calcObj.stats)
+
+	formInteraction.updateDistributionSliders(calcObj.stats)
+	formInteraction.saveFormInputs(calcObj.stats, calcObj.economics)
+
 	formInteraction.initForm(jsonCache, calcObj.economics)
 })
 // .catch((msg) => {

@@ -7,6 +7,7 @@ router.get('/', (req, res) => {
 	auth.runIfAdmin(req, res, () => {
 		beerType.getAllBeers((err, values) => {
 			if(err) {
+				res.render('admin/errormessage', { message: err, username: req.user.local.name })
 				throw err
 			}
 			res.render('admin/beertype', { values, username: req.user.local.name })
@@ -26,6 +27,7 @@ router.post('/', (req, res) => {
 			if(status === 'removed') {
 				beerType.removeBeer(id, (err) => {
 					if(err) {
+						res.render('admin/errormessage', { message: err, username: req.user.local.name })
 						throw err
 					}
 				})
@@ -36,6 +38,7 @@ router.post('/', (req, res) => {
 					ingredient
 				}, (err) => {
 					if(err) {
+						res.render('admin/errormessage', { message: err, username: req.user.local.name })
 						throw err
 					}
 				})
@@ -52,6 +55,8 @@ router.post('/new', (req, res) => {
 			// Redirect if no data is submitted
 			res.redirect('/admin/beertype')
 		} else {
+
+			console.log(req.body)
 			if(req.body.name.constructor !== Array) {
 				req.body.id = [req.body.id]
 				req.body.name = [req.body.name]
@@ -72,6 +77,8 @@ router.post('/new', (req, res) => {
 				status: status[index]
 			}))
 
+			console.log(beers)
+
 			beers.forEach((element) => {
 				const ingredient = JSON.stringify({
 					hops: element.hops,
@@ -84,6 +91,7 @@ router.post('/new', (req, res) => {
 					ingredient
 				}, (err) => {
 					if(err) {
+						res.render('admin/errormessage', { message: err, username: req.user.local.name })
 						throw err
 					}
 				})

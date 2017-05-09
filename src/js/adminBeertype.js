@@ -58,8 +58,8 @@ function addBeer() {
 		<label for="name">Name</label>
 	</div>
 	<div class="input-field col s3">
-		<input type="number" name="fermenting" required="" class="validate">
-		<label for="fermenting">Fermenting time</label>
+		<input type="number" name="fermentingTime" required="" class="validate">
+		<label for="fermentingTime">Fermenting time</label>
 	</div>
 	<div class="input-field col s3">
 		<input type="number" name="hops" required="" class="validate">
