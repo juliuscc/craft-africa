@@ -7,16 +7,22 @@ block vars
 	- var title = "Modify users"
 	
 block content
-	each user in users
-		p= "Name: " + user.local.name
-		p= "Email: " + user.local.email
-		p= "password: " + user.local.password
-		form(method="post" action="/admin/users/delete")
-			input(type="hidden" name="id" value=user._id)
-			input.btn.right.remove.red(type="submit" value="Remove user")
-			br
-			br
-		hr
+	table
+		tr
+			th Name
+			th Email
+			th Admin 
+		body
+
+		each user in users
+			tr
+				td= user.local.name
+				td= user.local.email	
+				td
+					.waves-effect.waves-light.btn
+						form(method="post" action="/admin/users/delete")
+						input(type="hidden" name="id" value=user._id)
+						input(type="submit" value="Remove user")
 	input.btn.left(type="button" id="add" data-target=`modal${index}` value = "add new user")
 	div(class="modal" id=`modal${index}`)
 		.modal-content
