@@ -35,13 +35,10 @@ const defaultValuesSchema = mongoose.Schema({
 function is100(values) {
 	let percent = 0.0
 	Object.keys(values).forEach((key) => {
-		console.log('mirri', values[key])
 		percent += Number.parseFloat(values[key])
 	})
 	let isCorrect = false
-	console.log('mama', percent)
-	console.log('krax', Math.round(percent, -1))
-	if(percent === 100) {
+	if(Math.round(percent) === 100) {
 		isCorrect = true
 	}
 	return isCorrect
