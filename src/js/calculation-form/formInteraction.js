@@ -47,11 +47,11 @@ function getNewDistribution(calculationStats) {
 	return data
 }
 
-function extractFormData() {
+function extractFormData(stats) {
 	// Extract form data and insert it into a object
 	const formdata = new FormData(document.querySelector('form.calculation-form'))
 	const entries = formdata.entries()
-	const dataObject = { distribution: {} }
+	const dataObject = { distribution: {}, volume: {} }
 
 	/* eslint-disable no-restricted-syntax */
 	for(const entry of entries) {
@@ -65,6 +65,9 @@ function extractFormData() {
 		case 'tap':
 			dataObject.distribution[entry[0]] = parseFloat(entry[1])
 			break
+		case 'totalVolume':
+			dataObject.volume.total = parseInt(entry[1], 10)
+			break
 
 		default:
 			if(entry[1] % 1 === 0) {
@@ -76,6 +79,8 @@ function extractFormData() {
 		}
 	}
 	/* eslint-enable no-restricted-syntax */
+
+	Object.assign(stats, dataObject)
 
 	return dataObject
 }
@@ -99,14 +104,24 @@ function saveFormInputs(stats, economics) {
 		/* eslint-enable no-param-reassign */
 	})
 
+	if(economics) {
+		if(economics.profit) {
+			document.querySelector('.profit').innerHTML = economics.profit
+		}
+
+		if(economics.fixedCosts && economics.variableCosts) {
+			document.querySelector('.output').innerHTML =
+			`Fixed: ${economics.fixedCosts}
+			 Variable: ${economics.variableCosts}
+			`
+		}
+	}
+}
+
+function initForm(stats, economics) {
 	// Assigning to main slider
 	document.querySelector('#totalVolume').value = stats.volume.total
-
-	document.querySelector('.profit').innerHTML = economics.profit
-	document.querySelector('.output').innerHTML =
-	`Fixed: ${economics.fixedCosts}
-	 Variable: ${economics.variableCosts}
-	`
+	saveFormInputs(stats, economics)
 }
 
 function updateDistributionSliders(calculationStats, event) {
@@ -135,6 +150,7 @@ function updateDistributionSliders(calculationStats, event) {
 
 module.exports = {
 	loadFormInputs,
+	initForm,
 	saveFormInputs,
 	getNewDistribution,
 	updateDistributionSliders,

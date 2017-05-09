@@ -17,9 +17,9 @@ function getProductionCost(stats) {
 
 	if(ingredientsCosts && beerType.current) {
 		const costs = {
-			hops: ingredientsCosts.hops * beerType.current.hops,
-			malt: ingredientsCosts.malt * beerType.current.malt,
-			co2: ingredientsCosts.co2	* beerType.current.co2
+			hops: ingredientsCosts.hops * beerType.current.ingredient.hops,
+			malt: ingredientsCosts.malt * beerType.current.ingredient.malt,
+			co2: ingredientsCosts.co2	* beerType.current.ingredient.co2
 		}
 
 		costs.total = costs.hops + costs.malt + costs.co2

@@ -7,28 +7,27 @@ ________________________________________________________________________________
 function getVariableCosts(stats) {
 	// volume and ingredientscosts needs to be calculated. The rest is from form or db
 	const {
-		productionCosts,
+		productionCost,
 		volume,
 		beerType
 	} = stats
-
 	const costs = {}
 
-	if(volume && beerType.current.cost && volume.total && productionCosts) {
+	if(volume && beerType.current.cost && volume.total && productionCost) {
 		if(beerType.current.cost && volume.total) {
-			costs.ingredients = beerType.current.cost * volume.total
+			costs.ingredients = beerType.current.cost.total * volume.total
 		} else {
-			costs.ingredients = NaN
+			costs.ingredients = 0
 		}
 
-		if(productionCosts && volume.tap && volume.bottle && volume.keg) {
-			costs.kegPrice = productionCosts.keg * volume.keg
-			costs.tapPrice = productionCosts.tap * volume.tap
-			costs.bottlePrice = productionCosts.bottle * volume.bottle
+		if(productionCost && volume) {
+			costs.kegPrice = productionCost.keg * volume.keg
+			costs.tapPrice = productionCost.tap * volume.tap
+			costs.bottlePrice = productionCost.bottle * volume.bottle
 		} else {
-			costs.kegPrice = NaN
-			costs.tapPrice = NaN
-			costs.bottlePrice = NaN
+			costs.kegPrice = 0
+			costs.tapPrice = 0
+			costs.bottlePrice = 0
 		}
 
 		costs.total = costs.kegPrice + costs.tapPrice + costs.bottlePrice + costs.ingredients
@@ -36,18 +35,18 @@ function getVariableCosts(stats) {
 		return costs
 	}
 	return {
-		ingredients: NaN,
-		kegPrice: NaN,
-		tapPrice: NaN,
-		bottlePrice: NaN,
-		total: NaN
+		ingredients: 0,
+		kegPrice: 0,
+		tapPrice: 0,
+		bottlePrice: 0,
+		total: 0
 	}
 }
 
 // Get the fixed costs for producing the current setup.
 function getFixedCosts(stats) {
-	// Modules needs to be gathered before
-	if(stats.modules.current) {
+	// Containers needs to be gathered before
+	if(stats.containers.current) {
 		const costs = {
 			rent: container.getCost(stats)
 		}
@@ -65,16 +64,17 @@ function getFixedCosts(stats) {
 // Calculate the total income from distribution and prices
 function getIncome(stats) {
 	// volume needs to be calculated before
-	const { sellingCosts, volume } = stats
-
-	if(sellingCosts && volume) {
-		const kegPrice 		= sellingCosts.keg * volume.keg
-		const tapPrice 		= sellingCosts.tap * volume.tap
-		const bottlePrice 	= sellingCosts.bottle * volume.bottle
-
-		return kegPrice + tapPrice + bottlePrice
+	const { sellingPrice, volume } = stats
+	if(sellingPrice && volume) {
+		const income = {
+			kegPrice: sellingPrice.keg * volume.keg,
+			tapPrice: sellingPrice.tap * volume.tap,
+			bottlePrice: sellingPrice.bottle * volume.bottle
+		}
+		income.total = income.kegPrice + income.tapPrice + income.bottlePrice
+		return income
 	}
-	return NaN
+	return {}
 }
 
 
@@ -89,7 +89,6 @@ function getEconomics(stats) {
 		fixedCosts: getFixedCosts(stats).total,
 		variableCosts: getVariableCosts(stats).total
 	}
-
 	economics.profit = economics.incomes - economics.fixedCosts - economics.variableCosts
 
 	return economics

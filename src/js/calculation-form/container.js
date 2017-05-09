@@ -24,15 +24,14 @@ function getFermentingModules(stats) {
 
 	// Check needed capacity.
 	const chosenProductionModule = getProductionModules(stats)
-	const fermentingCapacityBrewery = chosenProductionModule.fermenting
+	const fermentingCapacityBrewery = chosenProductionModule.fermentingCapacity
 	const totalCapacity = stats.volume.relative
 	let neededCapacity = totalCapacity - fermentingCapacityBrewery
 
 	// Sort out the appropriate modules
-// TODO: This already exists: container.series
-	const identifyingTypeChar = chosenProductionModule.name.charAt(0)
+	const moduleSeries = chosenProductionModule.series
 	const filteredFermentationModules = fermentingModules.filter(
-		element => element.name.charAt(0) === identifyingTypeChar)
+		element => element.series === moduleSeries)
 
 	const requiredFermentationModules = []
 	// Subtract fermenting capacity for each available module
@@ -48,7 +47,7 @@ function getFermentingModules(stats) {
 
 // Get the addon modules C1 = keg storage and C2 is Bottle machine
 function getAddonsModules(stats) {
-	const addonModules = stats.containers.addons
+	const addonModules = stats.containers.addon
 
 	const requiredAddonsModules = []
 	addonModules.forEach((container) => {
@@ -64,12 +63,26 @@ _____________________________________________________________________________*/
 
 // Calculates how much water the configuration cleans each month
 function getWaterCleaningCapacity(stats) {
-	return stats
+	const modulesWater = stats.containers.current.all
+
+	let totalWaterProduction = 0
+	modulesWater.forEach((container) => {
+		totalWaterProduction += container.waterProduction
+	})
+
+	return totalWaterProduction
 }
 
 // Caculate the enegey production from the solar panel
 function getEnergyProduction(stats) {
-	return stats
+	const modulesEnergy = stats.containers.current.all
+
+	let totalEnergyProduction = 0
+	modulesEnergy.forEach((container) => {
+		totalEnergyProduction += container.electricityProduction
+	})
+
+	return totalEnergyProduction
 }
 
 // Get a new container configuration
@@ -88,8 +101,7 @@ function getConfiguration(stats) {
 
 // Get the cost of the current container configuration
 function getCost(stats) {
-// TODO: configuration should already be calculated here
-	const modules = getConfiguration(stats).all
+	const modules = stats.containers.current.all
 
 	let cost = 0
 	modules.forEach((container) => {

@@ -31,9 +31,15 @@ function getCalculationStats(inputData, defaultData) {
 	// extending the object
 	Object.assign(stats, inputData)
 
+	// Add the current beer type
+	if(!stats.beerType.current) {
+		stats.beerType.current = beerTypes.getDefaultBeerType(stats)
+	}
+	stats.beerType.current.cost = beerTypes.getProductionCost(stats)
+
 	// Calculating the amount of each type (in liters)
-	console.log(stats)
 	stats.volume = getDistributionVolume(stats)
+	stats.volume.relative = beerTypes.getRelativeProductionVolume(stats)
 
 	// Aquirering modules
 	stats.containers.current = container.getConfiguration(stats)
@@ -42,15 +48,8 @@ function getCalculationStats(inputData, defaultData) {
 	stats.electricityProduction = container.getEnergyProduction(stats)
 	stats.waterProduction = container.getWaterCleaningCapacity(stats)
 
-	// Add the beer unit costs
-	if(!stats.beerType.current) {
-		stats.beerType.current = beerTypes.getDefaultBeerType(stats)
-	}
-	stats.beerType.current.costs = beerTypes.getProductionCost(stats)
-
 	// Add distribution lock
 	stats.distributionLock = ['tap', 'bottle']
-
 	return stats
 }
 /* Exporting module

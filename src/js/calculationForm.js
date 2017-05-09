@@ -1,40 +1,43 @@
 const stats = require('./calculation-form/stats')
 const economics = require('./calculation-form/economics')
 const formInteraction = require('./calculation-form/formInteraction')
-// const container = require('./calculation-form/container')
 // const containerCalculator2 = require('./calculation-form/containerCalculator')
 const ajax = require('./ajax')
 
 let jsonCache = {}
-const calcObj = {}
+const calcObj = { stats: {}, economics: {} }
 
 function updateForm() {
-	const formdata = formInteraction.extractFormData()
+	calcObj.stats = formInteraction.extractFormData(calcObj.stats)
 
-	calcObj.stats = stats.getCalculationStats(formdata, jsonCache)
-	calcObj.economics = economics.getEconomics(calcObj)
+	calcObj.stats = stats.getCalculationStats(calcObj.stats, jsonCache)
+	calcObj.economics = economics.getEconomics(calcObj.stats)
 
 	formInteraction.updateDistributionSliders(calcObj.stats)
+	formInteraction.saveFormInputs(calcObj.stats, calcObj.economics)
 }
 
 ajax.loadJSON('/data/stats')
 .then((json) => {
 	jsonCache = json
-	formInteraction.saveFormInputs(jsonCache, {})
-	updateForm()
+	// formInteraction.saveFormInputs(jsonCache, {})
+	calcObj.stats = stats.getCalculationStats(calcObj.stats, jsonCache)
+	calcObj.economics = economics.getEconomics(calcObj.stats)
+
+	formInteraction.updateDistributionSliders(calcObj.stats)
+	formInteraction.saveFormInputs(calcObj.stats, calcObj.economics)
+
+	formInteraction.initForm(jsonCache, calcObj.economics)
 })
-.catch((msg) => {
-	console.log(`Error msg in calculationForm.js: ${msg}`)
-})
+// .catch((msg) => {
+// 	console.log(`Error msg in calculationForm.js: ${msg}`)
+// })
 
 
 // test
 document.querySelector('.calculation-form .calculate-button')
 		.addEventListener('click', () => {
-			const formdata = formInteraction.extractFormData()
-			calcObj.stats = stats.getCalculationStats(formdata, jsonCache)
-			calcObj.economics = economics.getEconomics(calcObj)
-
+			updateForm()
 			console.log('calc: ', calcObj)
 		})
 
@@ -43,5 +46,13 @@ document.querySelectorAll('.calculation-form .container-distribution')
 .forEach((e) => {
 	e.addEventListener('input', () => {
 		formInteraction.updateDistributionSliders(calcObj.stats, e)
+		updateForm()
+	})
+})
+
+document.querySelectorAll('#totalVolume')
+.forEach((e) => {
+	e.addEventListener('input', () => {
+		updateForm()
 	})
 })
