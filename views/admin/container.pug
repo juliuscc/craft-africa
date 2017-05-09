@@ -47,8 +47,8 @@ block content
 						.input-field.col.s3
 							input.validate(type='number' name="electricityProduction" required value=container.electricityProduction)
 							label(for='electricityProduction') Electricity Production
-						input.btn.remove.red.right(type="btn" data-target="modal1" value = "remove" style="margin-right: 10px")
-						#modal1.modal
+						input.btn.remove.red.right(type="btn" data-target=`modal${index}` value = "remove" style="margin-right: 10px")
+						div(class="modal" id=`modal${index}`)
 							.modal-content
 								h4 Confirm
 								p= "Are you sure you want to delete '" + container.name + "'?"
