@@ -11,7 +11,7 @@ input[type="button"] {
 	box-sizing: border-box;
 	margin: 0 2.5px;
 	color: $color-text-light;
-	background-color: $color-accent;
+	background-color: $color-primary;
 	outline: 0;
 	border: none;
 	height: 38px;
@@ -27,6 +27,6 @@ input[type="button"] {
 	}
 
 	&:hover {
-		background-color: darken($color-accent, 5%);
+		background-color: darken($color-primary, 10%);
 	}
 }

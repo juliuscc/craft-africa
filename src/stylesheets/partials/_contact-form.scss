@@ -63,20 +63,6 @@
 					padding-right: 10px;
 					
 				}
-			
-				input {
-					background-color : rgba(#8bb797, 0.3s);
-					transition: 0.3s all;
-					border: none;
-					box-sizing: border-box;
-					width: 100%;
-					outline: none;
-				}
-
-				input:active,
-				input:focus {
-					background-color : rgba(#8bb797, 1);
-				}
 			}
 
 			.email {
@@ -85,38 +71,10 @@
 					padding-left: 10px;
 					
 				}
-
-				input {
-					background-color : rgba(#8bb797, 0.3s);
-					transition: 0.3s, all;
-					border: none;
-					box-sizing: border-box;
-					width: 100%;
-					outline: none;
-				}
-
-				input:active,
-				input:focus {
-					background-color : rgba(#8bb797, 1);
-				}
 			}
 		}
 
 		.message {
-			textarea {
-				background-color : rgba(#8bb797, 0.3s);
-				transition: 0.3s, all;
-				box-sizing: border-box;
-				box-sizing: border-box;
-				width: 100%;
-				outline: none;
-				border: none;
-			}
-
-			textarea:active,
-			textarea:focus {
-					background-color : rgba(#8bb797, 1);
-			}
 
 		}
 
