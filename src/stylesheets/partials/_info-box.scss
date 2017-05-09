@@ -3,13 +3,22 @@
 	padding: 20px;
 	padding-bottom: 50px;
 	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+	.text,
+	.image {
+		width: 45%;
+	}
 
 	@media (min-width: $width-tablet-min) {
 		padding: 5% 10% 5% 10%;
-	}
 
-	h1 {
-
+		.text,
+		.image {
+			width: 100%;
+		}
 	}
 
 	p {
