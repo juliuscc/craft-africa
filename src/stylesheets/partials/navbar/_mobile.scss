@@ -55,6 +55,7 @@ nav.nav {
 				font-weight: bold;
 				transition: color 0.1s;
 				white-space: nowrap;
+				line-height: $nav-height;
 
 				&:hover {
 					color: $color-nav-link-hover;
