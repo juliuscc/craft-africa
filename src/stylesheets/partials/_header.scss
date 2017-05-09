@@ -42,10 +42,6 @@ header.header {
 		}
 	}
 
-	&.footprint {
-		@import "headers/footprint";
-	}
-
 	.down-btn {
 		position: absolute;
 		left: 50%;
@@ -54,5 +50,13 @@ header.header {
 		text-decoration: none;
 		font-size: 8rem;
 		color: inherit;
+	}
+
+	&.footprint {
+		@import "headers/footprint";
+	}
+
+	&.product {
+		@import "headers/product";
 	}
 }
