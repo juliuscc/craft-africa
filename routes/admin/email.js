@@ -36,7 +36,7 @@ router.get('/:emailId', (req, res) => {
 	})
 })
 
-// Update specified email template by name.
+// Update specified email template by id.
 router.post('/', (req, res) => {
 	// Require login
 	auth.runIfAdmin(req, res, () => {

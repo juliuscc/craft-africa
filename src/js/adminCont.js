@@ -70,9 +70,9 @@ function addRow() {
 	<div class="input-field col s3">
 		<select name="type" required>
 			<option value="" disabled selected>Choose container type</option>
-			<option value="Addon">Addon</option>
-			<option value="Fermenting">Fermenting</option>
-			<option value="Production">Production</option>
+			<option value="addon">addon</option>
+			<option value="fermenting">fermenting</option>
+			<option value="production">production</option>
 		</select>
 		<label>Choose container type</label>
 	</div>
