@@ -24,7 +24,7 @@ function getFermentingModules(stats) {
 
 	// Check needed capacity.
 	const chosenProductionModule = getProductionModules(stats)
-	const fermentingCapacityBrewery = chosenProductionModule.fermenting
+	const fermentingCapacityBrewery = chosenProductionModule.fermentingCapacity
 	const totalCapacity = stats.volume.relative
 	let neededCapacity = totalCapacity - fermentingCapacityBrewery
 

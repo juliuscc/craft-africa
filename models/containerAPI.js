@@ -68,7 +68,13 @@ module.exports.updateContainerById = (id, updatedProperties, callback) => {
 
 module.exports.getAllContainers = (callback) => {
 	const query = {}
-	Container.find(query, callback)
+	// Container.find(query, callback)
+	Container.find(query).sort({
+		name: 1,
+		storageCapacity: 1,
+		fermentingCapacity: 1,
+		brewingCapacity: 1
+	}).exec(callback)
 }
 
 module.exports.getContainerByName = (fieldName, callback) => {
