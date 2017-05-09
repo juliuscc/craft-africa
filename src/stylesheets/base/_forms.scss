@@ -18,10 +18,6 @@ select {
 	font-size: 1.5rem;
 }
 
-textarea {
-	height: auto;
-}
-
 // Removes awkward default styles on some inputs for iOS
 input[type="email"],
 input[type="number"],
@@ -37,6 +33,7 @@ textarea {
 }
 
 textarea {
+	height: auto;
 	min-height: 65px;
 	padding-top: 6px;
 	padding-bottom: 6px; 
