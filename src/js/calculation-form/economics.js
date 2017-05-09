@@ -85,11 +85,13 @@ ________________________________________________________________________________
 // Get the revenue distribution
 function getEconomics(stats) {
 	const economics = {
-		incomes: getIncome(stats).total,
-		fixedCosts: getFixedCosts(stats).total,
-		variableCosts: getVariableCosts(stats).total
+		incomes: getIncome(stats),
+		fixedCosts: getFixedCosts(stats),
+		variableCosts: getVariableCosts(stats)
 	}
-	economics.profit = economics.incomes - economics.fixedCosts - economics.variableCosts
+	economics.profit = economics.incomes.total -
+						economics.fixedCosts.total -
+						economics.variableCosts.total
 
 	return economics
 }

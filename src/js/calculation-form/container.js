@@ -37,7 +37,7 @@ function getFermentingModules(stats) {
 	// Subtract fermenting capacity for each available module
 	filteredFermentationModules.forEach((container) => {
 		if(neededCapacity > 0) {
-			neededCapacity -= container.fermenting
+			neededCapacity -= container.fermentingCapacity
 			requiredFermentationModules.push(container)
 		}
 	})

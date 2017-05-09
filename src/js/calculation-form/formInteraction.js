@@ -111,8 +111,8 @@ function saveFormInputs(stats, economics) {
 
 		if(economics.fixedCosts && economics.variableCosts) {
 			document.querySelector('.output').innerHTML =
-			`Fixed: ${economics.fixedCosts}
-			 Variable: ${economics.variableCosts}
+			`Fixed: ${economics.fixedCosts.total}
+			 Variable: ${economics.variableCosts.total}
 			`
 		}
 	}
