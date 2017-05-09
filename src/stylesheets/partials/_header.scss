@@ -45,4 +45,14 @@ header.header {
 	&.footprint {
 		@import "headers/footprint";
 	}
+
+	.down-btn {
+		position: absolute;
+		left: 50%;
+		bottom: 5%;
+		transform: translateX(-50%);
+		text-decoration: none;
+		font-size: 8rem;
+		color: inherit;
+	}
 }
