@@ -9,8 +9,8 @@ block title
 
 
 block content
-	each container, index in containers
-		form.container(method="post" action="/admin/containers")
+	form.container(method="post" action="/admin/containers")
+		each container, index in containers
 			.card
 				.card-title
 					h4(style="padding: 10px 15px")= container.name
@@ -21,39 +21,43 @@ block content
 							label(for='name') Name
 						.input-field.col.s3
 							select.validate(name="type", value=container.type, required)
-								option(value=container.type, disabled='', selected)= container.type
+								option(value=container.type, selected)= container.type
 								option(value='Addon') Addon
 								option(value='Fermenting') Fermenting
 								option(value='Production') Production
 							label(for='type') Type
 						.input-field.col.s3
-							input.validate(type='number' name="series" required value=container.series)
+							select.validate(name="series", value=container.series, required)
+								option(value=container.series, selected)= container.series
+								option(value='A') A
+								option(value='B') B
+								option(value='C') C
 							label(for='series') Series
 						.input-field.col.s3
 							input.validate(type='number' name="price" required value=container.price)
 							label(for='price') Price
 						.input-field.col.s3
-							input.validate(type='number' name="fermentingCapacity" required value=container.fermentingCapacity)
+							input.validate(type='number' name="fermentingCapacity" value=container.fermentingCapacity)
 							label(for='fermentingCapacity') Fermenting Capacity
 						.input-field.col.s3
-							input.validate(type='number' name="storageCapacity" required value=container.storageCapacity)
+							input.validate(type='number' name="storageCapacity" value=container.storageCapacity)
 							label(for='storageCapacity') Storage Capacity
 						.input-field.col.s3
-							input.validate(type='number' name="brewingCapacity" required value=container.brewingCapacity)
+							input.validate(type='number' name="brewingCapacity" value=container.brewingCapacity)
 							label(for='brewingCapacity') Brewing Capacity
 						.input-field.col.s3
-							input.validate(type='number' name="waterProduction" required value=container.waterProduction)
+							input.validate(type='number' name="waterProduction" value=container.waterProduction)
 							label(for='waterProduction') Water Production
 						.input-field.col.s3
-							input.validate(type='number' name="electricityProduction" required value=container.electricityProduction)
+							input.validate(type='number' name="electricityProduction" value=container.electricityProduction)
 							label(for='electricityProduction') Electricity Production
-						input.btn.remove.red.right(type="btn" data-target=`modal${index}` value = "remove" style="margin-right: 10px")
+						input.enable.btn.red.right(type="button" data-target=`modal${index}` value = "remove" style="margin-right: 10px")
 						div(class="modal" id=`modal${index}`)
 							.modal-content
 								h4 Confirm
 								p= "Are you sure you want to delete '" + container.name + "'?"
 							.modal-footer
-								input.modal-action.modal-close.waves-effect.waves-green.btn-flat(type="submit" value="Yes")
+								input.remove.waves-effect.waves-green.btn-flat(type="submit" disabled value="Yes")
 								input.modal-action.modal-close.waves-effect.waves-green.btn-flat(type="button" value="No")
 						input.btn.save.blue.right(type="submit" value = "save" style="margin-right:10px")
 						input(type="hidden" name="id" value=container._id)

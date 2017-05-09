@@ -9,16 +9,31 @@ $(document).ready(() => {
 })
 /* eslint-enable no-undef */
 function removeRow() {
-	const row = this.parentNode.parentNode
+	const row = this.parentNode.parentNode.parentNode.parentNode
 	const status = row.querySelector('[name="status"]')
-
 	row.classList.add('removed')
 
 	if(status.value === 'new') {
 		this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode)
 	} else {
+		const requiredCLasses = [
+			row.querySelector('[name="name"]'),
+			row.querySelector('[name="type"]'),
+			row.querySelector('[name="series"]'),
+			row.querySelector('[name="price"]')
+		]
+		requiredCLasses.forEach((el) => {
+			el.removeAttribute('required')
+		})
 		status.setAttribute('value', 'removed')
 	}
+}
+
+function enableRemove() {
+	const temp = this.getAttribute('data-target')
+	const modal = document.querySelector(`#${temp}`)
+	modal.querySelector('.remove')
+		.querySelector('.waves-button-input').removeAttribute('disabled')
 }
 
 function disableSubmit(isDisabled) {
@@ -62,7 +77,7 @@ function addRow() {
 	div.classList.add('card-panel')
 	div.innerHTML =
 `
-<div class="row">
+<div class="row" class="newRow">
 	<div class="input-field col s3">
 		<input id="name" type="text" name="name" required="" class="validate">
 		<label for="name">Name</label>
@@ -77,8 +92,13 @@ function addRow() {
 		<label>Choose container type</label>
 	</div>
 	<div class="input-field col s3">
-		<input id="series" type="number" name="series" required="" class="validate">
-		<label for="series">Series</label>
+		<select name="series" required>
+			<option value="" disabled selected>Choose containers series</option>
+			<option value="A">A</option>
+			<option value="B">B</option>
+			<option value="C">C</option>
+		</select>
+		<label>Choose containers series</label>
 	</div>
 	<div class="input-field col s3">
 		<input id="price" type="number" name="price" required="" class="validate">
@@ -126,6 +146,9 @@ addBtn.addEventListener('click', addRow)
 
 const removeBtns = document.querySelectorAll('.remove')
 removeBtns.forEach(btn => btn.addEventListener('click', removeRow))
+
+const enableBtn = document.querySelectorAll('.enable')
+enableBtn.forEach(btn => btn.addEventListener('click', enableRemove))
 
 const editedRow = document.querySelectorAll('.validate')
 editedRow.forEach(textbox => textbox.addEventListener('change', rowEdited))
