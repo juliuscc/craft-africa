@@ -11,27 +11,6 @@ function removeRow() {
 	}
 }
 
-function disableSubmit(isDisabled) {
-	const submitButton = document.querySelector('[name="submit"]')
-	if(isDisabled) {
-		submitButton.setAttribute('disabled', isDisabled)
-	} else {
-		submitButton.removeAttribute('disabled')
-	}
-}
-
-function isNumber(e) {
-	e.preventDefault()
-
-	if(isNaN(e.target.value)) {
-		this.classList.add('incorrectInput')
-		disableSubmit(true)
-	} else {
-		this.classList.remove('incorrectInput')
-		disableSubmit(false)
-	}
-}
-
 function rowEdited(e) {
 	e.preventDefault()
 
@@ -58,20 +37,20 @@ function addBeer() {
 		<label for="name">Name</label>
 	</div>
 	<div class="input-field col s3">
-		<input type="number" name="fermentingTime" required="" class="validate">
+		<input type="number" name="fermentingTime" step="any" required="" class="validate">
 		<label for="fermentingTime">Fermenting time</label>
 	</div>
 	<div class="input-field col s3">
-		<input type="number" name="hops" required="" class="validate">
-		<label for="hopsUse">Hops(%)</label>
+		<input type="number" name="hops" step="any" required="" class="validate">
+		<label for="hopsUse">Hops (kg/l)</label>
 	</div>
 	<div class="input-field col s3">
-		<input type="number" name="malt" required="" class="validate">
-		<label for="maltUse">Malt(%)</label>
+		<input type="number" name="malt" step="any" required="" class="validate">
+		<label for="maltUse">Malt (kg/l)</label>
 	</div>
 	<div class="input-field col s3">
-		<input type="number" name="co2" required="" class="validate">
-		<label for="co2Use">co2(%)</label>
+		<input type="number" name="co2" step="any" required="" class="validate">
+		<label for="co2Use">co2 (kg/l)</label>
 	</div>
 	<input type="button" value="remove" class="remove btn">
 	<input type="hidden" name="id" value="undefined">
@@ -93,8 +72,5 @@ addBtn2.addEventListener('click', addBeer)
 const removeBtns = document.querySelectorAll('.remove')
 removeBtns.forEach(btn => btn.addEventListener('click', removeRow))
 
-const editedRow = document.querySelectorAll('.textbox')
+const editedRow = document.querySelectorAll('.validate')
 editedRow.forEach(textbox => textbox.addEventListener('change', rowEdited))
-
-const checkIfNumber = document.querySelectorAll('.number')
-checkIfNumber.forEach(textbox => textbox.addEventListener('change', isNumber))

@@ -15,19 +15,19 @@ block content
 				.card-content
 					.row
 						.input-field.col.s3
-							input.validate(type='text', name="name",required,value=value.name)
+							input.validate(type='text' name="name" required value=value.name)
 							label(for='name') Name
 						.input-field.col.s3
-							input.validate(type='number',name="fermentingTime",required,value=value.fermentingTime)
+							input.validate(type='number' name="fermentingTime" step="any" required value=value.fermentingTime)
 							label(for='fermentingTime') Fermenting Time
 						.input-field.col.s3
-							input.validate(type='number',name="hops",required,value=value.ingredient.hops)
-							label(for='hopsUse') Hops(%)
+							input.validate(type='number' name="hops" step="any" required value=value.ingredient.hops)
+							label(for='hopsUse') Hops (kg/l)
 						.input-field.col.s3
-							input.validate(type='number',name="malt",required,value=value.ingredient.malt)
-							label(for='maltUse') Malt(%)
+							input.validate(type='number' name="malt" step="any" required value=value.ingredient.malt)
+							label(for='maltUse') Malt (kg/l)
 						.input-field.col.s3
-							input.validate(type='number',name="co2",required,value=value.ingredient.co2)
+							input.validate(type='number' name="co2" step="any" required value=value.ingredient.co2)
 							label(for='co2Use') co2(%)
 						input.btn.remove.red.right(type="submit" value = "remove", style="margin-right: 10px")
 						input.btn.save.blue.right(type="submit" value = "save", style="margin-right:10px")
@@ -39,8 +39,6 @@ block content
 		br
 		input.btn-large.left(type="submit"  name="submit" value="submit")
 		
-	
-
 				
 block scripts
 	script(src="/js/adminBeertype.js")

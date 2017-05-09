@@ -31,7 +31,8 @@ function isInputCorrect(updatedProperties) {
 		!moduleValidator.isEmpty({ name }) &&
 		!moduleValidator.isEmpty({ fermentingTime }) && moduleValidator.isNumbers({ fermentingTime }) &&
 		!moduleValidator.isEmpty(ingredient) && moduleValidator.isNumbers(ingredient.hops) &&
-		moduleValidator.isNumbers(ingredient.malt) && moduleValidator.isNumbers(ingredient.co2)
+		moduleValidator.isNumbers(ingredient.malt) &&
+		moduleValidator.isNumbers(ingredient.co2)
 		) {
 		validated = true
 	}
