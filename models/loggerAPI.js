@@ -8,6 +8,10 @@ const loggerSchema = mongoose.Schema({
 	data: {
 		type: Object,
 		required: true
+	},
+	date: {
+		type: Date,
+		default: Date.now
 	}
 })
 
@@ -48,4 +52,8 @@ module.exports.updateViews = (page) => {
 module.exports.getViews = (callback) => {
 	const query = { type: 'STAT views' }
 	Logger.find(query).sort({ 'data.count': -1 }).exec(callback)
+}
+
+module.exports.logCalcInput = (dataObject) => {
+	Logger.log('CALC input', dataObject)
 }

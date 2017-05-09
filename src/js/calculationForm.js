@@ -38,7 +38,6 @@ ajax.loadJSON('/data/stats')
 document.querySelector('.calculation-form .calculate-button')
 		.addEventListener('click', () => {
 			updateForm()
-			console.log('calc: ', calcObj)
 		})
 
 // more test
@@ -56,3 +55,7 @@ document.querySelectorAll('#totalVolume')
 		updateForm()
 	})
 })
+
+// JSON Testing
+ajax.logCalc(1, 2, 3, 4)
+
