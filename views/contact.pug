@@ -16,7 +16,6 @@ block content
 				p Email: someone@ca.com
 				p Phone: +4612345789
 				
-
 			form(method="post" action="/email/send")
 				input(type="text" name="message_template" value="standard-template" hidden)
 				.input-row
@@ -25,12 +24,10 @@ block content
 						input(type="text" name="name" id="name")
 					.email
 						label(for="emailadress") Email
-						input(type="email" name="emailadress" id="email" required)
-
+						input(type="email" name="emailadress" id="emailadress" required)
 				.message
 					label(for="message") Your message
 					textarea(name="message" id="message" rows="10")
-
 				.btn-row
 					input(type="submit" value="Submit")
 
