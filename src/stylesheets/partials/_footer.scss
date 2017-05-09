@@ -40,19 +40,16 @@ footer.footer {
 		font-size: 0.95em;
 
 		> * {
-		
-			@media all and (max-width: 800px) {
-		 	margin-bottom: 6%;
-			
-			padding: 0 4%;
-			width: 100%;
-			height: 8%;	
-			}
-
 			padding: 0 4%;
 			width: 24%;
 			height: 8%;	
 			
+			@media all and (max-width: 800px) {
+			 	margin-bottom: 6%;
+				padding: 0 4%;
+				width: 100%;
+				height: 8%;
+			}
 		}
 		
 		.navigation-links { 
@@ -79,7 +76,6 @@ footer.footer {
 
 		
 		.contact-container {
-
 			h1 {
 				font-size: 3.0rem;
 			}
