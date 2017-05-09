@@ -6,7 +6,7 @@ const Handlebars = require('handlebars')
 
 // Render email send form
 router.get('/', (req, res) => {
-	res.render('email')
+	res.redirect('/404')
 })
 
 // Render email send form
