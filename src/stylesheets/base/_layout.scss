@@ -1,11 +1,8 @@
-@import "../variables/widths";
-@import "../variables/colors";
-
 body {
 	margin: 0;
 	padding: 0;
 
-	//*****Sticky footer*******	
+	// *****Sticky footer*******	
 	display: flex;
 	min-height: 100vh;
 	flex-direction: column;
@@ -13,7 +10,7 @@ body {
 	> div:last-of-type {
 		flex: 1;
 	}
-	//*************************
+	// *************************
 }
 
 .container {

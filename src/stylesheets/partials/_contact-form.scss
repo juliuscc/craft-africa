@@ -1,7 +1,9 @@
 .contact-form {
-
+	padding-top: 40px;
+	width: 100%;
+	padding-bottom: 100px;
+	
 	.container-contact{
-		
 		position: relative;
 		width: 100%;
 		max-width: 960px;
@@ -11,19 +13,13 @@
 		box-sizing: border-box;
 
 		@media (min-width: $width-mobile-min) {
-				width: 75%;
-				padding: 0;
+			width: 75%;
+			padding: 0;
 		}
 
 		@media (min-width: $width-tablet-min) {
-				width: 45%;
+			width: 45%;
 		}
-	}
-		
-		//background-color: $color-primary;
-		padding-top: 40px;
-		width: 100%;
-		padding-bottom: 100px;
 
 		h1 {
 			text-align: center;
@@ -59,17 +55,17 @@
 
 			.name {
 				padding-right: 0px;
+				
 				@media (min-width: $width-tablet-min) {
-					padding-right: 10px;
-					
+					padding-right: 10px;	
 				}
 			}
 
 			.email {
 				padding-left: 0px;
+				
 				@media (min-width: $width-tablet-min) {
 					padding-left: 10px;
-					
 				}
 			}
 		}
@@ -81,4 +77,5 @@
 		.btn-row {
 			margin-top: 10px;
 		}
+	}
 }
