@@ -22,9 +22,9 @@ block content
 						.input-field.col.s3
 							select.validate(name="type", value=container.type, required)
 								option(value=container.type, disabled='', selected)= container.type
-								option(value='Addon') Addon
-								option(value='Fermenting') Fermenting
-								option(value='Production') Production
+								option(value='addon') addon
+								option(value='fermenting') fermenting
+								option(value='production') production
 							label(for='type') Type
 						.input-field.col.s3
 							input.validate(type='number' name="series" required value=container.series)
