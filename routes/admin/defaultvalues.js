@@ -33,6 +33,7 @@ router.get('/', (req, res) => {
 						bottleSell: '',
 						kegSell: ''
 					},
+					fermentingTime: '',
 					startValueForProduction: ''
 				}
 				empty.username = req.user.local.name
@@ -52,8 +53,8 @@ router.post('/', (req, res) => {
 			res.redirect('/admin/defaultvalues')
 		}
 		const { hops, barley, co2, water, tapDist, bottleDist, kegDist,
-			bottleThresh, kegThresh, tapCost,
-			bottleCost, kegCost, tapSell, bottleSell, kegSell,
+			bottleThresh, kegThresh, tapCost, bottleCost, kegCost,
+			tapSell, bottleSell, kegSell, fermentingTime,
 			startValueForProduction } = req.body
 
 		const ingredientCost = JSON.stringify({ hops, barley, co2, water })
@@ -68,6 +69,7 @@ router.post('/', (req, res) => {
 			defaultThreshold,
 			productionCost,
 			sellingPrice,
+			fermentingTime,
 			startValueForProduction
 		}, (err) => {
 			if(err) {

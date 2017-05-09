@@ -33,11 +33,14 @@ const defaultValuesSchema = mongoose.Schema({
 })
 
 function is100(values) {
-	let percent = 0
+	let percent = 0.0
 	Object.keys(values).forEach((key) => {
-		percent += values[key]
+		console.log('mirri', values[key])
+		percent += Number.parseFloat(values[key])
 	})
 	let isCorrect = false
+	console.log('mama', percent)
+	console.log('krax', Math.round(percent, -1))
 	if(percent === 100) {
 		isCorrect = true
 	}
@@ -55,6 +58,8 @@ function isInputCorrect(updatedProperties) {
 	const dc = JSON.parse(updatedProperties.productionCost)
 	// sellingPrice
 	const sp = JSON.parse(updatedProperties.sellingPrice)
+	// fermentingTime
+	const ft = updatedProperties.fermentingTime
 	// startValueForProduction
 	const svfp = updatedProperties.startValueForProduction
 	let validated = false
@@ -63,9 +68,12 @@ function isInputCorrect(updatedProperties) {
 		!moduleValidator.isEmpty(dt) && moduleValidator.isNumbers(dt) &&
 		!moduleValidator.isEmpty(dc) && moduleValidator.isNumbers(dc) &&
 		!moduleValidator.isEmpty(sp) && moduleValidator.isNumbers(sp) &&
+		!moduleValidator.isEmpty({ ft }) && moduleValidator.isNumbers({ ft }) &&
 		!moduleValidator.isEmpty({ svfp }) && moduleValidator.isNumbers({ svfp })
 		) {
+		console.log('mera')
 		if(is100(dd)) {
+			console.log('rasera')
 			validated = true
 		}
 	}
@@ -82,8 +90,8 @@ module.exports.createDefaultValuesCollection = (newDefaultValuesCollection, call
 }
 
 module.exports.updateDefaultValuesCollection = (updatedProperties, callback) => {
-	console.log(updatedProperties)
 	if(isInputCorrect(updatedProperties)) {
+		console.log('vvvaaaallliii')
 		DefaultValuesCollection.update({}, { $set: updatedProperties }, { upsert: true }, callback)
 	} else {
 		// TODO
@@ -115,7 +123,6 @@ module.exports.getStartValueForProductionCollection = (callback) => {
 	const query = {}
 	DefaultValuesCollection.findOne(query, callback)
 }
-
 module.exports.getAllDefaultValuesCollections = (callback) => {
 	const query = {}
 	DefaultValuesCollection.findOne(query, (err, values) => {
@@ -128,6 +135,7 @@ module.exports.getAllDefaultValuesCollections = (callback) => {
 				defaultThreshold: JSON.parse(values.defaultThreshold),
 				productionCost: JSON.parse(values.productionCost),
 				sellingPrice: JSON.parse(values.sellingPrice),
+				fermentingTime: values.fermentingTime,
 				startValueForProduction: values.startValueForProduction
 			}
 			callback(err, updatedValues)
