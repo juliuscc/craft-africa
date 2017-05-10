@@ -21,7 +21,8 @@ module.exports = {
 		adminBeer: path.resolve(__dirname, '../src/js/adminBeer.js'),
 		explosionView: path.resolve(__dirname, '../src/js/explosionView.js'),
 		calculationForm: path.resolve(__dirname, '../src/js/calculationForm.js'),
-		navbar: path.resolve(__dirname, '../src/js/navbar.js')
+		navbar: path.resolve(__dirname, '../src/js/navbar.js'),
+		navbarsmall: path.resolve(__dirname, '../src/js/navbar-small.js')
 	},
 	output: {
 		path: path.resolve(__dirname, '../public/js'),

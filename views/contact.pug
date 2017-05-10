@@ -13,9 +13,14 @@ block content
 		.container-contact
 			.text
 				h1 Contact us
-				p Email: someone@ca.com
-				p Phone: +4612345789
-				
+				.table-container
+					table
+						tr
+							td Email:
+							td someone@ca.com
+						tr
+							td Phone:
+							td +4612345789				
 			form(method="post" action="/email/send")
 				input(type="text" name="message_template" value="standard-template" hidden)
 				.input-row
@@ -32,3 +37,4 @@ block content
 					input(type="submit" value="Submit")
 
 block navScript
+	script(src="/js/navbarsmall.js")

@@ -12,6 +12,7 @@ body {
 
 a {
 	color: $color-link;
+	transition: color $timing-hover, background-color $timing-hover, background $timing-hover;
 }
 
 h1, h2, h3, h4, h5, h6 {
