@@ -21,6 +21,13 @@
 			width: 45%;
 		}
 
+		.text {
+			.table-container {
+				display: flex;
+				justify-content: center;
+			}
+		}
+
 		h1 {
 			text-align: center;
 			font-family: "Liberation-Sans" , sans-serif;
