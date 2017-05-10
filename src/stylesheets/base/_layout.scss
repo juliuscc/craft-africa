@@ -47,11 +47,14 @@ body {
 	.text,
 	.image {
 		display: inline-block;
+		width: 100%;
+		box-sizing: border-box;
 	}
 
-	.text,
 	.image {
-		width: 100%;
+		img {
+			width: 100%;
+		}
 	}
 	
 	@media (min-width: $width-tablet-min) {
