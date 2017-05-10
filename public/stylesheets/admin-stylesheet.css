@@ -1,0 +1,11 @@
+textarea.materialize-textarea {
+  background-color: #f7f7f7;
+  width: 100%;
+  padding-left: 10px;
+  min-height: 200px; }
+
+.textareaLabels {
+  padding: 5px; }
+
+div.row .col .inputBox {
+  width: 100%; }

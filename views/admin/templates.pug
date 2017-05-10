@@ -4,7 +4,7 @@ block content
 
 	if templateList
 		.row
-			.col.s12(style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2); background-color: white")
+			.col.s12(style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2); background-color: white; margin-bottom: 20px")
 				ul.tabs
 					//- 	li.tab.col.s3
 					//- 		a(href= '#test1' + template.name) 
@@ -34,29 +34,29 @@ block content
 							div.result-container
 								span.result-message= result
 						.row
-							.input-field.col.s6
+							.input-field.col.s6.inputBox
 								label Template name
 								input(type="text" name="name" id="name" value=template.name)
 						.row
-							.input-field.col.s6
+							.input-field.col.s6.inputBox
 								label Admin Recipient
 								input(type="email" name="recipient" id="recipient" value=template.recipient)
 						.row
-							.input-field.col.s6
+							.input-field.col.s6.inputBox
 								label Admin Subject
 								input(type="text" name="admin_subject" id="admin_subject" value=template.admin_subject)
 						.row
-							.input-field.col.s12
-								label Admin Message
-								textarea(name="admin_message" form="template-form" style="width:300px; height:150px;").materialize-textarea= template.admin_message
+							.input-field.col.s12.inputBox
+								label(class="textareaLabels") Admin Message
+								textarea(name="admin_message" form="template-form").materialize-textarea.textareaStyle= template.admin_message
 						.row
-							.input-field.col.s6
+							.input-field.col.s6.inputBox
 								label User Subject
 								input(type="text" name="user_subject" id="user_subject" value=template.user_subject)
 						.row
-							.input-field.col.s12
-								label User Message
-								textarea(name="user_message" form="template-form" style="width:300px; height:150px;").materialize-textarea= template.user_message
+							.input-field.col.s12.inputBox
+								label(class="textareaLabels") User Message
+								textarea.textareaStyle(name="user_message" form="template-form").materialize-textarea= template.user_message
 						input(type="hidden" name="id" value=template._id)
 						
 						br
@@ -66,23 +66,34 @@ block content
 								input(type="submit" id="submit")
 
 			div(id="new").col.s12= 'new template'
-						form(method="post" action="/admin/email/" id="template-form")
+					form(method="post" action="/admin/email/" id="template-form")
 						if result
 							div.result-container
 								span.result-message= result
-						
-						label Template name
-						input(type="text" name="name" id="name" value="")
-						label Admin Recipient
-						input(type="email" name="recipient" id="recipient" value="")
-						label Admin Subject
-						input(type="text" name="admin_subject" id="admin_subject" value="")
-						label Admin Message
-						textarea(name="admin_message" form="template-form" style="width:300px; height:150px;")= template.admin_message
-						label User Subject
-						input(type="text" name="user_subject" id="user_subject" value="")
-						label User Message
-						textarea(name="user_message" form="template-form" style="width:300px; height:150px;")= template.user_message
+						.row
+							.input-field.col.s6.inputBox
+								label Template name
+								input(type="text" name="name" id="name" value="")
+						.row
+							.input-field.col.s6.inputBox
+								label Admin Recipient
+								input(type="email" name="recipient" id="recipient" value="")
+						.row
+							.input-field.col.s6.inputBox
+								label Admin Subject
+								input(type="text" name="admin_subject" id="admin_subject" value="")
+						.row
+							.input-field.col.s12.inputBox
+								label(class="textareaLabels") Admin Message
+								textarea(name="admin_message" form="template-form").materialize-textarea= template.admin_message
+						.row
+							.input-field.col.s6.inputBox
+								label User Subject
+								input(type="text" name="user_subject" id="user_subject" value="")
+						.row
+							.input-field.col.s12.inputBox
+								label(class="textareaLabels") User Message
+								textarea(name="user_message" form="template-form").materialize-textarea= template.user_message
 						input(type="hidden" name="id" value="")
 						
 						br
@@ -109,11 +120,11 @@ block content
 			label Admin Subject
 			input(type="text" name="admin_subject" id="admin_subject" value=admin_subject)
 			label Admin Message
-			textarea(name="admin_message" form="template-form" style="width:300px; height:150px;")= admin_message
+			textarea(name="admin_message" form="template-form")= admin_message
 			label User Subject
 			input(type="text" name="user_subject" id="user_subject" value=user_subject)
 			label User Message
-			textarea(name="user_message" form="template-form" style="width:300px; height:150px;")= user_message
+			textarea(name="user_message" form="template-form")= user_message
 			input(type="hidden" name="id" value=_id)
 			
 			br
