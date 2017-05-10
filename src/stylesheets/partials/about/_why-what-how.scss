@@ -1,0 +1,63 @@
+.about.why-what-how {
+
+	.column-container{
+
+		display: flex;
+		//padding: 10%;
+		padding: 10% 15% 10% 15%;
+		flex-direction: column;
+		
+		@media (min-width: $width-tablet-min) {
+			flex-direction: row;
+		}
+
+		.text{
+			padding:0;
+			flex: 1;
+			width: 100%;
+
+		}
+
+		.line {
+		//	margin: 5% 1% 5% 1%;
+			margin-bottom: 5%;
+			margin-top: 4%;
+			//height: 1px;
+			@media (max-width: $width-tablet-min) {
+				height: 1px;
+
+			}
+			
+
+			@media (min-width: $width-tablet-min) {
+			//	height: 100%;
+				width: 1px;
+				margin: 1% 5% 1% 5%;
+			}
+			
+			// margin-left: 5%;
+			// margin-right: 5%;
+			// margin-top: 2%;
+			// margin-bottom: 2%;
+			background: $color-dark-grey;
+			
+
+		}
+	}
+	
+.big-pic {
+	.our-story-pic{
+		    /* The image used */
+	    background-image: url("/images/africa2.jpg");
+
+	    /* Set a specific height */
+	    height: 500px; 
+
+	    /* Create the parallax scrolling effect */
+	    background-attachment: fixed;
+	    background-position: center;
+	    background-repeat: no-repeat;
+	    background-size: cover;
+	}
+}
+}
