@@ -3,15 +3,20 @@
 
 ul.links
 	li
-		a(href="/") Home
+		block navlink-home
+			a(href="/") Home
 	li
-		a(href="/product") Our Product
+		block navlink-product
+			a(href="/product") Our Product
 	li
-		a(href="/footprint") Our footprint
+		block navlink-footprint
+			a(href="/footprint") Our footprint
 	li
-		a(href="/about") About us
+		block navlink-about
+			a(href="/about") About us
 	li
-		a(href="/contact") Contact us
+		block navlink-contact
+			a(href="/contact") Contact us
 
 .hamburger
 	span

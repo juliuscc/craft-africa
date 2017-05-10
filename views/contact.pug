@@ -8,6 +8,9 @@ block nav
 		include partials/navbar
 	.nav-filler
 
+block navlink-contact
+	a(href="/contact").active Contact us
+
 block content
 	.contact-form
 		.container-contact
@@ -20,7 +23,7 @@ block content
 							td someone@ca.com
 						tr
 							td Phone:
-							td +4612345789				
+							td +4612345789
 			form(method="post" action="/email/send")
 				input(type="text" name="message_template" value="standard-template" hidden)
 				.input-row
