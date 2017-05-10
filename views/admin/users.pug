@@ -23,7 +23,6 @@ block content
 						form(method="post" action="/admin/users/delete")
 							input(type="hidden" name="id" value=user._id)
 							input(type="submit" value="Remove user").btn.red
-
 		input.btn.left(type="button" id="add" data-target=`modal${index}` value = "add new user")
 		div(class="modal" id=`modal${index}`)
 			.modal-content
