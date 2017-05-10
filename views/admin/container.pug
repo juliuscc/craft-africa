@@ -9,7 +9,7 @@ block title
 
 
 block content
-	form.container(method="post" action="/admin/containers")
+	form.container(method="post" action="/admin/containers" novalidate)
 		each container, index in containers
 			.card
 				.card-title
@@ -29,9 +29,9 @@ block content
 						.input-field.col.s3
 							select.validate(name="series", value=container.series, required)
 								option(value=container.series, selected)= container.series
-								option(value='A') A
-								option(value='B') B
-								option(value='C') C
+								option(value='a') a
+								option(value='b') b
+								option(value='c') c
 							label(for='series') Series
 						.input-field.col.s3
 							input.validate(type='number' name="price" required value=container.price)
@@ -62,11 +62,16 @@ block content
 						input.btn.save.blue.right(type="submit" value = "save" style="margin-right:10px")
 						input(type="hidden" name="id" value=container._id)
 						input(type="hidden" name="status" value="unchanged")
+		input.btn-large(type="submit"  name="submit" value="submit Changes")
+	br
+	hr
+	h2 New Containers
+	h6 Save changes before adding new containers!
+	br
 	form(method="post" class="addRow" action="/admin/containers/new")
-		input.btn.left(type="button" id="add" value = "add new container")
-		br
-		br
-		input.btn-large.left(type="submit"  name="submit" value="submit")
+		input.btn-large.left(type="submit"  name="submit" value="submit New Containers")
+		input.btn-large.left(type="button" id="add" value = "Add")
+	
 				
 	
 block scripts

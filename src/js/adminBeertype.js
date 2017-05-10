@@ -52,7 +52,7 @@ function addBeer() {
 		<input type="number" name="co2" step="any" required="" class="validate">
 		<label for="co2Use">co2 (kg/l)</label>
 	</div>
-	<input type="button" value="remove" class="remove btn">
+	<input type="button" value="remove" class="remove btn red right">
 	<input type="hidden" name="id" value="undefined">
 	<input type="hidden" name="status" value="new">
 </div>

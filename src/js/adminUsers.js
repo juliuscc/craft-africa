@@ -11,7 +11,7 @@ $(document).ready(() => {
 /* eslint-enable no-undef */
 
 function babo(e) {
-	console.log('babo')
+	console.log('babo', e)
 }
 
 const addBtn2 = document.querySelector('#add')

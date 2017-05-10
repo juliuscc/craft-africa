@@ -1,13 +1,13 @@
 extends layout.pug
 
+block vars
+	- var title = "General form settings"
+
 block title
 	title Craft Africa - Default Values
 
-block header
-	h3 Default Values
-
 block content
-	form(method="post" action="/admin/defaultvalues" style="padding: 10px 40px 20px 10px")
+	form(method="post" action="/admin/defaultvalues")
 		.everything
 			.card
 				.card-content
@@ -99,7 +99,7 @@ block content
 			input.validate(type="hidden" name="status" value="unchanged")
 
 			br
-			input.btn.right.blue(type="submit" disabled=false name="submit" value="Submit")
+			input.btn-large.left(type="submit" disabled=false name="submit" value="Submit")
 			br
 			br
 			br
