@@ -1,9 +1,16 @@
-@import "../variables/widths";
-@import "../variables/colors";
-
 body {
 	margin: 0;
 	padding: 0;
+
+	// *****Sticky footer*******	
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+
+	> div:last-of-type {
+		flex: 1;
+	}
+	// *************************
 }
 
 .container {
@@ -22,8 +29,47 @@ body {
 	}
 }
 
-@media (min-width: $width-phablet-min) {
+@media (min-width: $width-tablet-min) {
 	.container {
 		width: 80%;
+	}
+}
+
+.info-box {
+	width: 100%;
+	padding: 20px;
+	padding-bottom: 50px;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+	.text,
+	.image {
+		display: inline-block;
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	.image {
+		img {
+			width: 100%;
+		}
+	}
+	
+	@media (min-width: $width-tablet-min) {
+		padding: 5% 10% 5% 10%;
+
+		.text {
+			width: 60%;
+		}
+
+		.image {
+			width: 35%;
+		}
+	}
+
+	p {
+		font-size: 1.4em;
 	}
 }

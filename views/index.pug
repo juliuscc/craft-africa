@@ -2,16 +2,10 @@ extends layout.pug
 
 block header
 	header.header
-		img.logo(src="/images/craft_africa_logo.png" alt="Craft Africa logo")
+		a.down-btn.fa.fa-angle-double-down(href="#first")
 
 block content
-	.overlap-images
-		.container
-			.placeholder.block1
-			.placeholder.block2
-			.placeholder.block3
-
-	.container
+	.container#first
 		.quote-container
 			span.quote Get famous or die trying
 			span.source former poor man now rich

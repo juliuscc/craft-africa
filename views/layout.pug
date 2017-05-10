@@ -7,7 +7,7 @@ html
 		meta(charset="utf-8")
 
 		// Mobile Specific Metas
-		meta(name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0")
 		meta(name="HandheldFriendly" content="true")
 		
 		// Preview meta for social media
@@ -28,10 +28,13 @@ html
 		link(rel="stylesheet" href="/fonts/liberation.css")
 
 		// CSS
-		link(rel="stylesheet" href="/stylesheets/normalize.css")
 		link(rel="stylesheet" href="/stylesheets/main.css")
 
 	body
+		block nav
+			nav.nav
+				include partials/navbar
+
 		block header
 
 		block content
@@ -40,6 +43,9 @@ html
 			include partials/footer
 
 		script(src="https://cdn.polyfill.io/v2/polyfill.min.js")
+
+		block navScript
+			script(src="/js/navbar.js")
 		
 		block scripts
 		

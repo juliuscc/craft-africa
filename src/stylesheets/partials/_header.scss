@@ -1,6 +1,3 @@
-@import "../variables/colors";
-@import "../variables/widths";
-
 header.header {
 	width: 100%;
 	display: flex;
@@ -8,16 +5,60 @@ header.header {
 	height: 100vh;
 	background-color: $color-primary;
 	background-image: url("/images/guy.png");
+	background-size: cover;
 
-	.logo {
-		display: inline-block;
-		background-color: $color-background-light;
-		width: 50%;
-		margin: 0 auto;
-		margin-top: 20px;
-		
-		@media (min-width: $width-tablet-min) {
-			width: 400px;
+	.title-text {
+		position: absolute;
+		box-sizing: border-box;
+		width: 100%;
+		padding: 0 40px;
+		text-align: center;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		h1 {
+			font-size: 4em;
+			margin-bottom: 10px;
 		}
+
+		p {
+			margin: 0;
+			font-size: 1.2em;
+		}
+
+		@media (min-width: $width-tablet-min) {
+			padding: 0 20%;
+
+			h1 {
+				font-size: 6em;
+			}
+
+			p {
+				font-size: 1.6em;
+			}
+		}
+	}
+
+	.down-btn {
+		position: absolute;
+		left: 50%;
+		bottom: 5%;
+		transform: translateX(-50%);
+		text-decoration: none;
+		font-size: 8rem;
+		color: inherit;
+	}
+
+	&.about {
+		@import "headers/about";
+	}
+
+	&.footprint {
+		@import "headers/footprint";
+	}
+
+	&.product {
+		@import "headers/product";
 	}
 }

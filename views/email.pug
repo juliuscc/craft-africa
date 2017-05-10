@@ -3,14 +3,22 @@ extends layout.pug
 block title
 	title Craft Africa - Email
 
-block content
-	form(method="post" action="/email/send")
-		input(type="text", name="message_template" value="standard_template" hidden)
-		input(type="text" name="name" id="name" placeholder="Name")
-		input(type="email" name="emailadress" id="emailadress" placeholder="Email")
-		input(type="tel" name="tel" id="tel" placeholder="Telephone")
-		input(type="text" name="message" id="message" placeholder="Message")
-		input(type="submit" id="submit")
 
-	if message
-		p= message
+block nav
+	nav.nav.small
+		include partials/navbar
+	.nav-filler
+
+block content
+	.contact-form
+		.container-contact
+			if message
+				H1 Thank you for getting in touch
+				p= message
+			else 
+				H1 Thank you for getting in touch
+				p  One of our skilled coworkers will soon reach out to you. 
+
+
+block navScript
+	script(src="/js/navbarsmall.js")

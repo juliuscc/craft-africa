@@ -5,9 +5,9 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const configDB = require('./config/database.js')
 const passport = require('passport')
-const LocalStrategy = require('passport-local').Strategy
 const session = require('express-session')
 const flash = require('connect-flash')
+
 mongoose.connect(configDB.url)
 
 // Init App
@@ -42,6 +42,8 @@ const calculationForm = require('./routes/calculationform')
 const email = require('./routes/email')
 const admin = require('./routes/admin')
 const data = require('./routes/data')
+const footprint = require('./routes/footprint')
+const product = require('./routes/product')
 
 // Router
 app.use('/', index)
@@ -51,6 +53,8 @@ app.use('/calculationform', calculationForm)
 app.use('/email', email)
 app.use('/admin', admin)
 app.use('/data', data)
+app.use('/footprint', footprint)
+app.use('/product', product)
 
 // Error handling
 app.use((req, res) => {

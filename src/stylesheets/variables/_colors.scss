@@ -1,19 +1,38 @@
 // Main
-$color-primary: #6fa57d;
-$color-primary-darker: #3c5b47;
-$color-secondary: #a5a089;
-$color-accent: #618ea5;
-$color-info: #f8df1f;
-$color-warning: #a54232;
+$color-primary: #6FA57D;
+$color-primary-darker: #3C5B47;
+$color-secondary: #A5A089;
+$color-accent: #618EA5;
+$color-info: #F8DF1F;
+$color-warning: #A54232;
+$color-black: #000;
+$color-white: #FFF;
+$color-dark-grey: #484540;
 
 // Background
 $color-background-light: #eee;
-$color-background-dark: $color-primary-darker;
+$color-background-dark: $color-dark-grey;
 
 // Text
-$color-text-light: #eee;
-$color-text-dark: #222;
+$color-text-light: $color-white;
+$color-text-dark: $color-dark-grey;
 $color-link: $color-accent;
+
+// Logo
+$color-logo-background: $color-white;
+$color-logo-border: $color-primary;
+
+// Social media icons
+$color-facebook: #3B5998;
+$color-twitter: #55ACEE;
+$color-instagram: #125688;
+
+// Navbar
+$color-nav-background: rgba($color-black, 0.6);
+$color-nav-filler: rgba($color-black, 0);
+$color-nav-background-transparent: rgba(0, 0, 0, 0);
+$color-nav-link: $color-white;
+$color-nav-link-hover: $color-info;
 
 // Misc
 $color-selection: $color-primary;

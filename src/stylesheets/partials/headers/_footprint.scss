@@ -1,0 +1,10 @@
+& {
+	background: $color-primary-darker;
+	color: $color-info;
+
+	.down-btn:hover,
+	.down-btn:active,
+	.down-btn:hover {
+		color: set-hover-color($color-info);
+	}
+}

@@ -1,0 +1,80 @@
+.water.footprint {
+	text-align: center;
+	color: lighten($color-accent, 10%);
+	background-color: $color-white;
+	padding-bottom: 50px;
+
+	.info-box {
+		padding-bottom: 0;
+	}
+
+	.text {
+		margin: 0 auto;
+		width: 100%;
+	}
+
+	@media (min-width: $width-tablet-min) {
+		padding-bottom: 5%;
+		
+		.text {
+			width: 50%;
+		}
+	}
+
+	.water-splash {
+		width: 70%;
+		padding: 0 15%;
+		box-sizing: border-box;
+		margin: 0 auto;
+
+		img {
+			width: 100%;
+		}
+	}
+
+	.water-tap {
+		position: relative;
+		width: 60%;
+		overflow: hidden;
+		box-sizing: border-box;
+		float: right;
+		height: 200px;
+		margin-bottom: 10%;
+		
+		@media (min-width: $width-tablet-min) {
+			& {
+				height: 300px;
+			}
+		}
+
+		@media (min-width: $width-tablet-min) {
+			& {
+				height: 400px;
+			}
+		}
+
+		@media (min-width: $width-desktopHD-min) {
+			& {
+				height: 600px;
+			}
+		}
+
+		@media (min-width: $width-desktop2k-min) {
+			& {
+				height: 700px;
+				width: 55%;
+			}
+		}
+
+		img {
+			position: absolute;
+			left: 0;
+			height: 100%;
+		}
+
+		.filler {
+			display: block;
+			width: 40%;
+		}
+	}
+}

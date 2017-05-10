@@ -1,0 +1,47 @@
+.people.footprint {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background-color: $color-background-dark;
+	color: $color-secondary;
+
+	> * {
+		box-sizing: border-box;
+		display: inline-block;
+	}
+
+	.text,
+	.bottle {
+		width: 100%;
+	}
+
+	.bottle {
+		height: auto;
+		padding: 0 30%;
+
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	@media (min-width: $width-tablet-min) {
+		& {
+			flex-direction: row;
+		}
+		
+		.text {
+			width: 70%;
+		}
+
+		.bottle {
+			width: 20%;
+			padding: 0;
+		}
+
+		.text,
+		.bottle {
+			display: inline-block;
+		}
+	}
+}

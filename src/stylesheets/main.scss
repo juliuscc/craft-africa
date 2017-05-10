@@ -1,2 +1,8 @@
+// Bower components
+@import "../../bower_components/normalize-css/normalize.css";
+@import "../../bower_components/font-awesome/scss/font-awesome.scss";
+
+// Custom developed
+@import "variables/all";
 @import "base/all";
-@import "partials/all"
+@import "partials/all";
