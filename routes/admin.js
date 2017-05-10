@@ -34,7 +34,7 @@ router.get('/signup', (req, res) => {
 })
 
 router.get('/statistics', (req, res) => {
-	res.render('admin/statistics', {username: req.user.username })
+	res.render('admin/statistics', { username: req.user.username })
 })
 
 router.get('/logout', (req, res) => {
@@ -48,6 +48,12 @@ router.get('/profile', (req, res) => {
 
 router.post('/signup', passport.authenticate('local-signup', {
 	successRedirect: 'containers',
+	failureRedirect: 'signup',
+	failureFlash: true
+}))
+
+router.post('/users', passport.authenticate('local-signup', {
+	successRedirect: 'users',
 	failureRedirect: 'signup',
 	failureFlash: true
 }))
