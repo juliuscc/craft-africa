@@ -4,10 +4,41 @@ textarea.materialize-textarea {
 	padding-left: 10px;
 	min-height: 200px;
 }
-
 .textareaLabels{
 	padding: 5px;
 }
 div.row .col .inputBox{
 	width: 100%;
+	padding-left: 0;
 }
+.logo img {
+	margin-left: 10%;
+}
+.container {
+	margin-left: 20px;
+	width: 100%;
+	padding-right: 30px;
+}
+.addRow .btn-large {
+	margin-right: 10px;
+}
+.btn.right {
+	margin-top: 40px;
+}
+.card-title h4 {
+	font-size: 120%;
+	padding-top: 20px;
+	margin: 20px 0 0px 20px;
+}
+.material-icons {
+	color: #888888;
+}
+main {
+		margin-bottom: 200px;
+}
+@media(min-width: 992px) {
+	main {
+		padding-left:300px;
+	}
+}
+

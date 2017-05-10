@@ -6,33 +6,16 @@ block content
 		.row
 			.col.s12(style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2); background-color: white; margin-bottom: 20px")
 				ul.tabs
-					//- 	li.tab.col.s3
-					//- 		a(href= '#test1' + template.name) 
-					//- li.tab.col.s3
-					//- 	a(href="/admin/email/new") Add New Template
-
 					each template in templateList
 						li.tab.col.s3
 							a(class="teal-text text-darken-2" href="#" + template.name)= template.name
 					li.tab.col.s3
 						a(href="#new") Add New Template
-			
 
-		
-			//- ul
-			//- 	each template in templateList
-			//- 		li
-			//- 			a(href="/admin/email/" + template.name)= template.name + "  "
-			//- 			form(method="post" action="/admin/email/delete")
-			//- 				input(type="hidden" name="id" value=template._id)
-			//- 				input(type="submit" value="Remove template")
-
+		.row
 			each template in templateList
 				div(id=template.name).col.s12
-					form(method="post" action="/admin/email/" id="template-form")
-						if result
-							div.result-container
-								span.result-message= result
+					form(method="post" action="/admin/email/" id="template-form").container
 						.row
 							.input-field.col.s6.inputBox
 								label Template name
@@ -58,18 +41,12 @@ block content
 								label(class="textareaLabels") User Message
 								textarea.textareaStyle(name="user_message" form="template-form").materialize-textarea= template.user_message
 						input(type="hidden" name="id" value=template._id)
-						
-						br
-						br
 						.row
 							.waves-effect.waves-light.btn
 								input(type="submit" id="submit")
 
-			div(id="new").col.s12= 'new template'
-					form(method="post" action="/admin/email/" id="template-form")
-						if result
-							div.result-container
-								span.result-message= result
+			div(id="new").col.s12
+					form(method="post" action="/admin/email/" id="template-form").container
 						.row
 							.input-field.col.s6.inputBox
 								label Template name
@@ -95,9 +72,6 @@ block content
 								label(class="textareaLabels") User Message
 								textarea(name="user_message" form="template-form").materialize-textarea= template.user_message
 						input(type="hidden" name="id" value="")
-						
-						br
-						br
 						.waves-effect.waves-light.btn
 							input(type="submit" id="submit")
 
@@ -107,26 +81,4 @@ block content
 				|});
 
 	else
-		a(href="/admin/email/") Go back!
-		form(method="post" action="/admin/email/" id="template-form")
-			if result
-				div.result-container
-					span.result-message= result
-			
-			label Template name
-			input(type="text" name="name" id="name" value=name)
-			label Admin Recipient
-			input(type="email" name="recipient" id="recipient" value=recipient)
-			label Admin Subject
-			input(type="text" name="admin_subject" id="admin_subject" value=admin_subject)
-			label Admin Message
-			textarea(name="admin_message" form="template-form")= admin_message
-			label User Subject
-			input(type="text" name="user_subject" id="user_subject" value=user_subject)
-			label User Message
-			textarea(name="user_message" form="template-form")= user_message
-			input(type="hidden" name="id" value=_id)
-			
-			br
-			br
-			input(type="submit" id="submit")
+		h1 Something went wrong
