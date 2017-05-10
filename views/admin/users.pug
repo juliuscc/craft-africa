@@ -7,33 +7,33 @@ block vars
 	- var title = "Modify users"
 	
 block content
-	.container
-		table
+	table
+		tr
+			th Name
+			th Email
+			th Admin 
+		body
+
+		each user in users
 			tr
-				th Name
-				th Email
-				th  
-			body
-
-			each user in users
-				tr
-					td= user.local.name
-					td= user.local.email	
-					td
+				td= user.local.name
+				td= user.local.email	
+				td
+					.waves-effect.waves-light.btn
 						form(method="post" action="/admin/users/delete")
-							input(type="hidden" name="id" value=user._id)
-							input(type="submit" value="Remove user").btn.red
-
-		input.btn.left(type="button" id="add" data-target=`modal${index}` value = "add new user")
-		div(class="modal" id=`modal${index}`)
-			.modal-content
-				h4 Add New User
+						input(type="hidden" name="id" value=user._id)
+						input(type="submit" value="Remove user")
+	input.btn.left(type="button" id="add" data-target=`modal${index}` value = "add new user")
+	div(class="modal" id=`modal${index}`)
+		.modal-content
+			h4 Add New User
+			.container
 				center
 					form.col.s12(action='/admin/users', method='post')
 						.form-group.row
 							label.col.s12 Email
 							|  
-							input.form-control(type='email', name='email')
+							input.form-control(type='text', name='email')
 						.form-group
 							label Password
 							|  
@@ -49,5 +49,6 @@ block content
 								input.btn.form-control(type='submit', value='Submit')
 								input.modal-action.modal-close.waves-effect.waves-green.btn-flat(type="button" value="Cancel")
 
+				
 block scripts
 	script(src="/js/adminUsers.js")
