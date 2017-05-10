@@ -20,7 +20,11 @@
 }*/
 
 const moduleValidator = require('../../models/moduleValidator')
-
+/* eslint-disable no-undef */
+$(document).ready(() => {
+	$('.tooltipped').tooltip({ delay: 50 })
+})
+/* eslint-enable no-undef */
 function isHundred(e) {
 	e.preventDefault()
 

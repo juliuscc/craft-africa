@@ -11,7 +11,10 @@ block content
 		.everything
 			.card
 				.card-title
-					h4 Ingredient cost
+					h4
+						|Ingredient cost 
+						span(data-position="bottom" data-delay="0" data-tooltip="Ingredient Cost Description: bla bla bla" style="color: #618ea5").material-icons.tooltipped info_outline 
+					
 				.card-content
 					.defaultCostIngredients
 						.input-field.col.s3
@@ -29,7 +32,10 @@ block content
 
 			.card
 				.card-title
-					h4 Default Distribution (%) (Must be 100 in total for it to save)
+					h4 h4
+						|Default Distribution (%) (Must be 100 in total for it to save) 
+						span(data-position="bottom" data-delay="0" data-tooltip="Ingredient Cost Description: bla bla bla" style="color: #618ea5").material-icons.tooltipped info_outline 
+
 				.card-content
 					.defaultDistributionValues
 						.input-field.col.s3
@@ -44,7 +50,10 @@ block content
 
 			.card
 				.card-title
-					h4 Default Threshhold for Activating Bottle/Keg Containers
+					h4
+						|Default Threshhold for Activating Bottle/Keg Containers 
+						span(data-position="bottom" data-delay="0" data-tooltip="Ingredient Cost Description: bla bla bla" style="color: #618ea5").material-icons.tooltipped info_outline
+				
 				.card-content
 					.defaultThreshhold
 						.input-field.col.s3
@@ -56,7 +65,10 @@ block content
 
 			.card
 				.card-title
-					h4 Production Cost (per unit)
+					h4
+						|Production Cost (per unit) 
+						span(data-position="bottom" data-delay="0" data-tooltip="Ingredient Cost Description: bla bla bla" style="color: #618ea5").material-icons.tooltipped info_outline
+
 				.card-content
 					.defaultCostValues
 						.input-field.col.s3
@@ -71,7 +83,10 @@ block content
 
 			.card
 				.card-title
-					h4 Fermenting Time
+					h4
+						|Fermenting Time 
+						span(data-position="bottom" data-delay="0" data-tooltip="Ingredient Cost Description: bla bla bla" style="color: #618ea5").material-icons.tooltipped info_outline
+
 				.card-content
 					.defaultSellingValues
 						.input-field.col.s3
@@ -80,7 +95,10 @@ block content
 
 			.card
 				.card-title
-					h4 Selling Price (per unit)
+					h4
+						|Selling Price (per unit) 
+						span(data-position="bottom" data-delay="0" data-tooltip="Ingredient Cost Description: bla bla bla" style="color: #618ea5").material-icons.tooltipped info_outline
+
 				.card-content
 					.defaultSellingValues
 						.input-field.col.s3
@@ -96,7 +114,10 @@ block content
 
 			.card
 				.card-title
-					h4 Start Value for Production
+					h4
+						|Start Value for Production 
+						span(data-position="bottom" data-delay="0" data-tooltip="Ingredient Cost Description: bla bla bla" style="color: #618ea5").material-icons.tooltipped info_outline
+
 				.card-content
 					.defaultStartValueForProduction
 						.input-field.col.s3
@@ -105,7 +126,7 @@ block content
 							
 			input.validate(type="hidden" name="status" value="unchanged")
 			br
-			input.btn-large.left(type="submit" disabled=false name="submit" value="Submit")
+			input.btn-large.left.tooltipped(type="submit" disabled=false name="submit" value="Submit" data-position="top" data-delay="50" data-tooltip="I am tooltip")
 			br
 	
 block scripts
