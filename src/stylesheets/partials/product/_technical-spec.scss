@@ -1,18 +1,66 @@
 .product.technical-spec {
-	.text{
-		width: 2 / 3 * 100%;
-
-		.column {
-			width: 50%;
-		}
-
 		h2 {
 			font-size: 2rem;
 			margin-bottom: 0;
 		}
 
+
 		p {
 			margin-top: 0;
 		}
+
+	.icons-img-container{
+		width: 100%;
+		
+		.icons-holder{
+
+			width: 50%;
+
+			.icon {
+				width: 45%;
+				display: inline-block;
+
+				.headline {
+					display: flex;
+					flex-direction: row;
+
+					i{
+						padding-right: 0;
+					}
+
+				}
+				.placeholder1{
+
+				}
+			}
+
+		.img-container {
+			width: 50%;
+			display: inline-block;
+			img{
+				width: 100%;
+				height: auto;
+			}
+	
+		}
+
+		}
+
 	}
+	// .text{
+	// 	width: 2 / 3 * 100%;
+
+	// 	.column {
+	// 		width: 50%;
+	// 	}
+
+	// 	h2 {
+	// 		font-size: 2rem;
+	// 		margin-bottom: 0;
+	// 	}
+
+	// 	p {
+	// 		margin-top: 0;
+	// 	}
+	// }
 }
