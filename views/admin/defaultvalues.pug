@@ -7,11 +7,12 @@ block title
 	title Craft Africa - Default Values
 
 block content
-	form(method="post" action="/admin/defaultvalues")
+	form(method="post" action="/admin/defaultvalues").container
 		.everything
 			.card
+				.card-title
+					h4 Ingredient cost
 				.card-content
-					span.card-title Ingredient cost
 					.defaultCostIngredients
 						.input-field.col.s3
 							input.validate(type="number" step="any" required name="hops" value=ingredientCost.hops)
@@ -27,8 +28,9 @@ block content
 							label(for='name') Water ($)
 
 			.card
+				.card-title
+					h4 Default Distribution (%) (Must be 100 in total for it to save)
 				.card-content
-					span.card-title Default Distribution (%) (Must be 100 in total for it to save)
 					.defaultDistributionValues
 						.input-field.col.s3
 							input.validate.hundred(type="number" step="any" required name="tapDist" value=defaultDistribution.tapDist)
@@ -41,8 +43,9 @@ block content
 							label(for='name') Keg (%)
 
 			.card
+				.card-title
+					h4 Default Threshhold for Activating Bottle/Keg Containers
 				.card-content
-					span.card-title Default Threshhold for Activating Bottle/Keg Containers
 					.defaultThreshhold
 						.input-field.col.s3
 							input.validate(type="number" step="any" required name="bottleThresh" value=defaultThreshold.bottleThresh)
@@ -52,8 +55,9 @@ block content
 							label(for='name') Keg
 
 			.card
+				.card-title
+					h4 Production Cost (per unit)
 				.card-content
-					span.card-title Production Cost (per unit)
 					.defaultCostValues
 						.input-field.col.s3
 							input.validate(type="number" step="any" required name="tapCost" value=productionCost.tapCost)
@@ -66,16 +70,18 @@ block content
 							label(for='name') Keg ($)
 
 			.card
+				.card-title
+					h4 Fermenting Time
 				.card-content
-					span.card-title Fermenting Time
 					.defaultSellingValues
 						.input-field.col.s3
 							input.validate(type="number" step="any" required name="fermentingTime" value=fermentingTime)
 							label(for='name') Fermenting Time
 
 			.card
+				.card-title
+					h4 Selling Price (per unit)
 				.card-content
-					span.card-title Selling Price (per unit)
 					.defaultSellingValues
 						.input-field.col.s3
 							input.validate(type="number" step="any" required name="tapSell" value=sellingPrice.tapSell)
@@ -89,19 +95,17 @@ block content
 
 
 			.card
+				.card-title
+					h4 Start Value for Production
 				.card-content
-					span.card-title Start Value for Production
 					.defaultStartValueForProduction
 						.input-field.col.s3
 							input.validate(type="number" step="any" required name="startValueForProduction" value=startValueForProduction)
 							label(for='name') $
 							
 			input.validate(type="hidden" name="status" value="unchanged")
-
 			br
 			input.btn-large.left(type="submit" disabled=false name="submit" value="Submit")
-			br
-			br
 			br
 	
 block scripts

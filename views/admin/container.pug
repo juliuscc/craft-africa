@@ -13,7 +13,7 @@ block content
 		each container, index in containers
 			.card
 				.card-title
-					h4(style="padding: 10px 15px")= container.name
+					h4= container.name
 				.card-content
 					.row
 						.input-field.col.s3
@@ -63,14 +63,15 @@ block content
 						input(type="hidden" name="id" value=container._id)
 						input(type="hidden" name="status" value="unchanged")
 		input.btn-large(type="submit"  name="submit" value="submit Changes")
-	br
-	hr
-	h2 New Containers
-	h6 Save changes before adding new containers!
-	br
-	form(method="post" class="addRow" action="/admin/containers/new")
-		input.btn-large.left(type="submit"  name="submit" value="submit New Containers")
-		input.btn-large.left(type="button" id="add" value = "Add")
+	.container
+		br
+		hr
+		h2 New Containers
+		h6 Save changes before adding new containers!
+		br
+		form(method="post" class="addRow" action="/admin/containers/new")
+			input.btn-large.left(type="submit"  name="submit" value="submit New Containers")
+			input.btn-large.left(type="button" id="add" value = "Add")
 	
 				
 	

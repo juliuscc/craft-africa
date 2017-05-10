@@ -43,8 +43,7 @@ router.get('/stats', (req, res) => {
 				}
 				containerObject[container.type].push(container)
 			})
-//	FIX!!!!	containerObject.fermentingTime = data.defaultValues.fermentingTime
-			containerObject.fermentingTime = 3
+			containerObject.fermentingTime = data.defaultValues.fermentingTime
 			containerObject.threshold = data.defaultValues.threshold
 
 			res.json({

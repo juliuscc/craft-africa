@@ -11,7 +11,7 @@ block content
 		form.container(method="post" action="/admin/beertype")
 			.card
 				.card-title
-					h4(style="padding: 10px 15px")= value.name
+					h4= value.name
 				.card-content
 					.row
 						.input-field.col.s3
@@ -33,7 +33,7 @@ block content
 						input.btn.save.blue.right(type="submit" value = "save", style="margin-right:10px")
 						input(type="hidden" name="id" value=value._id)
 						input(type="hidden" name="status" value="unchanged")
-	form(method="post" class="addRow" action="/admin/beertype/new")
+	form(method="post" class="addRow container" action="/admin/beertype/new")
 		input.btn-large.left(type="button" id="addBeer" value = "Add")
 		input.btn-large.left(type="submit"  name="submit" value="submit")
 		
