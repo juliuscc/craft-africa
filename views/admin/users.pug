@@ -8,6 +8,7 @@ block vars
 	
 block content
 	each user in users
+		p= "Name: " + user.local.name
 		p= "Email: " + user.local.email
 		p= "password: " + user.local.password
 		form(method="post" action="/admin/users/delete")
