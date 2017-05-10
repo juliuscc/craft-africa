@@ -1,10 +1,28 @@
 .about.our-story {
 	flex-direction: column;
 	text-align: center;
-	padding-left: 30%;
-	padding-right: 30%;
-
+	padding-left: 25%;
+	padding-right: 25%;
+	padding-top: 5%;
+	padding-bottom: 5%;
 	h1 {
 		margin-bottom: 0;
 	} 
+
+}
+
+.big-pic {
+	.our-story-pic{
+		    /* The image used */
+	    background-image: url("/images/africa2.jpg");
+
+	    /* Set a specific height */
+	    height: 500px; 
+
+	    /* Create the parallax scrolling effect */
+	    background-attachment: fixed;
+	    background-position: center;
+	    background-repeat: no-repeat;
+	    background-size: cover;
+	}
 }
