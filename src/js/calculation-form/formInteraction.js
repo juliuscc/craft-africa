@@ -107,8 +107,6 @@ function saveFormInputs(stats, economics) {
 	if(economics) {
 		if(economics.profit) {
 			document.querySelector('.profit').innerHTML = economics.profit
-		} else {
-			console.log('no profit')
 		}
 
 		if(economics.fixedCosts && economics.variableCosts) {
@@ -117,8 +115,6 @@ function saveFormInputs(stats, economics) {
 			 Variable: ${economics.variableCosts.total}
 			`
 		}
-	} else {
-		console.log('no economics')
 	}
 }
 

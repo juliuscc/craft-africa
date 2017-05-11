@@ -90,8 +90,6 @@ function getEconomics(stats, economics) {
 						economics.fixedCosts.total -
 						economics.variableCosts.total
 
-	console.log(economics)
-
 	return economics
 }
 
