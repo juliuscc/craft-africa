@@ -1,8 +1,6 @@
-@import "../variables/colors";
-@import "../variables/widths";
-
 .calculation-form {
-
+	background-color: $color-background-light;
+	color: $color-text-dark;
 }
 
 .calculation-form-small {
