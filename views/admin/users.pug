@@ -15,14 +15,21 @@ block content
 				th Admin 
 			body
 
-			each user in users
+			each user, index in users
 				tr
 					td= user.local.name
 					td= user.local.email	
 					td
 						form(method="post" action="/admin/users/delete")
 							input(type="hidden" name="id" value=user._id)
-							input(type="submit" value="Remove user").btn.red
+							input.btn.red(type="button" id="remove" data-target=`modals${index}` value="Remove user")
+							div(class="modal" id=`modals${index}`)
+								.modal-content
+									h4 Confirm
+									p= "Are you sure you want to delete '" + user.local.name + "'?"
+								.modal-footer
+									input.remove.waves-effect.waves-green.btn-flat(type="submit" value="Yes")
+									input.modal-action.modal-close.waves-effect.waves-green.btn-flat(type="button" value="No")
 
 		input.btn.left(type="button" id="add" data-target=`modal${index}` value = "add new user")
 		div(class="modal" id=`modal${index}`)
@@ -32,19 +39,14 @@ block content
 					form.col.s12(action='/admin/users', method='post')
 						.form-group.row
 							label.col.s12 Email
-							|  
 							input.form-control(type='text', name='email')
 						.form-group
 							label Password
-							|  
 							input.form-control(type='password', name='password')
 						.form-group
 							label Name
-							|  
 							input.form-control(type='text', name='name')
 						div
-							// input.btn.form-control(type='submit', value='Submit')
-							// input.modal-action.modal-close.waves-effect.waves-green.btn-flat(type="button" value="Cancel")
 							.modal-footer
 								input.btn.form-control(type='submit', value='Submit')
 								input.modal-action.modal-close.waves-effect.waves-green.btn-flat(type="button" value="Cancel")
