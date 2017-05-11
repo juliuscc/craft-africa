@@ -35,6 +35,7 @@ body {
 	}
 }
 
+
 .info-box {
 	width: 100%;
 	padding: 20px;
@@ -43,17 +44,35 @@ body {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	flex-wrap: wrap;
+	@media(min-width: $width-tablet-min){
+		flex-wrap: nowrap;
+	}
 
-	.text,
+	.text{
+		display: inline-block;
+		width: 100%;
+		box-sizing: border-box;
+		width: 100%;
+		@media(min-width: $width-tablet-min){
+			width: 70%;
+		}		
+	}
 	.image {
 		display: inline-block;
 		width: 100%;
 		box-sizing: border-box;
+		margin: 0 auto
+		@media(min-width: $width-tablet-min){
+			width: 70%;
+		}
 	}
 
 	.image {
 		img {
 			width: 100%;
+			margin-left:auto;
+			margin-right:auto;
 		}
 	}
 	

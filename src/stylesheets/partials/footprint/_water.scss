@@ -3,11 +3,11 @@
 	color: lighten($color-accent, 10%);
 	background-color: $color-white;
 	padding-bottom: 50px;
+	flex-direction: column;
 
 	.info-box {
 		padding-bottom: 0;
 	}
-
 	.text {
 		margin: 0 auto;
 		width: 100%;
@@ -20,7 +20,10 @@
 			width: 50%;
 		}
 	}
-
+	.image{
+		width: 70%;
+		margin: 0 auto;
+	}
 	.water-splash {
 		width: 70%;
 		padding: 0 15%;
