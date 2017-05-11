@@ -4,12 +4,16 @@ block title
 	| - Calculation form
 
 block header
-	h1 Calculation form 
+
+block nav
+	nav.nav.small
+		include partials/navbar
+	.nav-filler
 
 block content
-	p This is a calculation form
-	div#calculation-form
-	form(action="/calculationform", method="post", class="calculation-form" enctype="application/json")
+	div.calculation-form
+		h1 Calculation form 
+		p This is a calculation form
 		p Liters of Beer
 		input(type="range", name="totalVolume", id="totalVolume", min= minTotalVolume, max= maxTotalVolume)
 		p Liters of Water
@@ -30,8 +34,9 @@ block content
 		input(type="button", value="Calculate", class="calculate-button")
 		input(type="submit", value = "Submit")
 
+
+block navScript
+	script(src="/js/navbarsmall.js")
+
 block scripts
 	script(src="/js/calculationForm.js")
-
-block footer
-	p Example footer
