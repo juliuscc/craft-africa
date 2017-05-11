@@ -72,8 +72,8 @@ function saveJSON(url, json) {
 	})
 }
 
-function logCalc(tapV, kegV, bottleV, totalV) {
-	const object = { tap: tapV, keg: kegV, bottle: bottleV, total: totalV }
+function logCalc(total, tap, keg, bottle) {
+	const object = { total, tap, keg, bottle }
 	saveJSON('/data/stats', object)
 }
 
