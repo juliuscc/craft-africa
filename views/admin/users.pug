@@ -1,0 +1,54 @@
+extends layout.pug
+
+block title
+	title Craft Africa - Edit users
+
+block vars
+	- var title = "Modify users"
+	
+block content
+	.container
+		table
+			tr
+				th Name
+				th Email
+				th Admin 
+			body
+
+			each user in users
+				tr
+					td= user.local.name
+					td= user.local.email	
+					td
+						form(method="post" action="/admin/users/delete")
+							input(type="hidden" name="id" value=user._id)
+							input(type="submit" value="Remove user").btn.red
+
+		input.btn.left(type="button" id="add" data-target=`modal${index}` value = "add new user")
+		div(class="modal" id=`modal${index}`)
+			.modal-content
+				h4 Add New User
+				center
+					form.col.s12(action='/admin/users', method='post')
+						.form-group.row
+							label.col.s12 Email
+							|  
+							input.form-control(type='text', name='email')
+						.form-group
+							label Password
+							|  
+							input.form-control(type='password', name='password')
+						.form-group
+							label Name
+							|  
+							input.form-control(type='text', name='name')
+						div
+							// input.btn.form-control(type='submit', value='Submit')
+							// input.modal-action.modal-close.waves-effect.waves-green.btn-flat(type="button" value="Cancel")
+							.modal-footer
+								input.btn.form-control(type='submit', value='Submit')
+								input.modal-action.modal-close.waves-effect.waves-green.btn-flat(type="button" value="Cancel")
+
+				
+block scripts
+	script(src="/js/adminUsers.js")

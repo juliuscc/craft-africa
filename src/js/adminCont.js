@@ -1,15 +1,33 @@
-function removeRow(e) {
-	e.preventDefault()
-
-	const row = this.parentNode.parentNode
+function removeRow() {
+	const row = this.parentNode.parentNode.parentNode.parentNode
 	const status = row.querySelector('[name="status"]')
-	if(status.getAttribute('value') === 'new') {
-		row.parentNode.removeChild(row)
+	row.classList.add('removed')
+
+	if(status.value === 'new') {
+		this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode)
 	} else {
-		row.classList.add('removed')
-		row.classList.add('hide')
+		const requiredCLasses = [
+			row.querySelector('[name="name"]'),
+			row.querySelector('[name="type"]'),
+			row.querySelector('[name="series"]'),
+			row.querySelector('[name="price"]')
+		]
+		requiredCLasses.forEach((el) => {
+			el.removeAttribute('required')
+		})
 		status.setAttribute('value', 'removed')
 	}
+}
+
+function removeTemp() {
+	this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode)
+}
+
+function enableRemove() {
+	const temp = this.getAttribute('data-target')
+	const modal = document.querySelector(`#${temp}`)
+	modal.querySelector('.remove')
+		.querySelector('.waves-button-input').removeAttribute('disabled')
 }
 
 function disableSubmit(isDisabled) {
@@ -33,10 +51,18 @@ function isNumber(e) {
 	}
 }
 
-function rowEdited(e) {
-	e.preventDefault()
-
+function rowEdited() {
 	const row = this.parentNode.parentNode
+	const status = row.querySelector('[name="status"]')
+
+	if(!(status.getAttribute('value') === 'new')) {
+		row.classList.add('edited')
+		status.setAttribute('value', 'edited')
+	}
+}
+
+function dropdownEdited(event) {
+	const row = event.data.parentElement.parentElement.parentElement
 	const status = row.querySelector('[name="status"]')
 
 	if(!(status.getAttribute('value') === 'new')) {
@@ -47,52 +73,110 @@ function rowEdited(e) {
 
 function addRow() {
 	// Get form
-	const form = document.querySelector('form')
-
+	const form = document.querySelector('.addRow')
 	// Create div with inputs
 	const div = document.createElement('div')
 	div.classList.add('card-panel')
 	div.innerHTML =
 `
-<div class="row">
-<div class="input-field col s3">
-	<input id="name" type="text" name="name" required="" class="validate">
-	<label for="name">Name</label>
-</div>
-<div class="input-field col s3">
-	<input id="type" type="text" name="type" required="" class="validate">
-	<label for="type">Type</label>
-</div>
-<div class="input-field col s3">
-	<input id="price" type="number" name="price" required="" class="validate">
-	<label for="price">Price</label>
-</div>
-<div class="input-field col s3">
-	<input id="size" type="number" name="size" required="" class="validate">
-	<label for="size">Size</label>
-</div>
-<input type="button" value="remove" class="remove btn">
-<input type="hidden" name="id" value="undefined">
-<input type="hidden" name="status" value="new">
+<div class="row" class="newRow">
+	<div class="input-field col s3">
+		<input id="name" type="text" name="name" required="" class="validate">
+		<label for="name">Name</label>
+	</div>
+	<div class="input-field col s3">
+		<select class="validate" name="type" required>
+			<option value="addon">addon</option>
+			<option value="fermenting">fermenting</option>
+			<option value="production">production</option>
+		</select>
+		<label>Choose container type</label>
+	</div>
+	<div class="input-field col s3">
+		<select class="validate" name="series" required>
+			<option value="a">a</option>
+			<option value="b">b</option>
+			<option value="c">c</option>
+		</select>
+		<label>Choose containers series</label>
+	</div>
+	<div class="input-field col s3">
+		<input id="price" type="number" name="price" required="" class="validate">
+		<label for="price">Price</label>
+	</div>
+	<div class="input-field col s3">
+		<input id="fermentingCapacity" type="number" name="fermentingCapacity" class="validate">
+		<label for="fermentingCapacity">Fermenting Capacity</label>
+	</div>
+	<div class="input-field col s3">
+		<input id="storageCapacity" type="number" name="storageCapacity" class="validate">
+		<label for="storageCapacity">Storage Capacity</label>
+	</div>
+	<div class="input-field col s3">
+		<input id="brewingCapacity" type="number" name="brewingCapacity" class="validate">
+		<label for="brewingCapacity">Brewing Capacity</label>
+	</div>
+	<div class="input-field col s3">
+		<input id="waterProduction" type="number" name="waterProduction" class="validate">
+		<label for="waterProduction">Water Production</label>
+	</div>
+	<div class="input-field col s3">
+		<input id="electricityProduction" type="number" name="electricityProduction" class="validate">
+		<label for="electricityProduction">Electricity Production</label>
+	</div>
+	<input type="button" value="remove" class="remove btn right red">
+	<input type="hidden" name="id" value="undefined">
+	<input type="hidden" name="status" value="new">
 </div>
 `
 
-
 	const removeBtn = div.querySelector('.remove')
-	removeBtn.addEventListener('click', removeRow)
+	removeBtn.addEventListener('click', removeTemp)
 
 	// Insert div
-	form.insertBefore(div, this)
+	form.prepend(div)
+
+	/* eslint-disable no-undef */
+	$('select').material_select()
+	/* eslint-enable no-undef */
 }
 
-const addBtn = document.querySelector('#add')
-addBtn.addEventListener('click', addRow)
+/* eslint-disable no-undef */
+$(document).ready(() => {
+	$('select').material_select()
 
-const removeBtns = document.querySelectorAll('.remove')
-removeBtns.forEach(btn => btn.addEventListener('click', removeRow))
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+	$('.modal').modal()
 
-const editedRow = document.querySelectorAll('.textbox')
-editedRow.forEach(textbox => textbox.addEventListener('change', rowEdited))
+	const addBtn = document.querySelector('#add')
+	addBtn.addEventListener('click', addRow)
 
-const checkIfNumber = document.querySelectorAll('.number')
-checkIfNumber.forEach(textbox => textbox.addEventListener('change', isNumber))
+	const removeBtns = document.querySelectorAll('.remove')
+	removeBtns.forEach(btn => btn.addEventListener('click', removeRow))
+
+	const enableBtn = document.querySelectorAll('.enable')
+	enableBtn.forEach(btn => btn.addEventListener('click', enableRemove))
+
+	const editedRow = document.querySelectorAll('.validate')
+	const editedDropdown = document.querySelectorAll('select.validate')
+	editedRow.forEach(textbox => textbox.addEventListener('change', rowEdited))
+	Materialize.updateTextFields()
+	editedDropdown.forEach(textbox => $(textbox).on('change', null, textbox, (event) => {
+		dropdownEdited(event)
+	}).material_select())
+
+	const checkIfNumber = document.querySelectorAll('.number')
+	checkIfNumber.forEach(textbox => textbox.addEventListener('change', isNumber))
+
+	// Submit all forms
+	// const submitButtons = document.querySelectorAll('input[type="submit"]')
+	// submitButtons.forEach((element) => {
+	// 	element.addEventListener('click', (e) => {
+	// 		e.preventDefault()
+	// 		document.querySelectorAll('form').forEach((form) => {
+	// 			form.submit()
+	// 		})
+	// 	})
+	// })
+})
+/* eslint-enable no-undef */

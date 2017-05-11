@@ -1,0 +1,133 @@
+extends layout.pug
+
+block vars
+	- var title = "General form settings"
+
+block title
+	title Craft Africa - Default Values
+
+block content
+	form(method="post" action="/admin/defaultvalues").container
+		.everything
+			.card
+				.card-title
+					h4
+						|Ingredient cost 
+						span(data-position="bottom" data-delay="0" data-tooltip="Ingredient Cost Description: bla bla bla").material-icons.tooltipped info_outline 
+					
+				.card-content
+					.defaultCostIngredients
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="hops" value=ingredientCost.hops)
+							label(for='name') Hops ($)
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="barley" value=ingredientCost.barley)
+							label(for='name') Barley ($)
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="co2" value=ingredientCost.co2)
+							label(for='name') CO2 ($)
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="water" value=ingredientCost.water)
+							label(for='name') Water ($)
+
+			.card
+				.card-title
+					h4
+						|Default Distribution (%) (Must be 100 in total for it to save) 
+						span(data-position="bottom" data-delay="0" data-tooltip="Ingredient Cost Description: bla bla bla").material-icons.tooltipped info_outline 
+
+				.card-content
+					.defaultDistributionValues
+						.input-field.col.s3
+							input.validate.hundred(type="number" step="any" required name="tapDist" value=defaultDistribution.tapDist)
+							label(for='name') Tap (%)
+						.input-field.col.s3
+							input.validate.hundred(type="number" step="any" required name="bottleDist" value=defaultDistribution.bottleDist)
+							label(for='name') Bottle (%)
+						.input-field.col.s3
+							input.validate.hundred(type="number" step="any" required name="kegDist" value=defaultDistribution.kegDist)
+							label(for='name') Keg (%)
+
+			.card
+				.card-title
+					h4
+						|Default Threshhold for Activating Bottle/Keg Containers 
+						span(data-position="bottom" data-delay="0" data-tooltip="Ingredient Cost Description: bla bla bla").material-icons.tooltipped info_outline
+				
+				.card-content
+					.defaultThreshhold
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="bottleThresh" value=defaultThreshold.bottleThresh)
+							label(for='name') Bottle
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="kegThresh" value=defaultThreshold.kegThresh)
+							label(for='name') Keg
+
+			.card
+				.card-title
+					h4
+						|Production Cost (per unit) 
+						span(data-position="bottom" data-delay="0" data-tooltip="Ingredient Cost Description: bla bla bla").material-icons.tooltipped info_outline
+
+				.card-content
+					.defaultCostValues
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="tapCost" value=productionCost.tapCost)
+							label(for='name') Tap ($)
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="bottleCost" value=productionCost.bottleCost)
+							label(for='name') Bottle ($)
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="kegCost" value=productionCost.kegCost)
+							label(for='name') Keg ($)
+
+			.card
+				.card-title
+					h4
+						|Fermenting Time 
+						span(data-position="bottom" data-delay="0" data-tooltip="Ingredient Cost Description: bla bla bla").material-icons.tooltipped info_outline
+
+				.card-content
+					.defaultSellingValues
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="fermentingTime" value=fermentingTime)
+							label(for='name') Fermenting Time
+
+			.card
+				.card-title
+					h4
+						|Selling Price (per unit) 
+						span(data-position="bottom" data-delay="0" data-tooltip="Ingredient Cost Description: bla bla bla").material-icons.tooltipped info_outline
+
+				.card-content
+					.defaultSellingValues
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="tapSell" value=sellingPrice.tapSell)
+							label(for='name') Tap ($)
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="bottleSell" value=sellingPrice.bottleSell)
+							label(for='name') Bottle ($)
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="kegSell" value=sellingPrice.kegSell)
+							label(for='name') Keg ($)
+
+
+			.card
+				.card-title
+					h4
+						|Start Value for Production 
+						span(data-position="bottom" data-delay="0" data-tooltip="Ingredient Cost Description: bla bla bla").material-icons.tooltipped info_outline
+
+				.card-content
+					.defaultStartValueForProduction
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="startValueForProduction" value=startValueForProduction)
+							label(for='name') $
+							
+			input.validate(type="hidden" name="status" value="unchanged")
+			br
+			input.btn-large.left.tooltipped(type="submit" disabled=false name="submit" value="Submit" data-position="top" data-delay="50" data-tooltip="I am tooltip")
+			br
+	
+block scripts
+	script(src="/js/adminDefaultValues.js")

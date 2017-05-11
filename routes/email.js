@@ -9,7 +9,8 @@ router.post('/send', (req, res) => {
 	// Check for errors
 	if(!req.body.message_template) {
 		res.render('email', {
-			message: 'Something is wrong with the form'
+			message: 'Something is wrong with the form',
+			username: req.user.local.name
 		})
 		return
 	}
@@ -29,7 +30,8 @@ router.post('/send', (req, res) => {
 	mailTemplate.getTemplateByName(req.body.message_template, (databaseErr, template) => {
 		if(databaseErr || !template) {
 			res.render('email', {
-				message: 'This link is currently not active. Please try another'
+				message: 'This link is currently not active. Please try another',
+				username: req.user.local.name
 			})
 		} else {
 			// recipients
@@ -56,12 +58,14 @@ router.post('/send', (req, res) => {
 				send(userEmailData, (errUser) => {
 					if(errAdmin || errUser) {
 						res.render('email', {
-							message: 'Something went wrong while trying to send email.'
+							message: 'Something went wrong while trying to send email.',
+							username: req.user.local.name
 						})
 					}
 
 					res.render('email', {
-						message: `Your email adress ${req.body.emailadress} was sent to a salesperson. We will be in touch shortly.`
+						message: `Your email adress ${req.body.emailadress} was sent to a salesperson. We will be in touch shortly.`,
+						username: req.user.local.name
 					})
 				})
 			})

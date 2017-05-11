@@ -1,67 +1,56 @@
-const containerCalculator = require('./calculation-form/mainCalculator')
+const stats = require('./calculation-form/stats')
+const economics = require('./calculation-form/economics')
 const formInteraction = require('./calculation-form/formInteraction')
-const containerCalculator2 = require('./calculation-form/containerCalculator')
+// const containerCalculator2 = require('./calculation-form/containerCalculator')
 const ajax = require('./ajax')
 
-// const Vue = require('vue')
-// This produces errors...
-// const vob = new Vue({
-// 	el: '#calculation-form',
-// 	data: {
-// 		litersOfBeer: 'lit...12345'
-// 	}
-// })
-// console.log(vob)
-const data = {
-	modules: ['B1', 'B2'],
-	litersOfBeer: 3000,
-	numberOfKegs: 30, // 900L ändra till %
-	// modules: ['A1', 'B1'],
-	containerLiterAmount: {
-		tap: 3023,
-		bottle: 0,
-		keg: 0
-	},
-	waterDistribution: {
-		numberOfTap: 0.4,
-		numberOfBottles: 0.2,
-		litersOfWater: 0.2 // container capacity 5000L
-	}
+const calcObj = { stats: {}, economics: {} }
+
+function updateForm() {
+	formInteraction.extractFormData(calcObj.stats)
+
+	stats.getCalculationStats(calcObj.stats)
+	economics.getEconomics(calcObj.stats, calcObj.economics)
+
+	formInteraction.updateDistributionSliders(calcObj.stats)
+	formInteraction.saveFormInputs(calcObj.stats, calcObj.economics)
 }
 
-let jsonCache = {}
-let calcObj = {}
-
-ajax.loadJSON('/data/calculationstats')
+ajax.loadJSON('/data/stats')
 .then((json) => {
-	jsonCache = json
-	const formdata = formInteraction.extractFormData()
-	calcObj = containerCalculator.getCompleteCalculation(formdata, jsonCache)
+	calcObj.stats = json
+	stats.getCalculationStats(calcObj.stats, calcObj.economics)
+	economics.getEconomics(calcObj.stats, calcObj.economics)
 
-	formInteraction.updateDistributionSliders(calcObj.calculationStats)
+	formInteraction.updateDistributionSliders(calcObj.stats)
+	formInteraction.saveFormInputs(calcObj.stats, calcObj.economics)
 
-	calcObj.calculationStats.distributionLock = ['tap', 'bottle']
+	formInteraction.initForm(calcObj.stats, calcObj.economics)
 })
-.catch((msg) => {
-	console.log(msg)
-})
+// .catch((msg) => {
+// 	console.log(`Error msg in calculationForm.js: ${msg}`)
+// })
 
 
 // test
 document.querySelector('.calculation-form .calculate-button')
 		.addEventListener('click', () => {
-			const formdata = formInteraction.extractFormData()
-			calcObj = containerCalculator.getCompleteCalculation(formdata, jsonCache)
+			updateForm()
+			console.log('calc: ', calcObj)
 		})
 
 // more test
 document.querySelectorAll('.calculation-form .container-distribution')
 .forEach((e) => {
 	e.addEventListener('input', () => {
-		formInteraction.updateDistributionSliders(calcObj.calculationStats, e)
+		formInteraction.updateDistributionSliders(calcObj.stats, e)
+		updateForm()
 	})
 })
 
-
-// containerCalculator2.getBeerProductionModules(data)
-containerCalculator2.getPercentage(data)
+document.querySelectorAll('#totalVolume')
+.forEach((e) => {
+	e.addEventListener('input', () => {
+		updateForm()
+	})
+})

@@ -7,8 +7,16 @@ const configDB = require('./config/database.js')
 const passport = require('passport')
 const session = require('express-session')
 const flash = require('connect-flash')
+const Logger = require('./models/loggerAPI')
 
 mongoose.connect(configDB.url)
+
+function views(req, res, next) {
+	if(req.method === 'GET') {
+		Logger.updateViews(req.originalUrl)
+	}
+	next()
+}
 
 // Init App
 const app = express()
@@ -33,6 +41,9 @@ app.use(flash())
 
 // User logins
 require('./config/passport')(passport)
+
+// Stats
+app.use(views)
 
 // Routes
 const index = require('./routes/index')
@@ -77,4 +88,3 @@ app.listen(app.get('port'), () => {
 	console.log(`Server started on port ${app.get('port')}`)
 })
 /* eslint-enable no-console */
-

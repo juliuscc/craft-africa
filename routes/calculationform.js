@@ -4,9 +4,9 @@ const router = express.Router()
 
 router.get('/', (req, res) => {
 	const variables = {}
-	variables.minLitersOfBeer = 20
-	variables.maxLitersOfBeer = 10000
-	variables.litersOfBeer = 50
+	variables.minTotalVolume = 20
+	variables.maxTotalVolume = 45000
+	variables.totalVolume = 50
 	res.render('calculationform', variables)
 })
 
@@ -15,12 +15,12 @@ router.post('/', (req, res) => {
 	console.log(req.body)
 
 	const variables = req.body
-	variables.minLitersOfBeer = 20
-	variables.maxLitersOfBeer = 10000
+	variables.minTotalVolume = 20
+	variables.maxTotalVolume = 10000
 
 
-	if(!variables.litersOfBeer) {
-		variables.litersOfBeer = 50
+	if(!variables.totalVolume) {
+		variables.totalVolume = 50
 	}
 
 	console.log('Variables: ')

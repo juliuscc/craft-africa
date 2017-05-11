@@ -52,6 +52,21 @@ gulp.task('style', () => {
 		.pipe(gulp.dest(dest))
 })
 
+gulp.task('admin-style', () => {
+	const src = `${paths.src}/admin-stylesheet/admin-stylesheet.scss`
+	const dest = `${paths.dest}/stylesheets`
+
+	return gulp.src(src)
+		.pipe(plumber(errorHandler))
+		.pipe(cache.filter())
+		.pipe(scss())
+		.pipe(autoprefixer())
+		.pipe(production(cleanCSS()))
+		.pipe(cache.cache())
+		.pipe(plumber.stop())
+		.pipe(gulp.dest(dest))
+})
+
 /* ~ ~ ~ JS / JSX ~ ~ ~ */
 const webpack = require('webpack-stream')
 const webpackConf = require('./config/webpack.config.js')
@@ -71,10 +86,11 @@ gulp.task('js', () => {
 
 /* ~ ~ ~ Stream and task handling ~ ~ ~ */
 gulp.task('watch', () => {
-	gulp.start('style', 'js')
+	gulp.start('style', 'admin-style', 'js')
 
 	// Style
 	gulp.watch(`${paths.src}/stylesheets/**`, ['style'])
+	gulp.watch(`${paths.src}/admin-stylesheet/**`, ['admin-style'])
 
 	// JS / JSX
 	gulp.watch(`${paths.src}/js/**`, ['js'])
@@ -98,4 +114,4 @@ gulp.task('nodemon', () => {
 })
 
 gulp.task('default', ['nodemon', 'watch'])
-gulp.task('build', ['style', 'js'])
+gulp.task('build', ['style', 'admin-style', 'js'])

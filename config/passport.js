@@ -28,6 +28,8 @@ module.exports = (passport) => {
 					let newUser = new User()
 					newUser.local.email = email
 					newUser.local.password = newUser.generateHash(password)
+					newUser.local.name = req.body.name
+					console.log(req.body.name)
 					newUser.save((err) => {
 						if(err) {
 							throw err
@@ -64,12 +66,12 @@ module.exports = (passport) => {
 			}
 			console.log(err)
 
-			// if (err)
-			//     return done(err);
-			// if (!user)
-			//     return done(null, false, req.flash('loginMessage', 'No user found.'));
-			// if (!user.validPassword(password))
-			//     return done(null, false, req.flash('loginMessage', 'Wrong password.'));
+			if (err)
+			    return done(err);
+			if (!user)
+			    return done(null, false, req.flash('loginMessage', 'No user found.'));
+			if (!user.validPassword(password))
+			    return done(null, false, req.flash('loginMessage', 'Wrong password.'));
 			return done(null, user)
 		})
 	}))
