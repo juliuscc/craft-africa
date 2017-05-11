@@ -5,32 +5,24 @@ const beerTypes = require('./beerTypes')
 __________________________________________________________________________________*/
 
 // Get the number of liters of each container type.
-function getDistributionVolume(stats) {
+function calcDistributionVolume(stats) {
 	// Both values are selected by the form
 	const { volume, distribution } = stats
-	const volumeData = {}
 
-	Object.assign(volumeData, volume)
-
-	if(volumeData.total && distribution) {
-		volumeData.tap = volume.total * distribution.tap
-		volumeData.keg = volume.total * distribution.keg
-		volumeData.bottle = volume.total * distribution.bottle
+	if(volume.total && distribution) {
+		volume.tap = volume.total * distribution.tap
+		volume.keg = volume.total * distribution.keg
+		volume.bottle = volume.total * distribution.bottle
 	}
 
-	return volumeData
+	return stats
 }
 
 /* Public interface
 __________________________________________________________________________________*/
 
 // Get the stats used in the calculation
-function getCalculationStats(inputData, defaultData) {
-	const stats = defaultData
-
-	// extending the object
-	Object.assign(stats, inputData)
-
+function getCalculationStats(stats) {
 	// Add the current beer type
 	if(!stats.beerType.current) {
 		stats.beerType.current = beerTypes.getDefaultBeerType(stats)
@@ -38,7 +30,7 @@ function getCalculationStats(inputData, defaultData) {
 	stats.beerType.current.cost = beerTypes.getProductionCost(stats)
 
 	// Calculating the amount of each type (in liters)
-	stats.volume = getDistributionVolume(stats)
+	calcDistributionVolume(stats)
 	stats.volume.relative = beerTypes.getRelativeProductionVolume(stats)
 
 	// Aquirering modules

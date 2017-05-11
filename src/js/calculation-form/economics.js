@@ -4,77 +4,75 @@ const container = require('./container')
 __________________________________________________________________________________*/
 
 // Get the costs for producing the current amounts.
-function getVariableCosts(stats) {
+function calcVariableCosts(stats, economics) {
 	// volume and ingredientscosts needs to be calculated. The rest is from form or db
 	const {
 		productionCost,
 		volume,
 		beerType
 	} = stats
-	const costs = {}
+
+	if(!economics.variableCosts) {
+		economics.variableCosts = {}
+	}
+
+	const { variableCosts } = economics
 
 	if(volume && beerType.current.cost && volume.total && productionCost) {
 		if(beerType.current.cost && volume.total) {
-			costs.ingredients = beerType.current.cost.total * volume.total
+			variableCosts.ingredients = beerType.current.cost.total * volume.total
 		} else {
-			costs.ingredients = 0
+			variableCosts.ingredients = 0
 		}
 
 		if(productionCost && volume) {
-			costs.kegPrice = productionCost.keg * volume.keg
-			costs.tapPrice = productionCost.tap * volume.tap
-			costs.bottlePrice = productionCost.bottle * volume.bottle
+			variableCosts.kegPrice = productionCost.keg * volume.keg
+			variableCosts.tapPrice = productionCost.tap * volume.tap
+			variableCosts.bottlePrice = productionCost.bottle * volume.bottle
 		} else {
-			costs.kegPrice = 0
-			costs.tapPrice = 0
-			costs.bottlePrice = 0
+			variableCosts.kegPrice = 0
+			variableCosts.tapPrice = 0
+			variableCosts.bottlePrice = 0
 		}
 
-		costs.total = costs.kegPrice + costs.tapPrice + costs.bottlePrice + costs.ingredients
-
-		return costs
+		variableCosts.total = variableCosts.kegPrice +
+								variableCosts.tapPrice +
+								variableCosts.bottlePrice +
+								variableCosts.ingredients
 	}
-	return {
-		ingredients: 0,
-		kegPrice: 0,
-		tapPrice: 0,
-		bottlePrice: 0,
-		total: 0
-	}
+	return economics
 }
 
 // Get the fixed costs for producing the current setup.
-function getFixedCosts(stats) {
+function calcFixedCosts(stats, economics) {
 	// Containers needs to be gathered before
+	if(!economics.fixedCosts) {
+		economics.fixedCosts = {}
+	}
+	const { fixedCosts } = economics
 	if(stats.containers.current) {
-		const costs = {
-			rent: container.getCost(stats)
-		}
-
-		costs.total = costs.rent
-
-		return costs
+		fixedCosts.rent = container.getCost(stats)
+		fixedCosts.total = fixedCosts.rent
 	}
-	return {
-		rent: NaN,
-		total: NaN
-	}
+	return economics
 }
 
 // Calculate the total income from distribution and prices
-function getIncome(stats) {
+function calcIncome(stats, economics) {
+	if(!economics.incomes) {
+		economics.incomes = {}
+	}
+
 	// volume needs to be calculated before
 	const { sellingPrice, volume } = stats
+	const { incomes } = economics
 	if(sellingPrice && volume) {
-		const income = {
-			kegPrice: sellingPrice.keg * volume.keg,
-			tapPrice: sellingPrice.tap * volume.tap,
-			bottlePrice: sellingPrice.bottle * volume.bottle
-		}
-		income.total = income.kegPrice + income.tapPrice + income.bottlePrice
-		return income
+		incomes.kegPrice = sellingPrice.keg * volume.keg
+		incomes.tapPrice = sellingPrice.tap * volume.tap
+		incomes.bottlePrice = sellingPrice.bottle * volume.bottle
+		incomes.total = incomes.kegPrice + incomes.tapPrice + incomes.bottlePrice
 	}
-	return {}
+	return economics
 }
 
 
@@ -83,13 +81,16 @@ ________________________________________________________________________________
 
 
 // Get the revenue distribution
-function getEconomics(stats) {
-	const economics = {
-		incomes: getIncome(stats).total,
-		fixedCosts: getFixedCosts(stats).total,
-		variableCosts: getVariableCosts(stats).total
-	}
-	economics.profit = economics.incomes - economics.fixedCosts - economics.variableCosts
+function getEconomics(stats, economics) {
+	calcIncome(stats, economics)
+	calcFixedCosts(stats, economics)
+	calcVariableCosts(stats, economics)
+
+	economics.profit = economics.incomes.total -
+						economics.fixedCosts.total -
+						economics.variableCosts.total
+
+	console.log(economics)
 
 	return economics
 }

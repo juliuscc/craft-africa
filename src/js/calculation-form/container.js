@@ -117,14 +117,3 @@ module.exports = {
 	getEnergyProduction,
 	getCost
 }
-
-module.exports.test = function () {
-	return getConfiguration({ volume: { relative: 18000, total: 10000 },
-		containers: { production: [{ name: 'A1', brewingCapacity: 9000, fermenting: 5000 },
-		{ name: 'B1', brewingCapacity: 18000, fermenting: 5000 }],
-			fermenting: [{ name: 'B2', fermenting: 10000 }, { name: 'B3', fermenting: 15000 },
-	{ name: 'A2', fermenting: 5000 }, { name: 'A3', fermenting: 5000 }],
-			addons: [{ name: 'C1', type: 'addon', choosen: true }, { name: 'C2', type: 'addon', choosen: false }]
-		} })
-}
-

@@ -107,14 +107,18 @@ function saveFormInputs(stats, economics) {
 	if(economics) {
 		if(economics.profit) {
 			document.querySelector('.profit').innerHTML = economics.profit
+		} else {
+			console.log('no profit')
 		}
 
 		if(economics.fixedCosts && economics.variableCosts) {
 			document.querySelector('.output').innerHTML =
-			`Fixed: ${economics.fixedCosts}
-			 Variable: ${economics.variableCosts}
+			`Fixed: ${economics.fixedCosts.total}
+			 Variable: ${economics.variableCosts.total}
 			`
 		}
+	} else {
+		console.log('no economics')
 	}
 }
 
@@ -124,9 +128,7 @@ function initForm(stats, economics) {
 	saveFormInputs(stats, economics)
 }
 
-function updateDistributionSliders(calculationStats, event) {
-	const stats = calculationStats
-
+function updateDistributionSliders(stats, event) {
 	loadFormInputs(stats)
 
 	// Change tracking status
@@ -143,8 +145,6 @@ function updateDistributionSliders(calculationStats, event) {
 	// Calculate
 	stats.distribution =
 			getNewDistribution(stats)
-
-	saveFormInputs(stats)
 }
 
 

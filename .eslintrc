@@ -7,6 +7,7 @@
 	"rules": {
 		"semi": [2, "never"],
 		"no-tabs": "off",
+		"no-param-reassign": "off",
 		"indent": ["error", "tab"],
 		"comma-dangle": ["error", "never"],
 		"keyword-spacing": ["error", { "overrides": {
