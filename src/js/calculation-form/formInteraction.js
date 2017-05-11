@@ -49,45 +49,43 @@ function getNewDistribution(calculationStats) {
 
 function extractFormData(stats) {
 	// Extract form data and insert it into a object
-	const formdata = new FormData(document.querySelector('form.calculation-form'))
-	const entries = formdata.entries()
-	const dataObject = { distribution: {}, volume: {} }
+	const entries = [...document.querySelectorAll('.calculation-form input')]
+	.filter(node => (node.type !== 'submit') && (node.type !== 'button'))
+	.map(node => [node.name, node.value])
+	stats.distribution = {}
+	stats.volume = {}
 
 	/* eslint-disable no-restricted-syntax */
 	for(const entry of entries) {
 		switch (entry[0]) {
 		case 'keg':
-			dataObject.distribution[entry[0]] = parseFloat(entry[1])
+			stats.distribution[entry[0]] = parseFloat(entry[1])
 			break
 		case 'bottle':
-			dataObject.distribution[entry[0]] = parseFloat(entry[1])
+			stats.distribution[entry[0]] = parseFloat(entry[1])
 			break
 		case 'tap':
-			dataObject.distribution[entry[0]] = parseFloat(entry[1])
+			stats.distribution[entry[0]] = parseFloat(entry[1])
 			break
 		case 'totalVolume':
-			dataObject.volume.total = parseInt(entry[1], 10)
+			stats.volume.total = parseInt(entry[1], 10)
 			break
 
 		default:
 			if(entry[1] % 1 === 0) {
-				dataObject[entry[0]] = parseInt(entry[1], 10)
+				stats[entry[0]] = parseInt(entry[1], 10)
 			} else {
-				dataObject[entry[0]] = parseFloat(entry[1])
+				stats[entry[0]] = parseFloat(entry[1])
 			}
 			break
 		}
 	}
 	/* eslint-enable no-restricted-syntax */
 
-	Object.assign(stats, dataObject)
-
-	return dataObject
+	return stats
 }
 
-function loadFormInputs(calculationStats) {
-	const stats = calculationStats
-
+function loadFormInputs(stats) {
 	// Loading values from form
 	document.querySelectorAll('.calculation-form .container-distribution')
 	.forEach((el) => {
