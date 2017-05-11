@@ -1,7 +1,7 @@
 extends layout.pug
 
 block title 
-	| - Contact 
+	|Contact -  
 
 block description
 	meta(name="description" content= "When you have read about us and are exited to start your own brand. Contact us at Craft Africa, and we will find a personal solution for you to develop you personal brand and take out you entrepreneurial spirit. ")
@@ -20,10 +20,13 @@ block content
 					table
 						tr
 							td Email:
-							td someone@ca.com
+							td
+								a(href="mailto:someone@ca.com") someone@ca.com
 						tr
 							td Phone:
-							td +4612345789
+							td 
+								a(href="tel:+4612345678") +4612345678
+					
 			form(method="post" action="/email/send")
 				input(type="text" name="message_template" value="standard-template" hidden)
 				.input-row
