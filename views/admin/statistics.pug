@@ -1,11 +1,49 @@
 extends layout.pug
 
+block vars 
+	- var title = "Statistics"
+
+block title 
+	title Statistics
+
 block content
-	H1 Statistics
-	div(width="600",style ="float:left")
-		canvas(id="myChart",width="800",height="400")
-		canvas(id="myChart2",width="800",height="200")
-		canvas(id="myChart3",width="800",height="200")
+	style
+		|canvas {
+		|	width: 800px;
+		|	height: 400px;
+		|}
+
+	.container
+		h3 Calculation form
+		hr
+		.card
+			.card-title
+				h4 Liters of beer
+			.card-content
+				canvas(id="litersChart")
+		.card
+			.card-title
+				h4 tap
+			.card-content
+				canvas(id="tapChart")
+		.card
+			.card-title
+				h4 Bottle
+			.card-content
+				canvas(id="bottleChart")
+		.card
+			.card-title
+				h4 Keg
+			.card-content
+				canvas(id="kegChart")
+		
+		h3 Views
+		hr
+		.card
+			.card-title
+				b Views
+			.card-content
+				canvas(id="viewsChart")
 
 block scripts
 	script(src="/js/admin/statistics.js")

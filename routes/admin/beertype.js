@@ -55,8 +55,6 @@ router.post('/new', (req, res) => {
 			// Redirect if no data is submitted
 			res.redirect('/admin/beertype')
 		} else {
-
-			console.log(req.body)
 			if(req.body.name.constructor !== Array) {
 				req.body.id = [req.body.id]
 				req.body.name = [req.body.name]
@@ -76,8 +74,6 @@ router.post('/new', (req, res) => {
 				co2: co2[index],
 				status: status[index]
 			}))
-
-			console.log(beers)
 
 			beers.forEach((element) => {
 				const ingredient = JSON.stringify({

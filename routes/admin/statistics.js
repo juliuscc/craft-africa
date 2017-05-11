@@ -9,9 +9,9 @@ router.get('/', (req, res) => {
 
 router.get('/data', (req, res) => {
 	Logger.getViews((err, viewsData) => {
-		console.log('Viewsdata:')
-		console.log(viewsData)
-		res.json({ views: viewsData })
+		Logger.getCalcInput((inputData) => {
+			res.json({ views: viewsData, calcInput: inputData })
+		})
 	})
 })
 
