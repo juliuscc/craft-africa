@@ -16,14 +16,10 @@ block header
 				p Create your own beer brand with our modular turnkey breweries
 			a.down-btn.fa.fa-angle-double-down(href="#first")
 
-block navlink-home
-	a(href="/").active Home
-
-
 block content
 	.info-box.homepage.craft-own-beer
 		.headline
-			h1 Are You Dreaming About Crafting Your Own Beer Brand?
+			h1 Are You Dreaming Of Crafting Your Own Beer Brand?
 		.icon-container
 			.icon
 				img(src="/images/Circle-PNG-File.png", alt="Scalable solutions")
@@ -36,21 +32,31 @@ block content
 	//- 		span.quote Get famous or die trying
 	//- 		span.source former poor man now rich
 
-	.explosion-view-container
-		.explosion-view
-			.img-container
-				object.base(data="/images/factory/background.svg")
-				//- object.water-filtration(data="/images/factory/water-filtration.svg")
-				object.brewery(data="/images/factory/brewery.svg")
-				object.battery(data="/images/factory/battery.svg")
-				object.bar(data="/images/factory/bar.svg")
-				object.roof(data="/images/factory/roof.svg")
-				object.front-wall(data="/images/factory/right-wall.svg")
-				object.left-wall(data="/images/factory/left-wall.svg")
-				object.solar-panels(data="/images/factory/solar-panel.svg")
+	.big-pic
+		.homepage-pic
 
-	.calculation-form-small
-		.placeholder-text You wanna make your own brand?
+	//- .explosion-view-container
+	//- 	.explosion-view
+	//- 		.img-container
+	//- 			object.base(data="/images/factory/background.svg")
+	//- 			//- object.water-filtration(data="/images/factory/water-filtration.svg")
+	//- 			object.brewery(data="/images/factory/brewery.svg")
+	//- 			object.battery(data="/images/factory/battery.svg")
+	//- 			object.bar(data="/images/factory/bar.svg")
+	//- 			object.roof(data="/images/factory/roof.svg")
+	//- 			object.front-wall(data="/images/factory/right-wall.svg")
+	//- 			object.left-wall(data="/images/factory/left-wall.svg")
+	//- 			object.solar-panels(data="/images/factory/solar-panel.svg")
+
+	//- .calculation-form-small
+	//-	.placeholder-text You wanna make your own brand?
+	
+	.info-box.homepage.craft-own-beer
+		.headline
+			h1#input-window What customization fits your business? 
+	
+	.big-pic
+		.homepage-pic#second
 
 block scripts
 	script(src="/js/explosionView.js")
