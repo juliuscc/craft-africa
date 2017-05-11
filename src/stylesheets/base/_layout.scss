@@ -62,7 +62,7 @@ body {
 		display: inline-block;
 		width: 100%;
 		box-sizing: border-box;
-		margin: 0 auto
+		margin: 0 auto;
 		@media(min-width: $width-tablet-min){
 			width: 70%;
 		}
@@ -71,8 +71,6 @@ body {
 	.image {
 		img {
 			width: 100%;
-			margin-left:auto;
-			margin-right:auto;
 		}
 	}
 	
