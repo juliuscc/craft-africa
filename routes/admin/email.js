@@ -15,27 +15,6 @@ router.get('/', (req, res) => {
 	})
 })
 
-// Get email template by id.
-router.get('/:emailId', (req, res) => {
-	// Require login
-	auth.runIfAdmin(req, res, () => {
-		mailTemplate.getTemplateByName(req.params.emailId, (err, template) => {
-			let data = template
-			if(req.params.emailId === 'new') {
-				req.params.emailId = ''
-			}
-			// Add error messages if the exists.
-			if(err) {
-				data = { result: 'Something went wrong', name: req.params.emailId, recipient: '', admin_subject: '', user_subject: '', admin_message: '', user_message: '' }
-			} else if(!template) {
-				data = { result: 'New Template', name: req.params.emailId, recipient: '', admin_subject: '', user_subject: '', admin_message: '', user_message: '' }
-			}
-
-			res.render('admin/templates', data)
-		})
-	})
-})
-
 // Update specified email template by name.
 router.post('/', (req, res) => {
 	// Require login
@@ -49,14 +28,30 @@ router.post('/', (req, res) => {
 			admin_message: data.admin_message,
 			user_message: data.user_message
 		}
-		mailTemplate.updateTemplateById(data.id, tempData, (err) => {
-			if(err) {
-				data.result = `Could not update template: ${err}`
-			} else {
-				data.result = 'Successfully updated'
-			}
-			res.render('admin/templates', data)
-		})
+
+		// This is a old template
+		if(data.id) {
+			mailTemplate.updateTemplateById(data.id, tempData, (err) => {
+				if(err) {
+					res.render('admin/errormessage', { message: `Could not update template: ${err}`, username: req.user.local.name })
+					throw err
+				} else {
+					res.redirect('/admin/email')
+				}
+			})
+		// This is a new template
+		} else {
+			console.log(tempData)
+			// ValidationError: Path `user_message` is required., Path `admin_message` is required.
+			mailTemplate.createTemplate(tempData, (err) => {
+				if(err) {
+					res.render('admin/errormessage', { message: `Could not create new template: ${err}`, username: req.user.local.name })
+					throw err
+				} else {
+					res.redirect('/admin/email')
+				}
+			})
+		}
 	})
 })
 

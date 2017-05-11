@@ -18,6 +18,23 @@ function calcDistributionVolume(stats) {
 	return stats
 }
 
+// Get the "relative" production volume.
+// This can be used to estimate fermenting needs
+function calcRelativeProductionVolume(stats) {
+	// How many percent of the timeunit used in the containers
+	// does the current beer make up.
+	// If beer fermenting time is greater, we will scale up the
+	// relative volume.
+	let scaleFactor = stats.beerType.current.fermentingTime / stats.containers.fermentingTime
+
+	// Adding the facility production yield
+	scaleFactor /= stats.containers.productionYield
+
+	stats.volume.relative = stats.volume.total * scaleFactor
+
+	return stats
+}
+
 /* Public interface
 __________________________________________________________________________________*/
 
@@ -31,7 +48,7 @@ function getCalculationStats(stats) {
 
 	// Calculating the amount of each type (in liters)
 	calcDistributionVolume(stats)
-	stats.volume.relative = beerTypes.getRelativeProductionVolume(stats)
+	calcRelativeProductionVolume(stats)
 
 	// Aquirering modules
 	stats.containers.current = container.getConfiguration(stats)

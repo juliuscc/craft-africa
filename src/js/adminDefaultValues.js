@@ -1,25 +1,5 @@
-/* function disableSubmit(isDisabled) {
-	const submitButton = document.querySelector('[name="submit"]')
-	if(isDisabled) {
-		submitButton.setAttribute('disabled', isDisabled)
-	} else {
-		submitButton.removeAttribute('disabled')
-	}
-}*/
-
-/* function isNumber(e) {
-	e.preventDefault()
-
-	if(isNaN(e.target.value)) {
-		this.classList.add('incorrectInput')
-		// disableSubmit(true)
-	} else {
-		this.classList.remove('incorrectInput')
-		// disableSubmit(false)
-	}
-}*/
-
 const moduleValidator = require('../../models/moduleValidator')
+
 /* eslint-disable no-undef */
 $(document).ready(() => {
 	$('.tooltipped').tooltip({ delay: 50 })
