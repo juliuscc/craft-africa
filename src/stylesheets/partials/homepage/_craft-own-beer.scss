@@ -23,12 +23,18 @@
 			width: 100%;
 			display: flex;
 			justify-content: center;
-			flex-direction: row;
+			flex-direction: column;
 			padding-top: 70px;
-
+			margin: 0 auto;
+			@media (min-width: $width-tablet-min) {
+				flex-direction: row;
+			}
 			.icon{
 
-				padding: 0px 80px;
+				padding: 20px 0px;
+				@media (min-width: $width-tablet-min) {
+					padding: 0px 70px;
+				}
 				img{
 					filter: grayscale(100);
 
