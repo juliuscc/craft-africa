@@ -47,3 +47,5 @@ bower_components/
 *.DS_Store
 
 *fuse*
+
+public/stylesheets/normalize\.css
