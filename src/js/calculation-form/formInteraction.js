@@ -49,7 +49,7 @@ function getNewDistribution(calculationStats) {
 
 function extractFormData(stats) {
 	// Extract form data and insert it into a object
-	const formdata = new FormData(document.querySelector('form.calculation-form'))
+	const formdata = new FormData(document.querySelector('.calculation-form'))
 	const entries = formdata.entries()
 	const dataObject = { distribution: {}, volume: {} }
 
