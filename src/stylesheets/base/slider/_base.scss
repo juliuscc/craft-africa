@@ -31,8 +31,8 @@ input[type=range]::-ms-track {
 
 $color-track-inactive: #ddd;
 $color-track-active: darken($color-track-inactive, 10%);
-$color-track-lower-inactive: darken($color-track-inactive, 20%);
-$color-track-lower-active: darken($color-track-inactive, 5%);
+$color-track-lower-inactive: darken($color-track-inactive, 15%);
+$color-track-lower-active: darken($color-track-lower-inactive, 5%);
 $color-thumb: $color-primary;
 $color-thumb-hover: darken($color-thumb, 10%);
 
