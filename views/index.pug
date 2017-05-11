@@ -8,13 +8,33 @@ block description
 
 block header
 	header.header
-		a.down-btn.fa.fa-angle-double-down(href="#first")
+		.homepage-header
+			.background-img
+
+			.title-text
+				h1 Craft Africa
+				p Create your own beer brand with our modular turnkey breweries
+			a.down-btn.fa.fa-angle-double-down(href="#first")
+
+block navlink-home
+	a(href="/").active Home
+
 
 block content
-	.container#first
-		.quote-container
-			span.quote Get famous or die trying
-			span.source former poor man now rich
+	.info-box.homepage.craft-own-beer
+		.headline
+			h1 Are You Dreaming About Crafting Your Own Beer Brand?
+		.icon-container
+			.icon
+				img(src="/images/Circle-PNG-File.png", alt="Scalable solutions")
+			.icon
+				img(src="/images/Circle-PNG-File.png", alt="Scalable solutions")
+			.icon
+				img(src="/images/Circle-PNG-File.png", alt="Scalable solutions")
+	//- .container#first
+	//- 	.quote-container
+	//- 		span.quote Get famous or die trying
+	//- 		span.source former poor man now rich
 
 	.explosion-view-container
 		.explosion-view
