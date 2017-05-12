@@ -1,11 +1,13 @@
 /* eslint-disable */
 // import Vue from 'vue'
-import VueChart from 'vue-chartjs'
+// import { Bar, mixins } from 'vue-chartjs'
 
+const { Bar, mixins } = VueChartJs
 const stats = require('./calculation-form/stats')
 const economics = require('./calculation-form/economics')
 const formInteraction = require('./calculation-form/formInteraction')
 const ajax = require('./ajax')
+const { reactiveProp } = mixins
 // const chart = require('chart.js')
 
 
@@ -61,9 +63,11 @@ document.querySelectorAll('#totalVolume')
 	})
 })
 
+let data = [40, 39, 10]
+console.log(data)
 
 Vue.component('line-chart', {
-	extends: VueChart.Bar,
+	extends: Bar,
 	mounted() {
 		this.renderChart(
 			{
@@ -71,7 +75,7 @@ Vue.component('line-chart', {
 				datasets:
 				[{
 					backgroundColor: '#f87979',
-					data: [40, 39, 10]
+					data
 				}]
 			},
 			{
