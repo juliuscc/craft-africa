@@ -35,68 +35,7 @@
 		}
 	}
 
-	.container-box {
-		.title {
-			width: 100%;
-			border: 1px solid darken($color-background-light, 15%);
-			padding: 2px 5px;
-			box-sizing: border-box;
-
-			h3 {
-				font-size: 1.3em;
-				margin-bottom: 0;
-			}
-		}
-
-		.containers {
-			width: 100%;
-			border: 1px solid darken($color-background-light, 15%);
-			border-top: none;
-			box-sizing: border-box;
-
-			.container-wrapper {
-				margin: 0 auto;
-				position: relative;
-				width: 100%;
-				padding: 15px 30px;
-				box-sizing: border-box;
-
-
-				.container-module {
-					display: inline-block;
-					position: relative;
-					margin-right: 5%;
-					width: 30%;
-					height: 400px;
-					background-color: $color-secondary;
-
-					&:last-child {
-						margin-right: 0;
-					}
-
-					.name-wrapper {
-						position: absolute;
-						top: 50%;
-						left: 50%;
-						transform: translate(-50%, -50%);
-						
-						.name {
-							position: relative;
-
-							.text {
-								font-size: 1.4em;
-								font-weight: bold;
-							}
-
-							.circle {
-								
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+	@import "calculation-form/container-box";
 }
 
 .calculation-form-small {
