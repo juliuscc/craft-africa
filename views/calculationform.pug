@@ -12,27 +12,37 @@ block nav
 
 block content
 	div.calculation-form
-		h1 Calculation form 
-		p This is a calculation form
-		p Liters of Beer
-		input(type="range", name="totalVolume", id="totalVolume", min= minTotalVolume, max= maxTotalVolume)
-		p Liters of Water
-		input(type="range", name="litersOfWater")
-		p Finetune distribution (tap, keg, bottle)
-		input(type="range", name="tap", min=0, max=1, step=0.01, class="container-distribution")
-		input(type="range", name="keg", min=0, max=1, step=0.01, class="container-distribution")
-		input(type="range", name="bottle", min=0, max=1, step=0.01, class="container-distribution")
-		p Profit
-		span.profit 12345$
-		p Distribution
-		span.output economics output here...
-		p Containers
-		span.containers container output here...
-		p Income statement
-		span.income-statement Income statement here...
-		p Done
-		input(type="button", value="Calculate", class="calculate-button")
-		input(type="submit", value = "Submit")
+		.container
+			h1 Calculation form 
+			p This is a calculation form
+			label Liters of Beer
+			input(type="range", name="totalVolume", id="totalVolume", min= minTotalVolume, max= maxTotalVolume)
+			label Finetune distribution (tap, keg, bottle)
+			input(type="range", name="tap", min=0, max=1, step=0.01, class="container-distribution")
+			input(type="range", name="keg", min=0, max=1, step=0.01, class="container-distribution")
+			input(type="range", name="bottle", min=0, max=1, step=0.01, class="container-distribution")
+			.addons
+				h3 Addons
+				table
+					tr
+						td Keg automation machine:
+						td
+							input(type="checkbox")
+					tr
+						td Bottle automation machine:
+						td
+							input(type="checkbox")
+			.profit-box
+				p Profit: 
+					span.profit 12345$
+			p Distribution
+				span.output economics output here...
+			p Containers
+				span.containers container output here...
+			p Income statement
+				span.income-statement Income statement here...
+			input(type="button", value="Calculate", class="calculate-button")
+			input(type="submit", value = "Submit")
 
 
 block navScript
