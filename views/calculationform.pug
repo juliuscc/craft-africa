@@ -13,14 +13,16 @@ block nav
 block content
 	div.calculation-form
 		.container
-			h1 Calculation form 
-			p This is a calculation form
-			label Liters of Beer
-			input(type="range", name="totalVolume", id="totalVolume", min= minTotalVolume, max= maxTotalVolume)
-			label Finetune distribution (tap, keg, bottle)
-			input(type="range", name="tap", min=0, max=1, step=0.01, class="container-distribution")
-			input(type="range", name="keg", min=0, max=1, step=0.01, class="container-distribution")
-			input(type="range", name="bottle", min=0, max=1, step=0.01, class="container-distribution")
+			//- h1 Calculation form 
+			//- p This is a calculation form
+			.total-volume
+				label Liters of Beer
+				input(type="range", name="totalVolume", id="totalVolume", min= minTotalVolume, max= maxTotalVolume)
+			.distribution
+				label Finetune distribution (tap, keg, bottle)
+				input(type="range", name="tap", min=0, max=1, step=0.01, class="container-distribution")
+				input(type="range", name="keg", min=0, max=1, step=0.01, class="container-distribution")
+				input(type="range", name="bottle", min=0, max=1, step=0.01, class="container-distribution")
 			.addons
 				h3 Addons
 				table
@@ -34,15 +36,28 @@ block content
 							input(type="checkbox")
 			.profit-box
 				p Profit: 
-					span.profit 12345$
-			p Distribution
-				span.output economics output here...
-			p Containers
-				span.containers container output here...
-			p Income statement
-				span.income-statement Income statement here...
-			input(type="button", value="Calculate", class="calculate-button")
-			input(type="submit", value = "Submit")
+					span.profit 12345
+			.container-box
+				.title
+					h3 Container configuration
+				.containers
+					.container-wrapper
+						.container-module
+							.name-wrapper
+								.name
+									span.text A1
+									span.circle
+						.container-module
+						.container-module
+
+			//- p Distribution
+			span.output economics output here...
+			//- p Containers
+			//- 	span.containers container output here...
+			//- p Income statement
+			//- 	span.income-statement Income statement here...
+			//- input(type="button", value="Calculate", class="calculate-button")
+			//- input(type="submit", value = "Submit")
 
 
 block navScript
