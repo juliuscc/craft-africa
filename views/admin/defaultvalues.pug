@@ -12,38 +12,38 @@ block content
 			.card
 				.card-title
 					h4
-						|Ingredient cost 
-						span(data-position="bottom" data-delay="0" data-tooltip="Ingredient Cost Description: bla bla bla").material-icons.tooltipped info_outline 
+						|Ingredient cost ( price/kg )
+						span(data-position="bottom" data-delay="0" data-tooltip="Price for the customer").material-icons.tooltipped info_outline 
 					
 				.card-content
 					.defaultCostIngredients
 						.input-field.col.s3
 							input.validate(type="number" step="any" required name="hops" value=ingredientCost.hops)
-							label(for='name') Hops ($)
+							label(for='name') Hops
 						.input-field.col.s3
 							input.validate(type="number" step="any" required name="barley" value=ingredientCost.barley)
-							label(for='name') Barley ($)
+							label(for='name') Barley
 						.input-field.col.s3
 							input.validate(type="number" step="any" required name="co2" value=ingredientCost.co2)
-							label(for='name') CO2 ($)
+							label(for='name') CO2
 						.input-field.col.s3
 							input.validate(type="number" step="any" required name="water" value=ingredientCost.water)
-							label(for='name') Water ($)
+							label(for='name') Water
 
 			.card
 				.card-title
 					h4
-						|Default Distribution (%) (Must be 100 in total for it to save) 
-						span(data-position="bottom" data-delay="0" data-tooltip="Ingredient Cost Description: bla bla bla").material-icons.tooltipped info_outline 
+						|Distribution ( % )
+						span(data-position="bottom" data-delay="0" data-tooltip="Start distribution values for the sliders displayed in the calculation form. NOTE: NEEDS TO BE 100 IN TOTAL").material-icons.tooltipped info_outline 
 
 				.card-content
 					.defaultDistributionValues
 						.input-field.col.s3
 							input.validate.hundred(type="number" step="any" required name="tapDist" value=defaultDistribution.tapDist)
-							label(for='name') Tap (%)
+							label(for='name') Tap
 						.input-field.col.s3
 							input.validate.hundred(type="number" step="any" required name="bottleDist" value=defaultDistribution.bottleDist)
-							label(for='name') Bottle (%)
+							label(for='name') Bottle
 						.input-field.col.s3
 							input.validate.hundred(type="number" step="any" required name="kegDist" value=defaultDistribution.kegDist)
 							label(for='name') Keg (%)
@@ -51,8 +51,8 @@ block content
 			.card
 				.card-title
 					h4
-						|Default Threshhold for Activating Bottle/Keg Containers 
-						span(data-position="bottom" data-delay="0" data-tooltip="Ingredient Cost Description: bla bla bla").material-icons.tooltipped info_outline
+						|Threshold for Activating Containers ( number of units )
+						span(data-position="bottom" data-delay="0" data-tooltip="Threshold for the bottle and keg containers to be activated.").material-icons.tooltipped info_outline
 				
 				.card-content
 					.defaultThreshhold
@@ -66,38 +66,38 @@ block content
 			.card
 				.card-title
 					h4
-						|Production Cost (per unit) 
-						span(data-position="bottom" data-delay="0" data-tooltip="Ingredient Cost Description: bla bla bla").material-icons.tooltipped info_outline
+						|Production Cost ( price/(liter of tap/bottle/keg) )
+						span(data-position="bottom" data-delay="0" data-tooltip="Cost for the customer. Specified in price/(liter of tap/bottle/keg)").material-icons.tooltipped info_outline
 
 				.card-content
 					.defaultCostValues
 						.input-field.col.s3
 							input.validate(type="number" step="any" required name="tapCost" value=productionCost.tapCost)
-							label(for='name') Tap ($)
+							label(for='name') Tap
 						.input-field.col.s3
 							input.validate(type="number" step="any" required name="bottleCost" value=productionCost.bottleCost)
-							label(for='name') Bottle ($)
+							label(for='name') Bottle
 						.input-field.col.s3
 							input.validate(type="number" step="any" required name="kegCost" value=productionCost.kegCost)
-							label(for='name') Keg ($)
+							label(for='name') Keg
 
 			.card
 				.card-title
 					h4
-						|Fermenting Time 
-						span(data-position="bottom" data-delay="0" data-tooltip="Ingredient Cost Description: bla bla bla").material-icons.tooltipped info_outline
+						|Fermenting Time (days)
+						span(data-position="bottom" data-delay="0" data-tooltip="Storage container information is specified in. EXAMPLE: Container A; storage; produces X liters/(this value)").material-icons.tooltipped info_outline
 
 				.card-content
 					.defaultSellingValues
 						.input-field.col.s3
 							input.validate(type="number" step="any" required name="fermentingTime" value=fermentingTime)
-							label(for='name') Fermenting Time
+							label(for='name') Time
 
 			.card
 				.card-title
 					h4
 						|Production Yield (0-100%)
-						span(data-position="bottom" data-delay="0" data-tooltip="Production Yield: beer lost due to removal of yeast in the tanks").material-icons.tooltipped info_outline
+						span(data-position="bottom" data-delay="0" data-tooltip="Beer lost due to removal of yeast in the tanks").material-icons.tooltipped info_outline
 
 				.card-content
 					.defaultSellingValues
@@ -108,27 +108,27 @@ block content
 			.card
 				.card-title
 					h4
-						|Selling Price (per unit) 
-						span(data-position="bottom" data-delay="0" data-tooltip="Ingredient Cost Description: bla bla bla").material-icons.tooltipped info_outline
+						|Selling Price ( price/(liter of tap/bottle/keg) ) 
+						span(data-position="bottom" data-delay="0" data-tooltip="Price for the customer.").material-icons.tooltipped info_outline
 
 				.card-content
 					.defaultSellingValues
 						.input-field.col.s3
 							input.validate(type="number" step="any" required name="tapSell" value=sellingPrice.tapSell)
-							label(for='name') Tap ($)
+							label(for='name') Tap
 						.input-field.col.s3
 							input.validate(type="number" step="any" required name="bottleSell" value=sellingPrice.bottleSell)
-							label(for='name') Bottle ($)
+							label(for='name') Bottle
 						.input-field.col.s3
 							input.validate(type="number" step="any" required name="kegSell" value=sellingPrice.kegSell)
-							label(for='name') Keg ($)
+							label(for='name') Keg
 
 
 			.card
 				.card-title
 					h4
-						|Start Value for Production 
-						span(data-position="bottom" data-delay="0" data-tooltip="Ingredient Cost Description: bla bla bla").material-icons.tooltipped info_outline
+						|Start Value for Production ( liters of beer )
+						span(data-position="bottom" data-delay="0" data-tooltip="Start value").material-icons.tooltipped info_outline
 
 				.card-content
 					.defaultStartValueForProduction
