@@ -9,13 +9,22 @@ block header
 	h1 Calculation form 
 
 block content
-	p This is a calculation form
+	div.calculation-form
+		h1 Calculation form 
+		p This is a calculation form
+
+	div.graph
+		div#graph-app
+			// canvas(id="chart-canvas" count="1" width="400" height="400")
+			line-chart
+			input(type="range", name="litersOfWater" v-model="waterSlider")
+			p Content: {{ text }}
+			p Slider: {{ waterSlider }}
+
 	div#calculation-form
 	form(action="/calculationform", method="post", class="calculation-form" enctype="application/json")
 		p Liters of Beer
 		input(type="range", name="totalVolume", id="totalVolume", min= minTotalVolume, max= maxTotalVolume)
-		p Liters of Water
-		input(type="range", name="litersOfWater")
 		p Finetune distribution (tap, keg, bottle)
 		input(type="range", name="tap", min=0, max=1, step=0.01, class="container-distribution")
 		input(type="range", name="keg", min=0, max=1, step=0.01, class="container-distribution")
@@ -32,7 +41,12 @@ block content
 		input(type="button", value="Calculate", class="calculate-button")
 		input(type="submit", value = "Submit")
 
+block navScript
+	script(src="/js/navbarsmall.js")
+
 block scripts
+	script(src="https://vuejs.org/js/vue.js")
+	script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.js") 
 	script(src="/js/calculationForm.js")
 
 block footer

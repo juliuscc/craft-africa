@@ -1,10 +1,16 @@
+/* eslint-disable */
+// import Vue from 'vue'
+import VueChart from 'vue-chartjs'
+
 const stats = require('./calculation-form/stats')
 const economics = require('./calculation-form/economics')
 const formInteraction = require('./calculation-form/formInteraction')
-// const containerCalculator2 = require('./calculation-form/containerCalculator')
 const ajax = require('./ajax')
+// const chart = require('chart.js')
+
 
 const calcObj = { stats: {}, economics: {} }
+// const containerCalculator2 = require('./calculation-form/containerCalculator')
 
 function updateForm() {
 	formInteraction.extractFormData(calcObj.stats)
@@ -54,3 +60,40 @@ document.querySelectorAll('#totalVolume')
 		updateForm()
 	})
 })
+
+
+Vue.component('line-chart', {
+	extends: VueChart.Bar,
+	mounted() {
+		this.renderChart(
+			{
+				labels: ['Variable Costs', 'Rent', 'Revenue'],
+				datasets:
+				[{
+					backgroundColor: '#f87979',
+					data: [40, 39, 10]
+				}]
+			},
+			{
+				responsive: true,
+				maintainAspectRatio: false
+			}
+		)
+	}
+})
+
+// const Vue = require('vue')
+const vm = new Vue({
+	el: '#graph-app',
+	data: {
+		text: 'hej',
+		waterSlider: 10
+	}
+})
+
+vm.$watch('a', (newVal, oldVal) => {
+// this callback will be called when `vm.a` changes
+	console.log(newVal, ' ', oldVal)
+})
+/* eslint-enable */
+
