@@ -15,5 +15,55 @@
 	}
 	#second{
 		background-image: url("/images/africa2.jpg");
+		.yo {
+			.heyyy{
+
+				display: flex;
+				//padding: 10%;
+				padding: 5% 12% 10% 12%;
+				flex-direction: column;
+				
+				@media (min-width: $width-tablet-min) {
+					flex-direction: row;
+				}
+
+				.text{
+					padding:0;
+					flex: 1;
+					width: 100%;
+					color: white;
+				}
+				.text:hover{
+					color: yellow;
+				}
+
+				.line {
+				//	margin: 5% 1% 5% 1%;
+					box-sizing: border-box;
+					margin-bottom: 5%;
+					margin-top: 4%;
+					//height: 1px;
+					flex-shrink: 0;
+				
+					height: 1px;
+					
+
+					@media (min-width: $width-tablet-min) {
+						height: auto;
+						width: 1px;
+						//margin: 1% 5% 1% 5%;
+						margin: 5px 40px;
+					}
+					
+					// margin-left: 5%;
+					// margin-right: 5%;
+					// margin-top: 2%;
+					// margin-bottom: 2%;
+					background: $color-dark-grey;
+					
+
+				}
+			}
+		}
 	}
 }
