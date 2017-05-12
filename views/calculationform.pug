@@ -17,23 +17,34 @@ block content
 			//- p This is a calculation form
 			.total-volume
 				label Liters of Beer
-				input(type="range", name="totalVolume", id="totalVolume", min= minTotalVolume, max= maxTotalVolume)
-			.distribution
-				label Finetune distribution (tap, keg, bottle)
-				input(type="range", name="tap", min=0, max=1, step=0.01, class="container-distribution")
-				input(type="range", name="keg", min=0, max=1, step=0.01, class="container-distribution")
-				input(type="range", name="bottle", min=0, max=1, step=0.01, class="container-distribution")
-			.addons
-				h3 Addons
-				table
-					tr
-						td Keg automation machine:
-						td
-							input(type="checkbox")
-					tr
-						td Bottle automation machine:
-						td
-							input(type="checkbox")
+				.slider-wrapper
+					.slider-row
+						input(type="range", name="totalVolume", id="totalVolume", min= minTotalVolume, max= maxTotalVolume)
+						span 1000 liters
+			.options
+				.distribution
+					label Finetune distribution (tap, keg, bottle)
+					.slider-wrapper
+						.slider-row
+							input(type="range", name="tap", min=0, max=1, step=0.01, class="container-distribution")
+							span 20%
+						.slider-row
+							input(type="range", name="keg", min=0, max=1, step=0.01, class="container-distribution")
+							span 20%
+						.slider-row
+							input(type="range", name="bottle", min=0, max=1, step=0.01, class="container-distribution")
+							span 20%
+				.addons
+					h3 Addons
+					table
+						tr
+							td Keg automation machine:
+							td
+								input(type="checkbox")
+						tr
+							td Bottle automation machine:
+							td
+								input(type="checkbox")
 			.profit-box
 				p Profit: 
 					span.profit 12345
