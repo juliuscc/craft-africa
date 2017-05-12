@@ -24,6 +24,11 @@ function updateForm() {
 	formInteraction.saveFormInputs(calcObj.stats, calcObj.economics)
 }
 
+function updateCalcObj() {
+	stats.getCalculationStats(calcObj.stats)
+	economics.getEconomics(calcObj.stats, calcObj.economics)
+}
+
 ajax.loadJSON('/data/stats')
 .then((json) => {
 	calcObj.stats = json
@@ -63,19 +68,19 @@ document.querySelectorAll('#totalVolume')
 	})
 })
 
-let data = [40, 39, 10]
-console.log(data)
-
-Vue.component('line-chart', {
+const chart = Vue.component('line-chart', {
 	extends: Bar,
+	// mixins: [reactiveProp],
+	props: ['chartData'],
 	mounted() {
 		this.renderChart(
 			{
+				output: 1,
 				labels: ['Variable Costs', 'Rent', 'Revenue'],
 				datasets:
 				[{
 					backgroundColor: '#f87979',
-					data
+					data: this.chartData.points
 				}]
 			},
 			{
@@ -83,6 +88,13 @@ Vue.component('line-chart', {
 				maintainAspectRatio: false
 			}
 		)
+	},
+	watch: {
+		// Watching for updates
+		'chartData.updated': function () {
+			this._chart.update()
+		},
+		deep: true
 	}
 })
 
@@ -91,13 +103,49 @@ const vm = new Vue({
 	el: '#graph-app',
 	data: {
 		text: 'hej',
-		waterSlider: 10
-	}
-})
+		totalVolume: 0,
+		sliderTap: 0,
+		sliderKeg: 0,
+		sliderBottle: 0,
+		chartData: {
+			points: [40, 39, 10],
+			updated: 1
+		}
+	},
+	watch: {
+		totalVolume: function () {
+			calcObj.stats.volume.total = this.totalVolume
+		},
+		sliderTap: function() {
+			calcObj.distribution.tap = this.sliderTap
+		},
+		sliderKeg: function() {
 
-vm.$watch('a', (newVal, oldVal) => {
-// this callback will be called when `vm.a` changes
-	console.log(newVal, ' ', oldVal)
+		},
+		sliderBottle: function() {
+
+		}
+	},
+	mounted: function () {
+		console.log('this: ', this)
+		document.querySelector('#totalVolume')
+			.addEventListener('change', () => {
+				// Update the calculation stats
+				calcObj.stats.volume.total = this.totalVolume
+
+				updateCalcObj()
+				console.log(calcObj.stats.volume.total)
+
+				// Variable
+				this.chartData.points[0] = calcObj.economics.variableCosts.total
+				// Rent
+				this.chartData.points[1] = calcObj.economics.fixedCosts.total
+				// Revenue
+				this.chartData.points[2] = calcObj.economics.incomes.total
+				// Trigger a graph update
+				this.chartData.updated++
+			})
+	}
 })
 /* eslint-enable */
 
