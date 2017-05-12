@@ -14,12 +14,19 @@ block content
 		p This is a calculation form
 
 	div.graph
-		div#graph-app
-			// canvas(id="chart-canvas" count="1" width="400" height="400")
-			line-chart
-			input(type="range", name="litersOfWater" v-model="waterSlider")
+		div#graph-app(height="400px")
+			line-chart(:chart-data="chartData")
+			//input(type="range", name="litersOfWater" v-model="waterSlider")
+			
+			input(type="range", name="totalVolume", min= minTotalVolume, max= maxTotalVolume, v-model="totalVolume")#totalVolume
+			p Finetune distribution (tap, keg, bottle)
+			input(type="range", name="tap", min=0, max=1, step=0.01, class="container-distribution", v-model="sliderTap")#sliderTap
+			input(type="range", name="keg", min=0, max=1, step=0.01, class="container-distribution", v-model="sliderKeg")#sliderKeg
+			input(type="range", name="bottle", min=0, max=1, step=0.01, class="container-distribution", v-model="sliderBottle")#sliderBottle
+
 			p Content: {{ text }}
-			p Slider: {{ waterSlider }}
+			p Slider: {{ totalVolume }}
+			P Out: 
 
 	div#calculation-form
 	form(action="/calculationform", method="post", class="calculation-form" enctype="application/json")
