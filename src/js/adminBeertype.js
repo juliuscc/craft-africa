@@ -66,6 +66,16 @@ function addBeer() {
 	form.insertBefore(div, this)
 }
 
+/* eslint-disable no-undef */
+$(document).ready(() => {
+	$('select').material_select()
+})
+$(document).ready(() => {
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+	$('.modal').modal()
+})
+/* eslint-enable no-undef */
+
 const addBtn2 = document.querySelector('#addBeer')
 addBtn2.addEventListener('click', addBeer)
 
