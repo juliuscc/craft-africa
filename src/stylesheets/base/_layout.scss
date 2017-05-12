@@ -46,6 +46,7 @@ body {
 	justify-content: space-between;
 	flex-wrap: wrap;
 	@media(min-width: $width-tablet-min){
+		text-align: left;
 		flex-wrap: nowrap;
 	}
 
@@ -71,11 +72,14 @@ body {
 	.image {
 		img {
 			width: 100%;
+			margin: auto;
+			display: block;
 		}
 	}
 	
 	@media (min-width: $width-tablet-min) {
-		padding: 5% 10% 5% 10%;
+		//padding: 5% 10% 5% 10%;
+		padding: 3em 7em 3em 7em;
 
 		.text {
 			width: 60%;
