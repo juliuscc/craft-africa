@@ -1,7 +1,6 @@
 body {
 	margin: 0;
 	padding: 0;
-
 	// *****Sticky footer*******	
 	display: flex;
 	min-height: 100vh;
@@ -37,6 +36,7 @@ body {
 
 
 .info-box {
+	text-align: center;
 	width: 100%;
 	padding: 20px;
 	padding-bottom: 50px;

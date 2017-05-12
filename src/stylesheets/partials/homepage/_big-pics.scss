@@ -1,0 +1,19 @@
+.big-pic{
+	.homepage-pic{
+    /* The image used */
+   		background-image: url("/images/beer-1074962_1920.jpg");
+	    
+
+	    /* Set a specific height */
+	    height: 500px; 
+
+	    /* Create the parallax scrolling effect */
+	    // background-attachment: fixed;
+	    // background-position: center;
+	    // background-repeat: no-repeat;
+	    background-size: cover;
+	}
+	#second{
+		background-image: url("/images/africa2.jpg");
+	}
+}

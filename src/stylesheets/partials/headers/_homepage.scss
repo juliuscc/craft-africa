@@ -1,0 +1,57 @@
+header.header {
+	color: $color-white;
+	
+	.down-btn:active,
+	.down-btn:hover {
+		color: set-hover-color($color-white);
+	}
+	display: flex;
+
+}
+
+.big-pic{
+	.homepage-pic{
+    /* The image used */
+   		background-image: url("/images/beer-1074962_1920.jpg");
+	    
+
+	    /* Set a specific height */
+	    height: 500px; 
+
+	    /* Create the parallax scrolling effect */
+	    background-attachment: fixed;
+	    background-position: center;
+	    background-repeat: no-repeat;
+	    background-size: cover;
+	}
+	#second{
+		background-image: url("/images/africa2.jpg");
+	}
+}
+
+.homepage-header{
+	
+	.title-text {
+		h1{
+			 border-bottom: 2px $color-white solid;
+		}
+	}
+
+	.background-img{
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		height: 100vh;
+		background-color: $color-primary;
+		background-image: url("/images/guy.png");
+		background-size: cover;
+		-webkit-filter: blur(4px);
+		-moz-filter: blur(4px);
+		-o-filter: blur(4px);
+		-ms-filter: blur(4px);
+		filter: blur(4px);
+	}
+}
+
+
+
