@@ -3,6 +3,7 @@ const economics = require('./calculation-form/economics')
 const formInteraction = require('./calculation-form/formInteraction')
 // const containerCalculator2 = require('./calculation-form/containerCalculator')
 const ajax = require('./ajax')
+const slider = require('./slider/main')
 
 const calcObj = { stats: {}, economics: {} }
 
@@ -14,6 +15,8 @@ function updateForm() {
 
 	formInteraction.updateDistributionSliders(calcObj.stats)
 	formInteraction.saveFormInputs(calcObj.stats, calcObj.economics)
+
+	slider.updateAll()
 }
 
 ajax.loadJSON('/data/stats')
@@ -33,11 +36,11 @@ ajax.loadJSON('/data/stats')
 
 
 // test
-document.querySelector('.calculation-form .calculate-button')
-		.addEventListener('click', () => {
-			updateForm()
-			console.log('calc: ', calcObj)
-		})
+// document.querySelector('.calculation-form .calculate-button')
+// 		.addEventListener('click', () => {
+// 			updateForm()
+// 			console.log('calc: ', calcObj)
+// 		})
 
 // more test
 document.querySelectorAll('.calculation-form .container-distribution')
@@ -54,3 +57,5 @@ document.querySelectorAll('#totalVolume')
 		updateForm()
 	})
 })
+
+slider.init()
