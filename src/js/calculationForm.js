@@ -4,6 +4,9 @@ const formInteraction = require('./calculation-form/formInteraction')
 // const containerCalculator2 = require('./calculation-form/containerCalculator')
 const ajax = require('./ajax')
 const slider = require('./slider/main')
+const containerModules = require('./calculation-form/container-modules')
+
+containerModules.init()
 
 const calcObj = { stats: {}, economics: {} }
 

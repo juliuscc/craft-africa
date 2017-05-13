@@ -126,4 +126,60 @@
 				}
 			}
 		}
+
+		.advanced-tab {
+			width: 100%;
+			border: 1px solid darken($color-background-light, 15%);
+			border-top: none;
+			padding: 5px 10px;
+			box-sizing: border-box;
+			position: relative;
+			
+			.toggle {
+				text-align: center;
+
+				a {
+					// color: $color-text-dark;
+					// text-decoration: none;
+				}
+			}
+
+			.extra {
+				overflow: hidden;
+			}
+
+			&[data-state="open"] {
+				.toggle {
+					a.show {
+						display: none;
+					}
+
+					a.hide {
+						display: block;
+					}
+				}
+
+				.extra {
+					transition: all 1s;
+					max-height: 1000px;
+				}
+			}
+
+			&[data-state="closed"] {
+				.toggle {
+					a.show {
+						display: block;
+					}
+
+					a.hide {
+						display: none;
+					}
+				}
+
+				.extra {
+					transition: all 0.5s;
+					max-height: 0;
+				}
+			}
+		}
 	}

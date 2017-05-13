@@ -10,8 +10,6 @@ function calcPosition(slider) {
 	const ratio = ((val - min) / (max - min))
 	const position = (ratio * (width - thumbwidth)) + (thumbwidth / 2)
 
-	console.log({ ratio })
-
 	return position
 }
 
