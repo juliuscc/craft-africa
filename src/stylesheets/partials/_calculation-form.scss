@@ -4,78 +4,25 @@
 	font-family: "Liberation-Sans" , sans-serif;
 	padding-top: 30px;
 
-	.slider-wrapper {
-		width: 100%;
-
-		.slider-row {
-			position: relative;
-			width: 100%;
-			display: flex;
-			flex-direction: row;
-			padding: 30px 0;
-			box-sizing: border-box;
-
-			input {
-				flex: 1;
-			}
-
-			span {
-				position: absolute;
-				top: 0;
-				left: 0;
-				transform: translateX(-50%);
-				white-space: nowrap;
-			}
-		}
+	h3 {
+		font-size: 1.3em;
+		margin-bottom: 0;
 	}
 
 	.total-volume {
 		margin-bottom: 20px;
 
-		label {
+		h3 {
 			font-size: 1.4em;
 		}
 	}
 
-	.options {
-		display: flex;
-		flex-direction: column;
-
-		@media (min-width: $width-tablet-min) {
-			flex-direction: row;	
-		}
-
-		.distribution,
-		.addons {
-			flex: 1;
-			margin: 0;
-		}
-
-		.distribution {
-			padding-right: 50px;
-			margin-bottom: 20px;
-
-			label {
-				margin-bottom: 0.7em;
-			}
-		}
-
-		.addons {
-			h3 {
-				font-size: 1.3em;
-				margin-bottom: 0;
-			}
-
-			* {
-				padding: 0;
-				margin: 0;
-			}
-		}
-	}
-
 	.profit-box {
+		border: 1px solid darken($color-background-light, 15%);
+		padding: 5px 10px;
 		font-weight: bold;
-		font-size: 1.6em;
+		font-size: 2em;
+		margin: 1em 0;
 
 		span.profit {
 			&:after {
@@ -84,6 +31,7 @@
 		}
 	}
 
+	@import "calculation-form/inputs";
 	@import "calculation-form/container-box";
 }
 

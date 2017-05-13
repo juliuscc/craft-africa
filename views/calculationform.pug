@@ -15,36 +15,46 @@ block content
 		.container
 			//- h1 Calculation form 
 			//- p This is a calculation form
-			.total-volume
-				label Liters of Beer
-				.slider-wrapper
-					.slider-row
-						input.slider(type="range" name="totalVolume" id="totalVolume" min=`${minTotalVolume}` max=`${maxTotalVolume}` data-thumbWidth="16")
-						span 1000 liters
-			.options
-				.distribution
-					label Finetune distribution (tap, keg, bottle)
+			.inputs
+				.total-volume
+					h3 Liters of Beer
 					.slider-wrapper
 						.slider-row
-							input.slider.container-distribution(type="range" name="tap" min="0" max="1" step="0.01" data-thumbWidth="16")
-							span 20%
-						.slider-row
-							input.slider.container-distribution(type="range" name="keg" min="0" max="1" step="0.01" data-thumbWidth="16")
-							span 20%
-						.slider-row
-							input.slider.container-distribution(type="range" name="bottle" min="0" max="1" step="0.01" data-thumbWidth="16")
-							span 20%
-				.addons
-					h3 Addons
-					table
-						tr
-							td Keg automation machine:
-							td
-								input(type="checkbox")
-						tr
-							td Bottle automation machine:
-							td
-								input(type="checkbox")
+							input.slider(type="range" name="totalVolume" id="totalVolume" min=`${minTotalVolume}` max=`${maxTotalVolume}` data-thumbWidth="16")
+							span 1000 liters
+				.options
+					.distribution
+						h3 Finetune distribution (tap, keg, bottle)
+						table.slider-wrapper
+							tr
+								td
+									label Tap:
+								td.slider-row
+									input.slider.container-distribution(type="range" name="tap" min="0" max="1" step="0.01" data-thumbWidth="16")
+									span 20%
+							tr
+								td
+									label Keg:
+								td.slider-row
+									input.slider.container-distribution(type="range" name="keg" min="0" max="1" step="0.01" data-thumbWidth="16")
+									span 20%
+							tr
+								td
+									label Bottle:
+								td.slider-row
+									input.slider.container-distribution(type="range" name="bottle" min="0" max="1" step="0.01" data-thumbWidth="16")
+									span 20%
+					.addons
+						h3 Addons
+						table
+							tr
+								td Keg automation machine:
+								td
+									input(type="checkbox")
+							tr
+								td Bottle automation machine:
+								td
+									input(type="checkbox")
 			.profit-box
 				| Profit: 
 				span.profit 12345
