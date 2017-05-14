@@ -9,29 +9,30 @@ header.header {
 
 }
 
-.big-pic{
-	.homepage-pic{
-    /* The image used */
-   		background-image: url("/images/beer-1074962_1920.jpg");
+// .big-pic{
+// 	.homepage-pic{
+//     /* The image used */
+//    		background-image: url("/images/beer-1074962_1920.jpg");
 	    
 
-	    /* Set a specific height */
-	    height: 500px; 
+// 	    /* Set a specific height */
+// 	    height: 500px; 
 
-	    /* Create the parallax scrolling effect */
-	    background-attachment: fixed;
-	    background-position: center;
-	    background-repeat: no-repeat;
-	    background-size: cover;
-	}
-	#second{
-		background-image: url("/images/africa2.jpg");
-	}
-}
+// 	    /* Create the parallax scrolling effect */
+// 	    // background-attachment: fixed;
+// 	    // background-position: center;
+// 	    // background-repeat: no-repeat;
+// 	    // background-size: cover;
+// 	}
+// 	#second{
+// 		background-image: url("/images/africa2.jpg");
+// 	}
+// }
 
 .homepage-header{
 	
 	.title-text {
+		text-shadow: 1px 1px 6px #000;
 		h1{
 			 border-bottom: 2px $color-white solid;
 		}
@@ -43,13 +44,17 @@ header.header {
 		flex-direction: column;
 		height: 100vh;
 		background-color: $color-primary;
-		background-image: url("/images/guy.png");
+		background-image: url("/images/alcohol-21938_1920.jpg");
 		background-size: cover;
-		-webkit-filter: blur(4px);
-		-moz-filter: blur(4px);
-		-o-filter: blur(4px);
-		-ms-filter: blur(4px);
-		filter: blur(4px);
+
+		filter: blur(8px) grayscale(50%);
+
+		// -webkit-filter: blur(3px);
+		// -moz-filter: blur(3px);
+		// -o-filter: blur(3px);
+		// -ms-filter: blur(3px);
+		// filter: blur(3px);
+		// opacity: 0.8;
 	}
 }
 
