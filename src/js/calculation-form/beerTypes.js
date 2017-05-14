@@ -1,15 +1,3 @@
-// Get the "relative" production volume.
-// This can be used to estimate fermenting needs
-function getRelativeProductionVolume(stats) {
-	// How many percent of the timeunit used in the containers
-	// does the current beer make up.
-	// If beer fermenting time is greater, we will scale up the
-	// relative volume.
-	const scaleFactor = stats.beerType.current.fermentingTime / stats.containers.fermentingTime
-
-	return stats.volume.total * scaleFactor
-}
-
 // Get the costs for resources per liter beer
 function getProductionCost(stats) {
 	// Variables from db or changed by user
@@ -35,7 +23,6 @@ function getDefaultBeerType(stats) {
 }
 
 module.exports = {
-	getRelativeProductionVolume,
 	getProductionCost,
 	getDefaultBeerType
 }

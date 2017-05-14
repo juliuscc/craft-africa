@@ -4,12 +4,14 @@ _____________________________________________________________________________*/
 // Get the smallest production module for this beer production capacity
 function getProductionModules(stats) {
 	const productionModules = stats.containers.production
-	const totalVolume = stats.volume.total
+	const totalVolume = stats.volume.relative
 	let returnModule
 	productionModules.forEach((container) => {
-		if(totalVolume <= container.brewingCapacity) {
-			if(!returnModule) {
+		if(!returnModule) {
+			if(totalVolume <= container.brewingCapacity) {
+				// Calculate usage
 				returnModule = container
+				returnModule.usage = totalVolume / container.brewingCapacity
 			}
 		}
 	})
@@ -19,17 +21,16 @@ function getProductionModules(stats) {
 }
 
 // Get the modules required for fermenting the beer
-function getFermentingModules(stats) {
+function getFermentingModules(stats, fermentingModule) {
 	const fermentingModules = stats.containers.fermenting
 
 	// Check needed capacity.
-	const chosenProductionModule = getProductionModules(stats)
-	const fermentingCapacityBrewery = chosenProductionModule.fermentingCapacity
+	const fermentingCapacityBrewery = fermentingModule.fermentingCapacity
 	const totalCapacity = stats.volume.relative
 	let neededCapacity = totalCapacity - fermentingCapacityBrewery
 
 	// Sort out the appropriate modules
-	const moduleSeries = chosenProductionModule.series
+	const moduleSeries = fermentingModule.series
 	const filteredFermentationModules = fermentingModules.filter(
 		element => element.series === moduleSeries)
 
@@ -37,7 +38,16 @@ function getFermentingModules(stats) {
 	// Subtract fermenting capacity for each available module
 	filteredFermentationModules.forEach((container) => {
 		if(neededCapacity > 0) {
-			neededCapacity -= container.fermenting
+			neededCapacity -= container.fermentingCapacity
+			// This container is only partially used
+			if(neededCapacity < 0) {
+				container.usage = (neededCapacity / container.fermentingCapacity) + 1
+			// We used up the capacity of this container entirely
+			} else {
+				container.usage = 1
+			}
+			console.log(container.name, ': ', container.usage)
+
 			requiredFermentationModules.push(container)
 		}
 	})
@@ -89,7 +99,7 @@ function getEnergyProduction(stats) {
 // Calculate the list of all modules required for this production capacity
 function getConfiguration(stats) {
 	const production = [getProductionModules(stats)]
-	const fermenting = getFermentingModules(stats)
+	const fermenting = getFermentingModules(stats, production[0])
 	const addons = getAddonsModules(stats)
 
 	// concatinating arrays

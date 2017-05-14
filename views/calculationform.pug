@@ -6,47 +6,109 @@ block title
 block description
 	meta(name="description" content="This is the calculationform of Craft-Africa. Here you can find the set of containers that fits your need by using our calculationform.")
 block header
-	h1 Calculation form 
+	header.header.calculation-form-header.halve
+		.title-text
+			h1 Business calculator
+			.container
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam beatae cumque laborum nulla, repudiandae molestiae labore dolore quo in nemo saepe, quasi at nisi culpa adipisci voluptatum nostrum, ipsam numquam?
+
+block nav
+	nav.nav.small
+		include partials/navbar
+	.nav-filler
 
 block content
-	div.calculation-form
-		h1 Calculation form 
-		p This is a calculation form
-
-	div.graph
-		div#graph-app(height="400px")
-			line-chart(:chart-data="chartData")
-			//input(type="range", name="litersOfWater" v-model="waterSlider")
-			
-			input(type="range", name="totalVolume", min= minTotalVolume, max= maxTotalVolume, v-model="totalVolume")#totalVolume
-			p Finetune distribution (tap, keg, bottle)
-			input(type="range", name="tap", min=0, max=1, step=0.01, class="container-distribution", v-model="sliderTap")#sliderTap
-			input(type="range", name="keg", min=0, max=1, step=0.01, class="container-distribution", v-model="sliderKeg")#sliderKeg
-			input(type="range", name="bottle", min=0, max=1, step=0.01, class="container-distribution", v-model="sliderBottle")#sliderBottle
-
-			p Content: {{ text }}
-			p Slider: {{ totalVolume }}
-			P Out: 
-
-	div#calculation-form
-	form(action="/calculationform", method="post", class="calculation-form" enctype="application/json")
-		p Liters of Beer
-		input(type="range", name="totalVolume", id="totalVolume", min= minTotalVolume, max= maxTotalVolume)
-		p Finetune distribution (tap, keg, bottle)
-		input(type="range", name="tap", min=0, max=1, step=0.01, class="container-distribution")
-		input(type="range", name="keg", min=0, max=1, step=0.01, class="container-distribution")
-		input(type="range", name="bottle", min=0, max=1, step=0.01, class="container-distribution")
-		p Profit
-		span.profit 12345$
-		p Distribution
-		span.output economics output here...
-		p Containers
-		span.containers container output here...
-		p Income statement
-		span.income-statement Income statement here...
-		p Done
-		input(type="button", value="Calculate", class="calculate-button")
-		input(type="submit", value = "Submit")
+	div.calculation-form#calc-app
+		.container
+			economics-chart(:chart-data="chartData")
+			.inputs
+				.total-volume
+					h3 Liters of Beer
+					.slider-wrapper
+						.slider-row
+							input.slider.activeSlider#totalVolume(type="range" name="totalVolume" min=`${minTotalVolume}` max=`${maxTotalVolume}` data-thumbWidth="20" v-model="totalVolume")
+							span {{ totalVolume }} liters
+				.options
+					.distribution
+						h3 Finetune distribution (tap, keg, bottle)
+						table.slider-wrapper
+							tr
+								td
+									label Tap:
+								td.slider-row
+									input.slider.container-distribution.activeSlider#sliderTap(type="range" name="tap" min="0" max="1" step="0.01" data-thumbWidth="16" v-model="sliderTap")
+									span {{ tapPercent }}%
+							tr
+								td
+									label Keg:
+								td.slider-row
+									input.slider.container-distribution.activeSlider#sliderKeg(type="range" name="keg" min="0" max="1" step="0.01" data-thumbWidth="16" v-model="sliderKeg")
+									span {{ kegPercent }}%
+							tr
+								td
+									label Bottle:
+								td.slider-row
+									input.slider.container-distribution.activeSlider#sliderBottle(type="range" name="bottle" min="0" max="1" step="0.01" data-thumbWidth="16" v-model="sliderBottle")
+									span {{ bottlePercent }}%
+					.addons
+						h3 Addons
+						table
+							tr
+								td Keg automation machine:
+								td
+									input(type="checkbox")
+							tr
+								td Bottle automation machine:
+								td
+									input(type="checkbox")
+			.profit-box
+				| Profit: 
+				span.profit 12345
+			.container-box
+				.title
+					h3 Container configuration
+				.containers
+					.container-wrapper
+						.container-module
+							.name-wrapper
+								.name
+									span.text A1
+									svg.circle(data-fill="40")
+										circle.stroke(cx="50%" cy="50%" r="40%" stroke-width="10px" fill="none")
+						.container-module
+						.container-module
+				.advanced-tab(data-state="closed")
+					.toggle
+						a.show(href="#")
+							span.fa.fa-angle-double-down
+							| Show additional information
+							span.fa.fa-angle-double-down
+						a.hide(href="#")
+							span.fa.fa-angle-double-up
+							| Hide additional information
+							span.fa.fa-angle-double-up
+					.extra
+						.module
+							h3 A1:
+							table
+								tr
+									td Container type:
+									td Brewing
+								tr
+									td Brewing capacity:
+									td 500l / batch
+								tr
+									td Fermenting capacity:
+									td 4000l
+						.module
+							h3 A2:
+							table
+								tr
+									td Container type:
+									td Fermenting
+								tr
+									td Fermenting capacity:
+									td 8000l
 
 block navScript
 	script(src="/js/navbarsmall.js")
@@ -56,6 +118,3 @@ block scripts
 	script(src="https://unpkg.com/vue-chartjs@2.6.0/dist/vue-chartjs.full.min.js")
 	// script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.js") 
 	script(src="/js/calculationForm.js")
-
-block footer
-	p Example footer

@@ -96,6 +96,18 @@ block content
 			.card
 				.card-title
 					h4
+						|Production Yield (0-100%)
+						span(data-position="bottom" data-delay="0" data-tooltip="Production Yield: beer lost due to removal of yeast in the tanks").material-icons.tooltipped info_outline
+
+				.card-content
+					.defaultSellingValues
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="productionYield" value=productionYield)
+							label(for='productionYield') Production yield
+
+			.card
+				.card-title
+					h4
 						|Selling Price (per unit) 
 						span(data-position="bottom" data-delay="0" data-tooltip="Ingredient Cost Description: bla bla bla").material-icons.tooltipped info_outline
 
