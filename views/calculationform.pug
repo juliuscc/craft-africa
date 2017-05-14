@@ -18,10 +18,9 @@ block nav
 	.nav-filler
 
 block content
-	div.calculation-form
+	div.calculation-form#calc-app
 		.container
-			//- h1 Calculation form 
-			//- p This is a calculation form
+			economics-chart(:chart-data="chartData")
 			.inputs
 				.total-volume
 					h3 Liters of Beer
@@ -37,20 +36,20 @@ block content
 								td
 									label Tap:
 								td.slider-row
-									input.slider.container-distribution(type="range" name="tap" min="0" max="1" step="0.01" data-thumbWidth="16")
-									span 20%
+									input.slider.container-distribution.activeSlider#sliderTap(type="range" name="tap" min="0" max="1" step="0.01" data-thumbWidth="16" v-model="sliderTap")
+									span {{ tapPercent }} %
 							tr
 								td
 									label Keg:
 								td.slider-row
-									input.slider.container-distribution(type="range" name="keg" min="0" max="1" step="0.01" data-thumbWidth="16")
-									span 20%
+									input.slider.container-distribution.activeSlider#sliderKeg(type="range" name="keg" min="0" max="1" step="0.01" data-thumbWidth="16" v-model="sliderKeg")
+									span {{ kegPercent }} %
 							tr
 								td
 									label Bottle:
 								td.slider-row
-									input.slider.container-distribution(type="range" name="bottle" min="0" max="1" step="0.01" data-thumbWidth="16")
-									span 20%
+									input.slider.container-distribution.activeSlider#sliderBottle(type="range" name="bottle" min="0" max="1" step="0.01" data-thumbWidth="16" v-model="sliderBottle")
+									span {{ bottlePercent }} %
 					.addons
 						h3 Addons
 						table
@@ -110,17 +109,6 @@ block content
 								tr
 									td Fermenting capacity:
 									td 8000l
-
-
-			//- p Distribution
-			//- span.output economics output here...
-			//- p Containers
-			//- 	span.containers container output here...
-			//- p Income statement
-			//- 	span.income-statement Income statement here...
-			//- input(type="button", value="Calculate", class="calculate-button")
-			//- input(type="submit", value = "Submit")
-
 
 block navScript
 	script(src="/js/navbarsmall.js")

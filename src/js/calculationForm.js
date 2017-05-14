@@ -7,8 +7,8 @@ const stats = require('./calculation-form/stats')
 const economics = require('./calculation-form/economics')
 const formInteraction = require('./calculation-form/formInteraction')
 const ajax = require('./ajax')
-const slider = require('./slider/main')
 const containerModules = require('./calculation-form/container-modules')
+const slider = require('./calculation-form/slider')
 
 const calcObj = { stats: { distribution: { tap: 0, bottle: 0.01, keg: 0 }, distributionLock: ['tap', 'bottle'] }, economics: {} }
 
@@ -58,11 +58,9 @@ const chart = Vue.component('economics-chart', {
 						}],
 						yAxes: [{
 							display: true,
-//							type: 'logarithmic',
 							ticks: {
 								beginAtZero: true,
 								suggestedMax: 50000,
-								// steps: 1,
 								scaleStepWidth: 10000,
 								// max: 100000
 							}
@@ -97,6 +95,9 @@ function updateGraph(app) {
 }
 
 function updateFintuningSliders(app, lastTouched) {
+	// Add the output label
+	slider.updateAll()
+
 	// Init
 	if(!calcObj.stats.distributionLock) {
 		calcObj.stats.distributionLock = ['tap', 'bottle']
@@ -113,17 +114,23 @@ function updateFintuningSliders(app, lastTouched) {
 	app.sliderTap = newDistribution.tap
 	app.sliderBottle = newDistribution.bottle
 	app.sliderKeg = newDistribution.keg
+
+	app.tapPercent = Math.round(newDistribution.tap * 100)
+	app.kegPercent = Math.round(newDistribution.keg * 100)
+	app.bottlePercent = Math.round(newDistribution.bottle * 100)
 }
 
 function createVueApp() {
 	const vm = new Vue({
-		el: '#graph-app',
+		el: '#calc-app',
 		data: {
-			text: 'hej',
 			totalVolume: 0,
 			sliderTap: 0,
 			sliderKeg: 0,
 			sliderBottle: 0,
+			tapPercent: 0,
+			kegPercent: 0,
+			bottlePercent: 0,
 			chartData: {
 				points: [0, 0, 0],
 				updated: 1
@@ -159,11 +166,19 @@ function createVueApp() {
 				})
 			})
 
+			// Init slider output
+			slider.init()
+
 			// Init sliders
 			this.totalVolume = calcObj.stats.volume.total
+
 			this.sliderTap = calcObj.stats.distribution.tap
 			this.sliderKeg = calcObj.stats.distribution.keg
 			this.sliderBottle = calcObj.stats.distribution.bottle
+
+			this.tapPercent = Math.round(this.sliderTap * 100)
+			this.kegPercent = Math.round(this.sliderKeg * 100)
+			this.bottlePercent = Math.round(this.sliderBottle * 100)
 			
 			// Make sure the graph shows the correct stuff
 			updateGraph(this)
