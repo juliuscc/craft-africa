@@ -22,7 +22,7 @@ function updateOutput() {
 
 function updateAll() {
 	const sliders = document.querySelectorAll('input[type="range"].slider')
-	sliders.forEach(slider => updateOutput.call(slider))
+	setTimeout(() => sliders.forEach(slider => updateOutput.call(slider)), 1)
 }
 
 function init() {

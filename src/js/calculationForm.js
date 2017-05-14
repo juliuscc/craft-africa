@@ -116,14 +116,15 @@ function getDistributionDiff(app) {
 }
 
 function updateInteractiveValues(firstSliderName, secondSliderName, app) {
+	app.sliderTap = parseFloat(app.sliderTap)
+	app.sliderKeg = parseFloat(app.sliderKeg)
+	app.sliderBottle = parseFloat(app.sliderBottle)
+
 	const diff = (1.0 - app.sliderTap - app.sliderKeg - app.sliderBottle) / 2
 
 	if(diff !== 0 && diff) {
-		console.log(diff)
 		app[firstSliderName] += diff
 		app[secondSliderName] += diff
-
-		let temp = 0
 		if(app[firstSliderName] < 0 && app[firstSliderName] !== NaN) {
 			app[secondSliderName] += app[firstSliderName]
 			app[firstSliderName] = 0
@@ -132,6 +133,9 @@ function updateInteractiveValues(firstSliderName, secondSliderName, app) {
 			app[secondSliderName] = 0
 		}
 	}
+
+	slider.updateAll()
+
 }
 
 function updateStaticValues(app) {
