@@ -2,8 +2,8 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	background-color: $color-background-dark;
-	color: $color-secondary;
+	background-color: $color-accent;
+	color: darken($color-warning, 7);
 
 	> * {
 		box-sizing: border-box;
