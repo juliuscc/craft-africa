@@ -61,9 +61,12 @@ block content
 								td Bottle automation machine:
 								td
 									input(type="checkbox")
-			.profit-box
-				| Profit: 
-				span.profit 12345
+			.economics(data-state="closed")
+				.profit-box
+					span.text Profit: 
+					span.profit 12345
+					a.fa.fa-caret-down.show(href="#")
+					a.fa.fa-caret-up.hide(href="#")
 			.container-box
 				.title
 					h3 Container configuration
@@ -75,35 +78,35 @@ block content
 									span.text A1
 									svg.circle(data-fill="100")
 										circle.outline(cx="50%" cy="50%" r="40%" stroke-width="1px" fill="none")
-										circle.stroke(cx="50%" cy="50%" r="40%" stroke-width="10px" fill="none")
+										circle.stroke(cx="50%" cy="50%" r="40%" stroke-width="7px" fill="none")
 						.container-module
 							.name-wrapper
 								.name
 									span.text A2
 									svg.circle(data-fill="100")
 										circle.outline(cx="50%" cy="50%" r="40%" stroke-width="1px" fill="none")
-										circle.stroke(cx="50%" cy="50%" r="40%" stroke-width="10px" fill="none")
+										circle.stroke(cx="50%" cy="50%" r="40%" stroke-width="7px" fill="none")
 						.container-module
 							.name-wrapper
 								.name
 									span.text A3
 									svg.circle(data-fill="40")
 										circle.outline(cx="50%" cy="50%" r="40%" stroke-width="1px" fill="none")
-										circle.stroke(cx="50%" cy="50%" r="40%" stroke-width="10px" fill="none")
+										circle.stroke(cx="50%" cy="50%" r="40%" stroke-width="7px" fill="none")
 						.container-module
 							.name-wrapper
 								.name
 									span.text C1
 									svg.circle(data-fill="70")
 										circle.outline(cx="50%" cy="50%" r="40%" stroke-width="1px" fill="none")
-										circle.stroke(cx="50%" cy="50%" r="40%" stroke-width="10px" fill="none")
+										circle.stroke(cx="50%" cy="50%" r="40%" stroke-width="7px" fill="none")
 						.container-module
 							.name-wrapper
 								.name
 									span.text C2
 									svg.circle(data-fill="17")
 										circle.outline(cx="50%" cy="50%" r="40%" stroke-width="1px" fill="none")
-										circle.stroke(cx="50%" cy="50%" r="40%" stroke-width="10px" fill="none")
+										circle.stroke(cx="50%" cy="50%" r="40%" stroke-width="7px" fill="none")
 				.advanced-tab(data-state="closed")
 					.toggle
 						a.show(href="#")
