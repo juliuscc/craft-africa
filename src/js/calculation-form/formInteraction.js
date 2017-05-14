@@ -1,5 +1,5 @@
 // Calculate new position of distribution
-function getNewDistribution(calculationStats) {
+function getNewDistribution(stats) {
 	let volumeLeft = 1.0
 
 	let active = -1
@@ -9,14 +9,14 @@ function getNewDistribution(calculationStats) {
 	// Create a copy and remove the current slider
 	const tempData = []
 	const tempNames = []
-	Object.keys(calculationStats.distribution).forEach((el, index) => {
-		tempData.push(calculationStats.distribution[el])
+	Object.keys(stats.distribution).forEach((el, index) => {
+		tempData.push(stats.distribution[el])
 		tempNames.push(el)
 
 		// Extracting key status
-		if(el === calculationStats.distributionLock[0]) {
+		if(el === stats.distributionLock[0]) {
 			locked = index
-		} else if(el === calculationStats.distributionLock[1]) {
+		} else if(el === stats.distributionLock[1]) {
 			inactive = index
 		} else {
 			active = index

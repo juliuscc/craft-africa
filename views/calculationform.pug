@@ -9,44 +9,21 @@ block header
 	h1 Calculation form 
 
 block content
-	div.calculation-form
-		h1 Calculation form 
-		p This is a calculation form
+	.container
+		div.graph
+			div#graph-app(height="400px")
+				economics-chart(:chart-data="chartData")
+				//input(type="range", name="litersOfWater" v-model="waterSlider")
+				
+				input(type="range", name="totalVolume", min= minTotalVolume, max= maxTotalVolume, v-model="totalVolume").activeSlider#totalVolume
+				p Finetune distribution (tap, keg, bottle)
+				input(type="range", name="tap", min=0, max=1, step=0.01, v-model="sliderTap").activeSlider.container-distribution#sliderTap
+				input(type="range", name="keg", min=0, max=1, step=0.01, v-model="sliderKeg").activeSlider.container-distribution#sliderKeg
+				input(type="range", name="bottle", min=0, max=1, step=0.01, v-model="sliderBottle").activeSlider.container-distribution#sliderBottle
 
-	div.graph
-		div#graph-app(height="400px")
-			line-chart(:chart-data="chartData")
-			//input(type="range", name="litersOfWater" v-model="waterSlider")
-			
-			input(type="range", name="totalVolume", min= minTotalVolume, max= maxTotalVolume, v-model="totalVolume")#totalVolume
-			p Finetune distribution (tap, keg, bottle)
-			input(type="range", name="tap", min=0, max=1, step=0.01, class="container-distribution", v-model="sliderTap")#sliderTap
-			input(type="range", name="keg", min=0, max=1, step=0.01, class="container-distribution", v-model="sliderKeg")#sliderKeg
-			input(type="range", name="bottle", min=0, max=1, step=0.01, class="container-distribution", v-model="sliderBottle")#sliderBottle
-
-			p Content: {{ text }}
-			p Slider: {{ totalVolume }}
-			P Out: 
-
-	div#calculation-form
-	form(action="/calculationform", method="post", class="calculation-form" enctype="application/json")
-		p Liters of Beer
-		input(type="range", name="totalVolume", id="totalVolume", min= minTotalVolume, max= maxTotalVolume)
-		p Finetune distribution (tap, keg, bottle)
-		input(type="range", name="tap", min=0, max=1, step=0.01, class="container-distribution")
-		input(type="range", name="keg", min=0, max=1, step=0.01, class="container-distribution")
-		input(type="range", name="bottle", min=0, max=1, step=0.01, class="container-distribution")
-		p Profit
-		span.profit 12345$
-		p Distribution
-		span.output economics output here...
-		p Containers
-		span.containers container output here...
-		p Income statement
-		span.income-statement Income statement here...
-		p Done
-		input(type="button", value="Calculate", class="calculate-button")
-		input(type="submit", value = "Submit")
+				p Content: {{ text }}
+				p Slider: {{ totalVolume }}
+				P Out: 
 
 block navScript
 	script(src="/js/navbarsmall.js")
