@@ -40,10 +40,10 @@ const chart = Vue.component('economics-chart', {
 				[{
 					backgroundColor: '#3C5B47',
 					hoverBackgroundColor: '#549069',
-					borderColor: '#549069',
+					borderColor: '#3C5B47',
+					hoverBorderColor: '#549069',
 					borderSkipped: 'bottom',
 					borderWidth: 2,
-					
 
 					data: this.chartData.points
 				}]
