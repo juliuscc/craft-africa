@@ -9,21 +9,8 @@
 		margin-bottom: 0;
 	}
 
-	.profit-box {
-		border: 1px solid darken($color-background-light, 15%);
-		padding: 5px 10px;
-		font-weight: bold;
-		font-size: 2em;
-		margin: 1em 0;
-
-		span.profit {
-			&:after {
-				content: "$";
-			}
-		}
-	}
-
 	@import "calculation-form/inputs";
+	@import "calculation-form/economics";
 	@import "calculation-form/total-volume";
 	@import "calculation-form/container-box";
 }
