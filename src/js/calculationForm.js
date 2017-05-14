@@ -111,6 +111,10 @@ function updateContainers(app) {
 }
 
 function getDistributionDiff(app) {
+	app.sliderTap = parseFloat(app.sliderTap)
+	app.sliderKeg = parseFloat(app.sliderKeg)
+	app.sliderBottle = parseFloat(app.sliderBottle)
+	
 	const res = (1.0 - app.sliderTap - app.sliderKeg - app.sliderBottle) / 2
 	return res
 }
