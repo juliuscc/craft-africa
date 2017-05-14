@@ -2,8 +2,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	background-color: lighten($color-primary-darker, 10);
-	color: $color-text-light;
+	color: darken($color-info, 11);
 
 	> * {
 		box-sizing: border-box;
@@ -18,7 +17,6 @@
 	.text {
 		order: 1;
 	}
-
 	.animation {
 		height: auto;
 		order: 2;
