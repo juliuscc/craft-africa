@@ -9,14 +9,6 @@
 		margin-bottom: 0;
 	}
 
-	.total-volume {
-		margin-bottom: 20px;
-
-		h3 {
-			font-size: 1.4em;
-		}
-	}
-
 	.profit-box {
 		border: 1px solid darken($color-background-light, 15%);
 		padding: 5px 10px;
@@ -32,6 +24,7 @@
 	}
 
 	@import "calculation-form/inputs";
+	@import "calculation-form/total-volume";
 	@import "calculation-form/container-box";
 }
 
