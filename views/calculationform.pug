@@ -26,8 +26,8 @@ block content
 					h3 Liters of Beer
 					.slider-wrapper
 						.slider-row
-							input.slider(type="range" name="totalVolume" id="totalVolume" min=`${minTotalVolume}` max=`${maxTotalVolume}` data-thumbWidth="32")
-							span 1000 liters
+							input.slider.activeSlider#totalVolume(type="range" name="totalVolume" min=`${minTotalVolume}` max=`${maxTotalVolume}` data-thumbWidth="32" v-model="totalVolume")
+							span {{ totalVolume }} liters
 				.options
 					.distribution
 						h3 Finetune distribution (tap, keg, bottle)
@@ -37,19 +37,19 @@ block content
 									label Tap:
 								td.slider-row
 									input.slider.container-distribution.activeSlider#sliderTap(type="range" name="tap" min="0" max="1" step="0.01" data-thumbWidth="16" v-model="sliderTap")
-									span {{ tapPercent }} %
+									span {{ tapPercent }}%
 							tr
 								td
 									label Keg:
 								td.slider-row
 									input.slider.container-distribution.activeSlider#sliderKeg(type="range" name="keg" min="0" max="1" step="0.01" data-thumbWidth="16" v-model="sliderKeg")
-									span {{ kegPercent }} %
+									span {{ kegPercent }}%
 							tr
 								td
 									label Bottle:
 								td.slider-row
 									input.slider.container-distribution.activeSlider#sliderBottle(type="range" name="bottle" min="0" max="1" step="0.01" data-thumbWidth="16" v-model="sliderBottle")
-									span {{ bottlePercent }} %
+									span {{ bottlePercent }}%
 					.addons
 						h3 Addons
 						table

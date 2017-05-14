@@ -7,8 +7,8 @@ const stats = require('./calculation-form/stats')
 const economics = require('./calculation-form/economics')
 const formInteraction = require('./calculation-form/formInteraction')
 const ajax = require('./ajax')
-const containerModules = require('./calculation-form/container-modules')
 const slider = require('./calculation-form/slider')
+const informationBox = require('./calculation-form/informationBox')
 
 const calcObj = { stats: { distribution: { tap: 0, bottle: 0.01, keg: 0 }, distributionLock: ['tap', 'bottle'] }, economics: {} }
 
@@ -95,9 +95,6 @@ function updateGraph(app) {
 }
 
 function updateFintuningSliders(app, lastTouched) {
-	// Add the output label
-	slider.updateAll()
-
 	// Init
 	if(!calcObj.stats.distributionLock) {
 		calcObj.stats.distributionLock = ['tap', 'bottle']
@@ -115,9 +112,8 @@ function updateFintuningSliders(app, lastTouched) {
 	app.sliderBottle = newDistribution.bottle
 	app.sliderKeg = newDistribution.keg
 
-	app.tapPercent = Math.round(newDistribution.tap * 100)
-	app.kegPercent = Math.round(newDistribution.keg * 100)
-	app.bottlePercent = Math.round(newDistribution.bottle * 100)
+	// Add the output label
+	slider.updateAll()
 }
 
 function createVueApp() {
@@ -142,12 +138,15 @@ function createVueApp() {
 			},
 			sliderTap: function() {
 				calcObj.stats.distribution.tap = this.sliderTap
+				this.tapPercent = Math.round(this.sliderTap * 100)
 			},
 			sliderKeg: function() {
 				calcObj.stats.distribution.keg = this.sliderKeg
+				this.kegPercent = Math.round(this.sliderKeg * 100)
 			},
 			sliderBottle: function() {
 				calcObj.stats.distribution.bottle = this.sliderBottle
+				this.bottlePercent = Math.round(this.sliderBottle * 100)
 			}
 		},
 		mounted: function () {
@@ -169,6 +168,9 @@ function createVueApp() {
 			// Init slider output
 			slider.init()
 
+			// Add extra information box interactivity
+			informationBox.init()
+
 			// Init sliders
 			this.totalVolume = calcObj.stats.volume.total
 
@@ -182,6 +184,9 @@ function createVueApp() {
 			
 			// Make sure the graph shows the correct stuff
 			updateGraph(this)
+
+			// Solving bug
+			setTimeout(slider.updateAll, 1)
 		}
 	})
 }
