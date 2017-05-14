@@ -102,6 +102,14 @@ function updateGraph(app) {
 	app.chartData.updated++
 }
 
+function updateContainers(app) {
+	// Push containers
+	app.modules = calcObj.stats.containers.current.all
+	app.modules.forEach((element) => {
+		element.usagePercent = Math.round(element.usage * 100)
+	})
+}
+
 function getDistributionDiff(app) {
 	const res = (1.0 - app.sliderTap - app.sliderKeg - app.sliderBottle) / 2
 	return res
@@ -124,27 +132,9 @@ function updateInteractiveValues(firstSliderName, secondSliderName, app) {
 			app[secondSliderName] = 0
 		}
 	}
-
 }
 
 function updateStaticValues(app) {
-	// // Init
-	// if(!calcObj.stats.distributionLock) {
-	// 	calcObj.stats.distributionLock = ['tap', 'bottle']
-	// }
-
-	// // Add current
-	// if(lastTouched !== calcObj.stats.distributionLock[0]) {
-	// 	calcObj.stats.distributionLock[1] = calcObj.stats.distributionLock[0]
-	// }
-	// calcObj.stats.distributionLock[0] = lastTouched
-
-	// // Set updated values
-	// const newDistribution = formInteraction.getNewDistribution(calcObj.stats)
-	// app.sliderTap = newDistribution.tap
-	// app.sliderBottle = newDistribution.bottle
-	// app.sliderKeg = newDistribution.keg
-
 	app.tapPercent = Math.round(app.sliderTap * 100)
 	app.kegPercent = Math.round(app.sliderKeg * 100)
 	app.bottlePercent = Math.round(app.sliderBottle * 100)
@@ -172,6 +162,8 @@ function createVueApp() {
 			bottlePercent: 0,
 
 			profit: 0,
+
+			modules: [],
 
 			chartData: {
 				points: [0, 0, 0],
@@ -235,17 +227,10 @@ function createVueApp() {
 			activeSliders.forEach((element) => {
 				element.addEventListener('input', () => {
 					updateCalcObj()
-
+					updateContainers(this)
 					this.profit = Math.round(calcObj.economics.profit)
 				})
 			})
-
-			// document.querySelectorAll('.container-distribution')
-			// .forEach((element) => {
-			// 	element.addEventListener('input', (event) => {
-			// 		updateStaticValues(this, event.srcElement.name)
-			// 	})
-			// })
 
 			// Init slider output
 			slider.init()
@@ -267,6 +252,7 @@ function createVueApp() {
 			// Make sure the graph shows the correct stuff
 			updateGraph(this)
 
+			updateContainers(this)
 			this.profit = Math.round(calcObj.economics.profit)
 
 			// Solving bug
