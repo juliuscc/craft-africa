@@ -12,10 +12,7 @@ const informationBox = require('./calculation-form/informationBox')
 
 const calcObj = { stats: { distribution: { tap: 0, bottle: 0.01, keg: 0 }, distributionLock: ['tap', 'bottle'] }, economics: {} }
 
-function updateCalcObj() {
-	stats.getCalculationStats(calcObj.stats)
-	economics.getEconomics(calcObj.stats, calcObj.economics)
-}
+let shouldUpdate = true
 
 ajax.loadJSON('/data/stats')
 .then((json) => {
@@ -81,6 +78,17 @@ const chart = Vue.component('economics-chart', {
 	}
 })
 
+function updateCalcObj() {
+	if(shouldUpdate) {
+		shouldUpdate = false
+
+		stats.getCalculationStats(calcObj.stats)
+		economics.getEconomics(calcObj.stats, calcObj.economics)
+
+		setTimeout(() => { shouldUpdate = true }, 40)
+	}
+}
+
 function updateGraph(app) {
 	// Do calculations
 	updateCalcObj()
@@ -94,23 +102,56 @@ function updateGraph(app) {
 	app.chartData.updated++
 }
 
-function updateFintuningSliders(app, lastTouched) {
-	// Init
-	if(!calcObj.stats.distributionLock) {
-		calcObj.stats.distributionLock = ['tap', 'bottle']
+function getDistributionDiff(app) {
+	const res = (1.0 - app.sliderTap - app.sliderKeg - app.sliderBottle) / 2
+	return res
+}
+
+function updateInteractiveValues(firstSliderName, secondSliderName, app) {
+	const diff = (1.0 - app.sliderTap - app.sliderKeg - app.sliderBottle) / 2
+
+	if(diff !== 0 && diff) {
+		console.log(diff)
+		app[firstSliderName] += diff
+		app[secondSliderName] += diff
+
+		let temp = 0
+		if(app[firstSliderName] < 0 && app[firstSliderName] !== NaN) {
+			app[secondSliderName] += app[firstSliderName]
+			app[firstSliderName] = 0
+		} else if (app[secondSliderName] < 0 && app[secondSliderName] !== NaN) {
+			app[firstSliderName] += app[secondSliderName] 
+			app[secondSliderName] = 0
+		}
 	}
 
-	// Add current
-	if(lastTouched !== calcObj.stats.distributionLock[0]) {
-		calcObj.stats.distributionLock[1] = calcObj.stats.distributionLock[0]
-	}
-	calcObj.stats.distributionLock[0] = lastTouched
+}
 
-	// Set updated values
-	const newDistribution = formInteraction.getNewDistribution(calcObj.stats)
-	app.sliderTap = newDistribution.tap
-	app.sliderBottle = newDistribution.bottle
-	app.sliderKeg = newDistribution.keg
+function updateStaticValues(app) {
+	// // Init
+	// if(!calcObj.stats.distributionLock) {
+	// 	calcObj.stats.distributionLock = ['tap', 'bottle']
+	// }
+
+	// // Add current
+	// if(lastTouched !== calcObj.stats.distributionLock[0]) {
+	// 	calcObj.stats.distributionLock[1] = calcObj.stats.distributionLock[0]
+	// }
+	// calcObj.stats.distributionLock[0] = lastTouched
+
+	// // Set updated values
+	// const newDistribution = formInteraction.getNewDistribution(calcObj.stats)
+	// app.sliderTap = newDistribution.tap
+	// app.sliderBottle = newDistribution.bottle
+	// app.sliderKeg = newDistribution.keg
+
+	app.tapPercent = Math.round(app.sliderTap * 100)
+	app.kegPercent = Math.round(app.sliderKeg * 100)
+	app.bottlePercent = Math.round(app.sliderBottle * 100)
+
+	calcObj.stats.distribution.tap = app.sliderTap
+	calcObj.stats.distribution.keg = app.sliderKeg
+	calcObj.stats.distribution.bottle = app.sliderBottle
 
 	// Add the output label
 	slider.updateAll()
@@ -121,12 +162,17 @@ function createVueApp() {
 		el: '#calc-app',
 		data: {
 			totalVolume: 0,
+
 			sliderTap: 0,
 			sliderKeg: 0,
 			sliderBottle: 0,
+
 			tapPercent: 0,
 			kegPercent: 0,
 			bottlePercent: 0,
+
+			profit: 0,
+
 			chartData: {
 				points: [0, 0, 0],
 				updated: 1
@@ -137,33 +183,69 @@ function createVueApp() {
 				calcObj.stats.volume.total = this.totalVolume
 			},
 			sliderTap: function() {
-				calcObj.stats.distribution.tap = this.sliderTap
-				this.tapPercent = Math.round(this.sliderTap * 100)
+				if(shouldUpdate) {
+					shouldUpdate = false
+
+					if (typeof this.sliderTap === 'string' || this.sliderTap instanceof String) {
+						this.sliderTap = parseFloat(this.sliderTap)
+					}
+					updateInteractiveValues('sliderKeg', 'sliderBottle', this)
+					updateStaticValues(this)
+
+					setTimeout(() => { shouldUpdate = true }, 20)
+				}
 			},
 			sliderKeg: function() {
-				calcObj.stats.distribution.keg = this.sliderKeg
-				this.kegPercent = Math.round(this.sliderKeg * 100)
+				if(shouldUpdate) {
+					shouldUpdate = false
+					
+					if (typeof this.sliderKeg === 'string' || this.sliderKeg instanceof String) {
+						this.sliderKeg = parseFloat(this.sliderKeg)
+					}
+					updateInteractiveValues('sliderTap', 'sliderBottle', this)
+					updateStaticValues(this)
+
+					setTimeout(() => { shouldUpdate = true }, 20)
+				}
 			},
 			sliderBottle: function() {
-				calcObj.stats.distribution.bottle = this.sliderBottle
-				this.bottlePercent = Math.round(this.sliderBottle * 100)
+				if(shouldUpdate) {
+					shouldUpdate = false
+	
+					if (typeof this.sliderBottle === 'string' || this.sliderBottle instanceof String) {
+						this.sliderBottle = parseFloat(this.sliderBottle)
+					}
+					updateInteractiveValues('sliderKeg', 'sliderTap', this)
+					updateStaticValues(this)
+
+					setTimeout(() => { shouldUpdate = true }, 20)
+				}
 			}
 		},
 		mounted: function () {
 			// Add the update graph object
-			document.querySelectorAll('.activeSlider')
-			.forEach((e) => {
-				e.addEventListener('change', () => {
+			const activeSliders = document.querySelectorAll('.activeSlider')
+			
+			activeSliders.forEach((element) => {
+				element.addEventListener('change', () => {
 					updateGraph(this)
 				})
 			})
+			
+			activeSliders.forEach((element) => {
+				element.addEventListener('input', () => {
+					updateCalcObj()
 
-			document.querySelectorAll('.container-distribution')
-			.forEach((e) => {
-				e.addEventListener('input', (event) => {
-					updateFintuningSliders(this, event.srcElement.name)
+					this.profit = Math.round(calcObj.economics.profit)
 				})
 			})
+
+			// document.querySelectorAll('.container-distribution')
+			// .forEach((element) => {
+			// 	element.addEventListener('input', (event) => {
+			// 		updateStaticValues(this, event.srcElement.name)
+			// 	})
+			// })
 
 			// Init slider output
 			slider.init()
@@ -181,9 +263,11 @@ function createVueApp() {
 			this.tapPercent = Math.round(this.sliderTap * 100)
 			this.kegPercent = Math.round(this.sliderKeg * 100)
 			this.bottlePercent = Math.round(this.sliderBottle * 100)
-			
+
 			// Make sure the graph shows the correct stuff
 			updateGraph(this)
+
+			this.profit = Math.round(calcObj.economics.profit)
 
 			// Solving bug
 			setTimeout(slider.updateAll, 1)
