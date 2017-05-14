@@ -4,13 +4,12 @@ const emailcredentials = require('../config/credentials').email
 const mailTemplate = require('../models/mailTemplates')
 const Handlebars = require('handlebars')
 
-// Send an email to admin and user.
+// Send an email to admin and user. No response if the sending part fails
 router.post('/send', (req, res) => {
 	// Check for errors
 	if(!req.body.message_template) {
 		res.render('email', {
-			message: 'Something is wrong with the form',
-			username: req.user.local.name
+			message: 'Something is wrong with the form. Please reach out to us using any other listed at the contact page.'
 		})
 		return
 	}
@@ -30,10 +29,13 @@ router.post('/send', (req, res) => {
 	mailTemplate.getTemplateByName(req.body.message_template, (databaseErr, template) => {
 		if(databaseErr || !template) {
 			res.render('email', {
-				message: 'This link is currently not active. Please try another',
-				username: req.user.local.name
+				message: 'Something went wrong while trying to send email.'
 			})
 		} else {
+			res.render('email', {
+				message: `Your email adress ${req.body.emailadress} was sent to a salesperson. We will be in touch shortly.`
+			})
+
 			// recipients
 			adminEmailData.to = template.recipient
 			userEmailData.to = req.body.emailadress
@@ -53,26 +55,15 @@ router.post('/send', (req, res) => {
 			const send = gmail()
 
 			// Admin email
-			send(adminEmailData, (errAdmin) => {
+			send(adminEmailData, () => {
 				// User email
-				send(userEmailData, (errUser) => {
-					if(errAdmin || errUser) {
-						res.render('email', {
-							message: 'Something went wrong while trying to send email.',
-							username: req.user.local.name
-						})
-					}
-
-					res.render('email', {
-						message: `Your email adress ${req.body.emailadress} was sent to a salesperson. We will be in touch shortly.`,
-						username: req.user.local.name
-					})
-				})
+				send(userEmailData, () => {})
 			})
 		}
 	})
 })
 
+// Not used for now. Sends and email and returns a json response
 router.post('/send/background', (req, res) => {
 	// Check for errors
 	if(!req.body.message_template) {

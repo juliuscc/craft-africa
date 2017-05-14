@@ -44,6 +44,7 @@ router.get('/stats', (req, res) => {
 				containerObject[container.type].push(container)
 			})
 			containerObject.fermentingTime = data.defaultValues.fermentingTime
+			containerObject.productionYield = data.defaultValues.productionYield / 100
 			containerObject.threshold = data.defaultValues.threshold
 
 			res.json({

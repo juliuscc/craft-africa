@@ -1,0 +1,29 @@
+input[type=range]::-ms-fill-lower {
+	background: $color-track-lower-inactive;
+	border-radius: 10px;
+}
+
+input[type=range]::-ms-fill-upper {
+	background: $color-track-inactive;
+	border-radius: 10px;
+}
+
+input[type=range]::-ms-thumb {
+	border: none;
+	height: 16px;
+	width: 16px;
+	border-radius: 50%;
+	background: $color-primary;
+
+	&:hover {
+		background: $color-thumb-hover;
+	}
+}
+
+input[type=range]:focus::-ms-fill-lower {
+	background: $color-track-lower-active;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+	background: $color-track-active;
+}

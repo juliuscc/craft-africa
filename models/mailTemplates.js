@@ -30,8 +30,9 @@ const templateSchema = mongoose.Schema({
 const Template = mongoose.model('Template', templateSchema)
 module.exports = Template
 
-module.exports.createTemplate = (newTemplate, callback) => {
-	newTemplate.save(callback)
+module.exports.createTemplate = (emailData, callback) => {
+	const emailObject = new Template(emailData)
+	emailObject.save(callback)
 }
 module.exports.getTemplates = (callback) => {
 	Template.find({}, callback)
