@@ -1,7 +1,6 @@
 .big-pic{
 	.homepage-pic{
-    /* The image used */
-   		background-image: url("/images/beer-1074962_1920.jpg");
+
 	    
 
 	    /* Set a specific height */
@@ -11,10 +10,22 @@
 	    // background-attachment: fixed;
 	    // background-position: center;
 	    // background-repeat: no-repeat;
+	    // background-size: cover;
+	}
+	#first {
+		background-image: url("/images/cheers-839865_640.jpg");
+		background-position: center;
+	    background-repeat: no-repeat;
 	    background-size: cover;
 	}
 	#second{
+		/* Set a specific height */
+ 	    height: 500px; 
 		background-image: url("/images/africa2.jpg");
+		background-attachment: fixed;
+	    background-position: center;
+	    background-repeat: no-repeat;
+	    background-size: cover;
 		.yo {
 			.heyyy{
 
