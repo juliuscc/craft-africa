@@ -9,6 +9,10 @@
 		margin-bottom: 0;
 	}
 
+	.chart-container {
+		min-height: 400px;
+	}
+
 	@import "calculation-form/inputs";
 	@import "calculation-form/economics";
 	@import "calculation-form/total-volume";

@@ -78,6 +78,36 @@ const chart = Vue.component('economics-chart', {
 	}
 })
 
+function initInteractiveSliders(app) {
+	// Add the update graph object
+	const activeSliders = document.querySelectorAll('.activeSlider')
+	
+	activeSliders.forEach((element) => {
+		element.addEventListener('change', () => {
+			updateCalcObj()
+			updateGraph(app)
+		})
+	})
+	
+	activeSliders.forEach((element) => {
+		element.addEventListener('input', () => {
+			updateCalcObj()
+			updateContainers(app)
+			updateEconomicsData(app)
+		})
+	})
+
+	app.totalVolume = calcObj.stats.volume.total
+
+	app.sliderTap = calcObj.stats.distribution.tap
+	app.sliderKeg = calcObj.stats.distribution.keg
+	app.sliderBottle = calcObj.stats.distribution.bottle
+
+	app.tapPercent = Math.round(app.sliderTap * 100)
+	app.kegPercent = Math.round(app.sliderKeg * 100)
+	app.bottlePercent = Math.round(app.sliderBottle * 100)
+}
+
 function updateCalcObj() {
 	if(shouldUpdate) {
 		shouldUpdate = false
@@ -90,9 +120,6 @@ function updateCalcObj() {
 }
 
 function updateGraph(app) {
-	// Do calculations
-	updateCalcObj()
-
 	// Update graph datapoints
 	app.chartData.points[0] = calcObj.economics.variableCosts.total // Variable
 	app.chartData.points[1] = calcObj.economics.fixedCosts.total // Rent
@@ -103,6 +130,14 @@ function updateGraph(app) {
 }
 
 function updateContainers(app) {
+	// Add addons modules
+	if(app.addon.length === 0) {
+		app.addon = calcObj.stats.containers.addon
+		app.addon.forEach((addonModule) => {
+			addonModule.choosen = false
+		})
+	}
+
 	// Push containers
 	app.modules = calcObj.stats.containers.current.all
 	app.modules.forEach((element) => {
@@ -110,45 +145,45 @@ function updateContainers(app) {
 	})
 }
 
-function getDistributionDiff(app) {
-	const res = (1.0 - app.sliderTap - app.sliderKeg - app.sliderBottle) / 2
-	return res
+function updateEconomicsData(app) {
+	app.profit = Math.round(calcObj.economics.profit)
 }
 
-function updateInteractiveValues(firstSliderName, secondSliderName, app) {
-	app.sliderTap = parseFloat(app.sliderTap)
-	app.sliderKeg = parseFloat(app.sliderKeg)
-	app.sliderBottle = parseFloat(app.sliderBottle)
+let shouldSlidersUpdate = true
+function updateSliders(firstSliderName, secondSliderName, app) {
+	if(shouldSlidersUpdate) {
+		shouldSlidersUpdate = false
 
-	const diff = (1.0 - app.sliderTap - app.sliderKeg - app.sliderBottle) / 2
+		app.sliderTap = parseFloat(app.sliderTap)
+		app.sliderKeg = parseFloat(app.sliderKeg)
+		app.sliderBottle = parseFloat(app.sliderBottle)
 
-	if(diff !== 0 && diff) {
-		app[firstSliderName] += diff
-		app[secondSliderName] += diff
-		if(app[firstSliderName] < 0 && app[firstSliderName] !== NaN) {
-			app[secondSliderName] += app[firstSliderName]
-			app[firstSliderName] = 0
-		} else if (app[secondSliderName] < 0 && app[secondSliderName] !== NaN) {
-			app[firstSliderName] += app[secondSliderName] 
-			app[secondSliderName] = 0
+		const diff = (1.0 - app.sliderTap - app.sliderKeg - app.sliderBottle) / 2
+
+		if(diff !== 0 && diff) {
+			app[firstSliderName] += diff
+			app[secondSliderName] += diff
+			if(app[firstSliderName] < 0 && app[firstSliderName] !== NaN) {
+				app[secondSliderName] += app[firstSliderName]
+				app[firstSliderName] = 0
+			} else if (app[secondSliderName] < 0 && app[secondSliderName] !== NaN) {
+				app[firstSliderName] += app[secondSliderName] 
+				app[secondSliderName] = 0
+			}
 		}
+
+		app.tapPercent = Math.round(app.sliderTap * 100)
+		app.kegPercent = Math.round(app.sliderKeg * 100)
+		app.bottlePercent = Math.round(app.sliderBottle * 100)
+
+		calcObj.stats.distribution.tap = app.sliderTap
+		calcObj.stats.distribution.keg = app.sliderKeg
+		calcObj.stats.distribution.bottle = app.sliderBottle
+
+		slider.updateAll()
+
+		setTimeout(() => { shouldSlidersUpdate = true }, 20)
 	}
-
-	slider.updateAll()
-
-}
-
-function updateStaticValues(app) {
-	app.tapPercent = Math.round(app.sliderTap * 100)
-	app.kegPercent = Math.round(app.sliderKeg * 100)
-	app.bottlePercent = Math.round(app.sliderBottle * 100)
-
-	calcObj.stats.distribution.tap = app.sliderTap
-	calcObj.stats.distribution.keg = app.sliderKeg
-	calcObj.stats.distribution.bottle = app.sliderBottle
-
-	// Add the output label
-	slider.updateAll()
 }
 
 function createVueApp() {
@@ -168,6 +203,7 @@ function createVueApp() {
 			profit: 0,
 
 			modules: [],
+			addon: [],
 
 			chartData: {
 				points: [0, 0, 0],
@@ -179,88 +215,44 @@ function createVueApp() {
 				calcObj.stats.volume.total = this.totalVolume
 			},
 			sliderTap: function() {
-				if(shouldUpdate) {
-					shouldUpdate = false
-
-					if (typeof this.sliderTap === 'string' || this.sliderTap instanceof String) {
-						this.sliderTap = parseFloat(this.sliderTap)
-					}
-					updateInteractiveValues('sliderKeg', 'sliderBottle', this)
-					updateStaticValues(this)
-
-					setTimeout(() => { shouldUpdate = true }, 20)
-				}
+				updateSliders('sliderKeg', 'sliderBottle', this)
 			},
 			sliderKeg: function() {
-				if(shouldUpdate) {
-					shouldUpdate = false
-					
-					if (typeof this.sliderKeg === 'string' || this.sliderKeg instanceof String) {
-						this.sliderKeg = parseFloat(this.sliderKeg)
-					}
-					updateInteractiveValues('sliderTap', 'sliderBottle', this)
-					updateStaticValues(this)
-
-					setTimeout(() => { shouldUpdate = true }, 20)
-				}
+				updateSliders('sliderTap', 'sliderBottle', this)
 			},
 			sliderBottle: function() {
-				if(shouldUpdate) {
-					shouldUpdate = false
-	
-					if (typeof this.sliderBottle === 'string' || this.sliderBottle instanceof String) {
-						this.sliderBottle = parseFloat(this.sliderBottle)
-					}
-					updateInteractiveValues('sliderKeg', 'sliderTap', this)
-					updateStaticValues(this)
-
-					setTimeout(() => { shouldUpdate = true }, 20)
-				}
-			}
+				updateSliders('sliderKeg', 'sliderTap', this)
+			},
+			deep: true
 		},
 		mounted: function () {
-			// Add the update graph object
-			const activeSliders = document.querySelectorAll('.activeSlider')
-			
-			activeSliders.forEach((element) => {
-				element.addEventListener('change', () => {
-					updateGraph(this)
-				})
-			})
-			
-			activeSliders.forEach((element) => {
-				element.addEventListener('input', () => {
-					updateCalcObj()
-					updateContainers(this)
-					this.profit = Math.round(calcObj.economics.profit)
-				})
-			})
-
 			// Init slider output
 			slider.init()
+			// Init the interactivity with sliders
+			initInteractiveSliders(this)
 
 			// Add extra information box interactivity
 			informationBox.init()
 
-			// Init sliders
-			this.totalVolume = calcObj.stats.volume.total
-
-			this.sliderTap = calcObj.stats.distribution.tap
-			this.sliderKeg = calcObj.stats.distribution.keg
-			this.sliderBottle = calcObj.stats.distribution.bottle
-
-			this.tapPercent = Math.round(this.sliderTap * 100)
-			this.kegPercent = Math.round(this.sliderKeg * 100)
-			this.bottlePercent = Math.round(this.sliderBottle * 100)
-
 			// Make sure the graph shows the correct stuff
+			updateCalcObj()
 			updateGraph(this)
-
 			updateContainers(this)
-			this.profit = Math.round(calcObj.economics.profit)
+			updateEconomicsData(this)
 
-			// Solving bug
-			setTimeout(slider.updateAll, 1)
+			// Updating elements that are created by vue
+			setTimeout(() => {
+				slider.updateAll()
+
+				document.querySelectorAll('.activeCheckbox').forEach((element) => {
+					element.addEventListener('click', () => {
+						updateCalcObj()
+						updateGraph(this)
+						updateContainers(this)
+						updateEconomicsData(this)
+					})
+				})
+			}, 1)
 		}
 	})
 }

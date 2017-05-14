@@ -20,7 +20,8 @@ block nav
 block content
 	div.calculation-form#calc-app
 		.container
-			economics-chart(:chart-data="chartData")
+			.chart-container
+				economics-chart(:chart-data="chartData")
 			.inputs
 				.total-volume
 					h3 Liters of Beer
@@ -53,14 +54,12 @@ block content
 					.addons
 						h3 Addons
 						table
-							tr
-								td Keg automation machine:
-								td
-									input(type="checkbox")
-							tr
-								td Bottle automation machine:
-								td
-									input(type="checkbox")
+							template(v-for="addonModule in addon")
+								tr
+									td {{ addonModule.comment }}
+									td
+										input(type="checkbox" v-model="addonModule.choosen").activeCheckbox
+
 			.economics(data-state="closed")
 				.profit-box
 					span.text Profit: 

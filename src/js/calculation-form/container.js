@@ -46,7 +46,6 @@ function getFermentingModules(stats, fermentingModule) {
 			} else {
 				container.usage = 1
 			}
-			console.log(container.name, ': ', container.usage)
 
 			requiredFermentationModules.push(container)
 		}
