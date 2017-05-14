@@ -13,6 +13,14 @@
 	@import "calculation-form/economics";
 	@import "calculation-form/total-volume";
 	@import "calculation-form/container-box";
+
+	.container > * {
+		margin-top: 1em;
+	
+		&:last-of-type {
+			margin-bottom: 1em;
+		}
+	}
 }
 
 .calculation-form-small {
