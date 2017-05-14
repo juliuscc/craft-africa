@@ -23,7 +23,7 @@
 			border: 1px solid darken($color-background-light, 15%);
 			width: 1em;
 			border-radius: 5px;
-			box-sizing: border-box;
+			// box-sizing: border-box;
 		
 			&:hover {
 				border-color: $color-text-dark;

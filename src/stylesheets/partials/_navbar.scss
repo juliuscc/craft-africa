@@ -1,11 +1,21 @@
 @import "navbar/mobile";
-	
+
+nav.nav {
+	font-size: 0.8em;
+}
+
 @media (min-width: $width-mobile-min) {
 	@import "navbar/tablet"
 }
 
 @media (min-width: $width-tablet-min) {
 	@import "navbar/desktop";
+}
+
+@media (min-width: $width-desktop-min) {
+	nav.nav {
+		font-size: 1em;
+	}
 }
 
 @import "navbar/nav-filler";
