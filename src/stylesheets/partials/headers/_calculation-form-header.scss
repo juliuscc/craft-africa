@@ -2,7 +2,8 @@
 	color: $color-white;
 	//- background: $color-accent;
 	background-image: url("/images/blueprintp-zoom.png");
-	
+	background-position: center;
+	background-size: cover;
 	.title-text {
 		text-shadow: 1px 1px 6px #000;
 		h1{
