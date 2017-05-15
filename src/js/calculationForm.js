@@ -139,9 +139,13 @@ function updateContainers(app) {
 	}
 
 	// Push containers
+	app.statusClass = 'valid'
 	app.modules = calcObj.stats.containers.current.all
-	app.modules.forEach((element) => {
-		element.usagePercent = Math.round(element.usage * 100)
+	app.modules.forEach((container) => {
+		container.usagePercent = Math.round(container.usage * 100)
+		if(container.usage > 1) {
+			app.statusClass = 'invalid'
+		}
 	})
 }
 
@@ -201,6 +205,8 @@ function createVueApp() {
 			bottlePercent: 0,
 
 			profit: 0,
+
+			statusClass: 'valid',
 
 			modules: [],
 			addon: [],

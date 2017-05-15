@@ -22,7 +22,7 @@ block content
 		.container
 			.chart-container
 				economics-chart(:chart-data="chartData")
-			.inputs
+			.inputs(:class="statusClass")
 				.total-volume
 					h3 Liters of Beer
 					.slider-wrapper
@@ -73,7 +73,7 @@ block content
 					.container-wrapper
 
 						template(v-for="module in modules")
-							.container-module
+							.container-module(:class="statusClass")
 								.name-wrapper
 									.name
 										span.text {{ module.name }}
