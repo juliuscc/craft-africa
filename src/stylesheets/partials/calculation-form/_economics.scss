@@ -30,4 +30,51 @@
 			}
 		}
 	}
+
+	.drawer-content {
+		margin: 15px 0;
+
+		th {
+			font-weight: normal;
+			padding-left: 10px;
+		}
+
+		table {
+			margin-top: 20px;
+			width: 65%;
+			
+			tr {
+				td {
+					font-weight: normal;
+				}
+
+				th {
+					text-align: left;
+				}
+
+				th:first-child {
+					width: 65%;
+				}
+
+				td:first-child {
+				}
+				
+			}
+
+			tr:first-child th {
+				font-size: 120%;
+				font-weight: bold;
+				padding-bottom: 10px;
+				padding-left: 0;
+			}
+
+			tr:last-child {
+				&>* {
+					padding-top: 10px;
+					border-top: 1px solid gray;
+					font-weight: bold;
+				}
+			}
+		}
+	}
 }

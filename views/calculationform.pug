@@ -67,11 +67,69 @@ block content
 			.economics.drawer(data-state="closed")
 				.profit-box.always-visible
 					span.text Profit: 
-					span.profit {{ profit }}
+					span.profit {{ economics.profit }}
 					a.fa.fa-caret-down.show(href="#")
 					a.fa.fa-caret-up.hide(href="#")
 				.drawer-content
-
+					hr
+					table
+						tr
+							th Fixed Costs
+						tr
+							th Rent
+							td {{ economics.fixedCosts.rent }}
+						tr
+							th Total
+							td {{ economics.fixedCosts.total }}
+					table
+						tr
+							th Variable Costs
+						tr
+							th Bottle Production Costs
+							td {{ economics.variableCosts.bottlePrice }}
+						tr
+							th Keg Production Costs
+							td {{ economics.variableCosts.kegPrice }}
+						tr
+							th Tap Production Costs
+							td {{ economics.variableCosts.tapPrice }}
+						tr
+							th Ingredients
+							td {{ economics.variableCosts.ingredients }}
+						tr
+							th Total
+							td {{ economics.variableCosts.total }}
+					table
+						tr
+							th Incomes
+						tr
+							th Sales Bottles
+							td {{ economics.incomes.bottlePrice }}
+						tr
+							th Sales Keg
+							td {{ economics.incomes.kegPrice }}
+						tr
+							th Sales Tap
+							td {{ economics.incomes.tapPrice }}
+						tr
+							th Total
+							td {{ economics.incomes.total }}
+					table
+						tr
+							th Summary
+						tr
+							th Fixed Costs
+							td {{ economics.fixedCosts.total }}
+						tr
+							th Variable Costs
+							td {{ economics.variableCosts.total }}
+						tr
+							th Incomes
+							td {{ economics.incomes.total }}
+						tr
+							th Total
+							td {{ economics.profit }}
+					
 			.container-box
 				.drawer(data-state="closed")
 					.title.always-visible
