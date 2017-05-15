@@ -55,7 +55,12 @@ block content
 	.info-box.homepage.craft-own-beer
 		.headline
 			h2#input-window What customization fits your business?
-
+			p the calculation form here!!
+			#calc-slider
+				.slider-wrapper
+						.slider-row
+							input.slider.activeSlider#totalVolume(type="range" name="totalVolume" min="0" max="31000" data-thumbWidth="20" v-model="totalVolume")
+							span $ {{ profit }} 
 	
 	.big-pic
 		.homepage-pic#second
@@ -73,4 +78,6 @@ block content
 						h2 About us
 
 block scripts
-	script(src="/js/explosionView.js")
+	// script(src="/js/explosionView.js")
+	script(src="https://vuejs.org/js/vue.js")
+	script(src="/js/calculationSlider.js")

@@ -36,7 +36,7 @@ block content
 				.options
 					.distribution
 						.title
-							h3 Finetune distribution (tap, keg, bottle)
+							h3 Finetune distribution
 							.fa.fa-question-circle-o.tooltip
 								.tooltip-text
 									| These sliders fine tune how much of your beer goes to tap, keg or bottles
@@ -150,6 +150,7 @@ block content
 								table
 									tr
 										th {{ module.name }}
+										td  
 									tr
 										th Container type
 										td {{ module.type }}
@@ -165,49 +166,15 @@ block content
 									tr
 										th Price/month
 										td {{ module.price }}
-				.containers
-					.container-wrapper
-						template(v-for="module in modules")
-							.container-module(:class="statusClass")
-								.name-wrapper
-									.name
-										span.text {{ module.name }}
-										svg.circle(:data-fill="module.usagePercent")
-											circle.outline(cx="50%" cy="50%" r="40%" stroke-width="1px" fill="none")
-											circle.stroke(cx="50%" cy="50%" r="40%" stroke-width="7px" fill="none")
-
-				.advanced-tab(data-state="closed")
-					.toggle
-						a.show(href="#")
-							span.fa.fa-angle-double-down
-							| Show additional information
-							span.fa.fa-angle-double-down
-						a.hide(href="#")
-							span.fa.fa-angle-double-up
-							| Hide additional information
-							span.fa.fa-angle-double-up
-					.extra
-						.module
-							h3 A1:
-							table
-								tr
-									td Container type:
-									td Brewing
-								tr
-									td Brewing capacity:
-									td 500l / batch
-								tr
-									td Fermenting capacity:
-									td 4000l
-						.module
-							h3 A2:
-							table
-								tr
-									td Container type:
-									td Fermenting
-								tr
-									td Fermenting capacity:
-									td 8000l
+				.container-wrapper
+					template(v-for="module in modules")
+						.container-module(:class="statusClass")
+							.name-wrapper
+								.name
+									span.text {{ module.name }}
+									svg.circle(:data-fill="module.usagePercent")
+										circle.outline(cx="50%" cy="50%" r="40%" stroke-width="1px" fill="none")
+										circle.stroke(cx="50%" cy="50%" r="40%" stroke-width="7px" fill="none")
 
 block navScript
 	script(src="/js/navbarsmall.js")

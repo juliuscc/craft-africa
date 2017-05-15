@@ -117,7 +117,6 @@ function updateCalcObj() {
 		economics.getEconomics(calcObj.stats, calcObj.economics)
 
 		setTimeout(() => { shouldUpdate = true }, 40)
-		console.log(calcObj)
 	}
 
 }
