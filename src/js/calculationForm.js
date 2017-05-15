@@ -283,6 +283,7 @@ function createVueApp() {
 			updateGraph(this)
 			updateContainers(this)
 			updateEconomicsData(this)
+			updateEconomicsDataAdvanced(this)
 
 			// Updating elements that are created by vue
 			setTimeout(() => {
