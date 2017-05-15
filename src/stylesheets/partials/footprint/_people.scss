@@ -1,4 +1,4 @@
-.people.footprint {
+.people {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -10,7 +10,6 @@
 		display: inline-block;
 	}
 
-	.text,
 	.bottle {
 		width: 100%;
 	}
@@ -28,10 +27,6 @@
 	@media (min-width: $width-tablet-min) {
 		& {
 			flex-direction: row;
-		}
-		
-		.text {
-			width: 70%;
 		}
 
 		.bottle {

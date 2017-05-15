@@ -61,7 +61,7 @@
 		margin: 0 auto;
 		position: relative;
 		width: 100%;
-		padding: 1em 2.2em;
+		padding: 2em 2.2em;
 		box-sizing: border-box;
 
 		.container-module {
@@ -70,6 +70,7 @@
 			position: relative;
 			background-color: none;
 			border: 1px solid $color-primary;
+			background: rgba($color-primary, 0.07);
 			box-sizing: border-box;
 			height: 150px;
 			width: 100%;
@@ -145,6 +146,7 @@
 
 		.container-module.invalid {
 			border: 1px solid $color-warning;
+			background: rgba($color-warning, 0.07);
 
 			.name-wrapper {
 				.name {

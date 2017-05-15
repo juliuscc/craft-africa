@@ -3,12 +3,10 @@
 	h2{
 		color: $color-title-dark;
 	}
-
-	.text {
-		
-	}
-
-	.image {
-		
+	
+	@media(min-width: $width-tablet-min) {
+		.text {
+			margin-right: 8%
+		}
 	}
 }

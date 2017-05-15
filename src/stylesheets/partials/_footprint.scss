@@ -1,3 +1,27 @@
-@import "footprint/energy";
-@import "footprint/people";
-@import "footprint/water";
+.footprint {
+	.info-box {
+		.text {
+			text-align: center;
+
+			h2 {
+				margin-bottom: 10px;
+			}
+
+			p {
+				margin-bottom: 24px;
+			}
+
+		}
+		
+		@media (min-width: $width-tablet-min) {
+			.text {
+				width: 70%;
+				padding: 0 5%;
+			}
+		}
+	}
+
+	@import "footprint/energy";
+	@import "footprint/people";
+	@import "footprint/water";	
+}
