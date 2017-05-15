@@ -26,7 +26,9 @@ block content
 				.total-volume
 					.title
 						h3 Liters of Beer
-						a.fa.fa-question-circle-o
+						.fa.fa-question-circle-o.tooltip
+							.tooltip-text
+								| This slider controls your monthly output of beer.
 					.slider-wrapper
 						.slider-row
 							input.slider.activeSlider#totalVolume(type="range" name="totalVolume" min=`${minTotalVolume}` max=`${maxTotalVolume}` data-thumbWidth="20" v-model="totalVolume")
@@ -80,7 +82,6 @@ block content
 						h3 heeeej
 				.containers
 					.container-wrapper
-
 						template(v-for="module in modules")
 							.container-module(:class="statusClass")
 								.name-wrapper
