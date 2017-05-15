@@ -30,24 +30,4 @@
 			}
 		}
 	}
-
-	&[data-state="open"] {
-		.profit-box a.fa.show {
-			display: none;
-		}
-
-		.profit-box a.fa.hide {
-			display: block;
-		}
-	}
-
-	&[data-state="closed"] {
-		.profit-box a.fa.show {
-			display: block;
-		}
-
-		.profit-box a.fa.hide {
-			display: none;
-		}
-	}
 }

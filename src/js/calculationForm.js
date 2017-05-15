@@ -8,7 +8,7 @@ const economics = require('./calculation-form/economics')
 const formInteraction = require('./calculation-form/formInteraction')
 const ajax = require('./ajax')
 const slider = require('./calculation-form/slider')
-const informationBox = require('./calculation-form/informationBox')
+const drawer = require('./calculation-form/drawer')
 
 const calcObj = { stats: { distribution: { tap: 0, bottle: 0.01, keg: 0 }, distributionLock: ['tap', 'bottle'] }, economics: {} }
 
@@ -238,7 +238,7 @@ function createVueApp() {
 			initInteractiveSliders(this)
 
 			// Add extra information box interactivity
-			informationBox.init()
+			drawer.init()
 
 			// Make sure the graph shows the correct stuff
 			updateCalcObj()

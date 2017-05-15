@@ -60,15 +60,22 @@ block content
 									td
 										input(type="checkbox" v-model="addonModule.choosen").activeCheckbox
 
-			.economics(data-state="closed")
-				.profit-box
+			.economics.drawer(data-state="closed")
+				.profit-box.always-visible
 					span.text Profit: 
 					span.profit {{ profit }}
 					a.fa.fa-caret-down.show(href="#")
 					a.fa.fa-caret-up.hide(href="#")
+				.drawer-content
+
 			.container-box
-				.title
-					h3 Container configuration
+				.drawer(data-state="closed")
+					.title.always-visible
+						span Container configuration
+						a.fa.fa-caret-down.show(href="#")
+						a.fa.fa-caret-up.hide(href="#")
+					.drawer-content
+						h3 heeeej
 				.containers
 					.container-wrapper
 
