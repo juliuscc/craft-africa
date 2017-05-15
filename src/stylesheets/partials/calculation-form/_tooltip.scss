@@ -1,0 +1,28 @@
+.tooltip {
+	position: relative;
+
+	.tooltip-text {
+		font-size: 0.7em;
+		line-height: 1em;
+		font-family: "Liberation-Sans" , sans-serif;
+		opacity: 0;
+		transition: all 0.2s;
+		white-space: nowrap;
+		// width: 120px;
+		color: $color-text-light;
+		background-color: rgba($color-black, 0.8);
+		text-align: center;
+		border-radius: 6px;
+		padding: 0.5em;
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		left: 2em;
+	}
+
+	&:hover {
+		.tooltip-text {
+			opacity: 1;
+		}
+	}
+}
