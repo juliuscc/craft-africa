@@ -26,23 +26,27 @@ const defaultValuesSchema = mongoose.Schema({
 		type: Number,
 		required: true
 	},
+	productionYield: {
+		type: Number,
+		required: true
+	},
 	startValueForProduction: {
 		type: Number,
 		required: true
 	}
 })
 
-function is100(values) {
-	let percent = 0.0
-	Object.keys(values).forEach((key) => {
-		percent += Number.parseFloat(values[key])
-	})
-	let isCorrect = false
-	if(Math.round(percent) === 100) {
-		isCorrect = true
-	}
-	return isCorrect
-}
+// function is100(values) {
+// 	let percent = 0.0
+// 	Object.keys(values).forEach((key) => {
+// 		percent += Number.parseFloat(values[key])
+// 	})
+// 	let isCorrect = false
+// 	if(Math.round(percent) === 100) {
+// 		isCorrect = true
+// 	}
+// 	return isCorrect
+// }
 
 function isInputCorrect(updatedProperties) {
 	// ingredientCost
@@ -57,6 +61,8 @@ function isInputCorrect(updatedProperties) {
 	const sp = JSON.parse(updatedProperties.sellingPrice)
 	// fermentingTime
 	const ft = updatedProperties.fermentingTime
+	// Production yield
+	const py = updatedProperties.productionYield
 	// startValueForProduction
 	const svfp = updatedProperties.startValueForProduction
 	let validated = false
@@ -66,13 +72,10 @@ function isInputCorrect(updatedProperties) {
 		!moduleValidator.isEmpty(dc) && moduleValidator.isNumbers(dc) &&
 		!moduleValidator.isEmpty(sp) && moduleValidator.isNumbers(sp) &&
 		!moduleValidator.isEmpty({ ft }) && moduleValidator.isNumbers({ ft }) &&
+		!moduleValidator.isEmpty({ py }) && moduleValidator.isNumbers({ py }) &&
 		!moduleValidator.isEmpty({ svfp }) && moduleValidator.isNumbers({ svfp })
 		) {
-		console.log('mera')
-		if(is100(dd)) {
-			console.log('rasera')
-			validated = true
-		}
+		validated = true
 	}
 	return validated
 }
@@ -88,37 +91,10 @@ module.exports.createDefaultValuesCollection = (newDefaultValuesCollection, call
 
 module.exports.updateDefaultValuesCollection = (updatedProperties, callback) => {
 	if(isInputCorrect(updatedProperties)) {
-		console.log('vvvaaaallliii')
 		DefaultValuesCollection.update({}, { $set: updatedProperties }, { upsert: true }, callback)
 	} else {
-		// TODO
-		// Send message to page somehow
-		//
-		//
-		//
-		callback()
+		callback('invalid input')
 	}
-}
-
-module.exports.getIngredientsCollection = (callback) => {
-	const query = {}
-	DefaultValuesCollection.findOne(query, callback)
-}
-module.exports.getDistributionCollection = (callback) => {
-	const query = {}
-	DefaultValuesCollection.findOne(query, callback)
-}
-module.exports.getThresholdCollection = (callback) => {
-	const query = {}
-	DefaultValuesCollection.findOne(query, callback)
-}
-module.exports.getCostCollection = (callback) => {
-	const query = {}
-	DefaultValuesCollection.findOne(query, callback)
-}
-module.exports.getStartValueForProductionCollection = (callback) => {
-	const query = {}
-	DefaultValuesCollection.findOne(query, callback)
 }
 module.exports.getAllDefaultValuesCollections = (callback) => {
 	const query = {}
@@ -133,6 +109,7 @@ module.exports.getAllDefaultValuesCollections = (callback) => {
 				productionCost: JSON.parse(values.productionCost),
 				sellingPrice: JSON.parse(values.sellingPrice),
 				fermentingTime: values.fermentingTime,
+				productionYield: values.productionYield,
 				startValueForProduction: values.startValueForProduction
 			}
 			callback(err, updatedValues)

@@ -67,6 +67,7 @@
     "scrollmagic": "^2.0.5",
     "validator": "^7.0.0",
     "velocity-animate": "^1.5.0",
-    "vue": "^2.3.0"
+    "vue": "^2.3.0",
+    "vue-chartjs": "^2.6.2"
   }
 }

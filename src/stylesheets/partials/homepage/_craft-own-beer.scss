@@ -1,0 +1,50 @@
+.homepage.craft-own-beer {
+		//box-shadow: inset 0 0 5px 2px #282a2d; /* SHADOW - mark the inset */
+		flex-direction: column;
+		display: flex;
+		justify-content: center;
+		//text-align: center;
+		padding-left: 25%;
+		padding-right: 25%;
+		padding-top: 7em;
+		padding-bottom: 7em;
+		
+		//Does not work on Edge and FF
+		// padding-top: 10%;
+		// padding-bottom: 10%;
+		
+
+		h1 {
+		//	width: 90%;
+			text-align: center;
+			margin-bottom: 0;
+		}
+
+		h1#input-window {
+			 border-bottom: 1px $color-dark-grey solid;
+		}
+
+		.icon-container{
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding-top: 70px;
+			margin: 0 auto;
+			@media (min-width: $width-tablet-min) {
+				flex-direction: row;
+			}
+			.icon{
+
+				padding: 20px 0px;
+				@media (min-width: $width-tablet-min) {
+					padding: 0px 70px;
+				}
+				img{
+					filter: grayscale(100);
+
+					width: 150px;
+				}
+			}
+		}
+} 

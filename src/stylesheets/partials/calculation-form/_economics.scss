@@ -1,0 +1,53 @@
+.economics {
+	border: 1px solid darken($color-background-light, 15%);
+	border-radius: 10px;
+	padding: 1em 2.2em;
+	box-sizing: border-box;
+	font-weight: bold;
+
+	.profit-box {
+		width: 100%;
+		font-size: 2em;
+		
+		.profit:after {
+			content: "$";
+		}
+
+		a.fa {
+			line-height: 1em;
+			float: right;
+			text-align: center;
+			text-decoration: none;
+			color: darken($color-background-light, 15%);
+			border: 1px solid darken($color-background-light, 15%);
+			width: 1em;
+			border-radius: 5px;
+			// box-sizing: border-box;
+		
+			&:hover {
+				border-color: $color-text-dark;
+				color: $color-text-dark;
+			}
+		}
+	}
+
+	&[data-state="open"] {
+		.profit-box a.fa.show {
+			display: none;
+		}
+
+		.profit-box a.fa.hide {
+			display: block;
+		}
+	}
+
+	&[data-state="closed"] {
+		.profit-box a.fa.show {
+			display: block;
+		}
+
+		.profit-box a.fa.hide {
+			display: none;
+		}
+	}
+}

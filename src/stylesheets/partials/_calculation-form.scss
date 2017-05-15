@@ -1,6 +1,31 @@
 .calculation-form {
 	background-color: $color-background-light;
 	color: $color-text-dark;
+	font-family: "Liberation-Sans" , sans-serif;
+	padding-top: 30px;
+
+	h3 {
+		font-size: 1.3em;
+		margin-bottom: 0;
+	}
+
+	.chart-container {
+		min-height: 400px;
+		margin-bottom: 2.5em;
+	}
+
+	@import "calculation-form/inputs";
+	@import "calculation-form/economics";
+	@import "calculation-form/total-volume";
+	@import "calculation-form/container-box";
+
+	.container > * {
+		margin-top: 1em;
+	
+		&:last-of-type {
+			margin-bottom: 1em;
+		}
+	}
 }
 
 .calculation-form-small {

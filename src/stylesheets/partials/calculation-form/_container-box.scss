@@ -1,0 +1,170 @@
+@function tau() {
+	@return 3.14159265359 * 2;
+}
+
+.container-box {
+	border: 1px solid darken($color-background-light, 15%);
+	border-radius: 10px;
+	box-sizing: border-box;
+
+		.title {
+			width: 100%;
+			padding: 1em 2.2em;
+			border-bottom: 1px solid darken($color-background-light, 15%);
+			box-sizing: border-box;
+
+			h3 {
+				font-size: 1.3em;
+				margin-bottom: 0;
+			}
+		}
+
+		.containers {
+			width: 100%;
+			border-bottom: 1px solid darken($color-background-light, 15%);
+			border-top: none;
+			box-sizing: border-box;
+
+			.container-wrapper {
+				margin: 0 auto;
+				position: relative;
+				width: 100%;
+				padding: 1em 2.2em;
+				box-sizing: border-box;
+
+				.container-module {
+					transition: all 0.6s;
+					display: inline-block;
+					position: relative;
+					background-color: none;
+					border: 1px solid $color-primary;
+					box-sizing: border-box;
+					height: 150px;
+					width: 100%;
+					margin-right: 0;
+					margin-bottom: 0.5em;
+
+					@media (min-width: $width-tablet-min) {
+						height: 200px;
+						width: 16%;
+						margin-right: 5%;
+						margin-bottom: 0;
+					}
+
+					&:last-child {
+						margin-right: 0;
+						margin-bottom: 0;
+					}
+
+					.name-wrapper {
+						transition: all 1s 0.6s;
+						width: 100%;
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%, -50%);
+						
+						.name {
+							position: relative;
+							margin: 0 auto;
+							width: 75px;
+							height: 75px;
+							color: $color-primary;
+
+							.text {
+								position: absolute;
+								top: 50%;
+								left: 50%;
+								transform: translate(-50%, -50%);
+								text-align: center;
+								font-size: 1.4em;
+								font-weight: bold;
+							}
+
+							.circle {
+								position: absolute;
+								top: 50%;
+								left: 50%;
+								height: 100%;
+								width: 100%;
+								transform: translate(-50%, -50%) rotate(-90deg);
+
+								.stroke {
+									stroke: $color-primary;
+									stroke-dasharray: 40% * tau();
+									stroke-dashoffset: 0;
+								}
+
+								@for $i from 0 through 100 {
+									&[data-fill="#{$i}"] {
+										.stroke {
+											stroke-dashoffset: (40% * tau()) * (1 - ($i / 100));
+										}
+									}
+								}
+
+								.outline {
+									stroke: $color-primary;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.advanced-tab {
+			width: 100%;
+			border-top: none;
+			padding: 5px 10px;
+			box-sizing: border-box;
+			position: relative;
+			
+			.toggle {
+				text-align: center;
+
+				a {
+					// color: $color-text-dark;
+					// text-decoration: none;
+				}
+			}
+
+			.extra {
+				overflow: hidden;
+			}
+
+			&[data-state="open"] {
+				.toggle {
+					a.show {
+						display: none;
+					}
+
+					a.hide {
+						display: block;
+					}
+				}
+
+				.extra {
+					transition: all 1s;
+					max-height: 1000px;
+				}
+			}
+
+			&[data-state="closed"] {
+				.toggle {
+					a.show {
+						display: block;
+					}
+
+					a.hide {
+						display: none;
+					}
+				}
+
+				.extra {
+					transition: all 0.5s;
+					max-height: 0;
+				}
+			}
+		}
+	}

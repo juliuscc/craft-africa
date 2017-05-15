@@ -1,23 +1,32 @@
 extends layout.pug
 
 block title
-	| - Product
+	|Product - 
 
-block navlink-product
-	a(href="/product").active Our Product
+block description
+	meta(name="description" content="Craft Africa offers you an unique modular solution that scales after your needs. We provide you with all material, ingredients and equipment you need to create your own beer brand. The solution is simple, contact us for more info.")
 
 block header
 	header.header.product
-		.title-text
-			h1 Our brewery grows with you
-			p A scalable, turnkey solution. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit doloribus laudantium sit. accusantium vitae consequatur reiciendis.
-		a.down-btn.fa.fa-angle-double-down(href="#first")
+		.product-header
+			.background-img
+				
+			.title-text
+				h1 Our brewery grows with you
+				p 
+					| A high quality modular turnkey brewery concept for seamless scaling of your business. Focus your 
+					span.emphasis creativity 
+					| on building your brand while we are taking care of the tools you need to succeed. Your success is our business concept.
+			a.down-btn.fa.fa-angle-double-down(href="#first")
 
 block content
 	.info-box.product.scalability#first
 		.text
-			h1 Seamless scalability
-			p Not sure how much you will produce a year from now? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis omnis vitae repellat doloribus incidunt, iste maiores obcaecati esse fugiat atque dolores, ea nulla dolor voluptatibus odit error quia! Placeat, veniam?
+			h2 Seamless scalability
+			p 
+				|Choose your target start up production volume and we provide you with the right sized production plant. The concept with modular extensions to the brewery make your scale up seamless without need of continuous investments. Focus your 
+				span.emphasis energy 
+				| on crafting your brand while we take care of the scale up investments.
 		.image
 			img(src="/images/scale.png", alt="Scalable solutions")
 
@@ -25,8 +34,8 @@ block content
 		.image
 			img(src="/images/turnkey.png", alt="Container transported to you")
 		.text
-			h1 Turn-key solution
-			p We transport the container to you and take full responsibility for the shipping. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa cupiditate velit ex, doloremque id perspiciatis officia ad voluptatibus optio explicabo obcaecati veniam, dolores quod. Accusamus debitis esse placeat delectus similique.
+			h2 Turn-key solution
+			p Start up your business at once the system arrives and are connected to needed utilities. All necessary state of the art technology is included in the concept providing you with the right tools to create the best possible beer experience. Focus your ambition on producing the best beer while we are engineering your future technology solutions.
 
 	.info-box.product.technical-spec
 		.icons-img-container
@@ -35,37 +44,37 @@ block content
 					.foo
 						i.fa.fa-ship(aria-hidden="true")
 					.bar
-						h2 Solar panels
-						p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut fermentum eu erat non convallis. Cras ut sem bibendum, bibendum tortor ut, tempor nisl. Nullam sodales, nibh eu consequat pretium, urna nulla sodales velit, in lacinia arcu est nec sapien. Mauris non ligula faucibus.
+						h3 Solar panels
+						p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut fermentum eu erat non convallis. 	
 				.icon.placeholder
 					.foo
 						i.fa.fa-sun-o(aria-hidden="true")
 					.bar
-						h2 Solar panels
+						h3 Solar panels
 						p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut fermentum eu erat non convallis. Cras ut sem bibendum, bibendum tortor ut, tempor nisl.
 				.icon.placeholder
 					.foo
 						i.fa.fa-battery-full(aria-hidden="true")
 					.bar
-						h2 Solar panels
+						h3 Solar panels
+						p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut fermentum eu erat non convallis. Cras ut sem bibendum, bibendum tortor ut, tempor nisl.
+				.icon.placeholder
+					.foo
+						i.fa.fa-ship(aria-hidden="true")
+					.bar
+						h3 Solar panels
 						p We have solar panels.
 				.icon.placeholder
 					.foo
 						i.fa.fa-ship(aria-hidden="true")
 					.bar
-						h2 Solar panels
+						h3 Solar panels
 						p We have solar panels.
 				.icon.placeholder
 					.foo
 						i.fa.fa-ship(aria-hidden="true")
 					.bar
-						h2 Solar panels
-						p We have solar panels.
-				.icon.placeholder
-					.foo
-						i.fa.fa-ship(aria-hidden="true")
-					.bar
-						h2 Solar panels
+						h3 Solar panels
 						p We have solar panels.
 			.img-container
 				img(src="/images/container-for-rent.png")
@@ -88,7 +97,7 @@ block content
 
 	.info-box.product.support
 		.text
-			h1 Training and Support
-			p How do you get started? Not sure how to brew? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates dolore, explicabo totam rerum enim, quisquam natus? Dolorum tempora repudiandae, asperiores earum sunt alias quod voluptates aspernatur animi. Qui, facilis, ipsam!
+			h2 Training and Support
+			p Connecting to world class craft brewers and sourcing of raw materials we can offer all necessary support you need to create a sustainable successful brand. Before the system arrives we can prepare for a fast start up of your activity.
 		.image
 			img(src="/images/happy-trained-brewer.png", alt="Brewer in training")

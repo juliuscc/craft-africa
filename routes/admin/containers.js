@@ -21,10 +21,10 @@ router.post('/', (req, res) => {
 		if(!req.body.name) {
 			res.redirect('/admin/containers')
 		} else {
-			console.log(req.body)
 			if(req.body.name.constructor !== Array) {
 				req.body.id = [req.body.id]
 				req.body.name = [req.body.name]
+				req.body.comment = [req.body.comment]
 				req.body.type = [req.body.type]
 				req.body.series = [req.body.series]
 				req.body.price = [req.body.price]
@@ -35,12 +35,13 @@ router.post('/', (req, res) => {
 				req.body.electricityProduction = [req.body.electricityProduction]
 				req.body.status = [req.body.status]
 			}
-			const { id, name, type, series, price,
+			const { id, name, comment, type, series, price,
 			fermentingCapacity, storageCapacity, brewingCapacity,
 			waterProduction, electricityProduction, status } = req.body
 			const containers = name.map((_, index) => ({
 				id: id[index],
 				name: name[index],
+				comment: comment[index],
 				type: type[index],
 				series: series[index],
 				price: price[index],
@@ -66,6 +67,7 @@ router.post('/', (req, res) => {
 			editedContainers.forEach((element) => {
 				containersModule.updateContainerById(element.id, {
 					name: element.name,
+					comment: element.comment,
 					type: element.type,
 					series: element.series,
 					price: element.price,
@@ -95,6 +97,7 @@ router.post('/new', (req, res) => {
 			if(req.body.name.constructor !== Array) {
 				req.body.id = [req.body.id]
 				req.body.name = [req.body.name]
+				req.body.comment = [req.body.comment]
 				req.body.type = [req.body.type]
 				req.body.series = [req.body.series]
 				req.body.price = [req.body.price]
@@ -105,12 +108,13 @@ router.post('/new', (req, res) => {
 				req.body.electricityProduction = [req.body.electricityProduction]
 				req.body.status = [req.body.status]
 			}
-			const { id, name, type, series, price,
+			const { id, name, comment, type, series, price,
 			fermentingCapacity, storageCapacity, brewingCapacity,
 			waterProduction, electricityProduction, status } = req.body
 			const containers = name.map((_, index) => ({
 				id: id[index],
 				name: name[index],
+				comment: comment[index],
 				type: type[index],
 				series: series[index],
 				price: price[index],
@@ -124,6 +128,7 @@ router.post('/new', (req, res) => {
 			containers.forEach((element) => {
 				containersModule.createContainer({
 					name: element.name,
+					comment: element.comment,
 					type: element.type,
 					series: element.series,
 					price: element.price,
@@ -144,73 +149,4 @@ router.post('/new', (req, res) => {
 	})
 })
 
-
-/*
-router.post('/new', (req, res) => {
-	if(!req.body.name) {
-		res.redirect('/admin/containers')
-	} else {
-		// Makes values to arrays
-		if(req.body.name.constructor !== Array) {
-			req.body.id = [req.body.id]
-			req.body.name = [req.body.name]
-			req.body.type = [req.body.type]
-			req.body.price = [req.body.price]
-			req.body.size = [req.body.size]
-			req.body.status = [req.body.status]
-		}
-
-		const { id, name, type, price, size, status } = req.body
-		const containers = name.map((_, index) => ({
-			id: id[index],
-			name: name[index],
-			type: type[index],
-			price: price[index],
-			size: size[index],
-			status: status[index]
-		}))
-
-		const editedContainers = containers.filter(container => container.status === 'edited')
-		const newContainers = containers.filter(container => container.status === 'new')
-		const removedContainers = containers.filter(container => container.status === 'removed')
-
-		// Edited
-		editedContainers.forEach((element) => {
-			containersModule.updateContainerById(element.id, {
-				name: element.name,
-				type: element.type,
-				price: element.price,
-				size: element.size
-			}, (err) => {
-				if(err) {
-					throw err
-				}
-			})
-		})
-		// new
-		newContainers.forEach((element) => {
-			containersModule.createContainer({
-				name: element.name,
-				type: element.type,
-				price: element.price,
-				size: element.size
-			}, (err) => {
-				if(err) {
-					throw err
-				}
-			})
-		})
-		// removed
-		removedContainers.forEach((element) => {
-			containersModule.removeContainer(element.id, (err) => {
-				if(err) {
-					throw err
-				}
-			})
-		})
-		res.redirect('/admin/containers')
-	}
-})
-
-*/
 module.exports = router
