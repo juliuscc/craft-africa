@@ -86,6 +86,7 @@ function initInteractiveSliders(app) {
 		element.addEventListener('change', () => {
 			updateCalcObj()
 			updateGraph(app)
+			updateEconomicsDataAdvanced(app)
 		})
 	})
 	
@@ -116,7 +117,9 @@ function updateCalcObj() {
 		economics.getEconomics(calcObj.stats, calcObj.economics)
 
 		setTimeout(() => { shouldUpdate = true }, 40)
+		console.log(calcObj)
 	}
+
 }
 
 function updateGraph(app) {
@@ -150,7 +153,23 @@ function updateContainers(app) {
 }
 
 function updateEconomicsData(app) {
-	app.profit = Math.round(calcObj.economics.profit)
+	app.economics.profit = Math.round(calcObj.economics.profit)
+}
+
+function updateEconomicsDataAdvanced(app) {
+	app.economics.fixedCosts.rent = Math.round(calcObj.economics.fixedCosts.rent)
+	app.economics.fixedCosts.total = Math.round(calcObj.economics.fixedCosts.total)
+
+	app.economics.variableCosts.bottlePrice = Math.round(calcObj.economics.variableCosts.bottlePrice)
+	app.economics.variableCosts.kegPrice = Math.round(calcObj.economics.variableCosts.kegPrice)
+	app.economics.variableCosts.tapPrice = Math.round(calcObj.economics.variableCosts.tapPrice)
+	app.economics.variableCosts.ingredients = Math.round(calcObj.economics.variableCosts.ingredients)
+	app.economics.variableCosts.total = Math.round(calcObj.economics.variableCosts.total)
+
+	app.economics.incomes.bottlePrice = Math.round(calcObj.economics.incomes.bottlePrice)
+	app.economics.incomes.kegPrice = Math.round(calcObj.economics.incomes.kegPrice)
+	app.economics.incomes.tapPrice = Math.round(calcObj.economics.incomes.tapPrice)
+	app.economics.incomes.total = Math.round(calcObj.economics.incomes.total)
 }
 
 let shouldSlidersUpdate = true
@@ -204,7 +223,26 @@ function createVueApp() {
 			kegPercent: 0,
 			bottlePercent: 0,
 
-			profit: 0,
+			economics: {
+				profit: 0,
+				fixedCosts: {
+					rent: 0,
+					total: 0
+				},
+				variableCosts: {
+					bottlePrice: 0,
+					kegPrice: 0,
+					tapPrice: 0,
+					ingredients: 0,
+					total: 0
+				},
+				incomes: {
+					bottlePrice: 0,
+					kegPrice: 0,
+					tapPrice: 0,
+					total: 0
+				}
+			},
 
 			statusClass: 'valid',
 
