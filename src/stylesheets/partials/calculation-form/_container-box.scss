@@ -131,21 +131,21 @@
 						}
 					}
 				}
+			}
 
-				.container-module.invalid {
-					border: 1px solid $color-warning;
+			.container-module.invalid {
+				border: 1px solid $color-warning;
 
-					.name-wrapper {
-						.name {
-							color: $color-warning;
+				.name-wrapper {
+					.name {
+						color: $color-warning;
 
-							.circle {
-								.stroke {
-									stroke: $color-warning;
-								}
-								.outline {
-									stroke: $color-warning;
-								}
+						.circle {
+							.stroke {
+								stroke: $color-warning;
+							}
+							.outline {
+								stroke: $color-warning;
 							}
 						}
 					}

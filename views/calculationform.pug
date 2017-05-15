@@ -154,8 +154,8 @@ block content
 										th Container type
 										td {{ module.type }}
 									tr(v-if="module.type === 'production'")
-										th Max production capacity
-										td {{ module.productionCapacity }}
+										th Max brewing capacity
+										td {{ module.brewingCapacity }}
 									tr(v-else-if="module.type === 'fermenting'")
 										th Max fermentation capacity
 										td {{ module.fermentingCapacity }}
