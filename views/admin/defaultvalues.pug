@@ -127,14 +127,23 @@ block content
 			.card
 				.card-title
 					h4
-						|Start Value for Production ( liters of beer )
+						|Start Values for Production ( liters of beer )
 						span(data-position="bottom" data-delay="0" data-tooltip="Start value").material-icons.tooltipped info_outline
 
 				.card-content
 					.defaultStartValueForProduction
 						.input-field.col.s3
 							input.validate(type="number" step="any" required name="startValueForProduction" value=startValueForProduction)
-							label(for='name') $
+							label(for='name') Start value for slider
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="minValueForProduction" value=minValueForProduction)
+							label(for='name') Minimal value for slider
+				
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="maxValueForProduction" value=maxValueForProduction)
+							label(for='name') Maximum value for slider
+					
+					
 							
 			input.validate(type="hidden" name="status" value="unchanged")
 			br

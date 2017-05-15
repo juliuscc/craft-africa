@@ -33,6 +33,14 @@ const defaultValuesSchema = mongoose.Schema({
 	startValueForProduction: {
 		type: Number,
 		required: true
+	},
+	minValueForProduction: {
+		type: Number,
+		required: true
+	},
+	maxValueForProduction: {
+		type: Number,
+		required: true
 	}
 })
 
@@ -65,6 +73,9 @@ function isInputCorrect(updatedProperties) {
 	const py = updatedProperties.productionYield
 	// startValueForProduction
 	const svfp = updatedProperties.startValueForProduction
+	const mivfp = updatedProperties.minValueForProduction
+	const mavfp = updatedProperties.maxValueForProduction
+	
 	let validated = false
 	if(!moduleValidator.isEmpty(ic) && moduleValidator.isNumbers(ic) &&
 		!moduleValidator.isEmpty(dd) && moduleValidator.isNumbers(dd) &&
@@ -73,7 +84,9 @@ function isInputCorrect(updatedProperties) {
 		!moduleValidator.isEmpty(sp) && moduleValidator.isNumbers(sp) &&
 		!moduleValidator.isEmpty({ ft }) && moduleValidator.isNumbers({ ft }) &&
 		!moduleValidator.isEmpty({ py }) && moduleValidator.isNumbers({ py }) &&
-		!moduleValidator.isEmpty({ svfp }) && moduleValidator.isNumbers({ svfp })
+		!moduleValidator.isEmpty({ svfp }) && moduleValidator.isNumbers({ svfp }) &&
+		!moduleValidator.isEmpty({ mivfp }) && moduleValidator.isNumbers({ mivfp }) &&
+		!moduleValidator.isEmpty({ mavfp }) && moduleValidator.isNumbers({ mavfp }) 
 		) {
 		validated = true
 	}
@@ -110,7 +123,10 @@ module.exports.getAllDefaultValuesCollections = (callback) => {
 				sellingPrice: JSON.parse(values.sellingPrice),
 				fermentingTime: values.fermentingTime,
 				productionYield: values.productionYield,
-				startValueForProduction: values.startValueForProduction
+				startValueForProduction: values.startValueForProduction,
+				minValueForProduction: values.minValueForProduction,
+				maxValueForProduction: values.maxValueForProduction
+					
 			}
 			callback(err, updatedValues)
 		}
