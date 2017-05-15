@@ -65,13 +65,30 @@ function getFermentingModules(stats, fermentingModule) {
 function getAddonsModules(stats) {
 	const addonModules = stats.containers.addon
 
-	const requiredAddonsModules = []
+	const selectedAddons = []
 	addonModules.forEach((container) => {
 		if(container.choosen) {
-			requiredAddonsModules.push(container)
+			selectedAddons.push(container)
+		}
+
+		const vol = parseInt(stats.volume.total, 10)
+		const keg = parseInt(stats.containers.threshold.kegStorage, 10)
+		const bot = parseInt(stats.containers.threshold.bottleMachine, 10)
+		if(container.comment.toLowerCase().indexOf('bott') !== -1) {
+			if(vol > bot) {
+				container.recommended = true
+			} else {
+				container.recommended = false
+			}
+		} else if(container.comment.toLowerCase().indexOf('keg') !== -1) {
+			if(vol > keg) {
+				container.recommended = true
+			} else {
+				container.recommended = false
+			}
 		}
 	})
-	return requiredAddonsModules
+	return selectedAddons
 }
 
 /* Public interface

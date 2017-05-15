@@ -140,6 +140,14 @@ function updateContainers(app) {
 		})
 	}
 
+	app.addon.forEach((addonModule) => {
+		if(addonModule.recommended) {
+			addonModule.recommendationClass = 'active'
+		} else {
+			addonModule.recommendationClass = 'inactive'
+		}
+	})
+
 	// Push containers
 	app.statusClass = 'valid'
 	app.modules = calcObj.stats.containers.current.all
@@ -152,12 +160,21 @@ function updateContainers(app) {
 }
 
 function updateEconomicsData(app) {
-	app.economics.profit = Math.round(calcObj.economics.profit)
+	if(calcObj.economics.profit !== '-') {
+		app.economics.profit = Math.round(calcObj.economics.profit)
+	} else {
+		app.economics.profit = calcObj.economics.profit + ' '
+	}
 }
 
 function updateEconomicsDataAdvanced(app) {
-	app.economics.fixedCosts.rent = Math.round(calcObj.economics.fixedCosts.rent)
-	app.economics.fixedCosts.total = Math.round(calcObj.economics.fixedCosts.total)
+	if (calcObj.economics.fixedCosts.rent !== '-') {
+		app.economics.fixedCosts.rent = Math.round(calcObj.economics.fixedCosts.rent)
+		app.economics.fixedCosts.total = Math.round(calcObj.economics.fixedCosts.total)
+	} else {
+		app.economics.fixedCosts.rent = calcObj.economics.fixedCosts.rent + ' '
+		app.economics.fixedCosts.total = calcObj.economics.fixedCosts.total	+ ' '	
+	}
 
 	app.economics.variableCosts.bottlePrice = Math.round(calcObj.economics.variableCosts.bottlePrice)
 	app.economics.variableCosts.kegPrice = Math.round(calcObj.economics.variableCosts.kegPrice)

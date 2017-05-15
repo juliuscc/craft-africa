@@ -67,7 +67,7 @@ block content
 									| These are add-ons that you can add to your brewery.
 						table
 							template(v-for="addonModule in addon")
-								tr
+								tr(:class="addonModule.recommendationClass")
 									td {{ addonModule.comment }}
 									td
 										input(type="checkbox" v-model="addonModule.choosen").activeCheckbox
@@ -80,6 +80,21 @@ block content
 					a.fa.fa-caret-up.hide(href="#")
 				.drawer-content
 					hr.section-divider
+					table
+						tr
+							th Incomes
+						tr
+							th Sales Bottles
+							td {{ economics.incomes.bottlePrice }}
+						tr
+							th Sales Keg
+							td {{ economics.incomes.kegPrice }}
+						tr
+							th Sales Tap
+							td {{ economics.incomes.tapPrice }}
+						tr
+							th Total
+							td {{ economics.incomes.total }}
 					table
 						tr
 							th Fixed Costs
@@ -109,31 +124,16 @@ block content
 							td {{ economics.variableCosts.total }}
 					table
 						tr
-							th Incomes
-						tr
-							th Sales Bottles
-							td {{ economics.incomes.bottlePrice }}
-						tr
-							th Sales Keg
-							td {{ economics.incomes.kegPrice }}
-						tr
-							th Sales Tap
-							td {{ economics.incomes.tapPrice }}
-						tr
-							th Total
-							td {{ economics.incomes.total }}
-					table
-						tr
 							th Summary
 						tr
-							th Fixed Costs
-							td {{ economics.fixedCosts.total }}
-						tr
-							th Variable Costs
-							td {{ economics.variableCosts.total }}
-						tr
 							th Incomes
 							td {{ economics.incomes.total }}
+						tr
+							th Fixed Costs
+							td - {{ economics.fixedCosts.total }}
+						tr
+							th Variable Costs
+							td - {{ economics.variableCosts.total }}
 						tr
 							th Total
 							td {{ economics.profit }}
