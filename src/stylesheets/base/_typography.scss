@@ -7,7 +7,7 @@ body {
 	line-height: 1;
 	font-weight: normal;
 	color: $color-text-dark;
-	font-family: 'Liberation-Sans', serif;
+	font-family: 'Liberation-Sans', sans-serif;
 
 	@media (min-width: $width-mobile-min) {
 		font-size: 1.5em;
