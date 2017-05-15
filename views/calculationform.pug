@@ -24,7 +24,9 @@ block content
 				economics-chart(:chart-data="chartData")
 			.inputs(:class="statusClass")
 				.total-volume
-					h3 Liters of Beer
+					.title
+						h3 Liters of Beer
+						a.fa.fa-question-circle-o
 					.slider-wrapper
 						.slider-row
 							input.slider.activeSlider#totalVolume(type="range" name="totalVolume" min=`${minTotalVolume}` max=`${maxTotalVolume}` data-thumbWidth="20" v-model="totalVolume")
