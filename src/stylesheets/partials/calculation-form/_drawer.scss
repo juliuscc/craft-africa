@@ -18,4 +18,12 @@
 			display: none;
 		}
 	}
+
+	.drawer-content {
+		transition: height 0.5s;
+		height: 0;
+		overflow: hidden;
+		margin: 0;
+		padding: 0;
+	}
 }
