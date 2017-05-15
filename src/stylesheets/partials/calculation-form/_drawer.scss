@@ -1,0 +1,21 @@
+.drawer {
+	&[data-state="open"] {
+		.show {
+			display: none;
+		}
+
+		.hide {
+			display: block;
+		}
+	}
+
+	&[data-state="closed"] {
+		.show {
+			display: block;
+		}
+
+		.hide {
+			display: none;
+		}
+	}
+}
