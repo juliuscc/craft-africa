@@ -28,11 +28,12 @@
 		height: 100vh;
 		//background-color: $color-primary;
 
-		background-image: url("/images/IMG_6320.jpg");
+		background-image: url("/images/darkerImages/IMG_6320.jpg");
 		background-position: center;
 	    background-repeat: no-repeat;
 	    background-size: cover;
-		filter: blur(4px) grayscale(20%);
+		
+		//filter: blur(4px) grayscale(20%);
 
 		// -webkit-filter: blur(3px);
 		// -moz-filter: blur(3px);
