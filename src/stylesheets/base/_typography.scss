@@ -4,14 +4,18 @@ html {
 
 body {
 	font-size: 1.2em;
+	line-height: 1;
+	font-weight: normal;
+	color: $color-text-dark;
+	font-family: 'Liberation-Sans', serif;
 
 	@media (min-width: $width-mobile-min) {
 		font-size: 1.5em;
 	}
-	line-height: 1;
-	font-weight: normal;
-	color: $color-text-dark;
-	font-family: 'Liberation-Serif', serif;
+}
+p {
+	font-size: 1.1em;
+	line-height: 1.25;
 }
 
 a {
