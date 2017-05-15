@@ -2,9 +2,8 @@
 	background-color: $color-accent;
 	background-image: url("/images/blueprint.png");
 	background-size: cover;
-	filter: blur(3px) grayscale(20%);
+	 filter: blur(0px) grayscale(20%);
 
-	// background-color: lighten($color-accent, 0);
 	h2 {
 		filter: none;
 		font-size: 2rem;
