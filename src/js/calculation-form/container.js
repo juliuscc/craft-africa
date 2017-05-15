@@ -7,17 +7,21 @@ function getProductionModules(stats) {
 	const totalVolume = stats.volume.relative
 	let returnModule
 	productionModules.forEach((container) => {
-		if(!returnModule) {
-			if(totalVolume <= container.brewingCapacity) {
+		if(returnModule) {
+			// Replace module if it does not fullfill the requirement
+			if(returnModule.brewingCapacity < totalVolume) {
 				// Calculate usage
 				returnModule = container
 				returnModule.usage = totalVolume / container.brewingCapacity
 			}
+		} else {
+			// Always add the module if we don't have one
+			returnModule = container
+			returnModule.usage = totalVolume / container.brewingCapacity
 		}
 	})
 
 	return returnModule
-	// Hannes fix error handeling.
 }
 
 // Get the modules required for fermenting the beer
@@ -36,18 +40,20 @@ function getFermentingModules(stats, fermentingModule) {
 
 	const requiredFermentationModules = []
 	// Subtract fermenting capacity for each available module
-	filteredFermentationModules.forEach((container) => {
+	filteredFermentationModules.forEach((container, index) => {
 		if(neededCapacity > 0) {
 			neededCapacity -= container.fermentingCapacity
 			// This container is only partially used
 			if(neededCapacity < 0) {
 				container.usage = (neededCapacity / container.fermentingCapacity) + 1
+			// If this is the last and it doesn't fill up the quote
+			} else if(index === (filteredFermentationModules.length - 1)) {
+				container.usage = (neededCapacity + container.fermentingCapacity)
+									/ container.fermentingCapacity
 			// We used up the capacity of this container entirely
 			} else {
 				container.usage = 1
 			}
-			console.log(container.name, ': ', container.usage)
-
 			requiredFermentationModules.push(container)
 		}
 	})
@@ -59,13 +65,30 @@ function getFermentingModules(stats, fermentingModule) {
 function getAddonsModules(stats) {
 	const addonModules = stats.containers.addon
 
-	const requiredAddonsModules = []
+	const selectedAddons = []
 	addonModules.forEach((container) => {
 		if(container.choosen) {
-			requiredAddonsModules.push(container)
+			selectedAddons.push(container)
+		}
+
+		const vol = parseInt(stats.volume.total, 10)
+		const keg = parseInt(stats.containers.threshold.kegStorage, 10)
+		const bot = parseInt(stats.containers.threshold.bottleMachine, 10)
+		if(container.comment.toLowerCase().indexOf('bott') !== -1) {
+			if(vol > bot) {
+				container.recommended = true
+			} else {
+				container.recommended = false
+			}
+		} else if(container.comment.toLowerCase().indexOf('keg') !== -1) {
+			if(vol > keg) {
+				container.recommended = true
+			} else {
+				container.recommended = false
+			}
 		}
 	})
-	return requiredAddonsModules
+	return selectedAddons
 }
 
 /* Public interface

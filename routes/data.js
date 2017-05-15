@@ -45,7 +45,10 @@ router.get('/stats', (req, res) => {
 			})
 			containerObject.fermentingTime = data.defaultValues.fermentingTime
 			containerObject.productionYield = data.defaultValues.productionYield / 100
-			containerObject.threshold = data.defaultValues.threshold
+			containerObject.threshold = {
+				bottleMachine: data.defaultValues.defaultThreshold.bottleThresh,
+				kegStorage: data.defaultValues.defaultThreshold.kegThresh
+			}
 
 			res.json({
 				containers: containerObject,

@@ -90,6 +90,20 @@ function getEconomics(stats, economics) {
 						economics.fixedCosts.total -
 						economics.variableCosts.total
 
+	// Check containers
+	let accepted = true
+	stats.containers.current.all.forEach((containerModule) => {
+		if(containerModule.usage > 1) {
+			accepted = false
+		}
+	})
+
+	if(!accepted) {
+		economics.fixedCosts.rent = '-'
+		economics.fixedCosts.total = '-'
+		economics.profit = '-'
+	}
+
 	return economics
 }
 

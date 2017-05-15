@@ -51,6 +51,9 @@ block content
 						.input-field.col.s3
 							input.validate(type='number' name="electricityProduction" value=container.electricityProduction)
 							label(for='electricityProduction') Electricity Production
+						.input-field.col.s3
+							input.validate(type='text' name="comment" value=container.comment)
+							label(for='comment') Comment
 						input.enable.btn.red.right(type="button" data-target=`modal${index}` value = "remove" style="margin-right: 10px")
 						div(class="modal" id=`modal${index}`)
 							.modal-content
