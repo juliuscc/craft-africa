@@ -42,6 +42,23 @@
 		.addons {
 			flex: 1;
 			margin: 0;
+
+			.title {
+				width: 100%;
+				font-size: 1em;
+
+				h3 {
+					display: inline-block;
+					margin-right: 10px; 
+				}
+
+				.fa {
+					font-size: 1.4em;
+					vertical-align: center;
+					line-height: 1.4em;
+					color: $color-text-dark;
+				}
+			}
 		}
 
 		.distribution {
@@ -75,10 +92,10 @@
 		}
 
 		.addons {
-			* {
-				padding: 0;
-				margin: 0;
-			}
+			// * {
+			// 	padding: 0;
+			// 	margin: 0;
+			// }
 		}
 	}
 }
