@@ -1,6 +1,12 @@
 .product.technical-spec {
-	background-color: lighten($color-accent, 15);
+	background-color: $color-accent;
+	background-image: url("/images/blueprint.png");
+	background-size: cover;
+	filter: blur(3px) grayscale(20%);
+
+	// background-color: lighten($color-accent, 0);
 	h2 {
+		filter: none;
 		font-size: 2rem;
 		margin-bottom: 0;
 	}
