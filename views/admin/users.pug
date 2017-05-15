@@ -28,8 +28,8 @@ block content
 									h4 Confirm
 									p= "Are you sure you want to delete '" + user.local.name + "'?"
 								.modal-footer
-									input.remove.waves-effect.waves-green.btn-flat(type="submit" value="Yes")
-									input.modal-action.modal-close.waves-effect.waves-green.btn-flat(type="button" value="No")
+									input.remove.btn-flat(type="submit" value="Yes")
+									input.modal-action.modal-close.btn-flat(type="button" value="No")
 
 		input.btn.left(type="button" id="add" data-target=`modal${index}` value = "add new user")
 		div(class="modal" id=`modal${index}`)

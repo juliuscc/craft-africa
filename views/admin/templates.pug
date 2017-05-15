@@ -42,7 +42,7 @@ block content
 								textarea.textareaStyle(name="user_message" form= template._id).materialize-textarea= template.user_message
 						input(type="hidden" name="id" value=template._id)
 						.row
-							.waves-effect.waves-light.btn
+							.btn
 								input(type="submit" id="submit")
 
 					form(method="post" action="/admin/email/delete").container
@@ -78,7 +78,7 @@ block content
 								label(class="textareaLabels") User Message
 								textarea(name="user_message" form="template-form-new").materialize-textarea
 						input(type="hidden" name="id" value="")
-						.waves-effect.waves-light.btn
+						.btn
 							input(type="submit" id="submit")
 
 			script

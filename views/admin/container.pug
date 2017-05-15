@@ -57,8 +57,8 @@ block content
 								h4 Confirm
 								p= "Are you sure you want to delete '" + container.name + "'?"
 							.modal-footer
-								input.remove.waves-effect.waves-green.btn-flat(type="submit" disabled value="Yes")
-								input.modal-action.modal-close.waves-effect.waves-green.btn-flat(type="button" value="No")
+								input.remove.btn-flat(type="submit" value="Yes")
+								input.modal-action.modal-close.btn-flat(type="button" value="No")
 						input.btn.save.blue.right(type="submit" value = "save" style="margin-right:10px")
 						input(type="hidden" name="id" value=container._id)
 						input(type="hidden" name="status" value="unchanged")
