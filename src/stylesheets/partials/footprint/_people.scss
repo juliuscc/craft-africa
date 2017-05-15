@@ -3,7 +3,7 @@
 	flex-direction: column;
 	justify-content: space-between;
 	background-color: $color-accent;
-	color: darken($color-warning, 7);
+	color: $color-text-light;
 
 	> * {
 		box-sizing: border-box;
