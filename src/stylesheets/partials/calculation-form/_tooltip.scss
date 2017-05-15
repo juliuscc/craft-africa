@@ -5,8 +5,9 @@
 		font-size: 0.7em;
 		line-height: 1em;
 		font-family: "Liberation-Sans" , sans-serif;
+		visibility: hidden;
 		opacity: 0;
-		transition: all 0.2s;
+		transition: all 0.3s;
 		white-space: nowrap;
 		// width: 120px;
 		color: $color-text-light;
@@ -22,6 +23,7 @@
 
 	&:hover {
 		.tooltip-text {
+			visibility: visible;
 			opacity: 1;
 		}
 	}
