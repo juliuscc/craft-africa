@@ -111,7 +111,6 @@ function drawCalcInputChartsDataFormattingLiters(list) {
 		for(let j = 0; j < returnList.length; j += 1) {
 			if(list[i].data.value < dj * j) {
 				returnList[j] += list[i].data.count
-				// console.log((dj * (j - 1)) + ' < ' + list[i].data.value + ' < ' + (dj * j))
 				break
 			}
 		}

@@ -33,10 +33,6 @@ router.get('/signup', (req, res) => {
 	res.render('admin/signup', { })
 })
 
-router.get('/statistics', (req, res) => {
-	res.render('admin/statistics', { username: req.user.username })
-})
-
 router.get('/logout', (req, res) => {
 	req.logout()
 	res.redirect('/admin/login')
