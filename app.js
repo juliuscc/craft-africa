@@ -8,6 +8,7 @@ const passport = require('passport')
 const session = require('express-session')
 const flash = require('connect-flash')
 const Logger = require('./models/loggerAPI')
+const favicon = require('serve-favicon')
 
 mongoose.connect(configDB.url)
 
@@ -26,6 +27,9 @@ function views(req, res, next) {
 
 // Init App
 const app = express()
+
+// Favicon
+app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')))
 
 // View Engine
 app.set('views', path.join(__dirname, 'views'))
