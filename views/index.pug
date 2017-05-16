@@ -60,7 +60,7 @@ block content
 			.slider-row
 				.slider-wrapper
 						.slider-row.total-volume
-							input.slider.activeSlider#totalVolume(type="range" name="totalVolume" min="0" max="31000" data-thumbWidth="20" v-model="totalVolume")
+							input.slider.activeSlider#totalVolume(type="range" name="totalVolume" :min="minValue" :max="maxValue" data-thumbWidth="20" v-model="totalVolume")
 							span {{ totalVolume }} liters
 				a(href="/calculationform").button Get Started!
 			.output

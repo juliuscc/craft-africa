@@ -79,7 +79,9 @@ router.get('/stats', (req, res) => {
 						water: data.defaultValues.defaultDistribution.waterDist
 					},
 					volume: {
-						total: data.defaultValues.startValueForProduction
+						total: data.defaultValues.startValueForProduction,
+						minValue: data.defaultValues.minValueForProduction,
+						maxValue: data.defaultValues.maxValueForProduction
 					},
 					beerType: {
 						options: data.beers
