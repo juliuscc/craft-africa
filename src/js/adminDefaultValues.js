@@ -1,4 +1,4 @@
-const moduleValidator = require('../../models/moduleValidator')
+// const moduleValidator = require('../../models/moduleValidator')
 
 /* eslint-disable no-undef */
 $(document).ready(() => {
@@ -52,5 +52,5 @@ function rowEdited(e) {
 const editedRow = document.querySelectorAll('.validate')
 editedRow.forEach(textbox => textbox.addEventListener('change', rowEdited))
 
-const hundred = document.querySelectorAll('.hundred')
-hundred.forEach(textbox => textbox.addEventListener('change', isHundred))
+// const hundred = document.querySelectorAll('.hundred')
+// hundred.forEach(textbox => textbox.addEventListener('change', isHundred))
