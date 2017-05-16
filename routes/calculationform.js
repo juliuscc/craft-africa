@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.get('/', (req, res) => {
 	if(browserCheck.isSupportedBrowser(req, res)) {
-		const variables = {}
+		const variables = { title: 'Build your own brand' }
 		defaultValuesAPI.getAllDefaultValuesCollections((err2, defaultValues) => {
 			if(err2) {
 				variables.minTotalVolume = 20
