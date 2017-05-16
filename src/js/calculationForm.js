@@ -175,12 +175,13 @@ function updateContainers(app) {
 }
 
 function updateEconomicsData(app) {
+	let odo = document.querySelector('.profit');
 	if(calcObj.economics.profit !== '-') {
 		app.economics.profit = Math.round(calcObj.economics.profit)
 	} else {
 		app.economics.profit = calcObj.economics.profit + ' '
 	}
-
+	odo.innerHTML = app.economics.profit
 }
 
 function updateEconomicsDataAdvanced(app) {
@@ -340,6 +341,16 @@ function createVueApp() {
 			updateEconomicsData(this)
 			updateEconomicsDataAdvanced(this)
 
+			//Moneyflow
+			var odo = document.querySelector('.profit')
+			window.od = new Odometer({
+				  el: odo,
+				  value: 100,
+				  duration: 10,
+				  // Any option (other than auto and selector) can be passed in here
+				  format: (,ddd),
+				})
+			
 			// Updating elements that are created by vue
 			setTimeout(() => {
 				this.sliderWater = calcObj.stats.distribution.water
@@ -353,7 +364,7 @@ function createVueApp() {
 						updateEconomicsData(this)
 					})
 				})
-			}, 1)
+			}, 1)	
 		}
 	})
 }

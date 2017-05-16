@@ -85,7 +85,7 @@ block content
 			.economics.drawer(data-state="closed")
 				.profit-box.always-visible
 					span.text Profit: 
-					span.profit {{ economics.profit }}
+					span.text.odometer.profit 100$
 					a.fa.fa-plus-square.show(href="#")
 					a.fa.fa-minus-square.hide(href="#")
 				.drawer-content
@@ -195,5 +195,6 @@ block navScript
 block scripts
 	script(src="https://vuejs.org/js/vue.js")
 	script(src="https://unpkg.com/vue-chartjs@2.6.0/dist/vue-chartjs.full.min.js")
-	// script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.js") 
 	script(src="/js/calculationForm.js")
+	script(src="http://github.hubspot.com/odometer/odometer.js")
+	link(rel="stylesheet" href="http://github.hubspot.com/odometer/themes/odometer-theme-default.css")
