@@ -1,10 +1,12 @@
 .product.scalability {
-	background-color: lighten($color-info, 30);
-	.text {
-		
+	color: $color-text-dark;
+	h2{
+		color: $color-title-dark;
 	}
-
-	.image {
-		
+	
+	@media(min-width: $width-tablet-min) {
+		.text {
+			margin-right: 8%
+		}
 	}
 }

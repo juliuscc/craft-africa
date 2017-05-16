@@ -221,7 +221,7 @@ function updateSliders(firstSliderName, secondSliderName, app) {
 
 		slider.updateAll()
 
-		setTimeout(() => { shouldSlidersUpdate = true }, 20)
+		setTimeout(() => { shouldSlidersUpdate = true }, 15)
 	}
 }
 

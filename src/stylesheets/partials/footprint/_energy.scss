@@ -1,15 +1,17 @@
-.energy.footprint {
+.energy {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	color: darken($color-info, 11);
-
+	color: $color-text-dark;
+	
+	h2{
+		color: $color-title-dark;
+	}
 	> * {
 		box-sizing: border-box;
 		display: inline-block;
 	}
 
-	.text,
 	.animation {
 		width: 100%;
 	}
@@ -40,7 +42,6 @@
 
 		.text {
 			order: 2;
-			width: 65%;
 		}
 
 		.animation,

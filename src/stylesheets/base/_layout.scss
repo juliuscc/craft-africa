@@ -38,13 +38,13 @@ body {
 .info-box {
 	text-align: center;
 	width: 100%;
-	padding: 20px;
-	padding-bottom: 50px;
+	padding: 40px 20px 50px 20px;
 	box-sizing: border-box;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	flex-wrap: wrap;
+	align-items: center;
 	@media(min-width: $width-tablet-min){
 		text-align: left;
 		flex-wrap: nowrap;
@@ -89,8 +89,8 @@ body {
 			width: 35%;
 		}
 	}
-
 	p {
-		font-size: 1.4em;
+		font-size: 1.1em;
+		line-height: 1.25;
 	}
 }

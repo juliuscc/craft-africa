@@ -5,7 +5,7 @@ $(document).ready(() => {
 	$('.tooltipped').tooltip({ delay: 50 })
 })
 /* eslint-enable no-undef */
-function isHundred(e) {
+/* function isHundred(e) {
 	e.preventDefault()
 
 	const currentNumber = Number.parseInt(this.value, 10)
@@ -39,7 +39,7 @@ function isHundred(e) {
 	allHundred.forEach((value) => {
 		totalValue += Number.parseFloat(value.value, 10)
 	})
-}
+}*/
 
 function rowEdited(e) {
 	e.preventDefault()
@@ -52,5 +52,5 @@ function rowEdited(e) {
 const editedRow = document.querySelectorAll('.validate')
 editedRow.forEach(textbox => textbox.addEventListener('change', rowEdited))
 
-const hundred = document.querySelectorAll('.hundred')
-hundred.forEach(textbox => textbox.addEventListener('change', isHundred))
+/* const hundred = document.querySelectorAll('.hundred')
+hundred.forEach(textbox => textbox.addEventListener('change', isHundred))*/

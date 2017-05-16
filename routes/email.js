@@ -57,8 +57,8 @@ router.post('/send', (req, res) => {
 			// create reusable transporter object using the default SMTP transport
 			const transporter = nodemailer.createTransport({
 				host: 'mailcluster.loopia.se',
-				port: 587,
-				// secure: true, // use SSL
+				port: 465, // use 587 instead if no SSL
+				secure: true, // use SSL
 				auth: {
 					user: emailcredentials.user,
 					pass: emailcredentials.pass
