@@ -4,7 +4,7 @@ block vars
 	- var title = "Statistics"
 
 block title
-	title Statistics
+	| Statistics 
 
 
 block content
@@ -14,44 +14,44 @@ block content
 		|	height: 400px;
 		|}
 	
-	.container
+	.container.statistics
 		h3 Calculation form
 		hr
 		.card
 			.card-title
-				h4(style="display: inline;") Liters of beer
-				p(id='litersDate' style="display: inline; padding-left: 10px;") #{year} #{month}
-				div(style="float: right;")
-					button(type="button", id="litersPrev").btn Prev
-					button(type="button", id="litersNext").btn Next
+				h4 Liters of beer
+					span(id='litersDate') #{year} #{month}
+				.button-container
+					input(type="button", id="litersPrev", value="Prev").btn.right.top
+					input(type="button", id="litersNext", value="Next").btn.right.top
 			.card-content
 				canvas(id="litersChart")
 		.card
 			.card-title
-				h4(style="display: inline;") Tap
-				p(id='tapDate', style="display: inline; padding-left: 10px;") #{year} #{month}
-				div(style="float: right;")
-					button(type="button", id="tapPrev").btn Prev
-					button(type="button", id="tapNext").btn Next
+				h4 Tap
+					span(id='tapDate') #{year} #{month}
+				.button-container
+					input(type="button", id="tapPrev", value="Prev").btn.right.top
+					input(type="button", id="tapNext", value="Next").btn.right.top
 				
 			.card-content
 				canvas(id="tapChart")
 		.card
 			.card-title
-				h4(style="display: inline;") Bottle
-				p(id='bottleDate', style="display: inline; padding-left: 10px;") #{year} #{month}
-				div(style="float: right;")
-					button(type="button", id="bottlePrev").btn Prev
-					button(type="button", id="bottleNext").btn Next
+				h4 Bottle
+					span(id='bottleDate') #{year} #{month}
+				.button-container
+					input(type="button", id="bottlePrev", value="Prev").btn.right.top
+					input(type="button", id="bottleNext", value="Next").btn.right.top
 			.card-content
 				canvas(id="bottleChart")
 		.card
 			.card-title
-				h4(style="display: inline;") Keg
-				p(id='kegDate', style="display: inline; padding-left: 10px;") #{year} #{month}
-				div(style="float: right;")
-					button(type="button", id="kegPrev").btn Prev
-					button(type="button", id="kegNext").btn Next
+				h4 Keg
+					span(id='kegDate') #{year} #{month}
+				.button-container
+					input(type="button", id="kegPrev", value="Prev").btn.right.top
+					input(type="button", id="kegNext", value="Next").btn.right.top
 			.card-content
 				canvas(id="kegChart")
 		
@@ -59,7 +59,7 @@ block content
 		hr
 		.card
 			.card-title
-				b Views
+				h4 Views
 			.card-content
 				canvas(id="viewsChart")
 

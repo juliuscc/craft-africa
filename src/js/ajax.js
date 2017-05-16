@@ -33,7 +33,7 @@ function loadJSON(url, data) {
 		}
 		const params = querystring.stringify(data)
 		if(data) {
-			httpRequest.open(`GET ${url}?${params}`, true)
+			httpRequest.open('GET', `${url}?${params}`, true)
 		} else {
 			httpRequest.open('GET', url, true)
 		}

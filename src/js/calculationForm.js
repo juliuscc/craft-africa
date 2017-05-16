@@ -13,6 +13,8 @@ const drawer = require('./calculation-form/drawer')
 const calcObj = { stats: { distribution: { tap: 0, bottle: 0.01, keg: 0 }, distributionLock: ['tap', 'bottle'] }, economics: {} }
 
 let shouldUpdate = true
+let shouldLog = false
+let logs = 0
 
 ajax.loadJSON('/data/stats')
 .then((json) => {
@@ -78,6 +80,20 @@ const chart = Vue.component('economics-chart', {
 	}
 })
 
+function sendActivity() {
+	if(shouldLog) {
+		shouldLog = false
+		
+		ajax.logCalc(calcObj.stats.volume.total, calcObj.stats.distribution.tap*100, calcObj.stats.distribution.keg*100, calcObj.stats.distribution.bottle*100)
+
+		setTimeout(() => {
+			if(logs < 8){
+				shouldLog = true
+			}
+		}, 8000)
+	}
+}
+
 function initInteractiveSliders(app) {
 	// Add the update graph object
 	const activeSliders = document.querySelectorAll('.activeSlider')
@@ -87,6 +103,7 @@ function initInteractiveSliders(app) {
 			updateCalcObj()
 			updateGraph(app)
 			updateEconomicsDataAdvanced(app)
+			sendActivity()
 		})
 	})
 	
@@ -354,6 +371,11 @@ function createVueApp() {
 					})
 				})
 			}, 1)
+
+			// Wait a few seconds before logging
+			setTimeout(() => {
+				shouldLog = true
+			}, 5000)
 		}
 	})
 }

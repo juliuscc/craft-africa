@@ -56,3 +56,31 @@ main {
 	}
 }
 
+.statistics {
+	.btn.right {
+		margin: 0;
+	}
+
+	.card {
+		.card-title {
+			display: flex;
+			h4 {
+				width: 50%;
+				padding: 0;
+				span {
+					margin-left: 20px;
+				}
+			}
+			
+			.button-container {
+				position: absolute;
+				right: 0;
+				top: 20px;
+			}
+
+			.btn.right {
+				margin-right: 20px;
+			}
+		}
+	}
+}
