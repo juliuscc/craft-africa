@@ -124,6 +124,10 @@ function addRow() {
 		<input id="electricityProduction" type="number" name="electricityProduction" class="validate">
 		<label for="electricityProduction">Electricity Production</label>
 	</div>
+	<div class="input-field col s3">
+		<input id="comment" type="number" name="comment" class="validate">
+		<label for="comment">Comment</label>
+	</div>
 	<input type="button" value="remove" class="remove btn right red">
 	<input type="hidden" name="id" value="undefined">
 	<input type="hidden" name="status" value="new">

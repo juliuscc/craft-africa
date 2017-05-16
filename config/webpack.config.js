@@ -23,6 +23,7 @@ module.exports = {
 		adminUsers: path.resolve(__dirname, '../src/js/adminUsers.js'),
 		explosionView: path.resolve(__dirname, '../src/js/explosionView.js'),
 		calculationForm: path.resolve(__dirname, '../src/js/calculationForm.js'),
+		calculationSlider: path.resolve(__dirname, '../src/js/calculationSlider.js'),
 		navbar: path.resolve(__dirname, '../src/js/navbar.js'),
 		navbarsmall: path.resolve(__dirname, '../src/js/navbar-small.js'),
 		'admin/statistics': path.resolve(__dirname, '../src/js/admin/statistics.js')

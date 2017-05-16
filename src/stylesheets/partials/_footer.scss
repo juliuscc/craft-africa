@@ -6,7 +6,7 @@ footer.footer {
 	box-shadow: inset rgba(0, 0, 0, 0.5) 0 3px 10px 0;
 	margin: 0;
 
-	h1 {
+	h2 {
 		color: lighten($color-secondary, 15%);
 	}
 
@@ -42,7 +42,7 @@ footer.footer {
 
 		.contact,
 		.navigation-links {
-			h1 {
+			h2 {
 				font-size: 1.7rem;
 				margin-bottom: 5px;
 			}
@@ -58,11 +58,11 @@ footer.footer {
 		}
 		
 		.contact-container {
-			h1 {
+			h2 {
 				font-size: 3.0rem;
 			}
 
-			h1,
+			h2,
 			p {
 				margin: 0;
 				margin-bottom: 3px;

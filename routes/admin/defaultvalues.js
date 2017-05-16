@@ -35,7 +35,9 @@ router.get('/', (req, res) => {
 					},
 					fermentingTime: '',
 					productionYield: '',
-					startValueForProduction: ''
+					startValueForProduction: '',
+					minValueForProduction: '',
+					maxValueForProduction: ''
 				}
 				empty.username = req.user.local.name
 				res.render('admin/defaultvalues', empty)
@@ -56,7 +58,7 @@ router.post('/', (req, res) => {
 		const { hops, barley, co2, water, tapDist, bottleDist, kegDist,
 			bottleThresh, kegThresh, tapCost, bottleCost, kegCost,
 			tapSell, bottleSell, kegSell, fermentingTime, productionYield,
-			startValueForProduction } = req.body
+			startValueForProduction, minValueForProduction, maxValueForProduction } = req.body
 
 		const ingredientCost = JSON.stringify({ hops, barley, co2, water })
 		const defaultDistribution = JSON.stringify({ tapDist, bottleDist, kegDist })
@@ -72,7 +74,9 @@ router.post('/', (req, res) => {
 			sellingPrice,
 			fermentingTime,
 			productionYield,
-			startValueForProduction
+			startValueForProduction,
+			minValueForProduction,
+			maxValueForProduction
 		}, (err) => {
 			if(err) {
 				throw err

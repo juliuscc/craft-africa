@@ -49,3 +49,5 @@ bower_components/
 *fuse*
 
 public/stylesheets/normalize\.css
+
+public/stylesheets/

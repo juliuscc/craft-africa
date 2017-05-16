@@ -3,34 +3,81 @@ extends layout.pug
 block title
 	|
 
+block description
+	meta(name="description" content="Craft Africa is a company who focus on creating a opportunity for brewers with an entrepreneurial spirit in Africa. Who wants to create their own beer brand. We provide a modular brewery which consists of custom made containers.")
+
 block header
 	header.header
-		a.down-btn.fa.fa-angle-double-down(href="#first")
+		.homepage-header
+			.background-img
 
-block navlink-home
-	a(href="/").active Home
+			.title-text
+				h1 Craft Africa
+				p Create your own beer brand with our modular turnkey breweries
+			a.down-btn.fa.fa-angle-double-down(href="#first")
 
 block content
-	.container#first
-		.quote-container
-			span.quote Get famous or die trying
-			span.source former poor man now rich
+	.info-box.homepage.craft-own-beer#first
+		.headline
+			h1 Are You Dreaming Of Crafting Your Own Beer Brand?
+		.icon-container
+			.icon
+				img(src="/images/Circle-PNG-File.png", alt="Scalable solutions")
+			.icon
+				img(src="/images/Circle-PNG-File.png", alt="Scalable solutions")
+			.icon
+				img(src="/images/Circle-PNG-File.png", alt="Scalable solutions")
+	//- .container#first
+	//- 	.quote-container
+	//- 		span.quote Get famous or die trying
+	//- 		span.source former poor man now rich
 
-	.explosion-view-container
-		.explosion-view
-			.img-container
-				object.base(data="/images/factory/background.svg")
-				//- object.water-filtration(data="/images/factory/water-filtration.svg")
-				object.brewery(data="/images/factory/brewery.svg")
-				object.battery(data="/images/factory/battery.svg")
-				object.bar(data="/images/factory/bar.svg")
-				object.roof(data="/images/factory/roof.svg")
-				object.front-wall(data="/images/factory/right-wall.svg")
-				object.left-wall(data="/images/factory/left-wall.svg")
-				object.solar-panels(data="/images/factory/solar-panel.svg")
+	.big-pic
+		.homepage-pic#first
 
-	.calculation-form-small
-		.placeholder-text You wanna make your own brand?
+
+	//- .explosion-view-container
+	//- 	.explosion-view
+	//- 		.img-container
+	//- 			object.base(data="/images/factory/background.svg")
+	//- 			//- object.water-filtration(data="/images/factory/water-filtration.svg")
+	//- 			object.brewery(data="/images/factory/brewery.svg")
+	//- 			object.battery(data="/images/factory/battery.svg")
+	//- 			object.bar(data="/images/factory/bar.svg")
+	//- 			object.roof(data="/images/factory/roof.svg")
+	//- 			object.front-wall(data="/images/factory/right-wall.svg")
+	//- 			object.left-wall(data="/images/factory/left-wall.svg")
+	//- 			object.solar-panels(data="/images/factory/solar-panel.svg")
+
+	//- .calculation-form-small
+	//-	.placeholder-text You wanna make your own brand?
+	
+	.info-box.homepage.craft-own-beer
+		.headline
+			h2#input-window What customization fits your business?
+			p the calculation form here!!
+			#calc-slider
+				.slider-wrapper
+						.slider-row
+							input.slider.activeSlider#totalVolume(type="range" name="totalVolume" min="0" max="31000" data-thumbWidth="20" v-model="totalVolume")
+							span $ {{ profit }}
+	
+	.big-pic
+		.homepage-pic#second
+			.yo
+				.heyyy
+					.text
+						h2 Our Product
+					.line
+
+					.text
+						h2 Our Footprint
+					.line
+
+					.text
+						h2 About us
 
 block scripts
-	script(src="/js/explosionView.js")
+	// script(src="/js/explosionView.js")
+	script(src="https://vuejs.org/js/vue.js")
+	script(src="/js/calculationSlider.js")

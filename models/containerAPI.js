@@ -6,6 +6,9 @@ const containerSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
+	comment: {
+		type: String
+	},
 	type: {
 		type: String,
 		required: true

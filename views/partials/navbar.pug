@@ -3,19 +3,18 @@
 
 ul.links
 	li
-		block navlink-home
-			a(href="/") Home
+		a(href="/" class=title==='Home'?'active':undefined) Home
 	li
-		block navlink-product
-			a(href="/product") Our Product
+		a(href="/product" class=title==='Our Product'?'active':undefined) Our Product
 	li
-		block navlink-footprint
-			a(href="/footprint") Our footprint
+		a(href="/calculationform" class=title==='Calculation Form'?'active':undefined) Business Calculator
 	li
-		block navlink-about
-			a(href="/about") About us
+		a(href="/footprint" class=title==='Our footprint'?'active':undefined) Our footprint
 	li
-		block navlink-contact
+		a(href="/about" class=title==='About us'?'active':undefined) About us
+	li
+		a(href="/contact" class=title==='Contact us'?'active':undefined) Contact us
+		//block navlink-contact
 			a(href="/contact") Contact us
 
 .hamburger

@@ -1,48 +1,55 @@
 extends layout.pug
 
 block title
-	title Craft Africa - Edit Containers
+	title Beer types
 
 block vars
 	- var title = "Modify beer types"
 	
 block content
-	each value, index in values
-		form.container(method="post" action="/admin/beertype")
+	form.beerType(method="post" action="/admin/beertype")
+		each beerType, index in beerTypes
 			.card
 				.card-title
-					h4= value.name
+					h4= beerType.name
 				.card-content
 					.row
 						.input-field.col.s3
-							input.validate(type='text' name="name" required value=value.name)
+							input.validate(type='text' name="name" required value=beerType.name)
 							label(for='name') Name
 						.input-field.col.s3
-							input.validate(type='number' name="fermentingTime" step="any" required value=value.fermentingTime)
+							input.validate(type='number' name="fermentingTime" step="any" required value=beerType.fermentingTime)
 							label(for='fermentingTime') Fermenting Time
 						.input-field.col.s3
-							input.validate(type='number' name="hops" step="any" required value=value.ingredient.hops)
+							input.validate(type='number' name="hops" step="any" required value=beerType.ingredient.hops)
 							label(for='hopsUse') Hops (kg/l)
 						.input-field.col.s3
-							input.validate(type='number' name="malt" step="any" required value=value.ingredient.malt)
+							input.validate(type='number' name="malt" step="any" required value=beerType.ingredient.malt)
 							label(for='maltUse') Malt (kg/l)
 						.input-field.col.s3
-							input.validate(type='number' name="co2" step="any" required value=value.ingredient.co2)
-							label(for='co2Use') co2(%)
+							input.validate(type='number' name="co2" step="any" required value=beerType.ingredient.co2)
+							label(for='co2Use') co2 (kg/l)
 						input.enable.btn.red.right(type="button" data-target=`modal${index}` value = "remove" style="margin-right: 10px")
 						div(class="modal" id=`modal${index}`)
 							.modal-content
 								h4 Confirm
-								p= "Are you sure you want to delete '" + value.name + "?"
+								p= "Are you sure you want to delete " + beerType.name + "?"
 							.modal-footer
-								input.remove.waves-effect.waves-green.btn-flat(type="submit" disabled value="Yes")
-								input.modal-action.modal-close.waves-effect.waves-green.btn-flat(type="button" value="No")
+								input.remove.btn-flat(type="submit" value="Yes")
+								input.modal-action.modal-close.btn-flat(type="button" value="No")
 						input.btn.save.blue.right(type="submit" value = "save", style="margin-right:10px")
-						input(type="hidden" name="id" value=value._id)
+						input(type="hidden" name="id" value=beerType._id)
 						input(type="hidden" name="status" value="unchanged")
-	form(method="post" class="addRow container" action="/admin/beertype/new")
-		input.btn-large.left(type="button" id="addBeer" value = "Add")
-		input.btn-large.left(type="submit"  name="submit" value="submit")
+		input.btn-large(type="submit"  name="submit" value="submit Changes")
+	.beerType
+		br
+		hr
+		h4 New Beer Types
+		h6 Save changes before adding new beer types!
+		br
+		form(method="post" class="addRow" action="/admin/beertype/new")
+			input.btn-large.left(type="submit"  name="submit" value="Submit New Beer Types")
+			input.btn-large.left(type="button" id="add" value = "Add")
 		
 				
 block scripts

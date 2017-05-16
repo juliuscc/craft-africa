@@ -25,14 +25,19 @@ function isInputCorrect(updatedProperties) {
 	const fermentingTime = updatedProperties.fermentingTime
 
 	const ingredient = JSON.parse(updatedProperties.ingredient)
+	// const hops = updatedProperties.hops
+
+	// const malt = updatedProperties.malt
+
+	// const co2 = updatedProperties.co2
 
 	let validated = false
 	if(
 		!moduleValidator.isEmpty({ name }) &&
 		!moduleValidator.isEmpty({ fermentingTime }) && moduleValidator.isNumbers({ fermentingTime }) &&
-		!moduleValidator.isEmpty(ingredient) && moduleValidator.isNumbers(ingredient.hops) &&
-		moduleValidator.isNumbers(ingredient.malt) &&
-		moduleValidator.isNumbers(ingredient.co2)
+		!moduleValidator.isEmpty(ingredient.hops) && moduleValidator.isNumbers(ingredient.hops) &&
+		!moduleValidator.isEmpty(ingredient.malt) && moduleValidator.isNumbers(ingredient.malt) &&
+		!moduleValidator.isEmpty(ingredient.co2) && moduleValidator.isNumbers(ingredient.co2)
 		) {
 		validated = true
 	}

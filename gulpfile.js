@@ -84,9 +84,22 @@ gulp.task('js', () => {
 		.pipe(gulp.dest(dest))
 })
 
+/* ~ ~ ~ Bower assets ~ ~ ~ */
+gulp.task('load-bower', () => {
+	const src = path.resolve(__dirname, 'bower_components')
+
+	// Normalize
+	gulp.src(`${src}/normalize-css/normalize.css`)
+	.pipe(gulp.dest(`${paths.dest}/stylesheets`))
+
+	// Font awesome
+	return gulp.src(`${src}/font-awesome/fonts/*`)
+	.pipe(gulp.dest(`${paths.dest}/fonts`))
+})
+
 /* ~ ~ ~ Stream and task handling ~ ~ ~ */
 gulp.task('watch', () => {
-	gulp.start('style', 'admin-style', 'js')
+	gulp.start('style', 'admin-style', 'js', 'load-bower')
 
 	// Style
 	gulp.watch(`${paths.src}/stylesheets/**`, ['style'])
@@ -114,4 +127,4 @@ gulp.task('nodemon', () => {
 })
 
 gulp.task('default', ['nodemon', 'watch'])
-gulp.task('build', ['style', 'admin-style', 'js'])
+gulp.task('build', ['style', 'admin-style', 'js', 'load-bower'])

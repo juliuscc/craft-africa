@@ -1,46 +1,51 @@
 extends layout.pug
 
 block title
-	| - Footprint
+	|Footprint - 
 
-block navlink-footprint
-	a(href="/footprint").active Our footprint
+block description
+	meta(name="description" content="At Craft Africa we take our responsibility seriously and we want to make our businesses a sustainable solution for our entrepreneurs. Here you can read about Craft Africas impact on the environment")
+
 
 block header
 	header.header.footprint
-		.title-text
-			h1 Our footprint
-			p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos blanditiis cumque veritatis culpa doloribus vitae sint qui dolore distinctio, hic voluptatum quis, vel officiis aliquam dolorem consequuntur corporis! Blanditiis, quasi!
-		a.down-btn.fa.fa-angle-double-down(href="#first")
+		.footprint-header
+			.background-img
+				
+			.title-text
+				h1 Our footprint
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos blanditiis cumque veritatis culpa doloribus vitae sint qui dolore distinctio, hic voluptatum quis, vel officiis aliquam dolorem consequuntur corporis! Blanditiis, quasi!
+			a.down-btn.fa.fa-angle-double-down(href="#first")
 
 block content
+
+	.info-box.water.footprint
+		.text
+			h2 Cleaning water for the environment
+			p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt possimus eius deserunt dolor pariatur aut, praesentium unde aperiam, nostrum vero mollitia autem atque quidem tempore explicabo illum optio fugiat a.
+			p Quia culpa maiores iure sequi. Ullam, iure, officiis. Voluptas, repudiandae, reiciendis. Suscipit eum ab illo, veritatis cumque atque eos ex quidem dolores accusamus neque ipsum perferendis minus, aut magni blanditiis.
+		.image
+			img(src="/images/water-splash.png", alt="water splash")
+				
 	.info-box.people.footprint#first
 		.text
-			h1 Empowering individuals
+			h2 Empowering individuals
 			p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt quos sequi nihil assumenda facilis, rem explicabo libero cumque hic quo vel accusantium qui quasi! Fuga, excepturi quae obcaecati repellendus voluptas!
 			p Accusamus illo autem quo illum dolores culpa molestiae, laborum inventore excepturi, dolorem rem natus, voluptates, atque doloribus ipsam sequi non alias iste. Explicabo laboriosam perferendis hic maxime sunt eaque. Sed.
 			p In consequatur hic error quisquam, qui et vitae id blanditiis cupiditate voluptatem facilis expedita iusto? Rerum beatae fuga dolore doloremque, rem eius sequi, qui laudantium nesciunt at, suscipit assumenda adipisci!
 			p Repudiandae quo modi, at, blanditiis tempore dignissimos accusamus, provident, reprehenderit adipisci alias possimus! Quos explicabo cupiditate corporis possimus. Ex, perferendis, architecto! Illo a dolor, obcaecati quae eveniet suscipit quaerat rerum.
 			p Eaque eos nihil sint hic est officia excepturi, quod, recusandae illo dolorem culpa, consequuntur odio. Nam, quisquam voluptatem dicta nisi, cum explicabo. At minima, vel, iste tempora aperiam error fugiat.
-		.bottle
+		.image.bottle
 			img(src="/images/your-label.png", alt="Your beer bottle")
 
-	.water.footprint
-		.info-box
-			.text
-				h1 Cleaning water for the environment
-				p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt possimus eius deserunt dolor pariatur aut, praesentium unde aperiam, nostrum vero mollitia autem atque quidem tempore explicabo illum optio fugiat a.
-				p Quia culpa maiores iure sequi. Ullam, iure, officiis. Voluptas, repudiandae, reiciendis. Suscipit eum ab illo, veritatis cumque atque eos ex quidem dolores accusamus neque ipsum perferendis minus, aut magni blanditiis.
-		//- .water-tap
-			img(src="/images/water-tap.png", alt="water cleaner")
-		.water-splash
-			img(src="/images/water-splash.png", alt="water splash")
+	//- .water-tap
+		img(src="/images/water-tap.png", alt="water cleaner")
 
 	.info-box.energy.footprint
 		.animation
 			img(src="/images/sun.png", alt="solar energy")
 		.text
-			h1 Harvesting the sun
+			h2 Harvesting the sun
 			p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur dolorum vel tenetur nesciunt harum rerum ratione, ab quo corrupti pariatur! Quidem accusantium expedita exercitationem magni quos natus. Recusandae culpa, blanditiis!
 			p Quod sit dolorum, repudiandae voluptatibus cumque sed laborum consectetur earum commodi iure qui laboriosam sint sequi saepe impedit. Amet veniam nemo provident, unde laboriosam. Saepe eligendi atque quidem, aperiam perspiciatis.
 			p Ab adipisci tempore totam molestiae. Modi fuga autem aliquam sequi ex incidunt. Reprehenderit minima unde magni consectetur architecto ab, voluptatibus distinctio quas, omnis vero placeat, velit quos corrupti accusamus quod?
