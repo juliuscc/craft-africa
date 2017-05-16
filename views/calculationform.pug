@@ -76,8 +76,8 @@ block content
 				.profit-box.always-visible
 					span.text Profit: 
 					span.profit {{ economics.profit }}
-					a.fa.fa-caret-down.show(href="#")
-					a.fa.fa-caret-up.hide(href="#")
+					a.fa.fa-plus-square.show(href="#")
+					a.fa.fa-minus-square.hide(href="#")
 				.drawer-content
 					hr.section-divider
 					table
@@ -142,8 +142,8 @@ block content
 				.drawer(data-state="closed")
 					.title.always-visible
 						span Container configuration
-						a.fa.fa-caret-down.show(href="#")
-						a.fa.fa-caret-up.hide(href="#")
+						a.fa.fa-plus-square.show(href="#")
+						a.fa.fa-minus-square.hide(href="#")
 					.drawer-content
 						template(v-for="module in modules")
 							.module
