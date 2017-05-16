@@ -8,11 +8,11 @@
 		padding-right: 5%;
 		padding-top: 7em;
 		padding-bottom: 7em;
+		text-align: center;
 		
-		
-		@media (min-width: $width-mobile-min) {
-			padding-left: 25%;
-			padding-right: 25%;
+		@media (min-width: $width-tablet-min) {
+			padding-left: 20%;
+			padding-right: 20%;
 		
 		}
 
@@ -42,15 +42,24 @@
 				flex-direction: row;
 			}
 			.icon{
-
 				padding: 20px 0px;
 				@media (min-width: $width-tablet-min) {
 					padding: 0px 70px;
 				}
 				img{
-					filter: grayscale(100);
-
-					width: 150px;
+					width: 175px;
+				}
+				.image-text{
+					justify-content: center;
+					h3{
+							font-size: 4em;
+							padding-right: 10px;
+					}
+					p{
+						font-weight: bold;
+					}
+					display: flex;
+					flex-direction: row;
 				}
 			}
 		}
