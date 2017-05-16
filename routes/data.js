@@ -74,7 +74,7 @@ router.get('/stats', (req, res) => {
 					tap: data.defaultValues.defaultDistribution.tapDist / 100,
 					bottle: data.defaultValues.defaultDistribution.bottleDist / 100,
 					keg: data.defaultValues.defaultDistribution.kegDist / 100,
-					water: data.defaultValues.defaultDistribution.water
+					water: data.defaultValues.defaultDistribution.waterDist
 				},
 				volume: {
 					total: data.defaultValues.startValueForProduction

@@ -64,13 +64,13 @@ function calcIncome(stats, economics) {
 	}
 
 	// volume needs to be calculated before
-	const { sellingPrice, volume } = stats
+	const { sellingPrice, volume, distribution } = stats
 	const { incomes } = economics
 	if(sellingPrice && volume) {
 		incomes.kegPrice = sellingPrice.keg * volume.keg
 		incomes.tapPrice = sellingPrice.tap * volume.tap
 		incomes.bottlePrice = sellingPrice.bottle * volume.bottle
-		incomes.waterPrice = sellingPrice.water * volume.water
+		incomes.waterPrice = sellingPrice.water * distribution.water
 		incomes.total = incomes.kegPrice + incomes.tapPrice + incomes.bottlePrice + incomes.waterPrice
 	}
 	return economics

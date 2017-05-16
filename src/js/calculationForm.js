@@ -235,6 +235,7 @@ function updateSliders(firstSliderName, secondSliderName, app) {
 		calcObj.stats.distribution.tap = app.sliderTap
 		calcObj.stats.distribution.keg = app.sliderKeg
 		calcObj.stats.distribution.bottle = app.sliderBottle
+		// calcObj.stats.distribution.water = app.sliderWater
 
 		slider.updateAll()
 
@@ -260,6 +261,7 @@ function createVueApp() {
 			tapPrice: 0,
 			kegPrice: 0,
 			bottlePrice: 0,
+			waterPrice: 0,
 
 			economics: {
 				profit: 0,
@@ -305,6 +307,9 @@ function createVueApp() {
 			sliderBottle: function() {
 				updateSliders('sliderKeg', 'sliderTap', this)
 			},
+			sliderWater: function() {
+				calcObj.stats.distribution.water = this.sliderWater
+			},
 			tapPrice: function() {
 				calcObj.stats.sellingPrice.tap = this.tapPrice
 			},
@@ -313,6 +318,9 @@ function createVueApp() {
 			},
 			bottlePrice : function() {
 				calcObj.stats.sellingPrice.bottle = this.bottlePrice
+			},
+			bottlePrice : function() {
+				calcObj.stats.sellingPrice.water = this.waterPrice
 			},
 			deep: true
 		},
@@ -334,6 +342,7 @@ function createVueApp() {
 
 			// Updating elements that are created by vue
 			setTimeout(() => {
+				this.sliderWater = calcObj.stats.distribution.water
 				slider.updateAll()
 
 				document.querySelectorAll('.activeCheckbox').forEach((element) => {
