@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
 	variables.minTotalVolume = 20
 	variables.maxTotalVolume = 45000
 	variables.totalVolume = 50
-	variables.title = 'Calculation Form'
+	variables.title = 'Build your own brand'
 	res.render('calculationform', variables)
 })
 
@@ -20,7 +20,7 @@ router.post('/', (req, res) => {
 		variables.totalVolume = 50
 	}
 
-	variables.title = 'Calculation Form'
+	variables.title = 'Build your own brand'
 	res.render('calculationform', variables)
 })
 
