@@ -44,10 +44,11 @@ header.header {
 		flex-direction: column;
 		height: 100vh;
 		background-color: $color-primary;
-		background-image: url("/images/alcohol-21938_1920.jpg");
+		background-image: url("/images/darkerImages/AlcoholTank.jpg");
 		background-size: cover;
+		background-position: center;
 
-		filter: blur(8px) grayscale(50%);
+		//filter: blur(8px) grayscale(50%);
 
 		// -webkit-filter: blur(3px);
 		// -moz-filter: blur(3px);

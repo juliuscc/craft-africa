@@ -5,7 +5,6 @@ header.header {
 	flex-direction: column;
 	height: 100vh;
 	background-color: $color-primary;
-	//background-image: url("/images/guy.png");	
 	background-size: cover;
 
 	.title-text {
@@ -36,7 +35,7 @@ header.header {
 			}
 
 			p {
-				font-size: 1.6em;
+				font-size: 1.25em;
 			}
 		}
 	}

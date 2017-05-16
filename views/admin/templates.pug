@@ -1,58 +1,64 @@
 extends layout.pug
 
-block title 
-	| Admin 
+block vars
+	- var title = "Email system"
+
+block title
+	title Email system
+
 
 block content
 
-	if templateList
+	
 		.row
 			.col.s12.tabs-header
 				ul.tabs
-					each template in templateList
-						li.tab.col.s3
-							a(class="teal-text text-darken-2" href="#" + template.name)= template.name
+					if templateList
+						each template in templateList
+							li.tab.col.s3
+								a(class="teal-text text-darken-2" href="#" + template.name)= template.name
 					li.tab.col.s3
 						a(href="#new") Add New Template
 
 		.row
-			each template in templateList
-				div(id=template.name).col.s12
-					form(method="post" action="/admin/email/" id= template._id).container
-						.row
-							.input-field.col.s6.inputBox
-								label Template name
-								input(type="text" name="name" id="name" value=template.name)
-						.row
-							.input-field.col.s6.inputBox
-								label Admin Recipient
-								input(type="email" name="recipient" id="recipient" value=template.recipient)
-						.row
-							.input-field.col.s6.inputBox
-								label Admin Subject
-								input(type="text" name="admin_subject" id="admin_subject" value=template.admin_subject)
-						.row
-							.input-field.col.s12.inputBox
-								label(class="textareaLabels") Admin Message
-								textarea(name="admin_message" form= template._id).materialize-textarea.textareaStyle= template.admin_message
-						.row
-							.input-field.col.s6.inputBox
-								label User Subject
-								input(type="text" name="user_subject" id="user_subject" value=template.user_subject)
-						.row
-							.input-field.col.s12.inputBox
-								label(class="textareaLabels") User Message
-								textarea.textareaStyle(name="user_message" form= template._id).materialize-textarea= template.user_message
-						input(type="hidden" name="id" value=template._id)
-						.row
-							.waves-effect.waves-light.btn
-								input(type="submit" id="submit")
+			if templateList
+				each template in templateList
+					div(id=template.name).col.s12
+						form(method="post" action="/admin/email/" id= template._id).container
+							.row
+								.input-field.col.s6.inputBox
+									label Template name
+									input(type="text" name="name" id="name" value=template.name)
+							.row
+								.input-field.col.s6.inputBox
+									label Admin Recipient
+									input(type="email" name="recipient" id="recipient" value=template.recipient)
+							.row
+								.input-field.col.s6.inputBox
+									label Admin Subject
+									input(type="text" name="admin_subject" id="admin_subject" value=template.admin_subject)
+							.row
+								.input-field.col.s12.inputBox
+									label(class="textareaLabels") Admin Message
+									textarea(name="admin_message" form= template._id).materialize-textarea.textareaStyle= template.admin_message
+							.row
+								.input-field.col.s6.inputBox
+									label User Subject
+									input(type="text" name="user_subject" id="user_subject" value=template.user_subject)
+							.row
+								.input-field.col.s12.inputBox
+									label(class="textareaLabels") User Message
+									textarea.textareaStyle(name="user_message" form= template._id).materialize-textarea= template.user_message
+							input(type="hidden" name="id" value=template._id)
+							.row
+								.btn
+									input(type="submit" id="submit")
 
-					form(method="post" action="/admin/email/delete").container
-						input(type="hidden" name="id" value=template._id)
-						.row
-							.input-field.col.s6.inputBox
-								input(type="submit" id="submit" value="Remove").btn.red
+						form(method="post" action="/admin/email/delete").container
+							input(type="hidden" name="id" value=template._id)
+							.row
+								.input-field.col.s6.inputBox
+									input(type="submit" id="submit" value="Remove").btn.red
 
 			div(id="new").col.s12
 					form(method="post" action="/admin/email/" id="template-form-new").container
@@ -81,13 +87,12 @@ block content
 								label(class="textareaLabels") User Message
 								textarea(name="user_message" form="template-form-new").materialize-textarea
 						input(type="hidden" name="id" value="")
-						.waves-effect.waves-light.btn
-							input(type="submit" id="submit")
+						input.btn(type="submit" id="submit" value="submit")
 
 			script
 				|$(document).ready(function(){
 				|	$('ul.tabs').tabs();
 				|});
 
-	else
-		h1 Something went wrong
+		//- else
+		//- 	h3 Please add new containers

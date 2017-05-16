@@ -1,14 +1,62 @@
 extends layout.pug
 
-block title 
-	| Admin 
+block vars
+	- var title = "Statistics"
+
+block title
+	title Statistics
+
 
 block content
-	H1 Statistics
-	div(width="600",style ="float:left")
-		canvas(id="myChart",width="800",height="400")
-		canvas(id="myChart2",width="800",height="200")
-		canvas(id="myChart3",width="800",height="200")
+	style
+		|canvas {
+		|	width: 800px;
+		|	height: 400px;
+		|}
+	
+	.container
+		h3 Calculation form
+		hr
+		.card
+			.card-title
+				h4 Liters of beer
+				button(type="button", id="litersPrev") Prev
+				button(type="button", id="litersNext") Next
+				p(id='litersDate') #{year} #{month}
+			.card-content
+				canvas(id="litersChart")
+		.card
+			.card-title
+				h4 Tap
+				button(type="button", id="tapPrev") Prev
+				button(type="button", id="tapNext") Next
+				p(id='tapDate') #{year} #{month}
+			.card-content
+				canvas(id="tapChart")
+		.card
+			.card-title
+				h4 Bottle
+				button(type="button", id="bottlePrev") Prev
+				button(type="button", id="bottleNext") Next
+				p(id='bottleDate') #{year} #{month}
+			.card-content
+				canvas(id="bottleChart")
+		.card
+			.card-title
+				h4 Keg
+				button(type="button", id="kegPrev") Prev
+				button(type="button", id="kegNext") Next
+				p(id='kegDate') #{year} #{month}
+			.card-content
+				canvas(id="kegChart")
+		
+		h3 User stats
+		hr
+		.card
+			.card-title
+				b Views
+			.card-content
+				canvas(id="viewsChart")
 
 block scripts
 	script(src="/js/admin/statistics.js")

@@ -1,6 +1,6 @@
 .economics {
 	border: 1px solid darken($color-background-light, 15%);
-	border-radius: 10px;
+	border-radius: 7px;
 	padding: 1em 2.2em;
 	box-sizing: border-box;
 	font-weight: bold;
@@ -31,23 +31,15 @@
 		}
 	}
 
-	&[data-state="open"] {
-		.profit-box a.fa.show {
-			display: none;
-		}
-
-		.profit-box a.fa.hide {
-			display: block;
-		}
-	}
-
-	&[data-state="closed"] {
-		.profit-box a.fa.show {
-			display: block;
-		}
-
-		.profit-box a.fa.hide {
-			display: none;
+	.drawer-content {
+		table {
+			tr:last-child {
+				&>* {
+					padding-top: 8px;
+					border-top: 1px solid gray;
+					font-weight: bold;
+				}
+			}
 		}
 	}
 }

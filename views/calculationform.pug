@@ -22,16 +22,24 @@ block content
 		.container
 			.chart-container
 				economics-chart(:chart-data="chartData")
-			.inputs
+			.inputs(:class="statusClass")
 				.total-volume
-					h3 Liters of Beer
+					.title
+						h3 Liters of Beer
+						.fa.fa-question-circle-o.tooltip
+							.tooltip-text
+								| This slider controls your monthly output of beer.
 					.slider-wrapper
 						.slider-row
 							input.slider.activeSlider#totalVolume(type="range" name="totalVolume" min=`${minTotalVolume}` max=`${maxTotalVolume}` data-thumbWidth="20" v-model="totalVolume")
 							span {{ totalVolume }} liters
 				.options
 					.distribution
-						h3 Finetune distribution (tap, keg, bottle)
+						.title
+							h3 Finetune distribution
+							.fa.fa-question-circle-o.tooltip
+								.tooltip-text
+									| These sliders fine tune how much of your beer goes to tap, keg or bottles
 						table.slider-wrapper
 							tr
 								td
@@ -52,67 +60,121 @@ block content
 									input.slider.container-distribution.activeSlider#sliderBottle(type="range" name="bottle" min="0" max="1" step="0.01" data-thumbWidth="16" v-model="sliderBottle")
 									span {{ bottlePercent }}%
 					.addons
-						h3 Addons
+						.title
+							h3 Addons
+							.fa.fa-question-circle-o.tooltip
+								.tooltip-text
+									| These are add-ons that you can add to your brewery.
 						table
 							template(v-for="addonModule in addon")
-								tr
+								tr(:class="addonModule.recommendationClass")
 									td {{ addonModule.comment }}
 									td
 										input(type="checkbox" v-model="addonModule.choosen").activeCheckbox
 
-			.economics(data-state="closed")
-				.profit-box
+			.economics.drawer(data-state="closed")
+				.profit-box.always-visible
 					span.text Profit: 
-					span.profit {{ profit }}
+					span.profit {{ economics.profit }}
 					a.fa.fa-caret-down.show(href="#")
 					a.fa.fa-caret-up.hide(href="#")
+				.drawer-content
+					hr.section-divider
+					table
+						tr
+							th Incomes
+						tr
+							th Sales Bottles
+							td {{ economics.incomes.bottlePrice }}
+						tr
+							th Sales Keg
+							td {{ economics.incomes.kegPrice }}
+						tr
+							th Sales Tap
+							td {{ economics.incomes.tapPrice }}
+						tr
+							th Total
+							td {{ economics.incomes.total }}
+					table
+						tr
+							th Fixed Costs
+						tr
+							th Rent
+							td {{ economics.fixedCosts.rent }}
+						tr
+							th Total
+							td {{ economics.fixedCosts.total }}
+					table
+						tr
+							th Variable Costs
+						tr
+							th Bottle Production Costs
+							td {{ economics.variableCosts.bottlePrice }}
+						tr
+							th Keg Production Costs
+							td {{ economics.variableCosts.kegPrice }}
+						tr
+							th Tap Production Costs
+							td {{ economics.variableCosts.tapPrice }}
+						tr
+							th Ingredients
+							td {{ economics.variableCosts.ingredients }}
+						tr
+							th Total
+							td {{ economics.variableCosts.total }}
+					table
+						tr
+							th Summary
+						tr
+							th Incomes
+							td {{ economics.incomes.total }}
+						tr
+							th Fixed Costs
+							td - {{ economics.fixedCosts.total }}
+						tr
+							th Variable Costs
+							td - {{ economics.variableCosts.total }}
+						tr
+							th Total
+							td {{ economics.profit }}
+					
 			.container-box
-				.title
-					h3 Container configuration
-				.containers
-					.container-wrapper
-
+				.drawer(data-state="closed")
+					.title.always-visible
+						span Container configuration
+						a.fa.fa-caret-down.show(href="#")
+						a.fa.fa-caret-up.hide(href="#")
+					.drawer-content
 						template(v-for="module in modules")
-							.container-module
-								.name-wrapper
-									.name
-										span.text {{ module.name }}
-										svg.circle(:data-fill="module.usagePercent")
-											circle.outline(cx="50%" cy="50%" r="40%" stroke-width="1px" fill="none")
-											circle.stroke(cx="50%" cy="50%" r="40%" stroke-width="7px" fill="none")
-
-				.advanced-tab(data-state="closed")
-					.toggle
-						a.show(href="#")
-							span.fa.fa-angle-double-down
-							| Show additional information
-							span.fa.fa-angle-double-down
-						a.hide(href="#")
-							span.fa.fa-angle-double-up
-							| Hide additional information
-							span.fa.fa-angle-double-up
-					.extra
-						.module
-							h3 A1:
-							table
-								tr
-									td Container type:
-									td Brewing
-								tr
-									td Brewing capacity:
-									td 500l / batch
-								tr
-									td Fermenting capacity:
-									td 4000l
-						.module
-							h3 A2:
-							table
-								tr
-									td Container type:
-									td Fermenting
-								tr
-									td Fermenting capacity:
-									td 8000l
+							.module
+								table
+									tr
+										th {{ module.name }}
+										td  
+									tr
+										th Container type
+										td {{ module.type }}
+									tr(v-if="module.type === 'production'")
+										th Max brewing capacity
+										td {{ module.brewingCapacity }}
+									tr(v-else-if="module.type === 'fermenting'")
+										th Max fermentation capacity
+										td {{ module.fermentingCapacity }}
+									tr(v-else)
+										th Type
+										td {{ module.comment }}
+									tr
+										th Price/month
+										td {{ module.price }}
+				.container-wrapper
+					template(v-for="module in modules")
+						.container-module(:class="statusClass")
+							.name-wrapper
+								.name
+									span.text {{ module.name }}
+									svg.circle(:data-fill="module.usagePercent")
+										circle.outline(cx="50%" cy="50%" r="40%" stroke-width="1px" fill="none")
+										circle.stroke(cx="50%" cy="50%" r="40%" stroke-width="7px" fill="none")
 
 block navScript
 	script(src="/js/navbarsmall.js")

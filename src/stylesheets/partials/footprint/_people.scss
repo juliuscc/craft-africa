@@ -1,16 +1,15 @@
-.people.footprint {
+.people {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	background-color: $color-accent;
-	color: darken($color-warning, 7);
+	color: $color-text-light;
 
 	> * {
 		box-sizing: border-box;
 		display: inline-block;
 	}
 
-	.text,
 	.bottle {
 		width: 100%;
 	}
@@ -28,10 +27,6 @@
 	@media (min-width: $width-tablet-min) {
 		& {
 			flex-direction: row;
-		}
-		
-		.text {
-			width: 70%;
 		}
 
 		.bottle {

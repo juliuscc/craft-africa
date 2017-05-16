@@ -1,7 +1,7 @@
 .inputs {
 	border: 1px solid darken($color-background-light, 15%);
-	border-radius: 10px;
-	padding: 1em 2.2em;
+	border-radius: 7px;
+	padding: 1.5em 2.2em;
 	box-sizing: border-box;
 
 	.slider-wrapper {
@@ -42,6 +42,27 @@
 		.addons {
 			flex: 1;
 			margin: 0;
+
+			.inactive {
+				color: red;
+			}
+
+			.title {
+				width: 100%;
+				font-size: 1em;
+
+				h3 {
+					display: inline-block;
+					margin-right: 10px; 
+				}
+
+				.fa {
+					font-size: 1.4em;
+					vertical-align: center;
+					line-height: 1.4em;
+					color: $color-text-dark;
+				}
+			}
 		}
 
 		.distribution {
@@ -75,10 +96,10 @@
 		}
 
 		.addons {
-			* {
-				padding: 0;
-				margin: 0;
-			}
+			// * {
+			// 	padding: 0;
+			// 	margin: 0;
+			// }
 		}
 	}
 }

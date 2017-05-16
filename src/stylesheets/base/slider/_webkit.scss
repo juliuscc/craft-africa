@@ -30,3 +30,11 @@ input[type=range]::-webkit-slider-thumb {
 		background: $color-thumb-hover;
 	}
 }
+
+.invalid input[type=range]::-webkit-slider-thumb {
+	background: $color-thumb-warning;
+	&:hover {
+		background: $color-thumb-hover-warning;
+	}
+}
+

@@ -2,6 +2,7 @@ const router = require('express').Router()
 const containerAPI = require('./../models/containerAPI')
 const beerAPI = require('./../models/beerTypeAPI')
 const defaultValuesAPI = require('./../models/defaultValuesAPI')
+const Logger = require('./../models/loggerAPI')
 
 function loadFromDB(callback) {
 	containerAPI.getAllContainers((err, containers) => {
@@ -45,7 +46,10 @@ router.get('/stats', (req, res) => {
 			})
 			containerObject.fermentingTime = data.defaultValues.fermentingTime
 			containerObject.productionYield = data.defaultValues.productionYield / 100
-			containerObject.threshold = data.defaultValues.threshold
+			containerObject.threshold = {
+				bottleMachine: data.defaultValues.defaultThreshold.bottleThresh,
+				kegStorage: data.defaultValues.defaultThreshold.kegThresh
+			}
 
 			res.json({
 				containers: containerObject,
@@ -79,6 +83,11 @@ router.get('/stats', (req, res) => {
 			})
 		}
 	})
+})
+
+router.post('/stats', (req, res) => {
+	Logger.logCalcInput(req.body)
+	res.json({})
 })
 
 module.exports = router

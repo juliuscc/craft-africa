@@ -8,7 +8,7 @@ const economics = require('./calculation-form/economics')
 const formInteraction = require('./calculation-form/formInteraction')
 const ajax = require('./ajax')
 const slider = require('./calculation-form/slider')
-const informationBox = require('./calculation-form/informationBox')
+const drawer = require('./calculation-form/drawer')
 
 const calcObj = { stats: { distribution: { tap: 0, bottle: 0.01, keg: 0 }, distributionLock: ['tap', 'bottle'] }, economics: {} }
 
@@ -86,6 +86,7 @@ function initInteractiveSliders(app) {
 		element.addEventListener('change', () => {
 			updateCalcObj()
 			updateGraph(app)
+			updateEconomicsDataAdvanced(app)
 		})
 	})
 	
@@ -117,6 +118,7 @@ function updateCalcObj() {
 
 		setTimeout(() => { shouldUpdate = true }, 40)
 	}
+
 }
 
 function updateGraph(app) {
@@ -138,15 +140,52 @@ function updateContainers(app) {
 		})
 	}
 
+	app.addon.forEach((addonModule) => {
+		if(addonModule.recommended) {
+			addonModule.recommendationClass = 'active'
+		} else {
+			addonModule.recommendationClass = 'inactive'
+		}
+	})
+
 	// Push containers
+	app.statusClass = 'valid'
 	app.modules = calcObj.stats.containers.current.all
-	app.modules.forEach((element) => {
-		element.usagePercent = Math.round(element.usage * 100)
+	app.modules.forEach((container) => {
+		container.usagePercent = Math.round(container.usage * 100)
+		if(container.usage > 1) {
+			app.statusClass = 'invalid'
+		}
 	})
 }
 
 function updateEconomicsData(app) {
-	app.profit = Math.round(calcObj.economics.profit)
+	if(calcObj.economics.profit !== '-') {
+		app.economics.profit = Math.round(calcObj.economics.profit)
+	} else {
+		app.economics.profit = calcObj.economics.profit + ' '
+	}
+}
+
+function updateEconomicsDataAdvanced(app) {
+	if (calcObj.economics.fixedCosts.rent !== '-') {
+		app.economics.fixedCosts.rent = Math.round(calcObj.economics.fixedCosts.rent)
+		app.economics.fixedCosts.total = Math.round(calcObj.economics.fixedCosts.total)
+	} else {
+		app.economics.fixedCosts.rent = calcObj.economics.fixedCosts.rent + ' '
+		app.economics.fixedCosts.total = calcObj.economics.fixedCosts.total	+ ' '	
+	}
+
+	app.economics.variableCosts.bottlePrice = Math.round(calcObj.economics.variableCosts.bottlePrice)
+	app.economics.variableCosts.kegPrice = Math.round(calcObj.economics.variableCosts.kegPrice)
+	app.economics.variableCosts.tapPrice = Math.round(calcObj.economics.variableCosts.tapPrice)
+	app.economics.variableCosts.ingredients = Math.round(calcObj.economics.variableCosts.ingredients)
+	app.economics.variableCosts.total = Math.round(calcObj.economics.variableCosts.total)
+
+	app.economics.incomes.bottlePrice = Math.round(calcObj.economics.incomes.bottlePrice)
+	app.economics.incomes.kegPrice = Math.round(calcObj.economics.incomes.kegPrice)
+	app.economics.incomes.tapPrice = Math.round(calcObj.economics.incomes.tapPrice)
+	app.economics.incomes.total = Math.round(calcObj.economics.incomes.total)
 }
 
 let shouldSlidersUpdate = true
@@ -182,7 +221,7 @@ function updateSliders(firstSliderName, secondSliderName, app) {
 
 		slider.updateAll()
 
-		setTimeout(() => { shouldSlidersUpdate = true }, 20)
+		setTimeout(() => { shouldSlidersUpdate = true }, 15)
 	}
 }
 
@@ -200,7 +239,28 @@ function createVueApp() {
 			kegPercent: 0,
 			bottlePercent: 0,
 
-			profit: 0,
+			economics: {
+				profit: 0,
+				fixedCosts: {
+					rent: 0,
+					total: 0
+				},
+				variableCosts: {
+					bottlePrice: 0,
+					kegPrice: 0,
+					tapPrice: 0,
+					ingredients: 0,
+					total: 0
+				},
+				incomes: {
+					bottlePrice: 0,
+					kegPrice: 0,
+					tapPrice: 0,
+					total: 0
+				}
+			},
+
+			statusClass: 'valid',
 
 			modules: [],
 			addon: [],
@@ -232,13 +292,14 @@ function createVueApp() {
 			initInteractiveSliders(this)
 
 			// Add extra information box interactivity
-			informationBox.init()
+			drawer.init()
 
 			// Make sure the graph shows the correct stuff
 			updateCalcObj()
 			updateGraph(this)
 			updateContainers(this)
 			updateEconomicsData(this)
+			updateEconomicsDataAdvanced(this)
 
 			// Updating elements that are created by vue
 			setTimeout(() => {

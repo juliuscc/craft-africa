@@ -1,5 +1,9 @@
 function removeRow() {
-	const row = this.parentNode.parentNode
+	const row = this.parentNode.parentNode.parentNode.parentNode
+	// e.preventDefault()
+	// console.log('this is the row: ', row)
+
+
 	const status = row.querySelector('[name="status"]')
 
 	row.classList.add('removed')
@@ -7,8 +11,31 @@ function removeRow() {
 	if(status.value === 'new') {
 		this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode)
 	} else {
+		const requiredCLasses = [
+			row.querySelector('[name="name"]'),
+			row.querySelector('[name="fermentingTime"]'),
+			row.querySelector('[name="hops"]'),
+			row.querySelector('[name="malt"]')
+		]
+		requiredCLasses.forEach((el) => {
+			el.removeAttribute('required')
+		})
+		console.log('klubb')
+
 		status.setAttribute('value', 'removed')
 	}
+}
+
+function removeTemp() {
+	this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode)
+}
+
+
+function enableRemove() {
+	const temp = this.getAttribute('data-target')
+	const modal = document.querySelector(`#${temp}`)
+	modal.querySelector('.remove')
+		.querySelector('.waves-button-input').removeAttribute('disabled')
 }
 
 function rowEdited(e) {
@@ -23,7 +50,7 @@ function rowEdited(e) {
 	}
 }
 
-function addBeer() {
+function addRow() {
 	// Get form
 	const form = document.querySelector('.addRow')
 	// Create div with inputs
@@ -31,7 +58,7 @@ function addBeer() {
 	div.classList.add('card-panel')
 	div.innerHTML =
 `
-<div class="row">
+<div class="row" class="newRow">
 	<div class="input-field col s3">
 		<input type="text" name="name" required="" class="validate">
 		<label for="name">Name</label>
@@ -60,17 +87,32 @@ function addBeer() {
 
 
 	const removeBtn = div.querySelector('.remove')
-	removeBtn.addEventListener('click', removeRow)
+	removeBtn.addEventListener('click', removeTemp)
 
 	// Insert div
-	form.insertBefore(div, this)
+	form.prepend(div)
+
+	/* eslint-disable no-undef */
+	$('select').material_select()
+	/* eslint-enable no-undef */
 }
 
-const addBtn2 = document.querySelector('#addBeer')
-addBtn2.addEventListener('click', addBeer)
+/* eslint-disable no-undef */
+$(document).ready(() => {
+	$('select').material_select()
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+	$('.modal').modal()
 
-const removeBtns = document.querySelectorAll('.remove')
-removeBtns.forEach(btn => btn.addEventListener('click', removeRow))
+	const addBtn2 = document.querySelector('#add')
+	addBtn2.addEventListener('click', addRow)
 
-const editedRow = document.querySelectorAll('.validate')
-editedRow.forEach(textbox => textbox.addEventListener('change', rowEdited))
+	const removeBtns = document.querySelectorAll('.remove')
+	removeBtns.forEach(btn => btn.addEventListener('click', removeRow))
+
+	const enableBtn = document.querySelectorAll('.enable')
+	enableBtn.forEach(btn => btn.addEventListener('click', enableRemove))
+
+	const editedRow = document.querySelectorAll('.validate')
+	editedRow.forEach(textbox => textbox.addEventListener('change', rowEdited))
+})
+/* eslint-enable no-undef */

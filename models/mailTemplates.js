@@ -34,6 +34,15 @@ module.exports.createTemplate = (emailData, callback) => {
 	const emailObject = new Template(emailData)
 	emailObject.save(callback)
 }
+
+module.exports.createTemplate = (data, callback) => {
+	if(isInputCorrect(data)) {
+		const containerObject = new Template(data)
+		containerObject.save(callback)
+	} else {
+		callback('Input incorrect')
+	}
+}
 module.exports.getTemplates = (callback) => {
 	Template.find({}, callback)
 }

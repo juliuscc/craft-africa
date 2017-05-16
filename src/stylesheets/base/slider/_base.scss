@@ -34,6 +34,8 @@ $color-track-active: darken($color-track-inactive, 10%);
 $color-track-lower-inactive: darken($color-track-inactive, 15%);
 $color-track-lower-active: darken($color-track-lower-inactive, 5%);
 $color-thumb: $color-primary;
+$color-thumb-warning: $color-warning;
+$color-thumb-hover-warning: darken($color-warning, 10%);
 $color-thumb-hover: darken($color-thumb, 10%);
 
 $height-track: 10px;

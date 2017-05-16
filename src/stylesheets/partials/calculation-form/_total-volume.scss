@@ -1,8 +1,21 @@
 .total-volume {
 	margin-bottom: 2em;
 
-	h3 {
+	.title {
+		width: 100%;
 		font-size: 1.4em;
+
+		h3 {
+			display: inline-block;
+			margin-right: 10px; 
+		}
+
+		.fa {
+			font-size: 1.4em;
+			vertical-align: center;
+			line-height: 1.4em;
+			color: $color-text-dark;
+		}
 	}
 
 	$track-height: 20px;
