@@ -8,18 +8,28 @@ const passport = require('passport')
 const session = require('express-session')
 const flash = require('connect-flash')
 const Logger = require('./models/loggerAPI')
+const favicon = require('serve-favicon')
 
 mongoose.connect(configDB.url)
 
 function views(req, res, next) {
 	if(req.method === 'GET') {
-		Logger.updateViews(req.originalUrl)
+		let url = req.originalUrl.toLowerCase()
+		if(!url.includes('.') && !url.includes('admin')) {
+			if(url === '/') {
+				url = 'homepage'
+			}
+			Logger.updateViews(url)
+		}
 	}
 	next()
 }
 
 // Init App
 const app = express()
+
+// Favicon
+app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')))
 
 // View Engine
 app.set('views', path.join(__dirname, 'views'))

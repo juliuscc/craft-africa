@@ -2,6 +2,7 @@ const router = require('express').Router()
 const containerAPI = require('./../models/containerAPI')
 const beerAPI = require('./../models/beerTypeAPI')
 const defaultValuesAPI = require('./../models/defaultValuesAPI')
+const Logger = require('./../models/loggerAPI')
 
 function loadFromDB(callback) {
 	containerAPI.getAllContainers((err, containers) => {
@@ -84,6 +85,11 @@ router.get('/stats', (req, res) => {
 			})
 		}
 	})
+})
+
+router.post('/stats', (req, res) => {
+	Logger.logCalcInput(req.body)
+	res.json({})
 })
 
 module.exports = router
