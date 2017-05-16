@@ -8,12 +8,12 @@
 		padding-right: 5%;
 		padding-top: 7em;
 		padding-bottom: 7em;
-		background-color: $color-secondary;
 		text-align: center;
 		
 		@media (min-width: $width-tablet-min) {
 			padding-left: 20%;
 			padding-right: 20%;
+		}
 		
 		@media (min-width: $width-mobile-min) {
 			padding-left: 10%;
