@@ -5,6 +5,7 @@ header.header {
 	flex-direction: column;
 	height: 100vh;
 	background-size: cover;
+	overflow: hidden;
 
 	.title-text {
 		position: absolute;
