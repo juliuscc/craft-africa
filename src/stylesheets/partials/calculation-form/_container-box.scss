@@ -14,6 +14,9 @@
 		.title {
 			width: 100%;
 			box-sizing: border-box;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
 
 			span {
 				font-size: 1.3em;
@@ -22,20 +25,18 @@
 			}
 
 			a.fa {
-				font-size: 1.3em;
+				font-size: 30px;
 				line-height: 1em;
 				float: right;
 				text-align: center;
 				text-decoration: none;
-				color: darken($color-background-light, 15%);
-				border: 1px solid darken($color-background-light, 15%);
 				width: 1em;
 				border-radius: 5px;
-				// box-sizing: border-box;
+				color: $color-primary;
+
 			
 				&:hover {
-					border-color: $color-text-dark;
-					color: $color-text-dark;
+					color: darken($color-primary, 10%);
 				}
 			}
 		}
