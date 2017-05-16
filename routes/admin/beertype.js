@@ -105,8 +105,6 @@ router.post('/new', (req, res) => {
 				status: status[index]
 			}))
 
-			console.log('beeeeers: ', beers)
-
 			beers.forEach((element) => {
 				beerTypesModule.createBeer({
 					name: element.name,

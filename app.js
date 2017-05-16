@@ -13,7 +13,13 @@ mongoose.connect(configDB.url)
 
 function views(req, res, next) {
 	if(req.method === 'GET') {
-		Logger.updateViews(req.originalUrl)
+		let url = req.originalUrl.toLowerCase()
+		if(!url.includes('.') && !url.includes('admin')) {
+			if(url === '/') {
+				url = 'homepage'
+			}
+			Logger.updateViews(url)
+		}
 	}
 	next()
 }
