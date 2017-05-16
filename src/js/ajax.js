@@ -1,4 +1,4 @@
-const querystring = require('querystring');
+const querystring = require('querystring')
 
 function loadJSON(url, data) {
 	return new Promise((resolve, reject) => {
@@ -32,7 +32,7 @@ function loadJSON(url, data) {
 			}
 		}
 		const params = querystring.stringify(data)
-		httpRequest.open('GET', url + '?' + params, true)
+		httpRequest.open('GET', `${url}?${params}`, true)
 		httpRequest.send()
 	})
 }

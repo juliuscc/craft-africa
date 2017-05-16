@@ -7,7 +7,6 @@ const boColors = 'rgba(54, 162, 235, 1)'
 const calcInputDates = { liters: new Date(), tap: new Date(), keg: new Date(), bottle: new Date() }
 
 let calcInputCharts = {}
-let viewsChart = undefined
 
 let firstAjax = true
 
@@ -82,9 +81,52 @@ function drawCalcInputChartsDataFormatting(list) {
 	for(let i = 0; i < list.length; i += 1) {
 		const value = list[i].data.value
 		const count = list[i].data.count
-		returnList[value] = count
+		returnList[value] += count
 	}
 	return returnList
+}
+
+function getMax(list) {
+	if(list.length === 0) {
+		return undefined
+	}
+	let max = list[0].data.value
+	for(let i = 0; i < list.length; i += 1) {
+		max = Math.max(max, list[i].data.value)
+	}
+	return max
+}
+
+function drawCalcInputChartsDataFormattingLiters(list) {
+	const max = getMax(list)
+
+	const returnList = Array(100).fill(0)
+	if(max === undefined) {
+		return returnList
+	}
+
+	const dj = max / 100
+
+	for(let i = 0; i < list.length; i += 1) {
+		for(let j = 0; j < returnList.length; j += 1) {
+			if(list[i].data.value < dj * j) {
+				returnList[j] += list[i].data.count
+				// console.log((dj * (j - 1)) + ' < ' + list[i].data.value + ' < ' + (dj * j))
+				break
+			}
+		}
+	}
+	returnList[returnList.length - 1] = list[list.length - 1].data.count
+	return returnList
+}
+
+function getLabels(Max) {
+	return Array.from(Array(100), (x, i) => {
+		if(i % 5 === 0) {
+			return Math.round((Max / 100) * i)
+		}
+		return ''
+	})
 }
 
 function drawCalcInputCharts(JSON) {
@@ -92,18 +134,21 @@ function drawCalcInputCharts(JSON) {
 	const ctx2 = document.getElementById('tapChart')
 	const ctx3 = document.getElementById('bottleChart')
 	const ctx4 = document.getElementById('kegChart')
-	const percentageLabels = Array.from(Array(100), (x, i) => {
+	const percentageLabels = Array.from(Array(101), (x, i) => {
 		if(i % 5 === 0) {
 			return i
 		}
 		return ''
 	})
-	const litersVal = drawCalcInputChartsDataFormatting(JSON.calcInput.liters)
+	const litersVal = drawCalcInputChartsDataFormattingLiters(JSON.calcInput.liters)
 	const tapVal = drawCalcInputChartsDataFormatting(JSON.calcInput.tap)
 	const bottleVal = drawCalcInputChartsDataFormatting(JSON.calcInput.bottle)
 	const kegVal = drawCalcInputChartsDataFormatting(JSON.calcInput.keg)
 
-	const obj1 = drawCalcInputChartsGetObject(percentageLabels, litersVal)
+	const litersMax = getMax(JSON.calcInput.liters)
+	const litersLabels = getLabels(litersMax)
+
+	const obj1 = drawCalcInputChartsGetObject(litersLabels, litersVal)
 	const obj2 = drawCalcInputChartsGetObject(percentageLabels, tapVal)
 	const obj3 = drawCalcInputChartsGetObject(percentageLabels, bottleVal)
 	const obj4 = drawCalcInputChartsGetObject(percentageLabels, kegVal)
@@ -116,7 +161,7 @@ function drawCalcInputCharts(JSON) {
 }
 
 function drawCharts(JSON) {
-	viewsChart = drawViewsChart(JSON)
+	drawViewsChart(JSON)
 	calcInputCharts = drawCalcInputCharts(JSON)
 }
 
@@ -127,7 +172,16 @@ function ajaxFun(dateL, dateT, dateB, dateK, chart, type) {
 			drawCharts(JSON)
 			firstAjax = false
 		} else {
-			const Val = drawCalcInputChartsDataFormatting(JSON.calcInput[type])
+			let Val
+			if(type.localeCompare('liters') === 0) {
+				Val = drawCalcInputChartsDataFormattingLiters(JSON.calcInput[type])
+				const litersMax = getMax(JSON.calcInput.liters)
+				const litersLabels = getLabels(litersMax)
+				chart.data.labels = litersLabels
+			} else {
+				Val = drawCalcInputChartsDataFormatting(JSON.calcInput[type])
+			}
+
 			chart.data.datasets[0].data = Val
 			chart.update()
 		}
@@ -137,14 +191,14 @@ function ajaxFun(dateL, dateT, dateB, dateK, chart, type) {
 
 function update(type, offset) {
 	calcInputDates[type].setMonth(calcInputDates[type].getMonth() + offset)
-	document.getElementById(type + 'Date').innerHTML = calcInputDates[type].getFullYear() + ' ' + (calcInputDates[type].getMonth() + 1)
+	document.getElementById(`${type}Date`).innerHTML = `${calcInputDates[type].getFullYear()} ${(calcInputDates[type].getMonth() + 1)}`
 	ajaxFun(calcInputDates.liters, calcInputDates.tap,
 	calcInputDates.keg, calcInputDates.bottle, calcInputCharts[type], type)
 }
 
 ['liters', 'tap', 'keg', 'bottle'].forEach((type) => {
-	document.querySelector('#' + type + 'Prev').addEventListener('click', () => { update(type, -1) })
-	document.querySelector('#' + type + 'Next').addEventListener('click', () => { update(type, 1) })
+	document.querySelector(`#${type}Prev`).addEventListener('click', () => { update(type, -1) })
+	document.querySelector(`#${type}Next`).addEventListener('click', () => { update(type, 1) })
 })
 
 
