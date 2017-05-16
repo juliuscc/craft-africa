@@ -24,8 +24,8 @@ module.exports = {
 		explosionView: path.resolve(__dirname, '../src/js/explosionView.js'),
 		calculationForm: path.resolve(__dirname, '../src/js/calculationForm.js'),
 		navbar: path.resolve(__dirname, '../src/js/navbar.js'),
-		navbarsmall: path.resolve(__dirname, '../src/js/navbar-small.js')
-		// 'admin/statistics': path.resolve(__dirname, '../src/js/admin/statistics.js')
+		navbarsmall: path.resolve(__dirname, '../src/js/navbar-small.js'),
+		'admin/statistics': path.resolve(__dirname, '../src/js/admin/statistics.js')
 	},
 	output: {
 		path: path.resolve(__dirname, '../public/js'),

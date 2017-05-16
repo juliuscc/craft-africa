@@ -1,4 +1,6 @@
-function loadJSON(url) {
+const querystring = require('querystring');
+
+function loadJSON(url, data) {
 	return new Promise((resolve, reject) => {
 		let httpRequest = new XMLHttpRequest()
 
@@ -29,8 +31,8 @@ function loadJSON(url) {
 				}
 			}
 		}
-
-		httpRequest.open('GET', url, true)
+		const params = querystring.stringify(data)
+		httpRequest.open('GET', url + '?' + params, true)
 		httpRequest.send()
 	})
 }

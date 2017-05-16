@@ -4,6 +4,13 @@ const ajax = require('../ajax')
 const bgColors = 'rgba(54, 162, 235, 0.2)'
 const boColors = 'rgba(54, 162, 235, 1)'
 
+const calcInputDates = { liters: new Date(), tap: new Date(), keg: new Date(), bottle: new Date() }
+
+let calcInputCharts = {}
+let viewsChart = undefined
+
+let firstAjax = true
+
 function drawViewsChart(JSON) {
 	let chartLabels = []
 	let dataVals = []
@@ -39,9 +46,7 @@ function drawViewsChart(JSON) {
 			responsive: false
 		}
 	}
-	/* eslint-disable no-new */
-	new Chart(ctx, obj)
-	/* eslint-enable no-new */
+	return (new Chart(ctx, obj))
 }
 
 function drawCalcInputChartsGetObject(chartLabels, dataValues) {
@@ -103,27 +108,45 @@ function drawCalcInputCharts(JSON) {
 	const obj3 = drawCalcInputChartsGetObject(percentageLabels, bottleVal)
 	const obj4 = drawCalcInputChartsGetObject(percentageLabels, kegVal)
 
-	/* eslint-disable no-new */
-	new Chart(ctx1, obj1)
-	new Chart(ctx2, obj2)
-	new Chart(ctx3, obj3)
-	new Chart(ctx4, obj4)
-	/* eslint-enable no-new */
+
+	return { liters: new Chart(ctx1, obj1),
+		tap: new Chart(ctx2, obj2),
+		bottle: new Chart(ctx3, obj3),
+		keg: new Chart(ctx4, obj4) }
 }
 
 function drawCharts(JSON) {
-	drawViewsChart(JSON)
-	drawCalcInputCharts(JSON)
+	viewsChart = drawViewsChart(JSON)
+	calcInputCharts = drawCalcInputCharts(JSON)
 }
 
-function ajaxFun() {
-	ajax.loadJSON('/admin/statistics/data')
+function ajaxFun(dateL, dateT, dateB, dateK, chart, type) {
+	ajax.loadJSON('/admin/statistics/data', { dateL: dateL.toDateString(), dateT: dateT.toDateString(), dateB: dateB.toDateString(), dateK: dateK.toDateString() })
 	.then((JSON) => {
-		drawCharts(JSON)
-		console.log(JSON)
-	}).catch((msg) => {
-		console.log(msg)
+		if(firstAjax) {
+			drawCharts(JSON)
+			firstAjax = false
+		} else {
+			const Val = drawCalcInputChartsDataFormatting(JSON.calcInput[type])
+			chart.data.datasets[0].data = Val
+			chart.update()
+		}
 	})
 }
 
-ajaxFun()
+
+function update(type, offset) {
+	calcInputDates[type].setMonth(calcInputDates[type].getMonth() + offset)
+	document.getElementById(type + 'Date').innerHTML = calcInputDates[type].getFullYear() + ' ' + (calcInputDates[type].getMonth() + 1)
+	ajaxFun(calcInputDates.liters, calcInputDates.tap,
+	calcInputDates.keg, calcInputDates.bottle, calcInputCharts[type], type)
+}
+
+['liters', 'tap', 'keg', 'bottle'].forEach((type) => {
+	document.querySelector('#' + type + 'Prev').addEventListener('click', () => { update(type, -1) })
+	document.querySelector('#' + type + 'Next').addEventListener('click', () => { update(type, 1) })
+})
+
+
+ajaxFun(calcInputDates.liters, calcInputDates.tap,
+	calcInputDates.bottle, calcInputDates.keg)

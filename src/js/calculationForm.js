@@ -6,54 +6,9 @@ const ajax = require('./ajax')
 
 const calcObj = { stats: {}, economics: {} }
 
-function updateForm() {
-	formInteraction.extractFormData(calcObj.stats)
 
-	stats.getCalculationStats(calcObj.stats)
-	economics.getEconomics(calcObj.stats, calcObj.economics)
-
-	formInteraction.updateDistributionSliders(calcObj.stats)
-	formInteraction.saveFormInputs(calcObj.stats, calcObj.economics)
+// JSON Testing - inegrate this asap /T
+for(let i = 0; i < 10; i += 1) {
+	ajax.logCalc(Math.floor(Math.random() * 100), Math.floor(Math.random() * 100),
+		Math.floor(Math.random() * 100), Math.floor(Math.random() * 100))
 }
-
-ajax.loadJSON('/data/stats')
-.then((json) => {
-	calcObj.stats = json
-	stats.getCalculationStats(calcObj.stats, calcObj.economics)
-	economics.getEconomics(calcObj.stats, calcObj.economics)
-
-	formInteraction.updateDistributionSliders(calcObj.stats)
-	formInteraction.saveFormInputs(calcObj.stats, calcObj.economics)
-
-	formInteraction.initForm(calcObj.stats, calcObj.economics)
-})
-// .catch((msg) => {
-// 	console.log(`Error msg in calculationForm.js: ${msg}`)
-// })
-
-
-// test
-document.querySelector('.calculation-form .calculate-button')
-		.addEventListener('click', () => {
-			updateForm()
-		})
-
-// more test
-document.querySelectorAll('.calculation-form .container-distribution')
-.forEach((e) => {
-	e.addEventListener('input', () => {
-		formInteraction.updateDistributionSliders(calcObj.stats, e)
-		updateForm()
-	})
-})
-
-document.querySelectorAll('#totalVolume')
-.forEach((e) => {
-	e.addEventListener('input', () => {
-		updateForm()
-	})
-})
-
-// JSON Testing
-ajax.logCalc(1, 2, 3, 4)
-
