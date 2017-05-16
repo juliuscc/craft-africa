@@ -4,6 +4,8 @@ const emailcredentials = require('../config/credentials').email
 const mailTemplate = require('../models/mailTemplates')
 const Handlebars = require('handlebars')
 
+const nodemailer = require('nodemailer')
+
 // Send an email to admin and user. No response if the sending part fails
 router.post('/send', (req, res) => {
 	// Check for errors
@@ -51,13 +53,49 @@ router.post('/send', (req, res) => {
 			adminEmailData.html = adminMessageCompiled(req.body)
 			userEmailData.html = userMessageCompiled(req.body)
 
-			// Sending emails
-			const send = gmail()
 
-			// Admin email
-			send(adminEmailData, () => {
-				// User email
-				send(userEmailData, () => {})
+			// create reusable transporter object using the default SMTP transport
+			const transporter = nodemailer.createTransport({
+				host: 'mailcluster.loopia.se',
+				port: 587,
+				// secure: true, // use SSL
+				auth: {
+					user: emailcredentials.user,
+					pass: emailcredentials.pass
+				}
+			})
+
+			// setup email data with unicode symbols
+			const mailAdmin = {
+				from: '"Craft Africa - Contact page" <info@craft-africa.com>', // sender address
+				to: adminEmailData.to, // list of receivers
+				subject: adminEmailData.subject, // Subject line
+				// text: req.body.message // plain text body
+				html: adminEmailData.html // html body
+			}
+
+			const mailUser = {
+				from: '"Craft Africa" <info@craft-africa.com>', // sender address
+				to: req.body.emailadress, // list of receivers
+				subject: userEmailData.subject, // Subject line
+				// text: 'Hello world ?', // plain text body
+				html: userEmailData.html // html body
+			}
+
+
+			transporter.sendMail(mailUser, (error, info) => {
+				if(error) {
+					// return console.log(error)
+				}
+				// console.log('Message %s sent: %s', info.messageId, info.response)
+			})
+
+			// send mail with defined transport object
+			transporter.sendMail(mailAdmin, (error, info) => {
+				if(error) {
+					// return console.log(error)
+				}
+				// console.log('Message %s sent: %s', info.messageId, info.response)
 			})
 		}
 	})
