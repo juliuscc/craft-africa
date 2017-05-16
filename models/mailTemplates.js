@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const moduleValidator = require('./moduleValidator')
 
 const templateSchema = mongoose.Schema({
 	name: {
@@ -26,6 +27,31 @@ const templateSchema = mongoose.Schema({
 		required: true
 	}
 })
+
+function isInputCorrect(updatedProperties) {
+	console.log(updatedProperties)
+
+	const name = updatedProperties.name
+	const recipient = updatedProperties.recipient
+	const adminSubject = updatedProperties.admin_subject
+	const adminMessage = updatedProperties.admin_message
+	const userSubject = updatedProperties.admin_subject
+	const userMessage = updatedProperties.user_message
+
+
+	let validated = false
+	if(!moduleValidator.isEmpty({ name }) &&
+		!moduleValidator.isEmpty({ recipient }) &&
+		!moduleValidator.isEmpty({ adminSubject }) &&
+		!moduleValidator.isEmpty({ adminMessage }) &&
+		!moduleValidator.isEmpty({ userSubject }) &&
+		!moduleValidator.isEmpty({ userMessage })
+		) {
+		validated = true
+	}
+	return validated
+}
+
 
 const Template = mongoose.model('Template', templateSchema)
 module.exports = Template
