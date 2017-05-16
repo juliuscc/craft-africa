@@ -1,8 +1,8 @@
 /* eslint-disable */
-// import Vue from 'vue'
-// import { Bar, mixins } from 'vue-chartjs'
+import Vue from 'vue'
+import { Bar } from 'vue-chartjs'
 
-const { Bar } = VueChartJs
+// const { Bar } = VueChartJs
 const stats = require('./calculation-form/stats')
 const economics = require('./calculation-form/economics')
 const formInteraction = require('./calculation-form/formInteraction')
