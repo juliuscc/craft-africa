@@ -362,11 +362,12 @@ function createVueApp() {
 			var odo = document.querySelector('.profit')
 			window.od = new Odometer({
 				  el: odo,
-				  value: 100,
-				  duration: 10,
+				  value: 0,
+				  duration: 200
 				  // Any option (other than auto and selector) can be passed in here
-				  format: (,ddd),
+				  // format: (,ddd),
 				})
+			updateEconomicsData(this)
 			
 			// Updating elements that are created by vue
 			setTimeout(() => {
