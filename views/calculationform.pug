@@ -49,6 +49,7 @@ block content
 									span {{ tapPercent }}%
 								td.price
 									input(type="number" v-model="tapPrice").distribution-text-input
+									span.unit $/l
 							tr
 								td
 									label Keg:
@@ -57,6 +58,7 @@ block content
 									span {{ kegPercent }}%
 								td.price
 									input(type="number" v-model="kegPrice").distribution-text-input
+									span.unit $/l
 							tr
 								td
 									label Bottle:
@@ -65,6 +67,7 @@ block content
 									span {{ bottlePercent }}%
 								td.price
 									input(type="number" v-model="bottlePrice").distribution-text-input
+									span.unit $/l
 					.col
 						.water-slider
 							.title
@@ -80,6 +83,7 @@ block content
 												span {{ sliderWater }}l
 											td.price
 												input(type="number" v-model="waterPrice").distribution-text-input
+												span.unit $/l
 						.addons
 							.title
 								h3 Addons

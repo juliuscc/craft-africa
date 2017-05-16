@@ -32,6 +32,16 @@
 				white-space: nowrap;
 			}
 		}
+		
+		.price {
+			position: relative;
+		}
+
+		.unit {
+			position: absolute;
+			right: -20px;
+			top: 25px;
+		}
 	}
 
 	.options {
