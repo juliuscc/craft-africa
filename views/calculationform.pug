@@ -12,10 +12,10 @@ block header
 			.container
 				p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam beatae cumque laborum nulla, repudiandae molestiae labore dolore quo in nemo saepe, quasi at nisi culpa adipisci voluptatum nostrum, ipsam numquam?
 
-block nav
-	nav.nav.small
-		include partials/navbar
-	.nav-filler
+//- block nav
+//- 	nav.nav.small
+//- 		include partials/navbar
+//- 	.nav-filler
 
 block content
 	div.calculation-form#calc-app
@@ -39,7 +39,7 @@ block content
 							h3 Finetune distribution
 							.fa.fa-question-circle-o.tooltip
 								.tooltip-text
-									| These sliders fine tune how much of your beer goes to tap, keg or bottles
+									| These sliders fine tune how much of your beer goes to tap, keg or bottles. You can also input your selling price for each type. The price is the price in usd per liter.
 						table.slider-wrapper
 							tr
 								td
@@ -47,40 +47,55 @@ block content
 								td.slider-row
 									input.slider.container-distribution.activeSlider#sliderTap(type="range" name="tap" min="0" max="1" step="0.01" data-thumbWidth="16" v-model="sliderTap")
 									span {{ tapPercent }}%
+								td.price
 									input(type="number" v-model="tapPrice").distribution-text-input
+									span.unit $/l
 							tr
 								td
 									label Keg:
 								td.slider-row
 									input.slider.container-distribution.activeSlider#sliderKeg(type="range" name="keg" min="0" max="1" step="0.01" data-thumbWidth="16" v-model="sliderKeg")
 									span {{ kegPercent }}%
+								td.price
 									input(type="number" v-model="kegPrice").distribution-text-input
+									span.unit $/l
 							tr
 								td
 									label Bottle:
 								td.slider-row
 									input.slider.container-distribution.activeSlider#sliderBottle(type="range" name="bottle" min="0" max="1" step="0.01" data-thumbWidth="16" v-model="sliderBottle")
 									span {{ bottlePercent }}%
+								td.price
 									input(type="number" v-model="bottlePrice").distribution-text-input
-							tr
-								td
-									label Water:
-								td.slider-row
-									input.slider.container-distribution.activeSlider#sliderWater(type="range" name="water" min="0" max="5000" data-thumbWidth="16" v-model="sliderWater")
-									span {{ sliderWater }}l
-									input(type="number" v-model="waterPrice").distribution-text-input
-					.addons
-						.title
-							h3 Addons
-							.fa.fa-question-circle-o.tooltip
-								.tooltip-text
-									| These are add-ons that you can add to your brewery.
-						table
-							template(v-for="addonModule in addon")
-								tr(:class="addonModule.recommendationClass")
-									td {{ addonModule.comment }}
-									td
-										input(type="checkbox" v-model="addonModule.choosen").activeCheckbox
+									span.unit $/l
+					.col
+						.water-slider
+							.title
+								h3 Water sold
+								.fa.fa-question-circle-o.tooltip
+									.tooltip-text
+										| This slider controls your monthly output of water. You can also input your selling price for the water. The price is the price in usd per liter.
+							.slider-wrapper
+									table
+										tr
+											td.slider-row
+												input.slider.container-distribution.activeSlider#sliderWater(type="range" name="water" min="0" max="5000" data-thumbWidth="16" v-model="sliderWater")
+												span {{ sliderWater }} liters
+											td.price
+												input(type="number" v-model="waterPrice").distribution-text-input
+												span.unit $/l
+						.addons
+							.title
+								h3 Addons
+								.fa.fa-question-circle-o.tooltip
+									.tooltip-text
+										| These are add-ons that you can add to your brewery. For small scale breweries, addons are not recommended and they will therefore be marked in red.
+							table
+								template(v-for="addonModule in addon")
+									tr(:class="addonModule.recommendationClass")
+										td
+											input(type="checkbox" v-model="addonModule.choosen").activeCheckbox
+										td {{ addonModule.comment }}
 
 			.economics.drawer(data-state="closed")
 				.profit-box.always-visible
@@ -189,8 +204,8 @@ block content
 										circle.outline(cx="50%" cy="50%" r="40%" stroke-width="1px" fill="none")
 										circle.stroke(cx="50%" cy="50%" r="40%" stroke-width="7px" fill="none")
 
-block navScript
-	script(src="/js/navbarsmall.js")
+//- block navScript
+//- 	script(src="/js/navbarsmall.js")
 
 block scripts
 	script(src="https://vuejs.org/js/vue.js")

@@ -42,12 +42,20 @@
 		}
 
 		.drawer-content {
-			table {
-				tr:first-child {
-					&>* {
-						border-bottom: 1px solid gray;
-						font-weight: bold;
-						margin-bottom: 5px;
+			.module {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+
+				table {
+					box-sizing: border-box;
+					
+					tr:first-child {
+						&>* {
+							border-bottom: 1px solid gray;
+							font-weight: bold;
+							margin-bottom: 5px;
+						}
 					}
 				}
 			}
@@ -165,60 +173,4 @@
 			}
 		}
 	}
-/*
-	.advanced-tab {
-		width: 100%;
-		border-top: none;
-		padding: 5px 10px;
-		box-sizing: border-box;
-		position: relative;
-		
-		.toggle {
-			text-align: center;
-
-			a {
-				// color: $color-text-dark;
-				// text-decoration: none;
-			}
-		}
-
-		.extra {
-			overflow: hidden;
-		}
-
-		&[data-state="open"] {
-			.toggle {
-				a.show {
-					display: none;
-				}
-
-				a.hide {
-					display: block;
-				}
-			}
-
-			.extra {
-				transition: all 1s;
-				max-height: 1000px;
-			}
-		}
-
-		&[data-state="closed"] {
-			.toggle {
-				a.show {
-					display: block;
-				}
-
-				a.hide {
-					display: none;
-				}
-			}
-
-			.extra {
-				transition: all 0.5s;
-				max-height: 0;
-			}
-		}
-	}
-*/
 }
