@@ -61,8 +61,11 @@ const chart = Vue.component('economics-chart', {
 								beginAtZero: true,
 								suggestedMax: 50000,
 								scaleStepWidth: 10000,
+								callback: function(label, index, labels) {
+								                        return label+'$';
+								                    }
 								// max: 100000
-							}
+							},
 						}]
 				},
 				legend: {
