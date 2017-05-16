@@ -46,7 +46,10 @@ block content
 							label(for='name') Bottle
 						.input-field.col.s3
 							input.validate.hundred(type="number" step="any" required name="kegDist" value=defaultDistribution.kegDist)
-							label(for='name') Keg (%)
+							label(for='name') Keg
+						.input-field.col.s3
+							input.validate.hundred(type="number" step="any" required name="waterDist" value=defaultDistribution.waterDist)
+							label(for='name') water
 
 			.card
 				.card-title
@@ -122,6 +125,9 @@ block content
 						.input-field.col.s3
 							input.validate(type="number" step="any" required name="kegSell" value=sellingPrice.kegSell)
 							label(for='name') Keg
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="waterSell" value=sellingPrice.waterSell)
+							label(for='name') water
 
 
 			.card

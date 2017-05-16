@@ -1,3 +1,24 @@
+.contact-form-header {
+		.title-text {
+			.table-container {
+				display: flex;
+				justify-content: center;
+				margin-top: 20px;
+
+				a {
+					color: #FFF;
+				}
+			}
+		}
+
+		h1 {
+			text-align: center;
+			font-family: "Liberation-Sans" , sans-serif;
+			font-weight: bold;
+			border-bottom: 2px #FFF solid;
+		}
+}
+
 .contact-form {
 	padding-top: 40px;
 	width: 100%;
@@ -8,7 +29,6 @@
 		width: 100%;
 		max-width: 960px;
 		margin: 0 auto;
-		margin-top: 20px;
 		padding: 0 20px;
 		box-sizing: border-box;
 
@@ -19,19 +39,6 @@
 
 		@media (min-width: $width-tablet-min) {
 			width: 45%;
-		}
-
-		.text {
-			.table-container {
-				display: flex;
-				justify-content: center;
-			}
-		}
-
-		h1 {
-			text-align: center;
-			font-family: "Liberation-Sans" , sans-serif;
-			font-weight: bold;
 		}
 
 		label {

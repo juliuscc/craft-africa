@@ -98,15 +98,30 @@ function initInteractiveSliders(app) {
 		})
 	})
 
+	document.querySelectorAll('.distribution-text-input').forEach((element) => {
+		element.addEventListener('change', () => {
+			console.log('input')
+			updateCalcObj()
+			updateGraph(app)
+			updateEconomicsDataAdvanced(app)
+		})
+	})
+
 	app.totalVolume = calcObj.stats.volume.total
 
 	app.sliderTap = calcObj.stats.distribution.tap
 	app.sliderKeg = calcObj.stats.distribution.keg
 	app.sliderBottle = calcObj.stats.distribution.bottle
+	app.sliderWater = calcObj.stats.distribution.water
 
 	app.tapPercent = Math.round(app.sliderTap * 100)
 	app.kegPercent = Math.round(app.sliderKeg * 100)
 	app.bottlePercent = Math.round(app.sliderBottle * 100)
+
+	app.tapPrice = calcObj.stats.sellingPrice.tap
+	app.kegPrice = calcObj.stats.sellingPrice.keg
+	app.bottlePrice = calcObj.stats.sellingPrice.bottle
+	app.waterPrice = calcObj.stats.sellingPrice.water
 }
 
 function updateCalcObj() {
@@ -165,6 +180,7 @@ function updateEconomicsData(app) {
 	} else {
 		app.economics.profit = calcObj.economics.profit + ' '
 	}
+
 }
 
 function updateEconomicsDataAdvanced(app) {
@@ -185,6 +201,7 @@ function updateEconomicsDataAdvanced(app) {
 	app.economics.incomes.bottlePrice = Math.round(calcObj.economics.incomes.bottlePrice)
 	app.economics.incomes.kegPrice = Math.round(calcObj.economics.incomes.kegPrice)
 	app.economics.incomes.tapPrice = Math.round(calcObj.economics.incomes.tapPrice)
+	app.economics.incomes.waterPrice = Math.round(calcObj.economics.incomes.waterPrice)
 	app.economics.incomes.total = Math.round(calcObj.economics.incomes.total)
 }
 
@@ -218,6 +235,7 @@ function updateSliders(firstSliderName, secondSliderName, app) {
 		calcObj.stats.distribution.tap = app.sliderTap
 		calcObj.stats.distribution.keg = app.sliderKeg
 		calcObj.stats.distribution.bottle = app.sliderBottle
+		// calcObj.stats.distribution.water = app.sliderWater
 
 		slider.updateAll()
 
@@ -234,10 +252,16 @@ function createVueApp() {
 			sliderTap: 0,
 			sliderKeg: 0,
 			sliderBottle: 0,
+			sliderWater: 0,
 
 			tapPercent: 0,
 			kegPercent: 0,
 			bottlePercent: 0,
+
+			tapPrice: 0,
+			kegPrice: 0,
+			bottlePrice: 0,
+			waterPrice: 0,
 
 			economics: {
 				profit: 0,
@@ -283,6 +307,21 @@ function createVueApp() {
 			sliderBottle: function() {
 				updateSliders('sliderKeg', 'sliderTap', this)
 			},
+			sliderWater: function() {
+				calcObj.stats.distribution.water = this.sliderWater
+			},
+			tapPrice: function() {
+				calcObj.stats.sellingPrice.tap = this.tapPrice
+			},
+			kegPrice: function() {
+				calcObj.stats.sellingPrice.keg = this.kegPrice
+			},
+			bottlePrice : function() {
+				calcObj.stats.sellingPrice.bottle = this.bottlePrice
+			},
+			bottlePrice : function() {
+				calcObj.stats.sellingPrice.water = this.waterPrice
+			},
 			deep: true
 		},
 		mounted: function () {
@@ -303,6 +342,7 @@ function createVueApp() {
 
 			// Updating elements that are created by vue
 			setTimeout(() => {
+				this.sliderWater = calcObj.stats.distribution.water
 				slider.updateAll()
 
 				document.querySelectorAll('.activeCheckbox').forEach((element) => {
