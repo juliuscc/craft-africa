@@ -66,8 +66,8 @@ function getDateObj(monthPar = (new Date()).getMonth(), yearPar = (new Date()).g
 		year += 1
 		month -= 12
 	}
-	const from = new Date(year, parseInt(month), 2, 0, 0, 0)
-	const to = new Date(year, parseInt(month) + 1, 1, 1, 59, 59, 999)
+	const from = new Date(year, parseInt(month, 10), 2, 0, 0, 0)
+	const to = new Date(year, parseInt(month, 10) + 1, 1, 1, 59, 59, 999)
 	return { $gte: from, $lt: to }
 }
 

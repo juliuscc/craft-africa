@@ -19,34 +19,39 @@ block content
 		hr
 		.card
 			.card-title
-				h4 Liters of beer
-				button(type="button", id="litersPrev") Prev
-				button(type="button", id="litersNext") Next
-				p(id='litersDate') #{year} #{month}
+				h4(style="display: inline;") Liters of beer
+				p(id='litersDate' style="display: inline; padding-left: 10px;") #{year} #{month}
+				div(style="float: right;")
+					button(type="button", id="litersPrev").btn Prev
+					button(type="button", id="litersNext").btn Next
 			.card-content
 				canvas(id="litersChart")
 		.card
 			.card-title
-				h4 Tap
-				button(type="button", id="tapPrev") Prev
-				button(type="button", id="tapNext") Next
-				p(id='tapDate') #{year} #{month}
+				h4(style="display: inline;") Tap
+				p(id='tapDate', style="display: inline; padding-left: 10px;") #{year} #{month}
+				div(style="float: right;")
+					button(type="button", id="tapPrev").btn Prev
+					button(type="button", id="tapNext").btn Next
+				
 			.card-content
 				canvas(id="tapChart")
 		.card
 			.card-title
-				h4 Bottle
-				button(type="button", id="bottlePrev") Prev
-				button(type="button", id="bottleNext") Next
-				p(id='bottleDate') #{year} #{month}
+				h4(style="display: inline;") Bottle
+				p(id='bottleDate', style="display: inline; padding-left: 10px;") #{year} #{month}
+				div(style="float: right;")
+					button(type="button", id="bottlePrev").btn Prev
+					button(type="button", id="bottleNext").btn Next
 			.card-content
 				canvas(id="bottleChart")
 		.card
 			.card-title
-				h4 Keg
-				button(type="button", id="kegPrev") Prev
-				button(type="button", id="kegNext") Next
-				p(id='kegDate') #{year} #{month}
+				h4(style="display: inline;") Keg
+				p(id='kegDate', style="display: inline; padding-left: 10px;") #{year} #{month}
+				div(style="float: right;")
+					button(type="button", id="kegPrev").btn Prev
+					button(type="button", id="kegNext").btn Next
 			.card-content
 				canvas(id="kegChart")
 		

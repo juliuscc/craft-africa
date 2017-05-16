@@ -1,4 +1,4 @@
-const querystring = require('querystring');
+const querystring = require('querystring')
 
 function loadJSON(url, data) {
 	return new Promise((resolve, reject) => {
