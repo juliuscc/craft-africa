@@ -70,7 +70,8 @@ function calcIncome(stats, economics) {
 		incomes.kegPrice = sellingPrice.keg * volume.keg
 		incomes.tapPrice = sellingPrice.tap * volume.tap
 		incomes.bottlePrice = sellingPrice.bottle * volume.bottle
-		incomes.total = incomes.kegPrice + incomes.tapPrice + incomes.bottlePrice
+		incomes.waterPrice = sellingPrice.water * volume.water
+		incomes.total = incomes.kegPrice + incomes.tapPrice + incomes.bottlePrice + incomes.waterPrice
 	}
 	return economics
 }

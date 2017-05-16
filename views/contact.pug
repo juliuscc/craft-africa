@@ -6,6 +6,22 @@ block title
 block description
 	meta(name="description" content= "When you have read about us and are exited to start your own brand. Contact us at Craft Africa, and we will find a personal solution for you to develop you personal brand and take out you entrepreneurial spirit. ")
 
+block header
+	header.header.contact-form-header.half
+		.title-text
+			h1 Contact Us
+			.container
+				.table-container
+					table
+						tr
+							td Email:
+							td
+								a(href="mailto:info@craft-africa.com") info@craft-africa.com
+						tr
+							td Phone:
+							td 
+								a(href="tel:+4612345678") +4612345678
+
 block nav
 	nav.nav.small
 		include partials/navbar
@@ -14,19 +30,6 @@ block nav
 block content
 	.contact-form
 		.container-contact
-			.text
-				h1 Contact us
-				.table-container
-					table
-						tr
-							td Email:
-							td
-								a(href="mailto:someone@ca.com") someone@ca.com
-						tr
-							td Phone:
-							td 
-								a(href="tel:+4612345678") +4612345678
-					
 			form(method="post" action="/email/send")
 				input(type="text" name="message_template" value="standard-template" hidden)
 				.input-row

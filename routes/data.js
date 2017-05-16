@@ -61,7 +61,8 @@ router.get('/stats', (req, res) => {
 				sellingPrice: {
 					keg: data.defaultValues.sellingPrice.kegSell,
 					tap: data.defaultValues.sellingPrice.tapSell,
-					bottle: data.defaultValues.sellingPrice.bottleSell
+					bottle: data.defaultValues.sellingPrice.bottleSell,
+					water: data.defaultValues.sellingPrice.waterSell
 				},
 				productionCost: {
 					keg: data.defaultValues.productionCost.kegCost,
@@ -71,7 +72,8 @@ router.get('/stats', (req, res) => {
 				distribution: {
 					tap: data.defaultValues.defaultDistribution.tapDist / 100,
 					bottle: data.defaultValues.defaultDistribution.bottleDist / 100,
-					keg: data.defaultValues.defaultDistribution.kegDist / 100
+					keg: data.defaultValues.defaultDistribution.kegDist / 100,
+					water: data.defaultValues.defaultDistribution.water
 				},
 				volume: {
 					total: data.defaultValues.startValueForProduction
