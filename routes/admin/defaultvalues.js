@@ -17,7 +17,8 @@ router.get('/', (req, res) => {
 					defaultDistribution: {
 						tapDist: '',
 						bottleDist: '',
-						kegDist: ''
+						kegDist: '',
+						waterDist: ''
 					},
 					defaultThreshold: {
 						bottleThresh: '',
@@ -31,7 +32,8 @@ router.get('/', (req, res) => {
 					sellingPrice: {
 						tapSell: '',
 						bottleSell: '',
-						kegSell: ''
+						kegSell: '',
+						waterSell: ''
 					},
 					fermentingTime: '',
 					productionYield: '',
@@ -55,16 +57,16 @@ router.post('/', (req, res) => {
 		if(!req.body) {
 			res.redirect('/admin/defaultvalues')
 		}
-		const { hops, barley, co2, water, tapDist, bottleDist, kegDist,
+		const { hops, barley, co2, water, tapDist, bottleDist, kegDist, waterDist,
 			bottleThresh, kegThresh, tapCost, bottleCost, kegCost,
-			tapSell, bottleSell, kegSell, fermentingTime, productionYield,
+			tapSell, bottleSell, kegSell, waterSell, fermentingTime, productionYield,
 			startValueForProduction, minValueForProduction, maxValueForProduction } = req.body
 
 		const ingredientCost = JSON.stringify({ hops, barley, co2, water })
-		const defaultDistribution = JSON.stringify({ tapDist, bottleDist, kegDist })
+		const defaultDistribution = JSON.stringify({ tapDist, bottleDist, kegDist, waterDist })
 		const defaultThreshold = JSON.stringify({ bottleThresh, kegThresh })
 		const productionCost = JSON.stringify({ tapCost, bottleCost, kegCost })
-		const sellingPrice = JSON.stringify({ tapSell, bottleSell, kegSell })
+		const sellingPrice = JSON.stringify({ tapSell, bottleSell, kegSell, waterSell })
 
 		beerModule.updateDefaultValuesCollection({
 			ingredientCost,
