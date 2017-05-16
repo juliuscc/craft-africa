@@ -29,7 +29,7 @@ function views(req, res, next) {
 const app = express()
 
 // Favicon
-app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')))
+// app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')))
 
 // View Engine
 app.set('views', path.join(__dirname, 'views'))
