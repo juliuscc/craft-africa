@@ -7,7 +7,7 @@ block vars
 	- var title = "Modify beer types"
 	
 block content
-	each value in values
+	each value, index in values
 		form.container(method="post" action="/admin/beertype")
 			.card
 				.card-title
@@ -29,12 +29,11 @@ block content
 						.input-field.col.s3
 							input.validate(type='number' name="co2" step="any" required value=value.ingredient.co2)
 							label(for='co2Use') co2(%)
-						//input.btn.remove.red.right(type="submit" value = "remove", style="margin-right: 10px")
 						input.enable.btn.red.right(type="button" data-target=`modal${index}` value = "remove" style="margin-right: 10px")
 						div(class="modal" id=`modal${index}`)
 							.modal-content
 								h4 Confirm
-								p= "Are you sure you want to delete '" + value.name + "'?"
+								p= "Are you sure you want to delete '" + value.name + "?"
 							.modal-footer
 								input.remove.waves-effect.waves-green.btn-flat(type="submit" disabled value="Yes")
 								input.modal-action.modal-close.waves-effect.waves-green.btn-flat(type="button" value="No")
