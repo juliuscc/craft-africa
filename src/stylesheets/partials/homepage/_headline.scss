@@ -1,0 +1,11 @@
+.headline-container{
+	color: $color-text-light;
+	background-color: #AED2C0;
+	
+	
+	@media(min-width: $width-tablet-min) {
+		.text {
+			margin-right: 8%
+		}
+	}
+}
