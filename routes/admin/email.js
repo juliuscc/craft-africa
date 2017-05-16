@@ -20,14 +20,6 @@ router.post('/', (req, res) => {
 	// Require login
 	auth.runIfAdmin(req, res, () => {
 		const data = req.body
-		// const tempData = {
-		// 	name: data.name,
-		// 	recipient: data.recipient,
-		// 	admin_subject: data.admin_subject,
-		// 	user_subject: data.user_subject,
-		// 	admin_message: data.admin_message,
-		// 	user_message: data.user_message
-		// }
 
 		if(req.body.id) {
 			mailTemplate.updateTemplateById(data.id, data, (err) => {
@@ -35,7 +27,7 @@ router.post('/', (req, res) => {
 					res.render('admin/errormessage', { message: `Could not update template: ${err}`, username: req.user.local.name })
 				} else {
 					data.result = 'Successfully updated'
-					res.render('admin/templates', data)
+					res.redirect('/admin/email')
 				}
 			})
 		// This is a new template: we need to create it instead
@@ -45,30 +37,6 @@ router.post('/', (req, res) => {
 					res.render('admin/errormessage', { message: err, username: req.user.local.name })
 				} else {
 					data.result = `Successfully create new template: ${data.name}`
-					res.render('admin/templates', data)
-				}
-			})
-		}
-
-		// This is a old template
-		if(data.id) {
-			mailTemplate.updateTemplateById(data.id, tempData, (err) => {
-				if(err) {
-					res.render('admin/errormessage', { message: `Could not update template: ${err}`, username: req.user.local.name })
-					throw err
-				} else {
-					res.redirect('/admin/email')
-				}
-			})
-		// This is a new template
-		} else {
-			console.log(tempData)
-			// ValidationError: Path `user_message` is required., Path `admin_message` is required.
-			mailTemplate.createTemplate(tempData, (err) => {
-				if(err) {
-					res.render('admin/errormessage', { message: `Could not create new template: ${err}`, username: req.user.local.name })
-					throw err
-				} else {
 					res.redirect('/admin/email')
 				}
 			})

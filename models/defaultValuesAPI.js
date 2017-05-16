@@ -75,7 +75,7 @@ function isInputCorrect(updatedProperties) {
 	const svfp = updatedProperties.startValueForProduction
 	const mivfp = updatedProperties.minValueForProduction
 	const mavfp = updatedProperties.maxValueForProduction
-	
+
 	let validated = false
 	if(!moduleValidator.isEmpty(ic) && moduleValidator.isNumbers(ic) &&
 		!moduleValidator.isEmpty(dd) && moduleValidator.isNumbers(dd) &&
@@ -86,7 +86,7 @@ function isInputCorrect(updatedProperties) {
 		!moduleValidator.isEmpty({ py }) && moduleValidator.isNumbers({ py }) &&
 		!moduleValidator.isEmpty({ svfp }) && moduleValidator.isNumbers({ svfp }) &&
 		!moduleValidator.isEmpty({ mivfp }) && moduleValidator.isNumbers({ mivfp }) &&
-		!moduleValidator.isEmpty({ mavfp }) && moduleValidator.isNumbers({ mavfp }) 
+		!moduleValidator.isEmpty({ mavfp }) && moduleValidator.isNumbers({ mavfp })
 		) {
 		validated = true
 	}
@@ -125,8 +125,7 @@ module.exports.getAllDefaultValuesCollections = (callback) => {
 				productionYield: values.productionYield,
 				startValueForProduction: values.startValueForProduction,
 				minValueForProduction: values.minValueForProduction,
-				maxValueForProduction: values.maxValueForProduction
-					
+				maxValueForProduction: values.maxValueForProduction	
 			}
 			callback(err, updatedValues)
 		}
