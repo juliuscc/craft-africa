@@ -42,6 +42,7 @@ app.use(cookieParser())
 
 // Set Static Folder
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public')))
 
 // Passport
 app.use(session({ secret: 'shhsecret', resave: true, saveUninitialized: true }))
