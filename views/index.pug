@@ -54,28 +54,32 @@ block content
 	
 	.info-box.homepage.craft-own-beer
 		.headline
-			h2#input-window What customization fits your business?
-			p the calculation form here!!
-			#calc-slider
+			h1 How many liters can you sell?
+			p Build your own craft beer brand and make profit while doing so!
+		#calc-slider.calculation-form-small
+			.slider-row
 				.slider-wrapper
-						.slider-row
+						.slider-row.total-volume
 							input.slider.activeSlider#totalVolume(type="range" name="totalVolume" min="0" max="31000" data-thumbWidth="20" v-model="totalVolume")
-							span $ {{ profit }}
+							span {{ totalVolume }} liters
+				a(href="/calculationform").button Get Started!
+			.output
+				span Your Profit: $ {{ profit }}
 	
-	.big-pic
-		.homepage-pic#second
-			.product-footprint-about
-				.column-container
-					.text
-						h2 Our Product
-					.line
+	//- .big-pic
+	//- 	.homepage-pic#second
+	//- 		.product-footprint-about
+	//- 			.column-container
+	//- 				.text
+	//- 					h2 Our Product
+	//- 				.line
 
-					.text
-						h2 Our Footprint
-					.line
+	//- 				.text
+	//- 					h2 Our Footprint
+	//- 				.line
 
-					.text
-						h2 About us
+	//- 				.text
+	//- 					h2 About us
 
 block scripts
 	// script(src="/js/explosionView.js")
