@@ -1,6 +1,8 @@
 function openDrawer(e, drawer) {
-	e.preventDefault()
-	e.stopPropagation()
+	if(e) {
+		e.preventDefault()
+		e.stopPropagation()
+	}
 
 	const content = drawer.querySelector('.drawer-content')
 	const children = [...content.children]
@@ -32,6 +34,12 @@ function closeDrawer(e, drawer) {
 	drawer.dataset.state = 'closed'
 }
 
+function updateDrawer(drawer) {
+	if(drawer.dataset.state === 'open') {
+		openDrawer(null, drawer)
+	}
+}
+
 function initDrawer(drawer) {
 	const show = drawer.querySelector('.show')
 	const hide = drawer.querySelector('.hide')
@@ -45,4 +53,7 @@ function init() {
 	drawers.forEach(initDrawer)
 }
 
-module.exports = { init }
+module.exports = {
+	init,
+	updateDrawer
+}

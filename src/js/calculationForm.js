@@ -202,6 +202,10 @@ function updateContainers(app) {
 				break
 		}
 	})
+
+	// Update height
+	const containerDrawer = document.querySelector('.container-box .drawer')
+	drawer.updateDrawer(containerDrawer)
 }
 
 function updateEconomicsData(app) {
