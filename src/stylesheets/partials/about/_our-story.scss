@@ -15,9 +15,12 @@
 	.our-story-pic{
 		background-image: url("/images/africa2.jpg");
 		height: 500px; 
-		background-attachment: fixed;
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
+
+		@media (min-width: $width-tablet-min) {
+			background-attachment: fixed;
+		}
 	}
 }
