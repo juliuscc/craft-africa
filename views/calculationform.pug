@@ -76,7 +76,7 @@ block content
 								h3 Water sold
 								.fa.fa-question-circle-o.tooltip
 									.tooltip-text
-										| This slider controls your monthly output of water. You can also input your selling price for the water. The price is the price in usd per liter.
+										| This slider controls your expected sales of water each month. You can also input your selling price for the water. The price is the price in usd per liter.
 							.slider-wrapper
 									table
 										tr
@@ -124,7 +124,7 @@ block content
 							td {{ economics.incomes.waterPrice }}
 						tr
 							th Total
-							td {{ economics.incomes.total }}
+							td ${{ economics.incomes.total }}
 					table
 						tr
 							th Fixed Costs
@@ -133,7 +133,7 @@ block content
 							td {{ economics.fixedCosts.rent }}
 						tr
 							th Total
-							td {{ economics.fixedCosts.total }}
+							td ${{ economics.fixedCosts.total }}
 					table
 						tr
 							th Variable Costs
@@ -151,7 +151,7 @@ block content
 							td {{ economics.variableCosts.ingredients }}
 						tr
 							th Total
-							td {{ economics.variableCosts.total }}
+							td ${{ economics.variableCosts.total }}
 					table
 						tr
 							th Summary
@@ -166,7 +166,7 @@ block content
 							td - {{ economics.variableCosts.total }}
 						tr
 							th Total
-							td {{ economics.profit }}
+							td ${{ economics.profit }}
 					
 			.container-box
 				.drawer(data-state="closed")
@@ -183,7 +183,7 @@ block content
 										td  
 									tr
 										th Container type
-										td {{ module.type }}
+										td {{ module.typeDescription }}
 									tr(v-if="module.type === 'production'")
 										th Max brewing capacity
 										td {{ module.brewingCapacity }}
@@ -213,5 +213,5 @@ block scripts
 	script(src="https://vuejs.org/js/vue.js")
 	script(src="https://unpkg.com/vue-chartjs@2.6.0/dist/vue-chartjs.full.min.js")
 	// script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.js") 
-	script(src="/js/calculationForm.js")
 	script(src="http://github.hubspot.com/odometer/odometer.js")
+	script(src="/js/calculationForm.js")
