@@ -14,7 +14,9 @@ function scroll(e) {
 
 function init() {
 	const anchor = document.querySelector('header.header .down-btn')
-	anchor.addEventListener('click', scroll)
+	if(anchor) {
+		anchor.addEventListener('click', scroll)
+	}
 }
 
 module.exports = { init }
