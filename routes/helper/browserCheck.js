@@ -1,15 +1,11 @@
 const UAParser = require('ua-parser-js')
 
-function isSupportedBrowser(req, res) {
+function isSupportedBrowser(req) {
 	const parser = new UAParser()
 	const ua = req.headers['user-agent']
 	const browserName = parser.setUA(ua).getBrowser().name
 
-	if(browserName === 'IE' || browserName === 'Edge') {
-		res.redirect('/update/')
-		return false
-	}
-	return true
+	return (browserName !== 'IE' && browserName !== 'Edge')
 }
 
 module.exports = {

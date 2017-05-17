@@ -70,17 +70,23 @@ block content
 			.headline
 				h1 How many liters can you sell?
 				p Build your own craft beer brand and make profit while doing so!
-			#calc-slider.calculation-form-small
-				.slider-row
-					.slider-wrapper
-							.slider-row.total-volume
-								input.slider.activeSlider#totalVolume(type="range" name="totalVolume" :min="minValue" :max="maxValue" data-thumbWidth="20" v-model="totalVolume")
-								span {{ totalVolume }} liters
-					a(href="/calculationform").button Get Started!
-				.output
-					span Your Profit: $ {{ profit }}
+			if isSupportedBrowser
+				#calc-slider.calculation-form-small
+					.slider-row
+						.slider-wrapper
+								.slider-row.total-volume
+									input.slider.activeSlider#totalVolume(type="range" name="totalVolume" :min="minValue" :max="maxValue" data-thumbWidth="20" v-model="totalVolume")
+									span {{ totalVolume }} liters
+						a(href="/calculationform").button Get Started!
+					.output
+						span Your Profit: $ {{ profit }}
+			else
+				.calculation-form-small
+					.slider-row
+						a(href="/calculationform").button.fullwidth-button Get Started!
 
 block scripts
 	// script(src="/js/explosionView.js")
-	script(src="https://vuejs.org/js/vue.js")
-	script(src="/js/calculationSlider.js")
+	if isSupportedBrowser
+		script(src="https://vuejs.org/js/vue.js")
+		script(src="/js/calculationSlider.js")

@@ -5,7 +5,7 @@ const browserCheck = require('./helper/browserCheck')
 const router = express.Router()
 
 router.get('/', (req, res) => {
-	if(browserCheck.isSupportedBrowser(req, res)) {
+	if(browserCheck.isSupportedBrowser(req)) {
 		const variables = { title: 'Build your brand' }
 		defaultValuesAPI.getAllDefaultValuesCollections((err2, defaultValues) => {
 			if(err2) {
@@ -19,6 +19,8 @@ router.get('/', (req, res) => {
 			}
 			res.render('calculationform', variables)
 		})
+	} else {
+		res.redirect('/update/')
 	}
 })
 
