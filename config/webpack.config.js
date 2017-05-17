@@ -38,7 +38,8 @@ module.exports = {
 	},
 	resolve: {
 		alias: {
-			vue$: 'vue/dist/vue.esm.js' // 'vue/dist/vue.common.js' for webpack 1
+			vue$: 'vue/dist/vue.min.js' // , // 'vue/dist/vue.common.js' for webpack 1
+			// 'vue-prod$': 'vue/dist/vue.runtime.min.js' // 'vue/dist/vue.common.js' for webpack 1
 		}
 	}
 }
