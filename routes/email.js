@@ -85,7 +85,7 @@ router.post('/send', (req, res) => {
 
 			transporter.sendMail(mailUser, (error, info) => {
 				if(error) {
-					// return console.log(error)
+					return console.log(error)
 				}
 				// console.log('Message %s sent: %s', info.messageId, info.response)
 			})
@@ -93,7 +93,7 @@ router.post('/send', (req, res) => {
 			// send mail with defined transport object
 			transporter.sendMail(mailAdmin, (error, info) => {
 				if(error) {
-					// return console.log(error)
+					return console.log(error)
 				}
 				// console.log('Message %s sent: %s', info.messageId, info.response)
 			})
