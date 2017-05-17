@@ -7,7 +7,11 @@
 
 	.profit-box {
 		width: 100%;
-		font-size: 2em;
+		font-size: 1.5em;
+
+		@media (min-width: $width-tablet-min) {
+			font-size: 2em;
+		}
 		
 		.odometer-inside:after {
 			content: "$";
