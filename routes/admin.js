@@ -22,19 +22,23 @@ router.use('/statistics', statistics)
 
 // Login stuff
 router.get('/', (req, res) => {
-	requiresAuth(req, res, 'login')
+	if(req.user) {
+		res.redirect('/admin/containers')
+	} else {
+		res.render('admin/login')
+	}
 })
 
 router.get('/login', (req, res) => {
-	requiresAuth(req, res, 'login', { user: req.user })
+	if(req.user) {
+		res.redirect('/admin/containers')
+	} else {
+		res.render('admin/login')
+	}
 })
 
 router.get('/signup', (req, res) => {
-	res.render('admin/signup', { })
-})
-
-router.get('/statistics', (req, res) => {
-	res.render('admin/statistics', { username: req.user.username })
+	res.render('admin/signup')
 })
 
 router.get('/logout', (req, res) => {
@@ -42,13 +46,9 @@ router.get('/logout', (req, res) => {
 	res.redirect('/admin/login')
 })
 
-router.get('/profile', (req, res) => {
-	requiresAuth(req, res, 'containers')
-})
-
 router.post('/signup', passport.authenticate('local-signup', {
 	successRedirect: 'containers',
-	failureRedirect: 'signup',
+	failureRedirect: 'login',
 	failureFlash: true
 }))
 

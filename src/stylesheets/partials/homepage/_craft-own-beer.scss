@@ -58,10 +58,11 @@
 					justify-content: center;
 					h3{
 							font-size: 4em;
-							padding-right: 10px;
+							padding-right: 0px;
 					}
 					p{
 						font-weight: bold;
+						max-width: 20ch;
 					}
 					display: flex;
 					flex-direction: row;

@@ -8,6 +8,29 @@ header.header {
 	display: flex;
 
 }
+.homepage-header{
+	
+	.title-text {
+		text-shadow: 1px 1px 6px #000;
+		h1{
+			 border-bottom: 2px $color-white solid;
+		}
+	}
+
+	.background-img{
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		height: 100vh;
+		background-image: url("/images/darkerImages/AlcoholTank.jpg");
+		background-size: cover;
+		background-position: center;
+
+	}
+
+	
+
+
 
 // .big-pic{
 // 	.homepage-pic{
@@ -28,35 +51,6 @@ header.header {
 // 		background-image: url("/images/africa2.jpg");
 // 	}
 // }
-
-.homepage-header{
-	
-	.title-text {
-		text-shadow: 1px 1px 6px #000;
-		h1{
-			 border-bottom: 2px $color-white solid;
-		}
-	}
-
-	.background-img{
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		height: 100vh;
-		background-color: $color-primary;
-		background-image: url("/images/darkerImages/AlcoholTank.jpg");
-		background-size: cover;
-		background-position: center;
-
-		//filter: blur(8px) grayscale(50%);
-
-		// -webkit-filter: blur(3px);
-		// -moz-filter: blur(3px);
-		// -o-filter: blur(3px);
-		// -ms-filter: blur(3px);
-		// filter: blur(3px);
-		// opacity: 0.8;
-	}
 }
 
 

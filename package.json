@@ -61,15 +61,18 @@
     "mongoose": "^4.9.5",
     "morgan": "^1.8.1",
     "nodemailer": "^4.0.1",
+    "odometer": "^0.4.8",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
     "pug": "^2.0.0-beta.12",
     "scrollmagic": "^2.0.5",
     "serve-favicon": "^2.4.2",
+    "ua-parser-js": "^0.7.12",
     "validator": "^7.0.0",
     "velocity-animate": "^1.5.0",
     "vue": "^2.3.0",
-    "vue-chartjs": "^2.6.2"
+    "vue-chartjs": "^2.6.2",
+    "vue-odometer": "^0.1.1"
   }
 }

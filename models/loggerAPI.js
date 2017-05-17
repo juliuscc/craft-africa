@@ -33,7 +33,7 @@ module.exports.getLogByType = (logType, callback) => {
 	Logger.find(query, callback)
 }
 
-// Statistical stuff
+// Statistics
 module.exports.updateViews = (page) => {
 	const pageLowerCase = page.toLowerCase()
 	const sType = 'STAT views'// Selected type

@@ -61,8 +61,11 @@ const chart = Vue.component('economics-chart', {
 								beginAtZero: true,
 								suggestedMax: 50000,
 								scaleStepWidth: 10000,
+								callback: function(label, index, labels) {
+								                        return label+'$';
+								                    }
 								// max: 100000
-							}
+							},
 						}]
 				},
 				legend: {
@@ -192,12 +195,13 @@ function updateContainers(app) {
 }
 
 function updateEconomicsData(app) {
+	let odo = document.querySelector('.profit');
 	if(calcObj.economics.profit !== '-') {
 		app.economics.profit = Math.round(calcObj.economics.profit)
 	} else {
 		app.economics.profit = calcObj.economics.profit + ' '
 	}
-
+	odo.innerHTML = app.economics.profit
 }
 
 function updateEconomicsDataAdvanced(app) {
@@ -357,6 +361,17 @@ function createVueApp() {
 			updateEconomicsData(this)
 			updateEconomicsDataAdvanced(this)
 
+			//Moneyflow
+			var odo = document.querySelector('.profit')
+			window.od = new Odometer({
+				  el: odo,
+				  value: 0,
+				  duration: 200
+				  // Any option (other than auto and selector) can be passed in here
+				  // format: (,ddd),
+				})
+			updateEconomicsData(this)
+			
 			// Updating elements that are created by vue
 			setTimeout(() => {
 				this.sliderWater = calcObj.stats.distribution.water
