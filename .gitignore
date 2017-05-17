@@ -29,8 +29,25 @@ node_modules
 # Optional REPL history
 .node_repl_history
 
-public/
+public/js
+public/stylesheets/main.css
+public/stylesheets/style.css
 
 \.gulp-cache
 
 config/credentials*
+
+src/\.DS_Store
+
+\.DS_Store
+
+bower_components/
+
+# Mac computers litter directories with this
+*.DS_Store
+
+*fuse*
+
+public/stylesheets/normalize\.css
+
+public/stylesheets/

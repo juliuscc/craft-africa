@@ -1,0 +1,32 @@
+.quote-container {
+	width: 80%;
+	margin: 20vh auto;
+	text-align: center;
+	font-size: 1.5em;
+
+	@media (min-width: $width-mobile-min) {
+		font-size: 2em;
+	}
+
+	@media (min-width: $width-tablet-min) {
+		font-size: 2.6em;
+	}
+
+	.quote {
+		font-style: italic;
+
+		&:before {
+			content: "\""
+		}
+
+		&:after {
+			content: "\"";
+		}
+	}
+
+	.source {
+		&:before { 
+			content: " - ";
+		}
+	}
+}

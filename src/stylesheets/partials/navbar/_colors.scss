@@ -1,0 +1,9 @@
+.nav-filler {
+	&.product {
+		background-color: $color-accent;
+	}
+
+	&.contact {
+		background-color: $color-primary;
+	}
+}

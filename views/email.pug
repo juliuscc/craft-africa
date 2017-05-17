@@ -1,0 +1,23 @@
+extends layout.pug
+
+block title
+	|Email - 
+
+block nav
+	nav.nav.small
+		include partials/navbar
+	.nav-filler.contact
+
+block content
+	.contact-form
+		.container-contact
+			if message
+				h1 Thank you for getting in touch
+				p= message
+			else
+				h1 Thank you for getting in touch
+				p  One of our skilled coworkers will soon reach out to you. 
+
+
+block navScript
+	script(src="/js/navbarsmall.js")

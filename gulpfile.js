@@ -52,6 +52,21 @@ gulp.task('style', () => {
 		.pipe(gulp.dest(dest))
 })
 
+gulp.task('admin-style', () => {
+	const src = `${paths.src}/admin-stylesheet/admin-stylesheet.scss`
+	const dest = `${paths.dest}/stylesheets`
+
+	return gulp.src(src)
+		.pipe(plumber(errorHandler))
+		.pipe(cache.filter())
+		.pipe(scss())
+		.pipe(autoprefixer())
+		.pipe(production(cleanCSS()))
+		.pipe(cache.cache())
+		.pipe(plumber.stop())
+		.pipe(gulp.dest(dest))
+})
+
 /* ~ ~ ~ JS / JSX ~ ~ ~ */
 const webpack = require('webpack-stream')
 const webpackConf = require('./config/webpack.config.js')
@@ -69,22 +84,36 @@ gulp.task('js', () => {
 		.pipe(gulp.dest(dest))
 })
 
+/* ~ ~ ~ Bower assets ~ ~ ~ */
+gulp.task('load-bower', () => {
+	const src = path.resolve(__dirname, 'bower_components')
+
+	// Normalize
+	gulp.src(`${src}/normalize-css/normalize.css`)
+	.pipe(gulp.dest(`${paths.dest}/stylesheets`))
+
+	// Font awesome
+	return gulp.src(`${src}/font-awesome/fonts/*`)
+	.pipe(gulp.dest(`${paths.dest}/fonts`))
+})
+
 /* ~ ~ ~ Stream and task handling ~ ~ ~ */
 gulp.task('watch', () => {
-	gulp.start('style', 'js')
+	gulp.start('style', 'admin-style', 'js', 'load-bower')
 
 	// Style
-	gulp.watch(`${paths.src}/stylesheets/**/*.scss`, ['style'])
+	gulp.watch(`${paths.src}/stylesheets/**`, ['style'])
+	gulp.watch(`${paths.src}/admin-stylesheet/**`, ['admin-style'])
 
 	// JS / JSX
-	gulp.watch(`${paths.src}/js/**/*.js`, ['js'])
+	gulp.watch(`${paths.src}/js/**`, ['js'])
 })
 
 // Handling server
 gulp.task('nodemon', () => {
 	const stream = nodemon({
 		script: 'app.js',
-		watch: ['routes', 'app.js']
+		watch: ['routes', 'app.js', 'config', 'models']
 	})
 		.on('restart', () => {
 			gutil.log('restarted!')
@@ -98,4 +127,4 @@ gulp.task('nodemon', () => {
 })
 
 gulp.task('default', ['nodemon', 'watch'])
-gulp.task('build', ['style', 'js'])
+gulp.task('build', ['style', 'admin-style', 'js', 'load-bower'])

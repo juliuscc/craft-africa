@@ -1,0 +1,93 @@
+.calculation-form {
+	background-color: $color-background-light;
+	color: $color-text-dark;
+	font-family: "Liberation-Sans" , sans-serif;
+	padding: 30px 0 50px 0;
+
+	h3 {
+		font-size: 1.3em;
+		margin-bottom: 0;
+	}
+
+	.chart-container {
+		min-height: 400px;
+		margin-bottom: 2.5em;
+	}
+
+	@import "calculation-form/inputs";
+	@import "calculation-form/drawer";
+	@import "calculation-form/tables";
+	@import "calculation-form/economics";
+	@import "calculation-form/total-volume";
+	@import "calculation-form/tooltip";
+	@import "calculation-form/container-box";
+
+	.container > * {
+		margin-top: 1em;
+	
+		&:last-of-type {
+			margin-bottom: 1em;
+		}
+	}
+}
+
+.calculation-form-small {
+	margin-top: 40px;
+	width: 100%;
+
+	@import "calculation-form/total-volume";
+
+	.total-volume {
+		margin-bottom: 0;
+	}
+
+	.slider-row {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+		position: relative;
+
+		.slider-wrapper {
+			flex: 1;
+			width: 100%;
+			margin: 0;
+		}
+
+		span {
+			position: absolute;
+			top: -28px;
+			transform: translateX(-48%);
+		}
+
+		.button {
+			width: 100%;
+			margin-top: 20px;
+		}
+	}
+
+	.output {
+		margin-top: 40px;
+		flex: 100%;
+		font-weight: bold;
+		font-size: 148%;
+	}
+
+	.placeholder-text {
+		font-size: 3em;
+	}
+
+	@media (min-width: $width-tablet-min) {
+		.slider-row {
+			flex-direction: row;
+			.slider-wrapper {
+				margin-right: 30px;
+			}
+
+			.button {
+				width: initial;
+				margin: 0;
+			}
+		}
+	}
+}

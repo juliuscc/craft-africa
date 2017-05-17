@@ -1,0 +1,82 @@
+extends layout.pug
+
+
+block vars
+	- var title = "Modify containers"
+
+block title 
+	| Admin 
+
+
+block content
+	form.container(method="post" action="/admin/containers" novalidate)
+		each container, index in containers
+			.card
+				.card-title
+					h4= container.name
+				.card-content
+					.row
+						.input-field.col.s3
+							input.validate(type='text' name="name" required value=container.name)
+							label(for='name') Name
+						.input-field.col.s3
+							select.validate(name="type", value=container.type, required)
+								option(value=container.type, selected)= container.type
+								option(value='addon') addon
+								option(value='fermenting') fermenting
+								option(value='production') production
+							label(for='type') Type
+						.input-field.col.s3
+							select.validate(name="series", value=container.series, required)
+								option(value=container.series, selected)= container.series
+								option(value='a') a
+								option(value='b') b
+								option(value='c') c
+							label(for='series') Series
+						.input-field.col.s3
+							input.validate(type='number' name="price" required value=container.price)
+							label(for='price') Price
+						.input-field.col.s3
+							input.validate(type='number' name="fermentingCapacity" value=container.fermentingCapacity)
+							label(for='fermentingCapacity') Fermenting Capacity
+						.input-field.col.s3
+							input.validate(type='number' name="storageCapacity" value=container.storageCapacity)
+							label(for='storageCapacity') Storage Capacity
+						.input-field.col.s3
+							input.validate(type='number' name="brewingCapacity" value=container.brewingCapacity)
+							label(for='brewingCapacity') Brewing Capacity
+						.input-field.col.s3
+							input.validate(type='number' name="waterProduction" value=container.waterProduction)
+							label(for='waterProduction') Water Production
+						.input-field.col.s3
+							input.validate(type='number' name="electricityProduction" value=container.electricityProduction)
+							label(for='electricityProduction') Electricity Production
+						.input-field.col.s3
+							input.validate(type='text' name="comment" value=container.comment)
+							label(for='comment') Comment
+						input.enable.btn.red.right(type="button" data-target=`modal${index}` value = "remove" style="margin-right: 10px")
+						div(class="modal" id=`modal${index}`)
+							.modal-content
+								h4 Confirm
+								p= "Are you sure you want to delete '" + container.name + "'?"
+							.modal-footer
+								input.remove.btn-flat(type="submit" value="Yes")
+								input.modal-action.modal-close.btn-flat(type="button" value="No")
+						input.btn.save.blue.right(type="submit" value = "save" style="margin-right:10px")
+						input(type="hidden" name="id" value=container._id)
+						input(type="hidden" name="status" value="unchanged")
+		input.btn-large(type="submit"  name="submit" value="submit Changes")
+	.container
+		br
+		hr
+		h4 New Containers
+		h6 Save changes before adding new containers!
+		br
+		form(method="post" class="addRow" action="/admin/containers/new")
+			input.btn-large.left(type="submit"  name="submit" value="Submit New Containers")
+			input.btn-large.left(type="button" id="add" value = "Add")
+	
+				
+	
+block scripts
+	script(src="/js/adminCont.js")

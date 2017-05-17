@@ -1,0 +1,85 @@
+.water {
+	text-align: center;
+	color: $color-text-dark;
+	background-color: $color-white;
+	padding-bottom: 50px;
+	flex-direction: column;
+
+	h2{
+		color: $color-title-dark;
+	}
+	
+	.info-box {
+		padding-bottom: 0;
+	}
+
+	@media (min-width: $width-tablet-min) {
+		padding-bottom: 5%;
+
+		.text {
+			width: 80%;
+		}
+
+		.image {
+			width: 60%;
+			margin: 30px 0;
+		}
+	}
+
+	.water-splash {
+		width: 70%;
+		padding: 0 15%;
+		box-sizing: border-box;
+		margin: 0 auto;
+
+		img {
+			width: 100%;
+		}
+	}
+
+	.water-tap {
+		position: relative;
+		width: 60%;
+		overflow: hidden;
+		box-sizing: border-box;
+		float: right;
+		height: 200px;
+		margin-bottom: 10%;
+		
+		@media (min-width: $width-tablet-min) {
+			& {
+				height: 300px;
+			}
+		}
+
+		@media (min-width: $width-tablet-min) {
+			& {
+				height: 400px;
+			}
+		}
+
+		@media (min-width: $width-desktopHD-min) {
+			& {
+				height: 600px;
+			}
+		}
+
+		@media (min-width: $width-desktop2k-min) {
+			& {
+				height: 700px;
+				width: 55%;
+			}
+		}
+
+		img {
+			position: absolute;
+			left: 0;
+			height: 100%;
+		}
+
+		.filler {
+			display: block;
+			width: 40%;
+		}
+	}
+}

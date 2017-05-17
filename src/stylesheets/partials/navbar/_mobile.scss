@@ -1,0 +1,111 @@
+nav.nav {
+	display: block;
+	height: $nav-height;
+	width: 100%;
+	background-color: $color-nav-background-transparent;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	transition: all 0.5s;
+	font-family: 'Liberation-Sans', sans-serif;
+
+	* {
+		transition: all 0.5s;
+	}
+
+	> * {
+		display: inline-block;
+		height: 100%;
+	}
+
+	// Initial large state in mobile. Not opened menu. 
+	.logo {
+		float: left;
+		height: 100%;
+		margin-left: 10px;
+
+		img {
+			position: absolute;
+			height: 80%;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+	}
+
+	.links {
+		display: none;
+		padding: 0;
+		box-sizing: border-box;
+		margin-top: 0;
+		margin-bottom: 0;
+		list-style-type: none;
+
+		li {
+			height: 100%;
+			float: left;
+			display: flex;
+			align-items: center;
+			width: 100%;
+
+			a {
+				padding: 0 15px;
+				text-decoration: none;
+				color: $color-nav-link;
+				font-weight: bold;
+				white-space: nowrap;
+				line-height: $nav-height;
+
+				&:hover,
+				&.active {
+					color: $color-nav-link-hover;
+				}
+			}
+		}
+	}
+
+	.hamburger {
+		position: relative;
+		float: right;
+		top: 50%;
+		transform: translateY(-50%);
+		height: $nav-height-medium * 0.6;
+		width: $nav-height-medium * 0.7;
+		z-index: 3;
+		margin-right: 10px;
+	}
+
+	// Opened state in mobile
+	&.small,
+	&.open {
+		background-color: $color-nav-background;
+		height: $nav-height;
+
+		.links a {
+			padding-left: 5%;
+		}
+
+		.hamburger {
+			height: $nav-height * 0.6;
+			width: $nav-height * 0.7;
+
+			span {
+				height: 4px;
+			}
+		}
+	}
+
+	&.open {
+		.links {
+			display: block;
+			width: 100%;
+			position: absolute;
+			top: $nav-height;
+
+			a {
+				width: 100%;
+				background-color: $color-nav-background;
+			}
+		}
+	}
+}

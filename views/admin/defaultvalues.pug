@@ -1,0 +1,160 @@
+extends layout.pug
+
+block vars
+	- var title = "General form settings"
+
+block title
+	title General settings
+
+block content
+	form(method="post" action="/admin/defaultvalues").container
+		.everything
+			.card
+				.card-title
+					h4
+						|Ingredient cost ( price/kg )
+						span(data-position="bottom" data-delay="0" data-tooltip="Price for the customer").material-icons.tooltipped info_outline 
+					
+				.card-content
+					.defaultCostIngredients
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="hops" value=ingredientCost.hops)
+							label(for='name') Hops
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="barley" value=ingredientCost.barley)
+							label(for='name') Barley
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="co2" value=ingredientCost.co2)
+							label(for='name') CO2
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="water" value=ingredientCost.water)
+							label(for='name') Water
+
+			.card
+				.card-title
+					h4
+						|Distribution ( % )
+						span(data-position="bottom" data-delay="0" data-tooltip="Start distribution values for the sliders displayed in the calculation form. NOTE: NEEDS TO BE 100 IN TOTAL").material-icons.tooltipped info_outline 
+
+				.card-content
+					.defaultDistributionValues
+						.input-field.col.s3
+							input.validate.hundred(type="number" step="any" required name="tapDist" value=defaultDistribution.tapDist)
+							label(for='name') Tap
+						.input-field.col.s3
+							input.validate.hundred(type="number" step="any" required name="bottleDist" value=defaultDistribution.bottleDist)
+							label(for='name') Bottle
+						.input-field.col.s3
+							input.validate.hundred(type="number" step="any" required name="kegDist" value=defaultDistribution.kegDist)
+							label(for='name') Keg
+						.input-field.col.s3
+							input.validate.hundred(type="number" step="any" required name="waterDist" value=defaultDistribution.waterDist)
+							label(for='name') water
+
+			.card
+				.card-title
+					h4
+						|Threshold for Activating Containers ( number of units )
+						span(data-position="bottom" data-delay="0" data-tooltip="Threshold for the bottle and keg containers to be activated.").material-icons.tooltipped info_outline
+				
+				.card-content
+					.defaultThreshhold
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="bottleThresh" value=defaultThreshold.bottleThresh)
+							label(for='name') Bottle
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="kegThresh" value=defaultThreshold.kegThresh)
+							label(for='name') Keg
+
+			.card
+				.card-title
+					h4
+						|Production Cost ( price/(liter of tap/bottle/keg) )
+						span(data-position="bottom" data-delay="0" data-tooltip="Cost for the customer. Specified in price/(liter of tap/bottle/keg)").material-icons.tooltipped info_outline
+
+				.card-content
+					.defaultCostValues
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="tapCost" value=productionCost.tapCost)
+							label(for='name') Tap
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="bottleCost" value=productionCost.bottleCost)
+							label(for='name') Bottle
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="kegCost" value=productionCost.kegCost)
+							label(for='name') Keg
+
+			.card
+				.card-title
+					h4
+						|Fermenting Time (days)
+						span(data-position="bottom" data-delay="0" data-tooltip="Storage container information is specified in. EXAMPLE: Container A; storage; produces X liters/(this value)").material-icons.tooltipped info_outline
+
+				.card-content
+					.defaultSellingValues
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="fermentingTime" value=fermentingTime)
+							label(for='name') Time
+
+			.card
+				.card-title
+					h4
+						|Production Yield (0-100%)
+						span(data-position="bottom" data-delay="0" data-tooltip="Beer lost due to removal of yeast in the tanks").material-icons.tooltipped info_outline
+
+				.card-content
+					.defaultSellingValues
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="productionYield" value=productionYield)
+							label(for='productionYield') Production yield
+
+			.card
+				.card-title
+					h4
+						|Selling Price ( price/(liter of tap/bottle/keg) ) 
+						span(data-position="bottom" data-delay="0" data-tooltip="Price for the customer.").material-icons.tooltipped info_outline
+
+				.card-content
+					.defaultSellingValues
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="tapSell" value=sellingPrice.tapSell)
+							label(for='name') Tap
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="bottleSell" value=sellingPrice.bottleSell)
+							label(for='name') Bottle
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="kegSell" value=sellingPrice.kegSell)
+							label(for='name') Keg
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="waterSell" value=sellingPrice.waterSell)
+							label(for='name') water
+
+
+			.card
+				.card-title
+					h4
+						|Start Values for Production ( liters of beer )
+						span(data-position="bottom" data-delay="0" data-tooltip="Start value").material-icons.tooltipped info_outline
+
+				.card-content
+					.defaultStartValueForProduction
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="startValueForProduction" value=startValueForProduction)
+							label(for='name') Start value for slider
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="minValueForProduction" value=minValueForProduction)
+							label(for='name') Minimal value for slider
+				
+						.input-field.col.s3
+							input.validate(type="number" step="any" required name="maxValueForProduction" value=maxValueForProduction)
+							label(for='name') Maximum value for slider
+					
+					
+							
+			input.validate(type="hidden" name="status" value="unchanged")
+			br
+			input.btn-large.left.tooltipped(type="submit" disabled=false name="submit" value="Submit" data-position="top" data-delay="50" data-tooltip="I am tooltip")
+			br
+	
+block scripts
+	script(src="/js/adminDefaultValues.js")

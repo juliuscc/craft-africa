@@ -8,7 +8,8 @@
     "production": "NODE_ENV=production gulp",
     "development": "NODE_ENV=development gulp",
     "build_prod": "NODE_ENV=production gulp build",
-    "build_dev": "NODE_ENV=development gulp build"
+    "build_dev": "NODE_ENV=development gulp build",
+    "init": "NODE_ENV=development yarn install && bower install && NODE_ENV=production  gulp build"
   },
   "keywords": [
     "beer",
@@ -46,11 +47,32 @@
     "webpack-stream": "^3.2.0"
   },
   "dependencies": {
+    "babel-loader": "^6.4.1",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.1",
+    "chart.js": "^2.5.0",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.2",
+    "express-session": "^1.15.2",
+    "gmail-send": "^1.2.8",
+    "gulp-environments": "^0.1.2",
+    "handlebars": "^4.0.6",
+    "mongoose": "^4.9.5",
     "morgan": "^1.8.1",
+    "nodemailer": "^4.0.1",
+    "odometer": "^0.4.8",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
     "path": "^0.12.7",
-    "pug": "^2.0.0-beta.12"
+    "pug": "^2.0.0-beta.12",
+    "scrollmagic": "^2.0.5",
+    "serve-favicon": "^2.4.2",
+    "ua-parser-js": "^0.7.12",
+    "validator": "^7.0.0",
+    "velocity-animate": "^1.5.0",
+    "vue": "^2.3.0",
+    "vue-chartjs": "^2.6.2",
+    "vue-odometer": "^0.1.1"
   }
 }

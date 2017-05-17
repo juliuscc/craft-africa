@@ -1,13 +1,86 @@
 extends layout.pug
 
-block title 
-	title CraftAfrica Welcome
+block title
+	|
+
+block description
+	meta(name="description" content="Craft Africa is a company who focus on creating a opportunity for brewers with an entrepreneurial spirit in Africa. Who wants to create their own beer brand. We provide a modular brewery which consists of custom made containers.")
 
 block header
-	h1 Welcome to CraftAfrica
+	header.header
+		.homepage-header
+			.background-img
+
+			.title-text
+				h1 Craft Africa
+				p Create your own beer brand with our modular turnkey breweries
+			a.down-btn.fa.fa-angle-double-down(href="#first")
 
 block content
-	p blah blah
+	.info-box.homepage.craft-own-beer#first
+		.headline
+			h1 Are You Dreaming Of Crafting Your Own Beer Brand?
+			p Having a dream is important, together with Craft Africa you can create your own beer brand. Together we can bring forward your entrepreneurial spirit. The solution is simple! Craft Africa puts together a modular solution that fits your needs.
+		.icon-container
+			.icon
+				img(src="/images/handshake.png", alt="Scalable solutions")
+				.image-text
+					h3 1
+					p Find your preferred setup
+			.icon
+				img(src="/images/boattrip.png", alt="Scalable solutions")
+				.image-text
+					h3 2
+					p Eagerly await your containers pending arrival
+			.icon
+				img(src="/images/beertap.png", alt="Scalable solutions")
+				.image-text
+					h3 3
+					p That's it. You are all set!
+	//- .container#first
+	//- 	.quote-container
+	//- 		span.quote Get famous or die trying
+	//- 		span.source former poor man now rich
 
-block footer
-	p example footer
+	.info-box.headline-container
+		.text
+			h2 High Quality Brewing Technology
+			p A high technology modular brewery concept for rent. Building your own brand without major investments and pay for the capacity you need.
+				
+		.image
+			img(src="/images/containers.png")
+	//- .explosion-view-container
+	//- 	.explosion-view
+	//- 		.img-container
+	//- 			object.base(data="/images/factory/background.svg")
+	//- 			//- object.water-filtration(data="/images/factory/water-filtration.svg")
+	//- 			object.brewery(data="/images/factory/brewery.svg")
+	//- 			object.battery(data="/images/factory/battery.svg")
+	//- 			object.bar(data="/images/factory/bar.svg")
+	//- 			object.roof(data="/images/factory/roof.svg")
+	//- 			object.front-wall(data="/images/factory/right-wall.svg")
+	//- 			object.left-wall(data="/images/factory/left-wall.svg")
+	//- 			object.solar-panels(data="/images/factory/solar-panel.svg")
+
+	//- .calculation-form-small
+	//-	.placeholder-text You wanna make your own brand?
+	
+	.info-box.homepage.craft-own-beer
+		.container
+			.headline
+				h1 How many liters can you sell?
+				p Build your own craft beer brand and make profit while doing so!
+			#calc-slider.calculation-form-small
+				.slider-row
+					.slider-wrapper
+							.slider-row.total-volume
+								input.slider.activeSlider#totalVolume(type="range" name="totalVolume" :min="minValue" :max="maxValue" data-thumbWidth="20" v-model="totalVolume")
+								span {{ totalVolume }} liters
+					a(href="/calculationform").button Get Started!
+				.output
+					span Your Profit: $ {{ profit }}
+
+block scripts
+	// script(src="/js/explosionView.js")
+	script(src="https://vuejs.org/js/vue.js")
+	script(src="/js/calculationSlider.js")

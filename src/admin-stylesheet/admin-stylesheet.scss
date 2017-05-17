@@ -1,0 +1,86 @@
+// Form input
+textarea.materialize-textarea {
+	background-color: #f7f7f7;
+	width: 100%;	
+	padding-left: 10px;
+	min-height: 200px;
+}
+.textareaLabels{
+	padding: 5px;
+}
+div.row .col .inputBox{
+	width: 100%;
+	padding-left: 0;
+}
+.tabs-header {
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2); 
+	background-color: white; 
+	margin-bottom: 20px
+}
+
+// Overall
+.logo img {
+	margin-left: 10%;
+}
+.container {
+	margin-left: 20px;
+	width: 100%;
+	padding-right: 30px;
+}
+.beerType {
+	margin-left: 20px;
+	width: 100%;
+	padding-right: 30px;
+}
+.addRow .btn-large {
+	margin-right: 10px;
+}
+.btn.right {
+	margin-top: 40px;
+}
+.card-title h4 {
+	font-size: 120%;
+	padding-top: 20px;
+	margin: 20px 0 0px 20px;
+}
+.material-icons {
+	color: #888888;
+	cursor: pointer;
+}
+main {
+		margin-bottom: 200px;
+}
+@media(min-width: 992px) {
+	main {
+		padding-left:300px;
+	}
+}
+
+.statistics {
+	.btn.right {
+		margin: 0;
+	}
+
+	.card {
+		.card-title {
+			display: flex;
+			h4 {
+				width: 50%;
+				padding: 0;
+				span {
+					margin-left: 20px;
+				}
+			}
+			
+			.button-container {
+				position: absolute;
+				right: 0;
+				top: 20px;
+			}
+
+			.btn.right {
+				margin-right: 20px;
+			}
+		}
+	}
+}

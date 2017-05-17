@@ -1,13 +1,57 @@
 extends layout.pug
 
 block title 
-	title CraftAfrica Contact
+	|Contact -  
+
+block description
+	meta(name="description" content= "When you have read about us and are exited to start your own brand. Contact us at Craft Africa, and we will find a personal solution for you to develop you personal brand and take out you entrepreneurial spirit. ")
 
 block header
-	h1 Contact us
+	header.header.contact-form-header.half
+		.title-text
+			h1 Contact us
+			.container
+				.table-container
+					table
+						tr
+							td Email:
+							td
+								a(href="mailto:info@craft-africa.com") info@craft-africa.com
+						tr
+							td Phone:
+							td 
+								a(href="tel:+46708102799") +46 708 102 799
+						tr
+							td Address:
+							td Lugnet Allé 1
+						tr
+							td
+							td 120 65 Stockholm
+							
+			p Stockholm - Dar Es Salaam - Kampala
+
+block nav
+	nav.nav
+		include partials/navbar
+	.nav-filler.contact
 
 block content
-	p Habla habla habla
+	.contact-form
+		.container-contact
+			form(method="post" action="/email/send")
+				input(type="text" name="message_template" value="standard-template" hidden)
+				.input-row
+					.name
+						label(for="name") Name
+						input(type="text" name="name" id="name")
+					.email
+						label(for="emailadress") Email
+						input(type="email" name="emailadress" id="emailadress" required)
+				.message
+					label(for="message") Your message
+					textarea(name="message" id="message" rows="10")
+				.btn-row
+					input(type="submit" value="Submit")
 
-block footer
-	p example footer
+//- block navScript
+//-	 script(src="/js/navbarsmall.js")

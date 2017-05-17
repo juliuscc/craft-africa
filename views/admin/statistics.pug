@@ -1,0 +1,67 @@
+extends layout.pug
+
+block vars
+	- var title = "Statistics"
+
+block title
+	| Statistics 
+
+
+block content
+	style
+		|canvas {
+		|	width: 800px;
+		|	height: 400px;
+		|}
+	
+	.container.statistics
+		h3 Calculation form
+		hr
+		.card
+			.card-title
+				h4 Liters of beer
+					span(id='litersDate') #{year} #{month}
+				.button-container
+					input(type="button", id="litersNext", value="Next").btn.right.top
+					input(type="button", id="litersPrev", value="Prev").btn.right.top
+			.card-content
+				canvas(id="litersChart")
+		.card
+			.card-title
+				h4 Tap
+					span(id='tapDate') #{year} #{month}
+				.button-container
+					input(type="button", id="tapNext", value="Next").btn.right.top
+					input(type="button", id="tapPrev", value="Prev").btn.right.top
+				
+			.card-content
+				canvas(id="tapChart")
+		.card
+			.card-title
+				h4 Bottle
+					span(id='bottleDate') #{year} #{month}
+				.button-container
+					input(type="button", id="bottleNext", value="Next").btn.right.top
+					input(type="button", id="bottlePrev", value="Prev").btn.right.top
+			.card-content
+				canvas(id="bottleChart")
+		.card
+			.card-title
+				h4 Keg
+					span(id='kegDate') #{year} #{month}
+				.button-container
+					input(type="button", id="kegNext", value="Next").btn.right.top
+					input(type="button", id="kegPrev", value="Prev").btn.right.top
+			.card-content
+				canvas(id="kegChart")
+		
+		h3 User stats
+		hr
+		.card
+			.card-title
+				h4 Views
+			.card-content
+				canvas(id="viewsChart")
+
+block scripts
+	script(src="/js/admin/statistics.js")

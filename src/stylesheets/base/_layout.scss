@@ -1,0 +1,96 @@
+body {
+	margin: 0;
+	padding: 0;
+	// *****Sticky footer*******	
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+
+	> div:last-of-type {
+		flex: 1;
+	}
+	// *************************
+}
+
+.container {
+	position: relative;
+	width: 100%;
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 0 20px;
+	box-sizing: border-box;
+}
+
+@media (min-width: $width-mobile-min) {
+	.container {
+		width: 85%;
+		padding: 0;
+	}
+}
+
+@media (min-width: $width-tablet-min) {
+	.container {
+		width: 80%;
+	}
+}
+
+
+.info-box {
+	text-align: center;
+	width: 100%;
+	padding: 40px 20px 50px 20px;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	align-items: center;
+	@media(min-width: $width-tablet-min){
+		text-align: left;
+		flex-wrap: nowrap;
+	}
+
+	.text{
+		display: inline-block;
+		width: 100%;
+		box-sizing: border-box;
+		width: 100%;
+		@media(min-width: $width-tablet-min){
+			width: 70%;
+		}		
+	}
+	.image {
+		display: inline-block;
+		width: 100%;
+		box-sizing: border-box;
+		margin: 0 auto;
+		@media(min-width: $width-tablet-min){
+			width: 70%;
+		}
+	}
+
+	.image {
+		img {
+			width: 100%;
+			margin: auto;
+			display: block;
+		}
+	}
+	
+	@media (min-width: $width-tablet-min) {
+		//padding: 5% 10% 5% 10%;
+		padding: 4em 7em 4em 7em;
+
+		.text {
+			width: 60%;
+		}
+
+		.image {
+			width: 35%;
+		}
+	}
+	p {
+		font-size: 1.1em;
+		line-height: 1.25;
+	}
+}

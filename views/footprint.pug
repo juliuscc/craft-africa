@@ -1,0 +1,40 @@
+extends layout.pug
+
+block title
+	|Footprint - 
+
+block description
+	meta(name="description" content="At Craft Africa we take our responsibility seriously and we want to make our businesses a sustainable solution for our entrepreneurs. Here you can read about Craft Africas impact on the environment")
+
+
+block header
+	header.header.footprint
+		.footprint-header
+			.background-img
+			.title-text
+				h1 Our footprint
+				p We want to leave a positive footprint behind us. Therefore we have focused the concept on 3 major positive impact areas: empowerment, water & energy
+			a.down-btn.fa.fa-angle-double-down(href="#first")
+
+block content
+	.footprint
+		.info-box.water#first
+			.text
+				h2 Cleaning water for the environment
+				p The beer process is consuming large amount of water. The need for good quality water is also crucial for the final quality of the beer. As a key component in our concept we have a reversed osmosis water cleaning system that can provide with continuous flow of clean and great tasting water. Water can be bottled, sold on tap or even be carbonised or flavoured.
+			.image
+				img(src="/images/clean-water.png", alt="water splash")
+
+		.info-box.energy
+			.text
+				h2 Harvesting the sun
+				p Energy consumption is important factor when producing beer. By introducing solar panels we are able to harvest and convert solar energy to support the cooling needed to keep quality of the beer at a high level. At this stage we are not able to generate enough power to cover for the making of the beer but the containers are prepared for future better battery options.
+			.animation
+				img(src="/images/sunergy.png", alt="solar energy")
+					
+		.info-box.people
+			.image.bottle
+				img(src="/images/your-brand.png", alt="Your beer bottle")
+			.text
+				h2 Empowering individuals
+				p Many of the craft beer initiative around the world is started up by enthusiastic entrepreneurs. The local production of beer is generating job opportunities as well as tax income for the communities. Our ambition is to promote the empowerment of entrepreneurs build their own local brands with high quality technology and financial solutions.

@@ -1,0 +1,10 @@
+.product.support {
+	color:$color-text-light;
+	background-color: #618EB4;
+	
+	@media(min-width: $width-tablet-min) {
+		.text {
+			margin-right: 8%
+		}
+	}
+}

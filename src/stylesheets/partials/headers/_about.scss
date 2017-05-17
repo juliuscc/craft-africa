@@ -1,0 +1,44 @@
+& {
+	color: $color-white;
+	//background: $color-accent;
+
+		
+	
+	
+	.down-btn:hover,
+	.down-btn:active,
+	.down-btn:hover {
+		color: set-hover-color($color-white);
+	}
+}
+
+.about-header{
+	
+	.title-text {
+		text-shadow: 1px 1px 6px #000;
+		h1{
+			 border-bottom: 2px $color-white solid;
+		}
+	}
+
+	.background-img{
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		height: 100vh;
+
+		background-image: url("/images/darkerImages/IMG_6320.jpg");
+		background-position: center;
+	    background-repeat: no-repeat;
+	    background-size: cover;
+		
+		//filter: blur(4px) grayscale(20%);
+
+		// -webkit-filter: blur(3px);
+		// -moz-filter: blur(3px);
+		// -o-filter: blur(3px);
+		// -ms-filter: blur(3px);
+		// filter: blur(3px);
+		// opacity: 0.8;
+	}
+}

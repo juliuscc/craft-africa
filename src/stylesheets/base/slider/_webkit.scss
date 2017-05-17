@@ -1,0 +1,40 @@
+input[type=range] {
+	// removes default webkit styles
+	-webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+	box-sizing: border-box;
+	width: 100%;
+	height: $height-track;
+	background: $color-track-inactive;
+	border: none;
+	border-radius: 3px;
+
+	&:focus {
+		background: $color-track-active;
+	}
+}
+
+input[type=range]::-webkit-slider-thumb {
+	box-sizing: border-box;
+	-webkit-appearance: none;
+	border: none;
+	height: 16px;
+	width: 16px;
+	border-radius: 50%;
+	background: $color-thumb;
+	margin-top: -4px;
+
+	&:hover {
+		background: $color-thumb-hover;
+	}
+}
+
+.invalid input[type=range]::-webkit-slider-thumb {
+	background: $color-thumb-warning;
+	&:hover {
+		background: $color-thumb-hover-warning;
+	}
+}
+

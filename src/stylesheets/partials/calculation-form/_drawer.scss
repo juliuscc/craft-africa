@@ -1,0 +1,30 @@
+.drawer {
+	&[data-state="open"] {
+		.show {
+			display: none;
+		}
+
+		.hide {
+			display: block;
+		}
+	}
+
+	&[data-state="closed"] {
+		.show {
+			display: block;
+		}
+
+		.hide {
+			display: none;
+		}
+	}
+
+	.drawer-content {
+		transition: height 0.5s;
+		height: 0;
+		overflow: hidden;
+		display: block;
+		margin: 0;
+		padding: 0;
+	}
+}

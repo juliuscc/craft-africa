@@ -1,0 +1,44 @@
+.economics {
+	border: 1px solid darken($color-background-light, 15%);
+	border-radius: 7px;
+	padding: 1em 2.2em;
+	box-sizing: border-box;
+	font-weight: bold;
+
+	.profit-box {
+		width: 100%;
+		font-size: 2em;
+		
+		.odometer-inside:after {
+			content: "$";
+			font-family: "Liberation-Sans" , sans-serif!important;
+		}
+
+		a.fa {
+			line-height: 1em;
+			font-size: 30px;
+			float: right;
+			text-align: center;
+			text-decoration: none;
+			color: $color-primary;
+			width: 1em;
+			border-radius: 5px;
+		
+			&:hover {
+				color: darken($color-primary, 10%);
+			}
+		}
+	}
+
+	.drawer-content {
+		table {
+			tr:last-child {
+				&>* {
+					padding-top: 8px;
+					border-top: 1px solid gray;
+					font-weight: bold;
+				}
+			}
+		}
+	}
+}

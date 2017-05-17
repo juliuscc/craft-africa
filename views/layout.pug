@@ -1,37 +1,64 @@
 doctype html
 html
 	head
-		block title
-			title Craft Africa
+		title
+			block title
+			| Craft Africa
 		meta(charset="utf-8")
+		
+		// SEO optimization
+		block description
 
 		// Mobile Specific Metas
-		meta(name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0")
 		meta(name="HandheldFriendly" content="true")
+		
+		// Preview meta for social media
+		meta(property="og:image" content="https://craft-africa.com/images/craft-africa-logo2.jpg")
+		meta(property="og:title" content="CraftAfrica Facebook")
+		meta(property="og:url" content="https://craft-africa.com/sharingtest.html")
+		meta(property="og:description" content="CraftAfrica")
+		meta(property="fb:app_id" content="588805177964830")
+
+		meta(name="twitter:card" content="summary_large_image")
+		meta(name="twitter:site" content="@Craft-Africa")
+		meta(name="twitter:creator" content="@Craft-Africa")
+		meta(name="twitter:title" content="Craft-Africa")
+		meta(name="twitter:description" content="Welcome to Craft-Africa")
+		meta(name="twitter:image" content="https://craft-africa.com/images/craft-africa-logo2.jpg")
 
 		// Fonts
+		link(rel="stylesheet" href="/fonts/liberation.css")
 
 		// CSS
-		link(rel="stylesheet", href="/stylesheets/normalize.css")
-		link(rel="stylesheet", href="/stylesheets/main.css")
+		link(rel="stylesheet" href="/stylesheets/normalize.css")
+		link(rel="stylesheet" href="/stylesheets/main.css")
+		
+		// Favicon
+		link(rel="icon" type="image/ico" href="/images/favicons/favicon.ico")
+		link(rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16")
+		link(rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32")
+		link(rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180")
+		link(rel="mask-icon" href="/images/favicons/safari-pinned-tag.svg" color="red")
+		link(rel="manifest" href="/images/favicons/manifest.json")
+		meta(name="msapplication-config" content="/images/favicon/ieconfig.xml")
 
 	body
-		a(href="/") Home 
-		p 
-		a(href="/contact") Contact
-		p 
-		a(href="/about") About
-		p 
-		a(href="/calculationform") Form
+		block nav
+			nav.nav
+				include partials/navbar
 
 		block header
 
 		block content
 
 		block footer
+			include partials/footer
 
 		script(src="https://cdn.polyfill.io/v2/polyfill.min.js")
-		script(src="/js/bundle.js")
+
+		block navScript
+			script(src="/js/navbar.js")
 		
 		block scripts
 		

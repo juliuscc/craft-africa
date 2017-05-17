@@ -1,0 +1,41 @@
+// inspiration from http://brennaobrien.com/blog/2014/05/style-input-type-range-in-every-browser.html
+
+input[type=range] {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	cursor: pointer;
+}
+
+input[type=range]:focus {
+	border: none;
+	outline: none;
+}
+
+
+
+input[type=range]::-ms-track {
+	width: 100%;
+	height: 5px;
+	
+	// remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead
+	background: transparent;
+	
+	// leave room for the larger thumb to overflow with a transparent border
+	border-color: transparent;
+	border-width: 6px 0;
+
+	// remove default tick marks
+	color: transparent;
+}
+
+$color-track-inactive: #ddd;
+$color-track-active: darken($color-track-inactive, 10%);
+$color-track-lower-inactive: darken($color-track-inactive, 15%);
+$color-track-lower-active: darken($color-track-lower-inactive, 5%);
+$color-thumb: $color-primary;
+$color-thumb-warning: $color-warning;
+$color-thumb-hover-warning: darken($color-warning, 10%);
+$color-thumb-hover: darken($color-thumb, 10%);
+
+$height-track: 10px;

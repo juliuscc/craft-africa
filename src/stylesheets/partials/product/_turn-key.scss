@@ -1,0 +1,11 @@
+.product.turn-key {
+	background-color: #618EB4;
+	color: $color-text-light;
+	flex-wrap: wrap-reverse;
+
+	@media(min-width: $width-tablet-min) {
+		.text {
+			margin-left: 8%
+		}
+	}
+}

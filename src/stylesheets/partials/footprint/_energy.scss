@@ -1,0 +1,50 @@
+.energy {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background-color: $color-accent;
+	color: $color-text-light;
+	
+	> * {
+		box-sizing: border-box;
+		display: inline-block;
+	}
+
+	.animation {
+		width: 100%;
+	}
+
+	.text {
+		order: 2;
+	}
+	.animation {
+		height: auto;
+		order: 1;
+
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	@media (min-width: $width-tablet-min) {
+		& {
+			flex-direction: row;
+		}
+
+		.animation {
+			order: 2;
+			width: 30%;
+			height: auto;
+		}
+
+		.text {
+			order: 1;
+		}
+
+		.animation,
+		.text {
+			display: inline-block;
+		}
+	}
+}

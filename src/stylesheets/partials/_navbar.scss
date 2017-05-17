@@ -1,0 +1,35 @@
+@import "navbar/colors";
+@import "navbar/mobile";
+
+nav.nav {
+	font-size: 1em;
+}
+
+@media (min-width: $width-mobile-min) {
+	@import "navbar/tablet"
+}
+
+@media (min-width: $width-tablet-min) {
+	@import "navbar/desktop";
+	nav.nav {
+		font-size: 0.8em;
+
+		.links li a {
+			padding: 0 5px;
+		}
+	}
+}
+
+@media (min-width: $width-desktop-min) {
+	nav.nav {
+		font-size: 1em;
+		
+		.links li a {
+			padding: 0 15px;
+		}
+	}
+
+}
+
+@import "navbar/nav-filler";
+@import "navbar/hamburger";

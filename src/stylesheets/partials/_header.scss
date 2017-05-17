@@ -1,0 +1,75 @@
+header.header {
+	width: 100%;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	background-size: cover;
+	overflow: hidden;
+
+	.title-text {
+		position: absolute;
+		box-sizing: border-box;
+		width: 100%;
+		padding: 0 40px;
+		text-align: center;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		h1 {
+			font-size: 4em;
+			margin-bottom: 10px;
+		}
+
+		p {
+			margin: 0;
+			font-size: 1.2em;
+		}
+
+		@media (min-width: $width-tablet-min) {
+			padding: 0 20%;
+
+			h1 {
+				font-size: 6em;
+			}
+
+			p {
+				font-size: 1.25em;
+			}
+		}
+	}
+
+	.down-btn {
+		position: absolute;
+		left: 50%;
+		bottom: 5%;
+		transform: translateX(-50%);
+		text-decoration: none;
+		font-size: 8rem;
+		color: inherit;
+	}
+	
+	&.half {
+		height: 400px;
+	}
+
+	&.about {
+		@import "headers/about";
+	}
+
+	&.footprint {
+		@import "headers/footprint";
+	}
+
+	&.product {
+		@import "headers/product";
+	}
+
+	&.calculation-form-header {
+		@import "headers/calculation-form-header";
+	}
+
+}
+
+@import "headers/empty";

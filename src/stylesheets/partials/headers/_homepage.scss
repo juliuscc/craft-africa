@@ -1,0 +1,57 @@
+header.header {
+	color: $color-white;
+	
+	.down-btn:active,
+	.down-btn:hover {
+		color: set-hover-color($color-white);
+	}
+	display: flex;
+
+}
+.homepage-header{
+	
+	.title-text {
+		text-shadow: 1px 1px 6px #000;
+		h1{
+			 border-bottom: 2px $color-white solid;
+		}
+	}
+
+	.background-img{
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		height: 100vh;
+		background-image: url("/images/darkerImages/AlcoholTank.jpg");
+		background-size: cover;
+		background-position: center;
+
+	}
+
+	
+
+
+
+// .big-pic{
+// 	.homepage-pic{
+//     /* The image used */
+//    		background-image: url("/images/beer-1074962_1920.jpg");
+	    
+
+// 	    /* Set a specific height */
+// 	    height: 500px; 
+
+// 	    /* Create the parallax scrolling effect */
+// 	    // background-attachment: fixed;
+// 	    // background-position: center;
+// 	    // background-repeat: no-repeat;
+// 	    // background-size: cover;
+// 	}
+// 	#second{
+// 		background-image: url("/images/africa2.jpg");
+// 	}
+// }
+}
+
+
+

@@ -1,0 +1,12 @@
+.product.scalability {
+	color: $color-text-dark;
+	h2{
+		color: $color-title-dark;
+	}
+	
+	@media(min-width: $width-tablet-min) {
+		.text {
+			margin-right: 8%
+		}
+	}
+}

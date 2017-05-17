@@ -1,0 +1,45 @@
+.people {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	color: $color-text-dark;
+
+	h2{
+		color: $color-title-dark;
+	}
+	
+	> * {
+		box-sizing: border-box;
+		display: inline-block;
+	}
+
+	.bottle {
+		width: 100%;
+	}
+
+	.bottle {
+		height: auto;
+		padding: 0 30%;
+
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	@media (min-width: $width-tablet-min) {
+		& {
+			flex-direction: row;
+		}
+
+		.bottle {
+			width: 15%;
+			padding: 0;
+		}
+
+		.text,
+		.bottle {
+			display: inline-block;
+		}
+	}
+}
