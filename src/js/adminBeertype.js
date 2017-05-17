@@ -20,7 +20,6 @@ function removeRow() {
 		requiredCLasses.forEach((el) => {
 			el.removeAttribute('required')
 		})
-		console.log('klubb')
 
 		status.setAttribute('value', 'removed')
 	}

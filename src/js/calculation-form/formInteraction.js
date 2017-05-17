@@ -31,9 +31,7 @@ function getNewDistribution(stats) {
 	volumeLeft -= tempData[inactive]
 	tempData[active] = volumeLeft
 
-	if(tempData[active] > 1) {
-		console.log('Something went wrong. Larger than 1')
-	} else if(tempData[active] < 0) {
+	if(tempData[active] < 0) {
 		tempData[inactive] += tempData[active]
 		tempData[active] = 0
 	}

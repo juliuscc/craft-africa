@@ -5,7 +5,6 @@ function scroll(e) {
 	e.stopPropagation()
 
 	const target = document.querySelector(this.getAttribute('href'))
-	console.log(target)
 	velocity(target, 'scroll', {
 		duration: 500,
 		offset: -50,
