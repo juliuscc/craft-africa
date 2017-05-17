@@ -10,10 +10,14 @@ router.get('/data', (req, res) => {
 	if(req.user) {
 		const params = req.query
 		Logger.getViews((err, viewsData) => {
-			Logger.getCalcInput(new Date(params.dateL),
-			new Date(params.dateT), new Date(params.dateK), new Date(params.dateB), (inputData) => {
-				res.json({ views: viewsData, calcInput: inputData })
-			})
+			if(err) {
+				res.json({ views: {}, inputData: '' })
+			} else {
+				Logger.getCalcInput(new Date(params.dateL),
+				new Date(params.dateT), new Date(params.dateK), new Date(params.dateB), (inputData) => {
+					res.json({ views: viewsData, calcInput: inputData })
+				})
+			}
 		})
 	}
 })

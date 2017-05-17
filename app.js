@@ -15,7 +15,7 @@ mongoose.connect(configDB.url)
 function views(req, res, next) {
 	if(req.method === 'GET') {
 		let url = req.originalUrl.toLowerCase()
-		if(!url.includes('.') && !url.includes('admin')) {
+		if(!url.includes('.') && !url.includes('admin') && !url.includes('data')) {
 			if(url === '/') {
 				url = 'homepage'
 			}
