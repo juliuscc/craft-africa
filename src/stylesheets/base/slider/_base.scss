@@ -39,3 +39,7 @@ $color-thumb-hover-warning: darken($color-warning, 10%);
 $color-thumb-hover: darken($color-thumb, 10%);
 
 $height-track: 10px;
+
+input[type=range].slider + span {
+	white-space: nowrap;
+}
