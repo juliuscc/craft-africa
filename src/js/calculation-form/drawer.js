@@ -15,13 +15,9 @@ function openDrawer(e, drawer) {
 			parseFloat(styles.paddingBottom),
 			child.clientHeight
 		]
-
-		console.log(heights)
 		return heights.reduce((ack, height) => ack + height, 0)
 	})
 	.reduce((ack, height) => ack + height, 0)
-
-	console.log(innerHeight)
 
 	content.style.height = `${innerHeight}px`
 	drawer.dataset.state = 'open'
