@@ -10,13 +10,6 @@ $(document).ready(() => {
 })
 /* eslint-enable no-undef */
 
-function babo(e) {
-	console.log('babo', e)
-}
-
-const addBtn2 = document.querySelector('#add')
-addBtn2.addEventListener('click', babo)
-
 // const editedRow = document.querySelectorAll('.validate')
 // editedRow.forEach(textbox => textbox.addEventListener('change', rowEdited))
 
