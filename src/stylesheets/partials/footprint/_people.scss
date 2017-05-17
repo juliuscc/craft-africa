@@ -2,9 +2,12 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	background-color: $color-accent;
-	color: $color-text-light;
+	color: $color-text-dark;
 
+	h2{
+		color: $color-title-dark;
+	}
+	
 	> * {
 		box-sizing: border-box;
 		display: inline-block;
