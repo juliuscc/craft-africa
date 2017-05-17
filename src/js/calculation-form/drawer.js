@@ -1,6 +1,8 @@
 function openDrawer(e, drawer) {
-	e.preventDefault()
-	e.stopPropagation()
+	if(e) {
+		e.preventDefault()
+		e.stopPropagation()
+	}
 
 	const content = drawer.querySelector('.drawer-content')
 	const children = [...content.children]
@@ -15,13 +17,9 @@ function openDrawer(e, drawer) {
 			parseFloat(styles.paddingBottom),
 			child.clientHeight
 		]
-
-		console.log(heights)
 		return heights.reduce((ack, height) => ack + height, 0)
 	})
 	.reduce((ack, height) => ack + height, 0)
-
-	console.log(innerHeight)
 
 	content.style.height = `${innerHeight}px`
 	drawer.dataset.state = 'open'
@@ -34,6 +32,12 @@ function closeDrawer(e, drawer) {
 	const content = drawer.querySelector('.drawer-content')
 	content.style.height = '0px'
 	drawer.dataset.state = 'closed'
+}
+
+function updateDrawer(drawer) {
+	if(drawer.dataset.state === 'open') {
+		openDrawer(null, drawer)
+	}
 }
 
 function initDrawer(drawer) {
@@ -49,4 +53,7 @@ function init() {
 	drawers.forEach(initDrawer)
 }
 
-module.exports = { init }
+module.exports = {
+	init,
+	updateDrawer
+}
