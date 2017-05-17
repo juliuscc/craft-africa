@@ -27,7 +27,7 @@
 			}
 
 			th:first-child {
-				width: 65%;
+				width: 50%;
 			}
 
 			td:first-child {
@@ -45,7 +45,7 @@
 
 	@media (min-width: $width-tablet-min) {
 		table {
-			width: 65%;
+			width: 75%;
 		}
 	}
 }

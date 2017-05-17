@@ -25,8 +25,6 @@ ajax.loadJSON('/data/stats')
 // 	console.log(`Error msg in calculationForm.js: ${msg}`)
 // })
 
-
-
 // Define the chart object
 const chart = Vue.component('economics-chart', {
 	extends: Bar,
@@ -190,6 +188,18 @@ function updateContainers(app) {
 		container.usagePercent = Math.round(container.usage * 100)
 		if(container.usage > 1) {
 			app.statusClass = 'invalid'
+		}
+
+		switch (container.type) {
+			case 'production':
+				container.typeDescription = 'Beer production module'
+				break
+			case 'fermenting':
+				container.typeDescription = 'Fermenting tank module'
+				break
+			case 'addon':
+				container.typeDescription = 'Extra addon module'
+				break
 		}
 	})
 }
