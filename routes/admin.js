@@ -1,6 +1,5 @@
 const router = require('express').Router()
 const passport = require('passport')
-const requiresAuth = require('./admin/helper')
 
 // Get Routes
 const templatesRoute = require('./admin/templates')
@@ -37,20 +36,10 @@ router.get('/login', (req, res) => {
 	}
 })
 
-router.get('/signup', (req, res) => {
-	res.render('admin/signup')
-})
-
 router.get('/logout', (req, res) => {
 	req.logout()
 	res.redirect('/admin/login')
 })
-
-router.post('/signup', passport.authenticate('local-signup', {
-	successRedirect: 'containers',
-	failureRedirect: 'login',
-	failureFlash: true
-}))
 
 router.post('/login', passport.authenticate('local-login', {
 	successRedirect: 'containers',

@@ -2,11 +2,9 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	color: $color-text-dark;
+	background-color: $color-accent;
+	color: $color-text-light;
 	
-	h2{
-		color: $color-title-dark;
-	}
 	> * {
 		box-sizing: border-box;
 		display: inline-block;
@@ -17,11 +15,11 @@
 	}
 
 	.text {
-		order: 1;
+		order: 2;
 	}
 	.animation {
 		height: auto;
-		order: 2;
+		order: 1;
 
 		img {
 			width: 100%;
@@ -35,13 +33,13 @@
 		}
 
 		.animation {
-			order: 1;
+			order: 2;
 			width: 30%;
 			height: auto;
 		}
 
 		.text {
-			order: 2;
+			order: 1;
 		}
 
 		.animation,
