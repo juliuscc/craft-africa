@@ -7,6 +7,7 @@ block description
 	meta(name="description" content="This is the calculationform of Craft-Africa. Here you can find the set of containers that fits your need by using our calculationform.")
 
 block header
+	link(rel="stylesheet" href="http://github.hubspot.com/odometer/themes/odometer-theme-default.css")
 	header.header.calculation-form-header.half
 		.title-text
 			h1 Build Your Brand
@@ -101,7 +102,7 @@ block content
 			.economics.drawer(data-state="closed")
 				.profit-box.always-visible
 					span.text Profit: 
-					span.profit {{ economics.profit }}
+					span.profit.odometer.profit {{ economics.profit }}
 					a.fa.fa-plus-square.show(href="#")
 					a.fa.fa-minus-square.hide(href="#")
 				.drawer-content
