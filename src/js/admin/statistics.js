@@ -13,7 +13,7 @@ let firstAjax = true
 function drawViewsChart(JSON) {
 	let chartLabels = []
 	let dataVals = []
-	for(let i = 0; i < JSON.views.length; i += 1) {
+	for(let i = 0; i < Math.min(JSON.views.length, 10); i += 1) {
 		chartLabels = chartLabels.concat([JSON.views[i].data.path])
 		dataVals = dataVals.concat([JSON.views[i].data.count])
 	}
@@ -48,7 +48,7 @@ function drawViewsChart(JSON) {
 	return (new Chart(ctx, obj))
 }
 
-function drawCalcInputChartsGetObject(chartLabels, dataValues) {
+function drawCalcInputChartsGetObject(chartLabels, dataValues, xAxesLabel = 'Percent', yAxesLabel = ' Frequency') {
 	return {
 		type: 'bar',
 		data: {
@@ -68,6 +68,16 @@ function drawCalcInputChartsGetObject(chartLabels, dataValues) {
 				yAxes: [{
 					ticks: {
 						beginAtZero: true
+					},
+					scaleLabel: {
+						display: true,
+						labelString: yAxesLabel
+					}
+				}],
+				xAxes: [{
+					scaleLabel: {
+						display: true,
+						labelString: xAxesLabel
 					}
 				}]
 			},
@@ -147,7 +157,7 @@ function drawCalcInputCharts(JSON) {
 	const litersMax = getMax(JSON.calcInput.liters)
 	const litersLabels = getLabels(litersMax)
 
-	const obj1 = drawCalcInputChartsGetObject(litersLabels, litersVal)
+	const obj1 = drawCalcInputChartsGetObject(litersLabels, litersVal, 'Liters')
 	const obj2 = drawCalcInputChartsGetObject(percentageLabels, tapVal)
 	const obj3 = drawCalcInputChartsGetObject(percentageLabels, bottleVal)
 	const obj4 = drawCalcInputChartsGetObject(percentageLabels, kegVal)
