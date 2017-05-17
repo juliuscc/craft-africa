@@ -4,8 +4,8 @@ header.header {
 	display: flex;
 	flex-direction: column;
 	height: 100vh;
-	background-color: $color-primary;
 	background-size: cover;
+	overflow: hidden;
 
 	.title-text {
 		position: absolute;
@@ -69,4 +69,7 @@ header.header {
 	&.calculation-form-header {
 		@import "headers/calculation-form-header";
 	}
+
 }
+
+@import "headers/empty";

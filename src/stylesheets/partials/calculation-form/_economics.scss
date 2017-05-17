@@ -9,24 +9,23 @@
 		width: 100%;
 		font-size: 2em;
 		
-		.profit:after {
+		.odometer-inside:after {
 			content: "$";
+			font-family: "Liberation-Sans" , sans-serif!important;
 		}
 
 		a.fa {
 			line-height: 1em;
+			font-size: 30px;
 			float: right;
 			text-align: center;
 			text-decoration: none;
-			color: darken($color-background-light, 15%);
-			border: 1px solid darken($color-background-light, 15%);
+			color: $color-primary;
 			width: 1em;
 			border-radius: 5px;
-			// box-sizing: border-box;
 		
 			&:hover {
-				border-color: $color-text-dark;
-				color: $color-text-dark;
+				color: darken($color-primary, 10%);
 			}
 		}
 	}

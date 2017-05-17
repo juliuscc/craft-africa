@@ -32,14 +32,20 @@ function createVueSlider() {
 		el: '#calc-slider',
 		data: {
 			totalVolume: 0,
-			profit: 0
+			profit: 0,
+			minValue: 0,
+			maxValue: 20000
 		},
 		watch: {
 			totalVolume: function () {
 				calcObj.stats.volume.total = this.totalVolume
 				updateCalcObj()
 				slider.updateAll()
-				this.profit = Math.round(calcObj.economics.profit)
+				if(calcObj.economics.profit !== '-') {
+					this.profit = Math.round(calcObj.economics.profit)
+				} else {
+					this.profit = '-'
+				}
 			},
 			deep: true
 		},
@@ -49,6 +55,8 @@ function createVueSlider() {
 
 			// Move init value to the slider
 			this.totalVolume = calcObj.stats.volume.total
+			this.minValue = calcObj.stats.volume.minValue
+			this.maxValue = calcObj.stats.volume.maxValue
 
 			// Set initial value
 			updateCalcObj()

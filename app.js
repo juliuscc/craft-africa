@@ -42,6 +42,7 @@ app.use(cookieParser())
 
 // Set Static Folder
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public')))
 
 // Passport
 app.use(session({ secret: 'shhsecret', resave: true, saveUninitialized: true }))
@@ -65,6 +66,7 @@ const admin = require('./routes/admin')
 const data = require('./routes/data')
 const footprint = require('./routes/footprint')
 const product = require('./routes/product')
+const update = require('./routes/update')
 
 // Router
 app.use('/', index)
@@ -76,6 +78,7 @@ app.use('/admin', admin)
 app.use('/data', data)
 app.use('/footprint', footprint)
 app.use('/product', product)
+app.use('/update', update)
 
 // Error handling
 app.use((req, res) => {
