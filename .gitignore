@@ -31,6 +31,8 @@ node_modules
 
 public/stylesheets/main.css
 public/stylesheets/style.css
+public/stylesheets/admin-stylesheet.css
+public/stylesheets/normalize\.css
 
 \.gulp-cache
 
@@ -46,7 +48,3 @@ bower_components/
 *.DS_Store
 
 *fuse*
-
-public/stylesheets/normalize\.css
-
-public/stylesheets/
