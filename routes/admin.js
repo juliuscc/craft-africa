@@ -22,7 +22,11 @@ router.use('/statistics', statistics)
 
 // Login stuff
 router.get('/', (req, res) => {
-	res.redirect('/admin/login')
+	if(req.user) {
+		res.redirect('/admin/containers')
+	} else {
+		res.render('admin/login')
+	}
 })
 
 router.get('/login', (req, res) => {
