@@ -1,7 +1,11 @@
 .headline-container{
-	color: $color-text-light;
-	background-color: #AED2C0;
+	color: $color-secondary;
+	background-color: $color-dark-grey;
+	// background-color: #AED2C0;
 	
+	h2 {
+		color: lighten($color-secondary, 15%);
+	}
 	
 	@media(min-width: $width-tablet-min) {
 		.text {
