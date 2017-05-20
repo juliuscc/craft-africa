@@ -1,5 +1,9 @@
 .nav-filler {
-	height: $nav-height-large;
+	height: $nav-height-medium;
 	width: 100%;
 	display: block;
+
+	@media (min-width: $width-tablet-min) {
+		height: $nav-height-large;
+	}
 }
