@@ -48,18 +48,20 @@
 
 .big-pic {
 	.product.quote-pic{ 
-		
-		    /* The image used */
-	    background-image: url("/images/DSC_1114.jpg");
+		// The image used
+		background-image: url("/images/DSC_1114.jpg");
 
-	    /* Set a specific height */
-	    height: 500px; 
+		// Set a specific height
+		height: 500px; 
 
-	    // /* Create the parallax scrolling effect */
-	    // background-attachment: fixed;
-	       background-position: center;
-	       background-repeat: no-repeat;
-	       background-size: cover;
+		// Create the parallax scrolling effect
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+
+		@media (min-width: $width-tablet-min) {
+			background-attachment: fixed;
+		}
 	}
 }
 .about.our-story {
