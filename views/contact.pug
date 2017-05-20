@@ -7,7 +7,7 @@ block description
 	meta(name="description" content= "When you have read about us and are exited to start your own brand. Contact us at Craft Africa, and we will find a personal solution for you to develop you personal brand and take out you entrepreneurial spirit. ")
 
 block header
-	header.header.contact-form-header.half
+	header.header.contact-form-header
 		.title-text
 			h1 Contact us
 			.container
@@ -27,16 +27,15 @@ block header
 						tr
 							td
 							td 120 65 Stockholm
-							
 			p Stockholm - Dar Es Salaam - Kampala
+		a.down-btn.fa.fa-angle-double-down(href="#first")
 
 block nav
 	nav.nav
 		include partials/navbar
-	.nav-filler.contact
 
 block content
-	.contact-form
+	.contact-form#first
 		.container-contact
 			form(method="post" action="/email/send")
 				input(type="text" name="message_template" value="standard-template" hidden)
