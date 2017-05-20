@@ -1,11 +1,91 @@
-.product.turn-key {
-	background-color: #618EB4;
-	color: $color-text-light;
-	flex-wrap: wrap-reverse;
+.product.scalability-support-key {
 
-	@media(min-width: $width-tablet-min) {
-		.text {
-			margin-left: 8%
+	.column-container{
+
+		display: flex;
+		//padding: 10%;
+		padding: 10% 15% 10% 15%;
+		flex-direction: column;
+		
+		@media (min-width: $width-tablet-min) {
+			flex-direction: row;
+		}
+
+		.text{
+			padding:0;
+			flex: 1;
+			width: 100%;
+		}
+
+		.line {
+		//	margin: 5% 1% 5% 1%;
+			box-sizing: border-box;
+			margin-bottom: 5%;
+			margin-top: 4%;
+			//height: 1px;
+			flex-shrink: 0;
+		
+			height: 1px;
+			
+
+			@media (min-width: $width-tablet-min) {
+				height: auto;
+				width: 1px;
+				//margin: 1% 5% 1% 5%;
+				margin: 5px 40px;
+			}
+			
+			// margin-left: 5%;
+			// margin-right: 5%;
+			// margin-top: 2%;
+			// margin-bottom: 2%;
+			background: $color-dark-grey;
+			
+
+		}
+	}
+}
+
+.big-pic {
+	.product.quote-pic{ 
+		
+		    /* The image used */
+	    background-image: url("/images/boba-jovanovic-65138.jpg");
+
+	    /* Set a specific height */
+	    height: 500px; 
+
+	    // /* Create the parallax scrolling effect */
+	    // background-attachment: fixed;
+	       background-position: center;
+	       background-repeat: no-repeat;
+	       background-size: cover;
+	}
+}
+.about.our-story {
+	flex-direction: column;
+	text-align: center;
+	padding: 50px 10%;
+	@media (min-width: $width-tablet-min) {
+		padding: 50px 30%;
+	}
+	h1 {
+		margin-bottom: 0;
+	} 
+
+}
+
+.big-pic {
+	.our-story-pici{
+		background-image: url("/images/africa2.jpg");
+		height: 500px; 
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+
+		@media (min-width: $width-tablet-min) {
+			background-image: url("/images/africa2 (2).jpg");
+			background-attachment: fixed;
 		}
 	}
 }
