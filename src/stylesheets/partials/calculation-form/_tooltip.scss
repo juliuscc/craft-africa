@@ -1,5 +1,9 @@
 .tooltip {
-	position: relative;
+	position: static;
+
+	@media (min-width: $width-tablet-min) {
+		position: relative;
+	}
 
 	.tooltip-text {
 		font-size: 15px;
@@ -20,7 +24,11 @@
 		z-index: 1;
 		left: 50%;
 		transform: translateX(-50%);
-		top: 100%;
+		top: 40px;
+
+		@media (min-width: $width-tablet-min) {
+			top: 100%;
+		}
 	}
 
 	&:hover {

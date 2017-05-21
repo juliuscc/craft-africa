@@ -56,6 +56,7 @@
 		.distribution,
 		.addons,
 		.col {
+			position: relative;
 			flex: 1;
 			margin: 0;
 
@@ -125,6 +126,7 @@
 		}
 
 		.water-slider {
+			position: relative;
 			width: 100%;
 			margin-top: 20px;
 
