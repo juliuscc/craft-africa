@@ -156,9 +156,9 @@ function updateCalcObj() {
 
 function updateGraph(app) {
 	// Update graph datapoints
-	app.chartData.points[0] = calcObj.economics.variableCosts.total // Variable
-	app.chartData.points[1] = calcObj.economics.fixedCosts.total // Rent
-	app.chartData.points[2] = calcObj.economics.incomes.total // Revenue
+	app.chartData.points[0] = Math.floor(calcObj.economics.variableCosts.total) // Variable
+	app.chartData.points[1] = Math.floor(calcObj.economics.fixedCosts.total) // Rent
+	app.chartData.points[2] = Math.floor(calcObj.economics.incomes.total) // Revenue
 
 	// Trigger event
 	app.chartData.updated++
