@@ -3533,6 +3533,10 @@ object.omit@^2.0.0:
     for-own "^0.1.4"
     is-extendable "^0.1.1"
 
+odometer@^0.4.7, odometer@^0.4.8:
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/odometer/-/odometer-0.4.8.tgz#2f6703bf4c6b384c278236d04d4bc8171abe4374"
+
 on-finished@~2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/on-finished/-/on-finished-2.3.0.tgz#20f1336481b083cd75337992a16971aa2d906947"
@@ -4948,7 +4952,14 @@ vue-chartjs@^2.6.2:
   dependencies:
     lodash "^4.17.4"
 
-vue@^2.3.0:
+vue-odometer@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/vue-odometer/-/vue-odometer-0.1.1.tgz#e59764999d746cd7d74762a061a0a16a6763beeb"
+  dependencies:
+    odometer "^0.4.7"
+    vue "^2.1.8"
+
+vue@^2.1.8, vue@^2.3.0:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.3.2.tgz#9e52aae3593480be235ff227557837e69f98203a"
 
