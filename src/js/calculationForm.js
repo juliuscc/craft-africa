@@ -351,10 +351,10 @@ function createVueApp() {
 			kegPrice: function() {
 				calcObj.stats.sellingPrice.keg = this.kegPrice
 			},
-			bottlePrice : function() {
+			bottlePrice: function() {
 				calcObj.stats.sellingPrice.bottle = this.bottlePrice
 			},
-			bottlePrice : function() {
+			waterPrice: function() {
 				calcObj.stats.sellingPrice.water = this.waterPrice
 			},
 			deep: true

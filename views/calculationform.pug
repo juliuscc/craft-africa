@@ -50,7 +50,7 @@ block content
 									input.slider.container-distribution.activeSlider#sliderTap(type="range" name="tap" min="0" max="1" step="0.01" data-thumbWidth="16" v-model="sliderTap")
 									span {{ tapPercent }}%
 								td.price
-									input(type="number" v-model="tapPrice").distribution-text-input
+									input(type="number" min="0" v-model="tapPrice").distribution-text-input
 									span.unit $/l
 							tr
 								td
@@ -59,7 +59,7 @@ block content
 									input.slider.container-distribution.activeSlider#sliderKeg(type="range" name="keg" min="0" max="1" step="0.01" data-thumbWidth="16" v-model="sliderKeg")
 									span {{ kegPercent }}%
 								td.price
-									input(type="number" v-model="kegPrice").distribution-text-input
+									input(type="number" min="0" v-model="kegPrice").distribution-text-input
 									span.unit $/l
 							tr
 								td
@@ -68,7 +68,7 @@ block content
 									input.slider.container-distribution.activeSlider#sliderBottle(type="range" name="bottle" min="0" max="1" step="0.01" data-thumbWidth="16" v-model="sliderBottle")
 									span {{ bottlePercent }}%
 								td.price
-									input(type="number" v-model="bottlePrice").distribution-text-input
+									input(type="number" min="0" v-model="bottlePrice").distribution-text-input
 									span.unit $/l
 					.col
 						.water-slider
@@ -84,7 +84,7 @@ block content
 												input.slider.container-distribution.activeSlider#sliderWater(type="range" name="water" min="0" max="5000" data-thumbWidth="16" v-model="sliderWater")
 												span {{ sliderWater }} liters
 											td.price
-												input(type="number" v-model="waterPrice").distribution-text-input
+												input(type="number" min="0" v-model="waterPrice").distribution-text-input
 												span.unit $/l
 						.addons
 							.title
