@@ -35,3 +35,10 @@ input[type=range]:-moz-focusring {
 	outline: 1px solid inherit;
 	outline-offset: -1px;
 }
+
+.invalid input[type=range]::-moz-range-thumb {
+	background: $color-thumb-warning;
+	&:hover {
+		background: $color-thumb-hover-warning;
+	}
+}
