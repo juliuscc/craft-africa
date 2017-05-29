@@ -106,7 +106,7 @@ function addRow() {
 	</div>
 	<div class="input-field col s3">
 		<input id="fermentingCapacity" type="number" name="fermentingCapacity" class="validate">
-		<label for="fermentingCapacity">Fermenting Capacity</label>
+		<label for="fermentingCapacity">Fermenting Capacity (average per month)</label>
 	</div>
 	<div class="input-field col s3">
 		<input id="storageCapacity" type="number" name="storageCapacity" class="validate">
