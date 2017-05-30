@@ -58,7 +58,8 @@ function calcFixedCosts(stats, economics) {
 }
 
 // Calculate the total income from distribution and prices
-function calcIncome(stats, economics) {
+// tax and vat is inversed
+function calcIncome(stats, economics, tax = 0.7, vat = 0.82) {
 	if(!economics.incomes) {
 		economics.incomes = {}
 	}
@@ -67,10 +68,10 @@ function calcIncome(stats, economics) {
 	const { sellingPrice, volume, distribution } = stats
 	const { incomes } = economics
 	if(sellingPrice && volume) {
-		incomes.kegPrice = sellingPrice.keg * volume.keg
-		incomes.tapPrice = sellingPrice.tap * volume.tap
-		incomes.bottlePrice = sellingPrice.bottle * volume.bottle
-		incomes.waterPrice = sellingPrice.water * distribution.water
+		incomes.kegPrice = sellingPrice.keg * volume.keg * tax * vat
+		incomes.tapPrice = sellingPrice.tap * volume.tap * tax * vat
+		incomes.bottlePrice = sellingPrice.bottle * volume.bottle * tax * vat
+		incomes.waterPrice = sellingPrice.water * distribution.water * tax * vat
 		incomes.total = incomes.kegPrice + incomes.tapPrice + incomes.bottlePrice + incomes.waterPrice
 	}
 	return economics
