@@ -30,7 +30,7 @@ block content
 			.inputs(:class="statusClass")
 				.total-volume
 					.title
-						h3 Liters of Beer
+						h3 Liters of beer per month
 						.fa.fa-question-circle-o.tooltip
 							.tooltip-text
 								| This slider controls your monthly output of beer.
@@ -41,7 +41,7 @@ block content
 				.options
 					.distribution
 						.title
-							h3 Finetune distribution
+							h3 Fine tune distribution
 							.fa.fa-question-circle-o.tooltip
 								.tooltip-text
 									| These sliders fine tune how much of your beer goes to tap, keg or bottles. You can also input your selling price for each type. The price is the price in usd per liter.
@@ -76,7 +76,7 @@ block content
 					.col
 						.water-slider
 							.title
-								h3 Water sold
+								h3 Liters of water per month
 								.fa.fa-question-circle-o.tooltip
 									.tooltip-text
 										| This slider controls your expected sales of water each month. You can also input your selling price for the water. The price is the price in usd per liter.
@@ -91,7 +91,7 @@ block content
 												span.unit $/l
 						.addons
 							.title
-								h3 Addons
+								h3 Extra modules
 								.fa.fa-question-circle-o.tooltip
 									.tooltip-text
 										| These are add-ons that you can add to your brewery. For small scale breweries, addons are not recommended and they will therefore be marked in red.
@@ -104,7 +104,7 @@ block content
 
 			.economics.drawer(data-state="closed")
 				.profit-box.always-visible
-					span.text Monthly profit: 
+					span.text Estimated monthly profit: 
 					span.profit.odometer.profit {{ economics.profit }}
 					a.fa.fa-plus-square.show(href="#")
 					a.fa.fa-minus-square.hide(href="#")
@@ -139,7 +139,7 @@ block content
 							td ${{ economics.fixedCosts.total }}
 					table
 						tr
-							th Variable Costs
+							th Production Costs
 						tr
 							th Bottle Production Costs
 							td {{ economics.variableCosts.bottlePrice }}
@@ -165,7 +165,7 @@ block content
 							th Fixed Costs
 							td - {{ economics.fixedCosts.total }}
 						tr
-							th Variable Costs
+							th Production Costs
 							td - {{ economics.variableCosts.total }}
 						tr
 							th Total
