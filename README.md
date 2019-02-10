@@ -1,5 +1,2 @@
-# Beer4africa
-Welcome to the Beer 4 Africa project!
-
-This git contains all the necessary files for the webserver.
-
+# Craft Africa
+The website for Craft Africa, a modular craft brewery concept democratizing entrepreneurship. Craft Africa empowers entrepreneurs through high-quality technology and financial solutions.
